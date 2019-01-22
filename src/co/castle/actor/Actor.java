@@ -1,0 +1,255 @@
+package co.castle.actor;
+
+import java.util.Enumeration;
+import java.util.Hashtable;
+
+import co.castle.action.Action;
+import co.castle.ai.ActionSelector;
+import co.castle.game.SFXManager;
+import co.castle.level.Level;
+import co.castle.ui.Appearance;
+import sz.util.Debug;
+import sz.util.Position;
+import sz.util.PriorityEnqueable;
+
+public class Actor implements Cloneable, java.io.Serializable, PriorityEnqueable
+{
+	private boolean aWannaDie;
+	private Hashtable <String, Boolean> hashFlags = new Hashtable <String, Boolean>( );
+
+	private int hoverHeight;
+	private boolean isJumping;
+	private /* transient */ int nextTime = 10;
+	private /* transient */ Position position = new Position( 0, 0, 0 );
+
+	private int startingJumpingHeight;
+
+	protected transient Appearance appearance;
+
+	protected Hashtable hashCounters = new Hashtable( );
+
+	protected Level level;
+
+	protected /* transient */ int positionx, positiony, positionz;
+
+	protected ActionSelector selector;
+
+	public void act( )
+	{
+		Action x = getSelector( ).selectAction( this );
+		execute( x );
+	}
+
+	public Object clone( )
+	{
+		try
+		{
+			Actor x = (Actor) super.clone( );
+			if ( position != null )
+				x.setPosition( new Position( position.x, position.y, position.z ) );
+			return x;
+		}
+		catch ( CloneNotSupportedException cnse )
+		{
+			Debug.doAssert( false, "failed class cast, Feature.clone()" );
+		}
+		return null;
+	}
+
+	public void die( )
+	{
+		/** Request to be removed from any dispatcher or structure */
+		aWannaDie = true;
+	}
+
+	public void doJump( int startingJumpingHeight )
+	{
+		this.isJumping = true;
+		this.startingJumpingHeight = startingJumpingHeight;
+	}
+
+	public void execute( Action x )
+	{
+		if ( x != null )
+		{
+			x.setPerformer( this );
+			if ( x.canPerform( this ) )
+			{
+				if ( x.getSFX( ) != null )
+					SFXManager.play( x.getSFX( ) );
+				x.execute( );
+				// Debug.say("("+x.getCost()+")");
+				setNextTime( x.getCost( ) );
+			}
+		}
+		else
+		{
+			setNextTime( 50 );
+		}
+		updateStatus( );
+	}
+
+	public Appearance getAppearance( )
+	{
+		return appearance;
+	}
+
+	public int getCost( )
+	{
+		// Debug.say("Cost of "+getDescription()+" "+ nextTime);
+		return nextTime;
+	}
+
+	public int getCounter( String counterID )
+	{
+		Integer val = (Integer) hashCounters.get( counterID );
+		if ( val == null )
+			return -1;
+		else
+			return val.intValue( );
+	}
+
+	public String getDescription( )
+	{
+		return "";
+	}
+
+	public boolean getFlag( String flagID )
+	{
+		Boolean val = (Boolean) hashFlags.get( flagID );
+		return val != null && val.booleanValue( );
+	}
+
+	public int getHoverHeight( )
+	{
+		return hoverHeight;
+	}
+
+	public Level getLevel( )
+	{
+		return level;
+	}
+
+	public Position getPosition( )
+	{
+		return position;
+	}
+
+	public ActionSelector getSelector( )
+	{
+		return selector;
+	}
+
+	public int getStandingHeight( )
+	{
+		if ( isJumping )
+		{
+			return startingJumpingHeight + 2;
+		}
+		if ( level.getMapCell( getPosition( ) ) != null )
+			return level.getMapCell( getPosition( ) ).getHeight( ) + getHoverHeight( );
+		else
+			return getHoverHeight( );
+	}
+
+	public boolean hasCounter( String counterID )
+	{
+		return getCounter( counterID ) > 0;
+	}
+
+	public boolean isJumping( )
+	{
+		return isJumping;
+	}
+
+	public void message( String mess )
+	{
+	}
+
+	public void reduceCost( int value )
+	{
+		// Debug.say("Reducing cost of "+getDescription()+"by"+value+" (from
+		// "+nextTime+")");
+		nextTime = nextTime - value;
+	}
+
+	public void setAppearance( Appearance value )
+	{
+		appearance = value;
+	}
+
+	public void setCounter( String counterID, int turns )
+	{
+		hashCounters.put( counterID, new Integer( turns ) );
+	}
+
+	public void setFlag( String flagID, boolean value )
+	{
+		hashFlags.put( flagID, new Boolean( value ) );
+	}
+
+	public void setHoverHeight( int hoverHeight )
+	{
+		if ( hoverHeight > 0 )
+			this.hoverHeight = hoverHeight;
+		else
+			this.hoverHeight = 0;
+	}
+
+	public void setLevel( Level what )
+	{
+		level = what;
+	}
+
+	public void setNextTime( int value )
+	{
+		// Debug.say("Next time for "+getDescription()+" "+ value);
+		nextTime = value;
+	}
+
+	public void setPosition( int x, int y, int z )
+	{
+		position.x = x;
+		position.y = y;
+		position.z = z;
+	}
+
+	public void setPosition( Position p )
+	{
+		position = p;
+	}
+
+	public void setSelector( ActionSelector value )
+	{
+		selector = value;
+	}
+
+	public void stopJump( )
+	{
+		this.isJumping = false;
+	}
+
+	public void updateStatus( )
+	{
+		Enumeration countersKeys = hashCounters.keys( );
+		while ( countersKeys.hasMoreElements( ) )
+		{
+			String key = (String) countersKeys.nextElement( );
+			Integer counter = (Integer) hashCounters.get( key );
+			if ( counter.intValue( ) == 0 )
+			{
+				hashCounters.remove( key );
+			}
+			else
+			{
+				hashCounters.put( key, new Integer( counter.intValue( ) - 1 ) );
+			}
+		}
+	}
+
+	public boolean wannaDie( )
+	{
+		return aWannaDie;
+	}
+
+}
