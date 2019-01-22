@@ -1,0 +1,10 @@
+CvRL 0.61
+---------
+
+Instructions for running the game on linux
+
+* Delete the file jcurses.dll on the lib folder.
+* Make the bash scripts executable
+* Run either cvrl-console.sh or cvrl-gfx.sh
+
+Runs on official Sun JRE 1.4.2+

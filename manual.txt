@@ -1,0 +1,624 @@
+
+
+
+
+                      /-/\-----------\
+                     <  |astlevaniaRL >
+                      \-\/-----------/
+                           Serenade of Chaos
+
+
+                           by: Santiago Zapata, 2005-2010
+
+
+
+ Contents
+---------
+1. Story
+2. Introduction
+3. The Hero
+ Description of all player classes and their skills
+4. Character Attributes
+5. The art of combat - Weapons and Shields
+6. The day and the night
+7. Shopkeepers
+8. Commands and Actions
+9. Credits and Acknowledgments
+
+1. Story
+--------
+The struggle between the Belmonts and Dracula comes from distant times; time
+after time the count of darkness rises from the shadows, and a Belmont hero
+responds to the call of fate to confront him.
+
+Years ago, it was the turn of Christopher Belmont to take his place in the
+history of his bloodline, and meet his fate on the castle of chaos. He emerged
+victorious, and the land was saved.
+
+However, not much after his victory over Castlevania, when his son Soleiyu was
+ready to rise as the new vampire killer, the forces of darkness struck again and
+his son was abducted... Again, Christopher had to fight through castles of
+different nature, and finally found his child transformed into a vicious demon;
+He had to fight Dracula, whom still without his full power, died to the sacred
+whip.
+
+He came back with his son on his hands. The townspeople had his wounds attended,
+but there are wounds human medicine cannot cure... three days after returning
+safe and regaining his human shape, Soleiyu fled to the mountains and forests,
+and never again came back.
+
+Not much happened for the next years, until one night, the moon turned blood,
+and the castle raised from the ashes, much before the time it was fated to; one
+by one the towns of the region fell to the wrath of the dark armies, as no one
+seemed to assume the fate of facing the count in his own castle. Christopher
+Belmont, who had become a renowned trainer, was feeling the weight of the years
+coming over him; still, he joined the most brave and skilled warriors he could
+and headed to Castlevania, the dwelling of chaos.
+
+One by one, his companions fell to the atrocities of the castle, their sacrifice
+being the only way to aid their master unto the only chance at sight to save
+mankind, finally, wounded and tired, he was for the third time in the same place
+he had been fifteen years ago; the vampire killer whip, which should have been
+in the hands of his son, gave him the last strengths to face Dracula again, and
+so, the final face-off began.
+
+The events that followed marked the start of a new age... Darkness swept the
+world, as all hopes seemed to be lost, and long forgotten Belmont bloodlines had
+to rise again and take their paths again to the cursed castle, the time has come
+for the future of mankind to be decided; the threads of fate are in your hands
+and in your heart.
+
+2. Introduction
+---------------
+CastlevaniaRL is a roguelike game in which you play the role of a character
+granted special powers to fight Count Dracula on his stronghold, the
+Castlevania. On your quest you will face horrible monsters and find sacred
+relics and artifacts. Your special abilities and long years of training, are
+your only advantage against the evil army of the count that protects the castle
+and threatens the land.
+
+3. The Hero
+-----------
+Hunters of the night... their fate is to cleanse the world from the dark
+influence of the count, who rises again from age to age; there are different
+kinds of vampire hunters, all of them with a common objective and different
+means to achieve it which can be resumed into 6 different character fates, which
+determine the abilities, initial equipment and training of the character.
+
+As they get closer to their final fate by slaying the evil inhabitants of the
+castle, they will unlock additional powers which will allow them to face the
+ever-growing dangers inside the castle.
+
+ Vampire Killer
+--------------
+Skilled using the sacred Vampire killer whip and the only able to use the mystic
+weapons. This character grows strong as he finds powerups for his whip and
+mystics; its main ability is the use of the sacred weapons, which he may find
+after killing enemies or breaking things inside the castle. He must make good
+use of support and upgrade items, as he can't equip conventional weapons or
+armor. He can find stronger mystical weapons as he grows stronger.
+
+
+                                     /-- Warp Dash
+                  /---- Slide Kick --|-- BackFlip
+                 /                   \-- Air Dash
+                /
+Holy Water --\ /-- StopWatch --\ /-- Fist
+              X                 X
+Holy Bible --/ \-- Cross ------/ \-- Crystal
+                \
+                 \                  /-- Soul Wind ---\
+                  \-- Item Break --<                  >---(a)
+                                    \-- Soul Flame --/
+
+        /-- Soul Ice ----\
+(a) ---<                  >-- Soul Blast
+        \-- Soul Saint --/
+
+
+The following are the basic sacred weapons and their effects:
+
+Dagger (1)
+  A weak weapon that has a long straight flight.
+Axe (1)
+  Strong weapon that flies on an arc for a short range
+Holy Water (1)
+  Magic water that explodes on flames once it hits ground, the
+  flames stay for a short time before extinction
+Holy Bible (2)
+  Throws slicing holy sheets on a spiral path
+Stopwatch (3)
+  A relic that once opened stops time flow for a short instant.
+Cross (3)
+  A magical weapon that slices through the enemies and returns
+Sacred Fist (5)
+  Punches enemies in a direction
+Blast Crystal (5)
+  Releases a hovering crystal that explodes three times damaging surrounding
+  enemies
+Item Break (?)
+  Executes a powerful move depending on the current mystic weapon
+Soul Wind (10)
+  Stops Time
+Soul Flame (10)
+  Damages nearby enemies with blast of fire
+Soul Ice (20)
+  Recovers some health
+Soul Saint (15)
+  Enchants the whip to shoot fireballs
+Soul Blast (20)
+  Creates a powerful holy blast around the player
+Slide Kick (2)
+  Slides on the floor kicking weak enemies
+Warp Dash (3)
+  Blinks in a direction for a short distance
+BackFlip (Passive)
+  Higher attack increases change to perform a double evade check
+Air Dash (5)
+  Flies through the air attacking enemies
+
+
+Vanquisher Wizard
+-----------------
+A master of the arcane arts trained to defeat Vampires and other evil creatures,
+the vampire vanquisher handles strong magical attacks which can be improved by
+finding spell books and scrolls. He is mediocre at weapons with the exception of
+the ring blades and the magic rods, which he is able to enchant turning them
+into deadly weapons.
+
+           /-- Teleport-------\
+Recover --<                    >-- Light-------\
+           \-- Cure ----------/                 \
+                                                 >-- Major Jinx
+           /-- Energy Shield--\                 /
+Enchant --<                    >-- Mindblast --/
+           \-- Mindlock ------/
+
+             /-- Flame
+Spellbook --<--- Ice Ray
+             \-- Lighting Bolt
+
+Homing Ball (2)
+  Throws a magic missile directly to an enemy
+Charge Ball (6)
+  Launches a devastating energy ball
+Flame (8) Needs the Book of Fire
+  Summons a strong flame
+Ice Ray (7) Needs the Book of Ice
+  Projects a cold icy wind that may freeze enemies
+Lighting Bolt (10) Needs the Book of Lighting
+  Shoots a poweful thunderbolt
+Recover (15)
+  Recovers Health
+Enchant (5)
+  Increases a weapon attack by 2 for a short time
+Teleport (5)
+  Transports over a short distance
+Cure (5)
+  Removes poison and other maladies
+Energy Shield (15)
+  Reduces taken damage by 2/3 for a short time
+MindLock (7)
+  Paralizes an enemy
+Light (15)
+  Creates a magical source of light that follows its caster
+MindBlast (15)
+  Disrupts the mind of nearby enemies
+Major Jinx (0)
+  Exchanges hearts for 5 hits, cancels recover
+
+
+Darkness Renegade
+-----------------
+A vampire who discovered mankind was worth to protect and not to destroy; he
+abandoned the shadows to fight on the light side, still retaining most of his
+dark powers. The renegade has a wide array of skills that allow him to
+manipulate energies in chaotic places, especially Dracula's castle. He prefers
+light weapons and armor, although he can handle some of the most devastating
+magical weapons.
+
+Summon Soul ---------\ /-- Shade Teleport --\
+                      X                      >-- Flames Shoot -- Hellfire
+Dark Metamorphosis --/ \-- Souls Strike ----/
+
+                       /-- Bat Morph ---- Adv. Bat Morph
+Morph ----------------<--- Wolf Morph --- Adv. Wolf Morph
+                       \-- Myst Morph --- Adv. Myst Morph
+
+The following are the basic dark powers of the renegade
+
+Fireball (2)
+  Projects a weak flame missile that flies on a straight line
+Soul Steal (5)
+  Steal part of the enemy soul, thus regaining health and damaging him
+Minor Jinx (0)
+  Exchanges 5 hits for hearts
+Summon Soul (4)
+  Summons a fierce soul that breaks through the enemy
+Dark Metamorphosis (10)
+  Regains health by drinking blood from the enemies
+Shade Teleport (5)
+  Dematerializes and travel as a shade
+Souls' Strike (8)
+  Summons three souls that attack the nearest enemy
+Flames Shoot (10)
+  Shoots three fireballs in a direction
+Hellfire (15)
+  Shoots three lava balls in a direction
+Chiropteran Metamorphosis (10)
+  Turn into a bat with the ability of flying for a short time
+Lupine Metamorphosis (10)
+  Turn into a quick and fierce wolf for a short time
+Ethereal Metamorphosis (20)
+  Turn into thin myst for a short time
+
+Souls' Master
+-------------
+The souls masters have destructive supernatural powers based on the manipulation
+of spirits from former powerful creatures that have surrendered to the light.
+Using these he may cause either destruction to his enemies or relievement over
+his allies.
+
+                            /-- Confidence
+Cat Soul ---- DragonFire --<
+                            \-- Kind Soul ----- Soul Forge
+
+
+                                              /-- Invoke Eagle ---------\
+                            /- Invoke Bird ---\                          \
+Bird's Egg -- Manipulate --<                   >- Invoke Cat-Invoke Tiger >-(a)
+                            \- Invoke Turtle -/                          /
+                                              \-- Invoke Tortoise ------/
+
+       /-- Invoke Dragon
+(a) --<
+       \-- Tame
+
+
+Turtle Soul (5)
+  Calls a turtle shell which increases the defense for a short time
+Bird Soul (2)
+  Calls two birds whom scratch the enemies
+Cat Soul (3)
+  Calls a quick running kitten that scratches through the enemies
+Birds' Egg (1)
+  Throws a dove egg which explodes upon impacting the floor
+DragonFire (8)
+  Summons a small drake spirit which burns through the enemies
+Manipulate (5)
+  Tries to manipulate an enemy and turn it against other monsters
+Confidence (Passive)
+  Greatly increases the chance of manipulating an enemy
+Soul Forge (Passive)
+  Greatly increases the chance of taming an enemy
+Invoke Bird (5)
+  Invokes a quick flying bird servant
+Invoke Turtle (5)
+  Invokes a small enduring turtle servant
+Invoke Cat (5)
+  Invokes a quick wild TomCat
+Invoke Eagle (5)
+  Invokes a quick and fierce flying eagle servant
+Invoke Tortoise (5)
+  Invokes a massive enduring tortoise servant
+Invoke Tiger (5)
+  Invokes a quick Slashing Tiger
+Invoke Dragon (8)
+  Invokes a powerful Dragon
+Tame (5)
+  Permanently turn a monster to your side
+
+Man-Beast
+---------
+In the far mountains of Transylvania, where only the Belmont's have dared to
+travel, there are small communities of beings which are neither human nor
+monsters; they have managed to live along after being shunned by the humans as
+monstrosities. When Dracula awoke and sent messengers asking them to join his
+legions of darkness, they refused. Their settlements were burned and leveled,
+and most of them were horribly massacred. The few survivors ran away, promising
+to seek revenge against the dark lord using all of their power and might.
+
+The manbeast fight better unarmed, and their martial training allows them to use
+deadly combat skills, as well as regenerate their health while fighting
+
+              /-- Power Strike -- Power Crash
+Power Blow --<
+              \-- Bear Morph -- Beast Morph -- Demon Morph
+
+                                 /-- Self Control -- Complete Control
+Energy Scythe -- Claw Assault --<
+                                 \-- Regeneration
+
+Claw Swipe (3)
+  Sweeps the enemies in front of you with a strong claw blow.
+Power Blow, Strike and Crash (3)
+  Builds up power for a strong blow that bounces back enemies
+Bear Morph (15)
+  Turns into a wild bear, has a medium chance of losing mind
+Beast Morph (15)
+  Turns into a powerful beast, has an high chance of losing mind
+Demon Morph (15)
+  Turns into a strong demon, has a low chance of losing mind
+Energy Scythe (5)
+  Damages enemies in front of you projecting the energy of a blow
+Claw Assault (5)
+  Jumps and slashes through enemies
+Self Control (passive)
+  Reduces chance of losing mind while morphing
+Complete Control (passive)
+  Prevents losing mind while morphing
+Regeneration (passive)
+  Recovers health while fighting
+
+Knight
+------
+Agents to the church trained to defend the world from chaos and armed with the
+most advanced human weaponry, the knight of light are a group of individuals
+which devote their lives to defend the interests of the church. They were the
+same that once raided Wallachia to dethrone the count, and now they seek to aid
+mankind again. A Knight of light must strive to strengthen himself, both in the
+physical and spiritual path, before daring to challenge the horrors of the dark
+castle.
+
+Knights are skilled with different kinds of weapons and their training makes
+them good in combat and resistant; they have the disadvantage of not counting
+with mystic skills, but their will and courage gives them a chance to challenge
+the castle.
+
+Shield Guard Skill (1)
+ The knight have an special skill available since their arrival to the castle;
+ they can cover themselves toward a direction using their shield.
+ Shield guard protects the player from attacks from 3 positions, according to
+ the direction chosen for defending.
+
+  .....
+  .**..    When the player uses shield guard to the north west, attacks
+  .*@..    from three positions are blocked (marked with '*')
+  .....
+  .....
+
+
+ If the attack is blocked, the defense is boosted in the following way:
+  * Shield coverage is ensured (100% chance), thus the attack is reduced by its
+  defense value
+  * Shield block chance is multiplied by 3 (This is the chance for completely
+  blocking the attack)
+
+4. Character Attributes
+-----------------------
+
+The abilities of the character in the world are resumed in a series of
+attributes, which are modified along the game as the player levels up, performs
+spirital fusion or gets access to mystic relics.
+
+* Hits: Determines how much damage the character may take before dying
+* Hearts: Obtained by killing enemies or destroying furniture, they power up
+skills and magic abilities.
+* Gold: Enables the character to buy stuff from merchants.
+* Keys: Needed to advance through the castle
+* Carrying: Number of carried items
+
+* MaxHits: Upper limit for hits
+* Max Hearts: Upper limit for hearts
+* Carry Max: Maximum number of items that can be carried
+
+* Attack: Bonus to damage enemies when performing physical attacks
+* Soul Power: Bonus to the effect of mystic skills
+* Evade: Chance to jump or evade a monster attack
+* Combat: Quickness on combat, reduces the cost of your attack moves
+* Invokation: Prowess on mysticism and magic, reduces the cost of your mystic
+skill moves
+* Movement: Movement speed, reduces the cost of your displacement moves
+* Experience: Determines your player level, obtained by killing enemies.
+
+* Weapon proficiencies: Bonus to damage and cost reduction to attacks with an
+specific weapon. Increases with training
+
+ Leveling up
+------------
+When enough monsters have been taken down, your character will level up and may
+be able to pick and advancement, which can be either a skill depending on his
+class or a spirit to enhance his attributes. The frequency with which you obtain
+advancements depends on your player class
+
+5. The art of combat - Weapons and Shields
+------------------------------------------
+
+ Weapons
+--------
+Each weapon has the following attributes
+* Attack Value: The base value used to calculate the damage caused.
+* Range: The extent to which the attacks affect enemies
+* Vertical Range: Vertical reach of the weapon (to hit enemies above or below)
+* Defense: The weapon may add to the player defense
+* Coverage: Chance of the weapon being used to block an attack
+* Attack Cost: How much does it take to use the weapon (quick weapons have a low
+attack cost)
+* Two Handed: Defines if both hands are needed to use the weapon (dismissing a
+shield or secondary weapon)
+* Single Use: Some weapons can only be used once
+
+* Damage Modifiers:
+ * Harms Undead
+ * Slices Through: The weapon can pierce through enemies
+
+Additionally, ranged weapons have the following attributes
+* Reload Turns: How many times the weapon can be used until it has to be
+reloaded
+* Reload Cost: How much does it take to reload the weapon (quick weapons have a
+low cost)
+
+ Shields
+--------
+Shields are items you can equip in your Shield slot; they are ineffective if you
+are wielding a two handed weapon
+
+If you are attacked while wearing a shield, three things may happen
+* Blocking: The attack is completely absorbed by the shield
+* Covering: The shield reduces the strength of the attack
+* Failure: The shield fails to stop the attack
+
+If you are a knight your chances of blocking an attack are doubled and you
+always have a covering chance of 70%
+
+ Dodging
+--------
+When fighting, you have a chance to completely dodge your opponent attack, this
+chance is based in your "Evade" attribute, which you can increase using level up
+spirits.
+
+You can also increase your dodging chances with the following skills, available
+to the Vampire Killer, Vampire Vanquisher and Invoker classes:
+
+Dodge (passive)
+  Adds 10% to chance of evading attack
+Mirror Dodge (passive)
+  Adds another 10% to chance of evading attack
+
+ Underwater Combat
+------------------
+While swimming, you can only attack with the following categories of weapons:
+* Unarmed (No weapon equipped)
+* Gauntlets
+* Daggers
+* Spears
+* Combat Rings
+
+Also, have in mind your attack will be halved.
+
+6. The day and the night
+------------------------
+Your journey through the lands of Transylvannia and the cursed castle, will span
+multiple days; you will see the sun rise and fall, with heavy fog, rain and
+thunderstorms being unleashed into the land.
+
+The following are the different environments you will find:
+* Day: In the gray transylvannian day, you have the maximum possible sight value
+for your character.
+* Night: Your sight depth is reduced by 3, enemies are stronger (+1 Damage)
+* Heavy Fog: Can happen during night and day. Your sight depth is reduced by 2
+* Rain: Can happen during night and day. Your sight depth is reduced by 1
+* Thunderstorm: Can happen during night and day. enemies are stronger (+2
+Damage). Your sight depth is reduced by 1
+* Sunny Day: Can happen during day. Enemies are weaker (-2 Damage)
+
+7. Shopkeepers
+--------------
+You may find shopkeepers in the town of Petra, right to the west of Castlevania.
+It is rumored that some merchants have ventured inside the castle, looking for
+powerful artifacts.
+
+The merchandise available on each store is replenished daily.
+
+The following are the shops in Petra
+* Weapons Shop
+Sells all kind of weapons, from daggers to crossbows
+Vampire Killers can't buy items here, because of their equipment restrictions
+* Armor Shop
+Sells all kind of armor
+Vampire Killers can't buy items here, because of their equipment restrictions
+* Crafts Shop
+Sells all kinds of usable items such as healing herbs and orbs of recall.
+* Magic Shop
+Sell magic artifacts such as medallions and spellbooks
+
+8. Commands and Actions
+-----------------------
+These keybindings correspond to the default definitions. You can change them by
+modifying the 'keys.cgf' file.
+
+  SpaceBar: Uses a mystic weapon
+a Attack: Uses a weapon in a given direction
+c Character info: Shows your skills and attributes
+d Drop: Drops an item
+D Dive: Dives into the water
+e Equip: Wears a weapon, armor or accesory
+f Fire: Aims a weapon at a position
+F Fusion: Fusion spirits to increase skills
+g Get: Picks up an item
+i Inventory: Shows the inventory
+j Jump: Jumps in a direction, or dives to the surface or flies.
+l Look: Identifies map symbols and monsters
+m Messages: Shows the latest messages
+M Map: Shows the castle map
+Q Quit: Exits game
+r Reload: Reloads a given weapon
+s Skills: Allows to use your character skills
+S Save: Saves game
+t Throw: Throws an Item
+u Use: Uses an Item
+U Unequip: Take off an item
+T Switch Music: Turns on/off the music
+x Switch weapons: Changes primary for secondary weapon
+
+
+9. Credits and Acknowledgments
+------------------------------
+
+ Thank yous
+-----------
+* DraconusZero, Adral, ABCGi, WonderLlama, StarSlayer, Jered Cain, jrr7,
+Valkeera: 1.26 Testers
+* James & Ian Badcoe, ABCGi, Icey, Jered Cain: 1.25 Testers
+* Tunginobi, ECNM, Daiyu, Christopher Barrett, Karri Kanapee, Glowie, Crypt,
+Mario Donick: 1.2* Testers
+* Jonathan Ramirez, Korey Pelton, Kaleth, Inventor: 1.1* Testers
+* ABCGi: Saved the game from going into the trash bin
+* Mr. P Castlevania Realm [http://www.vgmuseum.com/mrp/] Provided a lot of data
+and inspiration for the game
+* Anapan's CV Files [http://www.geocities.com/anapan8/cv/] Had ripped wav files
+used on the game
+
+ Credits
+--------
+* Christopher Barrett: Project artist, graphic design, tiles
+* Jorge D. Fuentes, Nicholas, RPGFan, Tom Kim, JiLost: Castlevania Midis
+* Björn Bergström: Recursive Shadowcasting LOS algorithm
+
+ Acknowledgements
+-----------------
+* MinML: Minimalist XML parser by The Wilson Partnership
+* JCurses: JavaCurses library
+* JLayer: JavaLayer MP3
+* YGuard: Java Obfuscator
+
+
+ Contact me
+-----------
+All your suggestions and bug reports are welcome via the official website (
+http://slashie.net )
+
+
+0.7 Manual Version 1.6 - Feb 22/10
+
+----------------------------------
+
+Long time ago, there was a noble man born from the house of Tepes. As a Knight
+of the Dragon, he swore to protect the people of Wallachia from the perils that
+flooded a world full of ambition and bloodlust. Hailed by the priests as the
+very messiah who would take the land into prosperity, he ruled with strong hand
+for six years, stablishing his land as a respected neighbour power.
+
+One day however, he was taken captive by invaders from the east. Tortured and
+humiliated, he was able to escape and return to his land, only to find his
+father buried alive by the very same persons who once promised to protect him
+with their lives; armed with courage and full of thirst for revenge, he joined a
+group of raiders and attacked the castle on a dark night, massacring all the
+people he found and impaling them, for them to serve as a warning to anyone
+daring to rebel. All the people who had accepted the death of the former king
+where hunted and tortured to the death, and a reign of blood came over
+Wallachia.
+
+Everything seemed to be over one night, when crusaders from the north came, send
+by the church to excommunicate Vladimir and execute him for his own soul sake.
+The castle was soon overrun, and there was nothing the count could do to protect
+his own self. The dwelling was burnt to the ashes and the city was relocated,
+the land was declared cursed and unwanted, and people stood unto a seemingly new
+era of light.
+
+The few followers of Vlad that survived the inquisitors took his body to a tomb
+under a small church, located far from the cities. What happened after that in
+the very soul of the count is unknown, but 70 years later, when the tomb was
+finally found, the explorers found no remains of his body. Rumors filled the
+land, concerning his escape from the death, and people felt uneasy, knowing
+something was just not right... and they were right.

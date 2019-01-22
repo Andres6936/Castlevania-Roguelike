@@ -1,0 +1,778 @@
+
+
+                      /-/\-----------\
+                     <  |astlevaniaRL >
+                      \-\/-----------/
+                            Serenade of Chaos
+                            
+                            Santiago Zapata, 2005-2010
+
+
+
+Changes List
+
+Version 0.72: 27/02/2010
+------------------------
+- 0001002: [Tasks] Fix MP3 Player
+- 0001001: [Bug Report] Keys spawned beside walls
+- 0001000: [Bug Report] Crash on saving
+- 0000999: [Bug Report] Weather effects multiply
+
+Version 0.71: 25/02/2010
+------------------------
+- 0000997: [Bug Report] Crash when equipping shield 
+
+Version 0.7: 23/02/2010
+-----------------------
+- 0000958: [Request for Enhancement] The game requires too many keys
+- 0000957: [Request for Enhancement] The training mode is very sparse
+- 0000932: [Request for Enhancement] Vampire Killers can only get whip upgrades from candles
+- 0000934: [Bug Report] Mystic weapon doesnt show
+- 0000936: [Bug Report] "f" and "a" attacks operate differently
+- 0000933: [Bug Report] Bumping is quicker than targetting
+- 0000063: [Request for Enhancement] Weapon and combat skill enhancements
+- 0000930: [Bug Report] Last messages not show
+- 0000995: [Tasks] Show caused and received damage
+- 0000994: [Bug Report] Weapon shop always empty
+- 0000081: [Request for Enhancement] Lack of thorough instructions in the manual
+- 0000993: [Tasks] Add confirmation to warp when has hostage
+- 0000067: [Request for Enhancement] Change view distance in castle quarters
+- 0000065: [Request for Enhancement] Name changes
+- 0000026: [Tasks] Add Active Evade to CastlevaniaRL
+- 0000938: [Request for Enhancement] Allowing reasigning keys
+- 0000027: [Tasks] Modify open areas on castle
+- 0000028: [Tasks] Increase Manbeast natural defense
+- 0000029: [Tasks] Change level up schema to acquire skills quickly
+- 0000030: [Tasks] Address Balance Issues Described on Thread
+- 0000036: [Tasks] Control Manbeast loss of control
+- 0000054: [Request for Enhancement] Vampire Renegade power balances
+- 0000053: [Request for Enhancement] Scale Hand to Hand Combat more strongly
+- 0000060: [Request for Enhancement] Prelude Arena adjustments
+- 0000061: [Request for Enhancement] Environmental and situational Effects
+- 0000024: [Tasks] Too much gold issue
+
+
+Version 0.61: 18/10/2009
+------------------------
+
+- 0000035: [Tasks] Dont Drop items on morph - closed.
+- 0000012: [Bug Report] Crash in Castle Dungeons (ver. 1.26) - closed.
+- 0000068: [Bug Report] No spellbooks for sale in Petra - closed.
+- 0000074: [Bug Report] Text error on help screen - closed.
+- 0000077: [Bug Report] Allow attacking your own spot (was Allow Space to cancel an attack) - closed.
+- 0000078: [Bug Report] Exploit - Powerleveling Summoner in Petra - closed.
+- 0000082: [Bug Report] 'Card of Sol' not working as intended - closed.
+- 0000083: [Bug Report] Giant Bat won't attack - closed.
+- 0000058: [Bug Report] Reduced range with melee weapons using the 'F' key - closed.
+- 0000001: [Bug Report] Wolf morph image is not being shown (slash) - closed.
+- 0000023: [Bug Report] Crash on Claw Assault - closed.
+- 0000005: [Bug Report] Typo in level up screen - closed.
+- 0000006: [Bug Report] Typo in pickup message - closed.
+- 0000010: [Bug Report] Invisible Sprites - closed.
+- 0000929: [Tasks] Death doesnt show when met at night - closed.
+- 0000004: [Bug Report] Stuck in Petra Town water building - closed.
+- 0000003: [Bug Report] Save Game Crash on Royal Chapel (slash) - closed.
+ - 0000070: [Bug Report] Game crashed when entering 1st stage - closed.
+ - 0000007: [Bug Report] NullPointerException on Monster.java:601 - closed.
+ - 0000009: [Bug Report] Game becomes unstable after saving and loading in certain locations - closed.
+- 0000625: [Bug Report] Typos - closed.
+
+
+Version 1.26: 12/08/2007 
+------------------------
+(Includes Changes on
+  Version 1.26RC3: 20/07/2007
+  Version 1.26RC2: 26/06/2007
+  Version 1.26RC1: 10/06/2007
+  Version 1.26pt3: 15/05/2007
+  Version 1.26pt2: 06/05/2007
+  Version 1.26pt1: 29/04/2007
+)
+
+Done ToDo's
+4	Add Item crashes
+6	Add Far lights
+73	Facelift Hiscore screen
+103	Add Sun/Moon cards
+107	Make mystic weapons disappear after a while
+118	Reduce size of forests and caves
+119	Add branches to level path
+120	Implement room based Dungeon Generator
+124	Transform weapons and prizes into timed disappearing features
+125	Add automap
+127	Change facing of sprites when walking
+129	Add torches and lamps
+133	Add 4 plotscenes
+134	Add hidden stages and bosses
+135	Linear training area
+136	Add Char Dump
+137	Fix prelude mode spawning rate
+140	Add different waves to prelude mode, with different music
+143	Add Sound initialization check
+164	Expand Axe range
+165	Add new Vanquisher Skills
+167	Add new Invoker Skills
+169	Add pickup heart sound
+173	Add Beastman Morphs
+176	Fix rosary bug on gfx version
+183	Add separate hiscore listing for arena and normal
+187	Add Inn
+188	Add Artifact 
+190	Fix Weapon Categories
+191	Add swimming
+192	Fix boss health bar shown
+193	Make Vkiller Soul Whip 
+194	Review weapon skills
+195	Make vampire killer armor stronger with level
+197	Rework armor stats
+198	Add some population in the sewers
+199	Add some population to the town
+200	Fix Vkiller unequiping the whip
+201	Fix throwing weapons reload bug
+202	Fix Bouncing back going through solid bug
+203	Fix Lockup on bounceback outside the area
+204	Fix flying over ethereal cells
+206	Fix the castle abbyss-first cave issue
+207	Change to unarmed when switching and no secondary weapon
+209	Relocate weapon description on console UI
+211	Fix bug when saving, not Serializable crl.levelgen.LevelMetaData
+217	Put prizes for all branches
+218	Implement RoomCarveGenerator
+221	Fix bug on Carve room generator (hangs while creating a room)
+222	Use Carve generator for clock tower
+223	Fix Dracula final fight
+224	Add a better start stage using 2.5D
+225	Reduce item drops
+228	Make item spawning weighted depending on item type… less weapons, less armors, more general items, make special modifiers harder to find
+229	Increase number of items in levels
+230	Place candles smartly on the featurerooms
+231	Increase unarmed damage for manbeast
+232	Increase dodge for manbeast
+233	Not always cause damage; when damage is 0, make it possible to defend completely
+234	Do not respawn candles
+234	Update screen when jumping to make it clearer
+235	Change throwing weapon prices
+236	Crash when flying higher on null mapcells
+237	Make monsters smarter when chasing
+238	null message when morphing on water
+239	Abandon hostages when teleproting back to town
+241	Recover boss energy on level reentry
+243	Arrange Item tiles
+244	Light all candles when entering level
+246	Reduce carrying capacity
+247	Nerf bow
+248	Fix cant aim check for the current floor
+249	Include "Fine Clothes Garment" as the starting 'armor' of Renegades 
+
+Implemented RFE's
+298	ABCGi	Add extended look mode and  history of how many killed, how many killers.
+320	Keldi	Add an option to turn off saving the blood splatters
+333	Christopher Barrett	All the inventory and use screens should have boxes around each object
+339	Xanatos	Add Item Crashes
+345	Seventh Shade	Add Legion/Granfalloon. 
+359	Abcgi	Add at end to the training: a final sign that says walk through here to leave this area and end your training - CASTLE VANIA awaits!
+364	James Badcoe	Make [escape] exit any screen, e.g. the help screen.
+373	Valkeera	Make Ruins smaller
+375	Valkeera	Color cave water blue, not brown
+376	Valkeera	Ensure the keys or another small items are shown when they are in front of a "high" tile, like a wall
+378	Valkeera	Limit the store supply of some items 
+380	Valkeera	Make weapon skills advancement curve steeper. Add more skill levels.
+381	Valkeera	Add starting basic knowledge in weapon skill depending on the class
+387	Adral	Decrease Giant Bat attack
+388	Adral	Enhance evade chances
+389	Adral	Add Shields
+390	Adral	Pick stat bonuses on level up
+391	Adral	Restrict GrandMastership to one weapon
+394	Adral	Balance the initial weapon choices
+395	Adral	Increase hearts for wizards
+396	Adral	Add free teleports. 
+397	Adral	Add level up stats message
+400	Adral	Add choices for evade
+407	ABCGi	Restrict ranged weapons to range bigger than 1
+408	ABCGi	Add a border to the window
+410	ABCGi	Add a noise when you level up
+411	Valkeera	Add the character history to the mortem
+412	Valkeera	Add a better variant of leather vest
+413	Abcgi	Add the mystic weapon to the equipment list under the weapon
+414	Valkeera	Add throwing knives to manbeast initial inventory 
+415	Valkeera	Improve goodness  of throwing weapons in terms of cost/effectivity
+416	Valkeera	Stacks of Throwing weapons 
+417	Valkeera	Change costs of Sun card and Moon card
+418	Valkeera	Add nightbonuses to Vampire Renegade and Manbeast 
+419	Abcgi	Renegade should start with the dagger in the secondary weapon slot (as bow in main) not just in inventory
+420	Abcgi	The bow attack noise should be different from the melee weapons.
+421	Abcgi	Each merchant should say "I am the weapon merchant" instead of just "I am the merchant".
+424	Abcgi	Add a pop up message that shows what stats increased on level up
+426	Abcgi	Add phases of the sun and moon
+427	Abcgi	'f' to fire, should then be able to press 'f' again to confirm firing
+428	Abcgi	Use gray for old messages instead of red
+432	Adral	Remove BIG SWORDS category
+433	Adral	Shield must not be effective with two handed weapons
+434	Adral	Add a Skill for the knight to locate the shield in certain direction, covering the 2 adjoint positions and increasing the chances to deflect the attack
+435	Adral	Más randomness para el sitio de comienzo
+436	Adral	Add an absorb value for shields in addition to a full blocking chance
+437	Adral	En el character sheet deberia haber una segunda hoja con los roleplays "reales" una vez tenidos en cuenta los objetos
+438	Adral	Allow access to item commands and unequiping from the inventory screen
+439	Valkeera	Reduce gold cost of throwing weapons
+440	Valkeera	Reduce the time cost of switching to secondary weapon
+441	Adral	Would be better to have fixed letters for the actions to do to a certain item, on the inventory
+445	Valkeera	Change the display of daytime from '^'s
+447	Valkeera	Add "levelled items" to prevent very strong permanent items to be found early in the game.
+448	Valkeera	Make Vanquisher start the game with some variant of rings as an alternative to a staff
+449	Valkeera	Display level exits on map
+450	Valkeera	Stairs generated in passageway
+451	Valkeera	Make clearer stats on character profile for coverage
+452	Darkshadow	Mark locations suitable for resurfacing underwater 
+453	curseman	Enhace Vanquisher Wizard magic abilities
+455	Valkeera	Too few monsters, Add large packs of weaker monsters
+457	Valkeera	Have different dialog lines for different classes
+
+Fixed Bugs
+146	James Badcoe	When a platform is high you can hit creatures behind it with missiles.  
+148	James Badcoe	Wait command keybinding "5" doesn't seem to be on the console version.
+151	Adral	Incorrect quantity of gold shown after spending some in the shop
+152	Valkeera	In the underground caves, candlesticks were generated on water surfaces
+154	Valkeera	No time cost for manbeast attacks
+156	Valkeera	Crash when attempting to view global map on Castle villa location.
+160	Valkeera	There is no wait to locate the PC when invisible
+165	Valkeera	Lightinh spell hits hostages
+168	Zereth	Hang when casting soul steal with a renegade
+169	Krazzt	Crash when using Minor Jinx with 1 hit left.
+170	Valkeera	Invoker's dove egg spell has no effect at all in Petra town and lower level of the moat. 
+172	com2kid	Exception when pressing a key before the screen pops up"
+174	DraconusZero	Can't see stairs behind a wall on the moat
+175	DraconusZero	Item descriptions on inventory are duplicated 
+177	Adral	Stairs in the moat are chopped in GFX mode
+178	Adral	Zombie cocoons in Petra are still shown when the night ends and are kept there
+179	Adral	Exception when loading game in linux
+180	Adral	No indicator of turtle soul
+182	Adral	Bird's soul del souls' master no consume hearts
+183	Adral	Summon cat no deja usarlo cuando te quedan 3 hearts
+184	Abcgi	Out of time messages 
+185	Abcgi	The first move after I talk to someone and press space does not count
+187	Abcgi	when i press 'f' to fire bow at zombie below my level it says "The dagger flies over the Town Zombie" - should be arrow
+188	Abcgi	"My fate is to go trough" should be "through" (entry to castle convo)
+189	Abcgi	You can actually highlight the text box of a convo and then type in there - then you can't quit from it
+190	Adral	Crash when extended looking at Christopher in the tutorial
+191	Adral	Cant equip bow in tutorial
+193	Adral	Messages from previous turns should change colour or vanish gradually
+195	Wonderllama	In training, it seems you can only use fists and not the whip.
+197	Starslayer	Prizes disappear very quickly 
+201	Jered Cain	Soul steal for vampire renegades restores full health
+206	Adral	Ni Dragonfire ni Turtle gastan hearts
+207	Adral	BeamProjectileSkill Crash
+208	DraconusZero	Rescuable hostage stuck in a wall
+209	Wonderllama	Monsters falling through the level void
+210	Wonderllama	Crash with familiars when there is no enemy 
+212	jrr7	Typographical/orthographical/grammatical errors
+213	jrr7	in inventory, the item description shows twice
+214	jrr7	bumping the signpost doesn't autoread in dark forest
+217	Jered Cain	Vampire Killer is not losing upgrades.
+219	Valkeera	Attributes display issue with combat/invokation/movement stats.
+220	Abcgi	Your can't abandon the mystic whip!." "Your" = "You" and "whip!." = "whip!"
+222	Valkeera	Manbeast skill Energy Scythe has no noticeable effect
+223	Valkeera	Manbeast skills Power blow and Power strike don't consume any hearts
+225	Valkeera	Bronze vest has the same defense value as leather vest, but costs 4-times more
+227	Valkeera	Small grammar issue with Manbeast's starting text: shouldn't be "After knowing of the destruction...", but rather "After having learned of..."
+228	Valkeera	Effects (descriptions) of items sold by merchants should be displayed in the shopping selection (they don't now in console version)
+229	Abcgi	Mouse clicking when useMouse = false behaves strangely, Always moves to the last direction.
+230	Abcgi	Click in the message box and no key strokes allowed in the game, have to quit
+231	Abcgi	Level up occurs before action finishes
+232	Abcgi	Enchantment is not kept in the weapon but in the player
+233	Abcgi	Buy confirm screen, only mouse click works, you can't press 'y' 'Y' or 'n' - you can also type in this box
+235	DraconusZero	Key generated in the water
+236	Draconuzero	Price of a wooden scimitar is -$2000
+237	Draconuzero	Wooden scimitar has no attack 
+241	Abcgi	Monster description is left forever on screen
+242	Guestman!	Can't teleport back to town. Game just closes.
+243	Guestman!	Duplicating Weapons. 
+244	Lavastine	Annoying sound when too many items are picked up
+245	Pranagy	Crash when attacking using Ethanos blade
+246	Valkeera	Invisible exit in the Card of Sol room
+247	Valkeera	Lost item when unequiped and inventory full
+248	Valkeera	Typos: in Mysterious girl's dialog
+249	Valkeera	Invoker's Dove egg has no effect on multi-tier levels
+250	Valkeera	Year listed on Prelude arena is wrong
+251	Valkeera	Wrong spelling of Soleiyu name
+252	curseman	Crash when teleporting through air
+253	curseman	Teleport ends inside a wall
+255	curseman	Unable to return from the abyss after defeating the mummy
+255	curseman	Unable to return after getting through the chapel 
+256	curseman	Exponential growth on shields skill and coverage over 100%
+
+Version 1.25: 27/11/2006
+------------------------
+Done ToDo's
+104	Power up thrown items to cover more area
+105	Power up holy flame to cover more area
+106	Add prelude mode
+108	Allow cancel for targetting special weapons
+109	Do not get whip upgrades if whip is vampire killer
+110	Magic flame must hurt enemies, even if they just stay over it (dont have to walk)
+116	Remove unnecessary "The flame glows"
+
+Implemented RFE's
+281	Crypt	Keep the spawning symbols after animation
+326	Jzeth	Recover mystic weapon
+327	Christopher Holy flame - remaining flame should be blue
+328	Christopher Castle garden - use a flame inside the urns (not a candle)
+329	Christopher Castle garden - use some of the trees
+332	Christopher Put help in a window rather then against the moon screen
+334	Christopher Center the use and drop screens (and all screens like this)
+335	Christopher Put a blank line after 'what do you want to drop' or equivalent line on all dialogs
+336	Christopher Should allow use of numpad arrow keys in dialog menus
+337	Christopher Try all the dialog boxes as black transparent rather than grey
+342	Genisi	Orb of return item to return back to town
+347	Abcgi	Allow player to turn off music.
+348	Abcgi	Secondary Weapon slot.
+353	Icey	Remove last semicolon on multiple messages
+355	Icey	Bumping on a signpost should show its message
+356	Icey	Change Melduck "we better proceed on foot"
+360	Abcgi	Display level on the top right display
+362	Abcgi	Add skill: recover energy
+363	Abcgi	Add skill: Jinx health, minor and major
+366	James Badcoe	Explain why certain attacks won't hit certain monsters. 
+367	James Badcoe	Same as 281
+368	James Badcoe	Change gold coin icon for console mode
+
+Smithed BR's
+109	Genisi	Sleep interrupted: InterruptedException on midiplayer thread
+137	Icey	Correction on the manual
+138	Icey	Corrections on genre, prologue text
+139	Icey	Typos on Dracula Vanish action
+140	Icey	Grassy statues on castle keep
+142	Abcgi	ESC should exit you out of any targeting etc
+143	Abcgi	One of the signs in training says DONT JUMP OVER THE WATER OR YOU WILL DROWN - which is false
+147	James Badcoe	Don't seem to be able to turn the music off in console mode
+150	James Badcoe	Corrections on ingame texts
+
+
+Version 1.24: 14/10/2006
+------------------------
+Done ToDo's
+84	Add SFX_KILL_CHRIS
+85	Change description of unarmed to fists
+87	Paint the floor on the levels below lower
+88	Show the dove swarm
+91	Fix Special players status keep Bug
+94	Fix Crash when entering prologue for second time
+95	Make Cat a missile effect, not beam
+96	Merchant dialogue must spread all width
+97	Check if message buffer and last messages are working ok
+98	Disable saving on training and prologue
+99	Add Icey to town
+100	Spirits cannot be used, only fusioned
+101	Show last messaged on death
+102	Show remaining shots and reload info on Inventory for ranged weapons
+
+Implemented RFE's
+317	Crypt	Show where the character is when invisible
+321	Keldi	Tone down ranged weapons. Tone up homing ball.
+322	Keldi	Respawn candles when entering a level again
+
+Smithed BR's
+125	Keldi	Day/Night and Story windows are Editable
+126	Guestman!	CRash on dracula scene when invisible
+128	Guestman!	Wrong stats about turns and gold on the memorial after restoring game
+131	Slash	Crash on Giant Bat Hall, Null isInWater
+132	???	Keys Stuck on Pillars
+
+
+
+
+Version 1.23: 01/10/2006
+------------------------
+Done ToDo's
+74	GetNearestMonster on GFX version must only take those on sight, 
+77	Merchant on GFX version, items are being lost when cannot carry?
+78	Draw merman's underwater
+79	Rosary special effect
+80	Boss death special effect
+81	Dracula materialize and vanish SFX
+82	Training area
+83	Increase day/Night length
+
+Smithed BR's
+121	jrr7	"java.lang.NullPointerException when looking at a cell on a different level"
+122	jzeth	java.lang.NullPointerException when aiming to null positions
+123	Slash	Crash on Save, ItemDefinition not serializable, after asking a merchant for items
+
+
+Version 1.22: 25/09/2006
+------------------------
+Done ToDo's
+49	Add equipped weapons to the memorial
+50	Add last messages to the memorial
+52	Reloading costs hearts
+53	Put back the plot texts on the GFX version
+54	Fix addMessage for the GFX version for multiple messages
+55	Use the main menu background on all background screens (instead of the castle one)
+56	Prologue "prologue" should use the large font
+57	Tune appearance of chat boxes borders
+58	Tune appearance of chat boxes location
+59	Tune appearance of chat boxes portrait
+60	Relocate day and night boxes 
+61	Tune appearance of inventory box
+62	Show full candles
+63	Tune appearance of help screen
+64	Assign correct image to the holy water flame burning 
+65	Female characters don't have female sprites
+68	Make the window draggable
+69	Program Icon
+70	Splash Screen
+71	Put back hostages
+72	Dual Startup
+
+Implemented RFE's
+270	Christopher	Cursor on input lines
+306	Mario Donick	Confirmation using 'Enter' on character creation
+307	Mario Donick	Bind ? to call the help. 
+308	Tunginobi	On level up, spirits don't have a description.
+310	Glowie	Curved, Straight and Direct monster ranged attacks
+311	Glowie	Ultimate skill for crossbows
+312	Glowie	Attack enemy on the same place
+313	Glowie	Do not show enemy description when hit out of sight
+314	Sabreman	Ensure action cancel
+316	Christopher	Bind ' ' to 'f'ire for other classes than 'Vampire Killer'
+318	Crypt	 Reduce monster populating and spawning rate
+
+Fixed BR's
+113	Tunginobi	'.' to wait on the number pad doesn't work.
+114	Tunginobi	Exception thrown on saving the game 
+115	Glowie	Editable area on main menu hangs game
+116	Glowie	Monster Spawning effect not shown
+117	Christopher	Editable prologue text area hangs game
+119	Crypt	Aiming cross leaves a trail out of the sighting range of the character
+120	Crypt	When on a higher level the aiming cross position is not modified
+
+Version 1.21
+------------
+First graphics version
+
+Version 1.2b: [pt1] 04/09/2006
+------------------------------
+ToDo-'s
+18	Map reestructuration, new areas, alternate paths
+38	Prologue Scene
+23	Plot Scenes
+26	Akmodan Mummy
+27	Bone Dragon King
+28	Villa and Maiden
+22	Prepopulated levels with monster and spawns
+33	Castle Map
+19	Message Buffer
+35	Poison status
+36	Stun status
+47	Petrified Status
+12	Solid transparent cells
+14	Action targetting over Self
+17	Fix double action validation message
+29	Music reselection on levels
+30	Fix bug with nearest monster
+32	Walk over flame and features
+34	Fix cross cutting all the midlevels
+39	Added character classes on hi score list
+41	Endgame plot
+42	Fix merman shooting from underwater
+44	Castle Abbyss
+
+RFEs
+288	Slash	Enhance Ball of Destruction for renegade and Dracula
+295	ECNM	Add stats description to the manual, percentages are not clear
+297	Adral	Keep merchants and priest on their homes
+
+BRs
+110	Crassadon	NullPointer exception with Shade teleport over emptyness
+111	Morzas	Instadeath when jumping outside the map from a border.
+
+
+Version 1.2a: 16/07/2006
+------------------------
+ToDo's
+5	Upper cap for HP display
+7	Enable MP3 Music
+13	Symbolic skills for Vampire Killer and Manbeast
+15	Autoreload ranged weapons
+16	Castle Bridge Area
+
+RFEs
+293	Hatlore		Tone down the blood
+296	Adral		Explain weapon stats
+299	ABCGi		Make ESC to cancel aiming events
+300	ABCGi		Don't become better at whips by using mystic weapons
+302	Stungun		Update gold counter on shops
+
+BRs
+97	ECNM		Axe Knights and Werebears hopping all over the place. 
+99	Adral		NullPointerException on MonsterCharge attacks falling to lower parts of the level
+101	Slash		Items not stacking, they are lost forever if replaced
+102	Slash		When not enough room on inventory to add something, the money is still lost
+103	ABCGi		Overlap with game messages when escaping look mode
+104	ABCGi		Monster crawling effect seen outside LOS
+105	ABCGi		Crash when picking nearest monster position offscreen
+106	Slash		Monster Dashing at random directions, related to BR97
+108	Stungun		Artifact items are stacked together and lost with normal items 
+
+
+Version 1.2: 08/07/2006
+-----------------------
+Internal Changes:
+* Single threaded Midi music manager
+
+RFEs
+280	Tunginobi	Show the primary and secondary spirits in two separate menus and dont include regular items
+287	Slash		Spirit descriptions on level up
+294	ECNM		Weaken the level of effiency the long range weapons and ranged monsters attacks
+
+BRs
+73	Daiyu		Last item on listboxes cant be picked
+78	Christopher	A turn is missed after level up
+81	Karri Kanapee	java.lang.InterruptedException: at MidiPlayer: 25 at MidiPlayer:13
+89	Christopher	Crash on hostage talk
+92	ECNM		Crash on using rosary when the monster is damaged
+93	ECNM		Too quick level up
+94	Tunginobi	ASCII display screwed on Linux for special characters
+
+
+Version 1.2 {t3 bf1}: 29/06/2006
+--------------------------------
+RFEs
+274	Christopher	In game item descriptions
+290	Christopher	Enhance town border
+291	Christopher	Enhance church platform
+292	Christopher	Heal by talking with the priest
+
+BRs
+83	Christopher	Falling from third floor crash on town
+84	Slash		Only one message shown per action
+85	Slash		Bounced back to null position on forest entrance crash
+86	Slash		Target line to nearest monster isnt being shown
+87	Slash		Crash on missile effects over null positions
+88	Christopher	NPCs arent shown correctly on ID window
+90	Slash		Crash with weapons special effects
+91	Slash		Cannot set Sequence until sequencer opened
+
+
+Version 1.2 {t3}: 24/06/2006
+----------------------------
+Internal Changes
+* UI/Engine decoupled
+* 2.5D Functionality
+
+RFEs
+282	Karri Kanapee	Proffread text from Karri Kanape on player descriptions
+283	Slash		2.5D functionality
+284	Slash		2.5D town
+
+BRs
+79	Karri Kanapee	Class cast exception when cross thrown
+82	Christopher	Input goes mad with non alphanumeric characters
+
+
+Version 1.2 {t2}: 10/06/2006
+----------------------------
+Important Internal Changes
+* Action validation
+
+RFEs
+267	Glowie		Initial CLS
+268	Glowie		Accesible ranged weapons
+269	Glowie		Action Validators
+271	Christopher	Sex [m/f]:
+272	Christopher	Character type choice using menu with description of that character and it's abilities. 
+275	Christopher	Every screen where space is to continue should say {space to continue]
+276	Christopher	Inventory should be 'i' not 'I'
+277	Christopher	Character should be 'c' not 'C'
+278	Christopher	Add "[space] uses weapon" (or whatever to throw an axe or dagger) on help
+
+BRs
+74	Crypt		Crash on save, Modifier not serializable
+75	Glowie		NullPointerException after drowning
+76	Glowie		Look cursor still visible after quitting looking mode
+
+
+
+Version 1.2 {t}: 03/06/2006
+---------------------------
+RFEs
+10	Music and sound from the original
+25	Circular field of view
+198	Add weapons and armor on level generation
+220	Changed inventory look like CV2 and included status
+221	Special effects for vampire killer actions
+230	Parametrization of Music
+231	Weapons with vertical range
+232	Weapon and armor stats on menu
+233	'G'et command
+234	'D'rop command
+235	Targeted actions (236,237,238,239,240,242,244,245,246,247,248,250,254
+255	'T'arget command (Attack a position)
+256	Modify enemy AI to attack a position
+257	Modify enemy AI to use LOS
+258	Weapon modifiers
+259	Refresh the map before drawing some special effects (missile, blast)
+260	Action cost, Priority queue
+261	Player attributes for walkingCost, attackCost, castCost
+262	Level system using Souls
+263	Ítem attributes for attackCost
+264	Add new stats to the character screen
+
+BRs
+69	Wrong message on weapon skill increase 
+70	ExceptionInitializing Jcurses, Jcurses source modified
+72	Permanently cursed town
+
+
+Version 1.1e: 22/02/2006
+------------------------
+RFEs
+26	Day/night cycle
+175	Add Save and Load game functionality
+218	Add permadeath
+188	Add Hostage Rescuing quests
+210	Hostage rescuing quests, artifacts reward
+49	Double and triple shoot upgrades
+147	High mystic weapon Blast Crystal
+196	Add high mystic weapon Mystic Punch
+214	Unequip
+180	Make jumping require a recovery turn
+168	Renegade must be unable to attack when morphed as bat
+176	Assign initial equipment
+181	Allow more than 20 hits, make initial hitmax different for each class
+205	Expert Weapon Skills: Whips
+206	Expert Weapon Skills: Staffs
+207	Expert Weapon Skills: Swords
+208	Expert Weapon Skills: Unarmed
+209	Expert Weapon Skills: Rings
+173	Add postmortem file for characters
+182	Add stage where the player died to the hiscores and memorials
+199	Add history to the memorial
+170	Change 'NPC' in the memorial for 'Inoccent People'
+204	Make Stage 1 a starting level (forest)
+152	Lab Generator
+151	Item placement on level generation
+179	Scatter books of clues around the level
+191	Add Cells that harm (lava)
+156	Unified dialog dismiss key (Space)
+166	Remap wait command to .
+157	Ingame help mapped to F1 and ?
+158	Old messages are darkened
+160	Only one of each type of creature is displayed in the auto-ID 
+171	Add SFX for the Dragon Summon
+190	Add SFX for manbeast skills
+177	Add Welcome Message
+178	Add message for attacking solid mapcells
+189	Add Message for picking up things
+193	Add level type to describe the kind of level it is
+216	Add message when weapon skill goes up
+212	Make clear when the merchants cant sell
+217	Add link to hiscores from title screen
+219	Enhance UI Layout
+201	Remake all weapons and armor definitions (71 weapons, 5 armors)
+162	All guns must be relodaded now
+164	Health regeneration skill for the menbeast
+165	Heal potions
+167	Increase the effect time for support items
+169	Dogs must have a different conversation schema than humans
+96	Make the merchant get mad at you if you hit him
+174	Change the Monster treasure system
+192	Change the leveling system 
+184	Make the Arrow action and the Stationary AI
+203	Make the Summon action for monters
+200	Remake all the monster definitions, add new (91 monsters + Bosses)
+202	Remake all monster AI
+211	Add golden coins
+
+BRs
+20	MessageBox Full of messages
+43	Input routine issues with spaces
+47	Merchant generated in 2nd map crashed after talking to him, 
+48	Invalid starting hearts
+49	Weapon Skills were inconsistent with weapon categories
+50	Weapon Skill description out of bounds
+51	Hostility against player preserved after death
+55	The egg summon does nothing
+56	Too many visible items on screen to fit in the list.
+
+Version 1.1d: 06/09/2005
+------------------------
+* Classes: Vampire Killer, Vampire Renegade, Vampire Vanqisher, Summoner, Man Beast, Knight
+* Petra town with NPCs and Cleric
+* 21 special player skills
+* Equipable weapons and armor
+* 37 new items (usable and wearable)
+* Hidden mystic weapons
+* Weapon skills learnt by repeating use
+* Character background on creation
+* Freezing
+* Character status window
+* Autowhip and Autoattack on bump
+* AutoID on sight
+* UI rearrangement
+* Several bugfixes
+
+
+Version 1.1c: 03/08/2005
+------------------------
+* Added true terminal support using JCurses
+* Added merchant (RFE 65)
+* Added movement with arrow keys (RFE 51)
+* Bible (RFE 68)
+* Several items (RFE 77, 78, 81 ~ 93)
+* Inventory (RFE 79)
+* Use and Throw (RFE 80)
+* Added special whip effects (RFE 66, 67, 94)
+* Free movement between stages (RFE 64)
+* Bugfixes (BR 40, 41, 42, 45)
+
+Version 1.1b: 25/07/2005
+------------------------
+* Added blood (RFE  19)
+* Remade Cross and Holy water weapons (RFE 39, 63)
+* Added several items (RFE 46, 47, 50)
+* Added hidden treasures (RFE 48)
+* Fixed 'monster at null position' bug (BR 38)
+
+Version 1.1a: 21/07/2005
+------------------------
+* Several jumping bugs fixed
+* Whiping now has a small height tolerance
+* Critical crash after passing Stage 2 fixed
+* Message multiplying bug fixed
+* Random name for anonimous players
+* Enhaced chain and morningstar whip
+* Remade Keyboard input routine
+
+Version 1.1: 12/07/2005
+-----------------------
+* Whip levels
+* Jumping action
+* Improved appearance
+* Improved performance
+* Enhaced respawning device
+* Added special effects for weapons and enemy attacks
+* Use '?' or F1 to access game help
+* Use 'L' to examine your surroundings
+* High Score table
+* Resume screen after dying
+* Randomly generated level
+* Elevated Platform tiles
+* Stair tiles
+* Final Boss
+* Enhaced action selector methods
+* Enhaced messaging system
+* Magic doors with key requirements
+* Console font configuration
+
+
+Version 1.0a: 19/05/2005
+------------------------
+* Fixed critical respawning bug
+* Added simple effects for weapons
+
+Version 1.0:  14/05/2005
+------------------------
+* Initial 7DRL version
+* Combat implemented
+* Unique attack styles by enemy
+* Classic weapons implemented
