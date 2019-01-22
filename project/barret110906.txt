@@ -1,0 +1,79 @@
+(Doors) These are different from the other doors, they must be shown from the front like
+
+#####
+#/-\#
+#| |#
+#| |#
+
+Yes, forgive my bad ASCIIArt :P
+
+They are but in-between walls
+
+  Town door
+  Ruins door
+  Church door
+  Dungeon door
+
+
+(Castle Bridge)
+WOODEN_BRIDGE, Make it a bit thinner? the player goes from west to north
+BRIDGE_WALKWAY, Make it elevated (3) so it looks like a bridge, perhaps with water on its lower part?
+
+(Castle Garden)
+GARDEN_WALKWAY,  '.', BROWN
+TORCH, extinguish its flame, I will put a candle over it
+
+(Ruins)
+RUINS_COLUMN, 'O', WHITE
+RUINS_FLOOR_H, ':', WHITE
+RUINS_STAIRS, '=', WHITE
+
+(Caves)
+CAVE_WATER
+
+(Courtyard)
+COURTYARD_WALL, '#', LIGHT_GRAY 
+COURTYARD_FLOOR, '.', BROWN
+COURTYARD_COLUMN, 'O', WHITE
+COURTYARD_FENCE, '+', GRAY
+COURTYARD_DRY_GRASS, ',', RED
+COURTYARD_FLOWERS, '*', DARK_RED
+COURTYARD_BURNT_TREE
+
+(Dungeon)
+DUNGEON_DOOR, '+', YELLOW
+DUNGEON_DOWN, '>', YELLOW
+DUNGEON_UP, '<', YELLOW
+
+(Clock Tower) In order of importance
+
+Clock gear is like
+ 
+ -
+<o>
+ -
+
+If you want to use 9 different tiles, we can change it 
+
+
+TOWER_FLOOR, '.', LIGHT_GRAY
+TOWER_WALL, '#', DARK_RED
+TOWER_COLUMN, 'O', DARK_RED
+TOWER_WINDOW, '#', LIGHT_GRAY
+CAMPANARIUM, '^', BROWN (High)
+CLOCK_GEAR_1, '>', DARK_RED
+CLOCK_GEAR_2, '<', DARK_RED
+CLOCK_GEAR_3, 'o', BROWN
+CLOCK_GEAR_4, '-', DARK_RED
+TOWER_DOWN, '>', YELLOW
+TOWER_UP, '<', YELLOW
+TOWER_FLOOR_H, ':', BROWN (Midfloor)
+TOWER_STAIRS, '=', BROWN (Midstairs)
+
+
+(Keep)
+  Keep Wall (Cubic like town walls)
+  Keep barred window (vertical)
+
+(UI)
+I also need 'Yes' and 'No' buttons
