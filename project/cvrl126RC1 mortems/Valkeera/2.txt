@@ -1,0 +1,116 @@
+After few more attempts playing with Manbeast, I have to say that I fear it's coming dangerously close to the PCM challenge in Drash (i.e. nearly impossible). See my mortem:
+
+/-----------------------------------
+CastlevaniaRL1.26 Post Mortem
+-----------------------------------/
+
+
+As one of the few survivors from the raids of the legion of the undead, and looking forward to avenge the death of his loved ones, Bellerofon, the only survivor of the manbeast race journeys to the cursed castle.
+
+Bellerofon, the Man Beast, was killed by a Spear Knight on the Inner Quarters (Level 21)...
+He survived for 3061 turns and scored 23150 points, collecting a total of 5650 gold.
+
+He was able to use the following skills:
+Power Blow (3)
+Claw Swipe (3)
+Lupine Morph (15)
+
+He had the following profficiences:
+Hand to hand combat Mediocre(1)
+Daggers Mediocre(1)
+Swords Unskilled
+Spears Unskilled
+Whips Unskilled
+Maces and Flails Unskilled
+Pole Weapons Unskilled
+Rings Unskilled
+Hand thrown items Mediocre(1)
+Bows Unskilled
+Missile weaponry Unskilled
+Shields Unskilled
+
+He got to the Dark Forest
+He got to the Dark Forest
+He went for Power Blow
+He got to the Petra Town
+He got to the Castle Bridge
+He got to the Castle Garden
+He got to the Marble Hall
+He went for Pluto Spirit
+He got to the ???
+He got to the Inner Quarters
+He got to the Inner Quarters
+He got to the Inner Quarters
+
+He took 105 souls to the other world
+4 Merman
+1 Town Zombie
+51 Bat
+5 White Skeleton
+16 Skeleton Rib
+7 Black Panther
+1 Spear Knight
+6 Zombie
+11 Warg
+3 Ape Skeleton
+
+-- Final Stats --
+
+Bellerofon the level 4 Man Beast
+Sex: M
+Hits: -1/27 Hearts: 14/19 Gold: 3250 Keys: 0
+Carrying: 16/25
+Attack: +8
+Soul Power: +2
+Evade: 0%
+Combat: 15
+Invokation: -10
+Movement: 15
+Experience: 17500/24250
+
+
+-- Inventory --
+Weapon Silver Combat Gauntlets (ATK:14 COV:5% )
+Secondary Steel Baselard (ATK:1 )
+Armor Cloth Tunic
+Shield Nothing
+
+4 - Healing Herb x4
+2 - Magic Flame x2
+10 - Throwing Knife (ATK:4 RNG:8) x10
+
+-- Last Messages --
+You slash at the Candle
+You slash at the Bat!
+You are bounced back by the Bat!
+You slash at the Bat!
+You get 5 hearts
+You eat the healing herb, You feel better
+You slash at the Zombie!
+You parry the attack with your Silver Combat Gauntlets
+You slash at the Zombie!
+You are bounced back by the Zombie!
+You slash at the Zombie!
+You get 1 hearts
+You slash at the Candle
+You pickup the Red Bag of gold.
+WAARGH!!! You build up your power!
+You charge against the Bat!
+You get 1 hearts
+WAARGH!!! You build up your power!
+The Spear Knight attacks you with his spear.
+You eat the healing herb, You feel better
+The Spear Knight attacks you with his spear.
+
+
+Observations:
+
+- Unarmed & unarmored combat probably doesn't bring Manbeast any positive effects compared to other classes. It takes 2 hits to take down a single bat, and the bat can reduce Manbeast's health by quite a lot (5 HP).
+
+- Combat gauntlets have no noticeable effect either. I managed to find silver combat gauntlets with atk 14, and still it took me 2 hits to take down a single bat... I was doing better with a baselard (atk 1).
+
+- The only option how to make unarmed combat work is to use the powers, but they are very costly - 3 hearts, and Power blow doesn't last long enough to make it worthwhile (To see what I mean, compare this to Invoker's dove egg, with which I can take down 3 wargs in one hit for just 1 heart, well, you get the picture ;-)). The heart capacity of Manbeast unfortunately isn't high enough for this strategy to last long.
+
+- The cost of throwing weapons needs to be lowered considerably. Really. One stack of 8 simple throwing knives costs 2000gp, and as it takes 2 hits to take down an ape skeleton with throwing knives, this gives you the cost of 250gp per ape skeleton. Compare this with 50gp price reload for a simple bow which has the same effect, and you still have the knives 5-times more costly. IMHO the cost of throwing weapons should be lowered to its 1.25 levels to make them worth the while (at least it would prevent some amusing paradoxes, like Manbeast who is "very poor" starting with 11 stack of knives = 22000gp in total, which is quite a fortune ;-)).
+
+So it seems that the only option for Manbeast right now is to fight armed to the teeth with swords & bows (with the only handicap that he cannot wear better armor than studded leather)... which is just not the Manbeast way... Manbeast was my favorite class in 1.25, and I would really like to finish the game with him one day, but currently, that seems nigh impossible... :-(

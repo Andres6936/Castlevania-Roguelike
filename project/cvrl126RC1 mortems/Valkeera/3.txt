@@ -1,0 +1,143 @@
+The halls, the castle lab, and also the Dark forest (which is my favorite stage - wouldn't mind if that'd be bigger ;-))
+
+Okay, looks like that having Estoc wasn't enough, after all... Still, this is the farthest I got since all playtest vesrions :-)
+
+/-----------------------------------
+CastlevaniaRL1.26 Post Mortem
+-----------------------------------/
+
+
+After being chased as a witch on his home town, Marion the slayer journeys to the cursed castle.
+
+Marion, the Vanquisher, was killed by a Werebear on the Castle Lab (Level 12)...
+He survived for 15866 turns and scored 258600 points, collecting a total of 50300 gold.
+
+He was able to use the following skills:
+Homing Ball (2)
+Charge Ball (6)
+Flame Spell (8)
+Ice Spell (8)
+Enchant (5)
+Energy Shield (15)
+Diving Slide (8)
+
+He had the following profficiences:
+Hand to hand combat Unskilled
+Daggers Mediocre(1)
+Swords Trained(1)
+Spears Unskilled
+Whips Unskilled
+Maces and Flails Unskilled
+Pole Weapons Mediocre(1)
+Rings Mediocre(2)
+Hand thrown items Unskilled
+Bows Unskilled
+Missile weaponry Unskilled
+Shields Unskilled
+
+He got to the Dark Forest
+He got to the Dark Forest
+He went for Weapon Enchantment
+He got to the Petra Town
+He went for Neptune Spirit
+He got to the Castle Bridge
+He got to the Castle Garden
+He went for Energy Shield
+He got to the Marble Hall
+He got to the ???
+He got to the Marble Hall
+He got to the Inner Quarters
+He got to the Inner Quarters
+He got to the Inner Quarters
+He got to the Inner Quarters
+He got to the Inner Quarters
+He got to the Inner Quarters
+He got to the ???
+He got to the ???
+He got to the Marble Hall
+He got to the Marble Hall
+He got to the Marble Hall
+He got to the Marble Hall
+He got to the Moat
+He got to the Giant Bat Lair
+He vanquished the Giant Bat on the Giant Bat Lair
+He went for Uranus Spirit
+He got to the Hall
+He got to the ???
+He got to the Castle Lab
+
+He took 907 souls to the other world
+1 Paranthropus
+14 Spear Knight
+81 Warg
+103 Skeleton Rib
+3 Black Knight
+11 Town Zombie
+22 Bone Pillar
+63 Merman
+1 Giant Bat
+63 White Skeleton
+40 Ape Skeleton
+278 Bat
+64 Black Panther
+160 Zombie
+3 Medusa Head
+
+-- Final Stats --
+
+Marion the level 8 Vanquisher
+Sex: M
+Hits: -5/20 Hearts: 37/37 Gold: 5900 Keys: 2
+Carrying: 18/21
+Attack: +5
+Soul Power: +5
+Evade: 0%
+Combat: -10
+Invokation: 25
+Movement: -10
+Experience: 208300/239000
+
+
+-- Inventory --
+Weapon Steel Enhanced Star Estoc (ATK:12 COV:3% RNG:3)
+Secondary Steel Rings (ATK:3 COV:5% )
+Armor Studded Leather (DEF:3 )
+Shield Nothing
+
+1 - Ice Spellbook
+1 - Card of Sol
+1 - Flame Spellbook
+4 - Potion of Life x4
+8 - Healing Potion x8
+3 - Healing Herb x3
+
+-- Last Messages --
+You critically damage the Bone Pillar!
+The Black Knight swings his axe at you.
+You hit the Black Knight
+The Black Knight swings his axe at you.
+You hit the Black Knight
+You get 5 hearts
+You hit the Candle
+You hit the Candle
+You pickup the Red Bag of gold.
+You hit the Candle
+You hit the Candle
+You hit the Bat
+There is a Card of the Moon here
+A blast of holy light surrounds you!
+You hit the Candle
+You hit the Candle
+You hit the Werebear
+The Werebear sweeps you with its claws.
+The Werebear sweeps you with its claws.
+You hit the Werebear
+You are bounced back by the Werebear!
+
+
+I really like the graphics - even though I play only in console, but I love the day and night ;-) - and also the new sound effects and music, and also new skills and abilities that each class has (though I have only just sampled a few...). And a real and catchy storyline! I only wish I could get farther.
+
+For discussion: I know I have been complaining about rooms being too big ;-) Now, however, they seem to me to be too small. What about rooms size being something in-between the old layout and the new one?
+
+Also, I would prefer having more weaker monsters around than few stronger ones that can ditch the player in three strokes. If swarmed by a throng of monsters, player can pay more attention to the strategy - where to step, what powers or items to use, etc. I think it would add to the gameplay, though it would shift CvRL more toward Diablo-like hack'n'slash... What do other players say?
+
