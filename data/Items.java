@@ -1,6 +1,7 @@
-package crl.data;
+package data;
 
-import crl.item.*;
+import co.castle.item.ItemDefinition;
+
 public class Items {
 		private final static ItemDefinition [] defs = new ItemDefinition[]{
 			new ItemDefinition ("ART_CARD_SOL","Card of Sol","ART_CARD_SOL",0,"A card with a golden sun",200,0,"",0,1,0,0,0," ",false,false,0,0,0,0,0,false,"","",2,"",false,0,"",true,true," "," ",-1,0),
@@ -17,7 +18,7 @@ public class Items {
 			new ItemDefinition ("LIT_SPELLBOOK","Lighting Spellbook","LIT_BOOK",0,"Contains the power of lighting",15,0,"a spellbook with the power of lighting",5000,2,0,0,0," ",false,false,0,0,0,0,0,false,"SETWHIP LIT","ENABLE LITSPELL",1,"",false,0,"You read the Lighting Spellbook,  a shocking aura surrounds you!",false,true,""," ",30,25),
 			new ItemDefinition ("HEART_CONTAINER","Heart Container","HEART_CONTAINER",0,"Increases heart capacity",15,50,"increases your heart capacity",3000,2,0,0,0," ",false,false,0,0,0,0,0,false,"","HEARTMAX 1",0,"",true,0,"",false,true," "," ",25,37),
 			new ItemDefinition ("MIRACLE_POTION","Miracle Potion","MIRACLE_POTION",0,"Increases max hits",35,0,"a potion that extends life",15000,1,0,0,0," ",false,false,0,0,0,0,0,false,"","HITSMAX 3",3,"",true,0,"You drink the miracle potion,  You feel stronger",false,true,""," ",20,50),
-			new ItemDefinition ("TEPES_RING","Ring of Tepes","TEPES_RING",0,"Renders its wearer invulnerable",35,0,"creates a force field around the wearer",10000,1,0,0,0," ",false,false,0,0,0,0,0,false,"ENERGY_FIELD 70","",2,"",true,0,"You wear the Tepes Ring,  an aura of darkness surrounds you…",false,true,""," ",20,50),
+			new ItemDefinition ("TEPES_RING","Ring of Tepes","TEPES_RING",0,"Renders its wearer invulnerable",35,0,"creates a force field around the wearer",10000,1,0,0,0," ",false,false,0,0,0,0,0,false,"ENERGY_FIELD 70","",2,"",true,0,"You wear the Tepes Ring,  an aura of darkness surrounds youï¿½",false,true,""," ",20,50),
 			new ItemDefinition ("CLUE_PAGE2","Riddle","CLUE_PAGE2",0,"Contains secret information",20,80,"a small piece of information",200,2,0,0,0," ",false,false,0,0,0,0,0,false,"READ_CLUE 1","",1,"",true,0,"You read the scroll",false,true," "," ",0,50),
 			new ItemDefinition ("CLUE_PAGE3","Revelation","CLUE_PAGE3",0,"Contains ancient information",35,0," ",0,2,0,0,0," ",false,false,0,0,0,0,0,false,"READ_CLUE 2","",1,"",true,0,"You read the revelation",false,true," "," ",0,50),
 			new ItemDefinition ("CLUE_PAGE1","Page of clues","CLUE_PAGE1",0,"Contains common information",7,0,"a short tip about the castle",1000,2,0,0,0," ",false,false,0,0,0,0,0,false,"READ_CLUE 0","",1,"",true,0,"You read the page of clues",false,true," "," ",0,50),
