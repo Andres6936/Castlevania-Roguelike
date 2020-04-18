@@ -30,6 +30,8 @@ public final class ApplicationGraphics extends JFrame
 {
 	private static final long serialVersionUID = 3339068814173683092L;
 
+	public static Asset assets;
+
 	private Keyboard keyboard;
 
 	private Position caretPosition = new Position( 0, 0 );
@@ -61,7 +63,7 @@ public final class ApplicationGraphics extends JFrame
 		// Assets depend of configurationUI for can be used
 
         // Content the asset for application
-		Asset assets = Asset.getInstance( configurationUI );
+		assets = new Asset( configurationUI );
 
 		Dimension size = Toolkit.getDefaultToolkit( ).getScreenSize( );
 		setBounds( ( size.width - assets.SCREEN_WIDTH ) / 2, ( size.height - assets.SCREEN_HEIGHT ) / 2,

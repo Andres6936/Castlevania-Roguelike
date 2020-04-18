@@ -3,6 +3,7 @@ package co.castle.conf.gfx.data;
 import java.awt.image.BufferedImage;
 
 import co.castle.game.Game;
+import co.castle.main.ApplicationGraphics;
 import co.castle.ui.Appearance;
 import co.castle.ui.graphicsUI.GFXAppearance;
 import sz.util.ImageUtils;
@@ -17,7 +18,7 @@ public class GFXAppearances
 	private int WIDTH_NORMAL;
 
 	// Get instance of Asset
-	protected Asset configuration = Asset.getInstance( );
+	protected Asset configuration = ApplicationGraphics.assets;
 
 	public GFXAppearances( )
 	{

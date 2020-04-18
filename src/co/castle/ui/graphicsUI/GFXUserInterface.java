@@ -876,7 +876,7 @@ public class GFXUserInterface extends UserInterface implements Runnable
 	private int yrange;
 
 	// Get instance of Asset
-	protected Asset configuration = Asset.getInstance( );
+	protected Asset configuration = ApplicationGraphics.assets;
 
 	private static final String INTERFACE_FILE = "gfx/barrett-interface.gif";
 

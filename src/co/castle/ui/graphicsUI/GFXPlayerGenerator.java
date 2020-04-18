@@ -19,7 +19,7 @@ public class GFXPlayerGenerator extends PlayerGenerator
 	private JTextArea txtClassDescription;
 
 	// Get instance of Asset
-	protected Asset configuration = Asset.getInstance( );
+	protected Asset configuration = ApplicationGraphics.assets;
 
 	public GFXPlayerGenerator( ApplicationGraphics si )
 	{

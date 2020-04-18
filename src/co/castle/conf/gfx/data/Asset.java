@@ -18,11 +18,6 @@ import sz.util.PropertyFilters;
  */
 public final class Asset
 {
-	/**
-	 * Class type Singleton, reference to only object
-	 */
-	private static Asset instance;
-
 	public final float SCREEN_SCALE;
 
 	public final int SCREEN_WIDTH;
@@ -81,7 +76,7 @@ public final class Asset
     private Position playerLocationOnScreen;
 
 	// We make the constructor private to prevent the use of 'new'
-    private Asset( final Properties configuration )
+    public Asset( final Properties configuration )
 	{
 		SCREEN_SCALE = Float.parseFloat( configuration.getProperty( "SCREEN_SCALE" ) );
 
@@ -162,35 +157,6 @@ public final class Asset
 			System.out.println( e.getMessage( ) + "\nError loading image, parameters or fonts." );
 		}
 	}
-
-	/**
-     * @return Instance of Asset, if Asset not
-     * has initialized the app exit.
-	 */
-	public static Asset getInstance( )
-	{
-		if ( instance == null )
-		{
-            System.err.println( "Error, cann't initialize the Singleton Asset" );
-            System.exit( 1 );
-		}
-
-		return instance;
-	}
-
-    /**
-     * @return Initialize and return a
-     * instance of Asset
-     */
-    public static Asset getInstance( final Properties configuration )
-    {
-        if ( instance == null )
-        {
-            instance = new Asset( configuration );
-        }
-
-        return instance;
-    }
 
 	/**
 	 * @return the player location on screen

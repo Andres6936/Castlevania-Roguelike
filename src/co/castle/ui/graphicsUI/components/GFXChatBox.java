@@ -11,6 +11,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import co.castle.conf.gfx.data.Asset;
+import co.castle.main.ApplicationGraphics;
 import co.castle.ui.graphicsUI.AddornedBorderPanel;
 
 public class GFXChatBox extends AddornedBorderPanel
@@ -20,7 +21,7 @@ public class GFXChatBox extends AddornedBorderPanel
 	private JTextArea txtText;
 
 	// Get instance of Asset
-	private Asset asset = Asset.getInstance( );
+	private Asset asset = ApplicationGraphics.assets;
 
 	public GFXChatBox(	Image UPRIGHT, Image UPLEFT, Image DOWNRIGHT, Image DOWNLEFT,
 						Color OUT_COLOR, Color IN_COLOR, int borderWidth,

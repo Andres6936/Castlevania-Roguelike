@@ -7,6 +7,7 @@ import java.util.Vector;
 
 import co.castle.action.monster.MandragoraScream;
 import co.castle.game.Game;
+import co.castle.main.ApplicationGraphics;
 import co.castle.ui.graphicsUI.effects.GFXAnimatedEffect;
 import co.castle.ui.graphicsUI.effects.GFXAnimatedMeleeEffect;
 import co.castle.ui.graphicsUI.effects.GFXAnimatedMissileEffect;
@@ -35,7 +36,7 @@ public class GFXEffects
 	private BufferedImage[ ][ ] STR_FRAMES;
 
 	// Get instance of Asset
-	protected Asset configuration = Asset.getInstance( );
+	protected Asset configuration = ApplicationGraphics.assets;
 
 	{
 		try

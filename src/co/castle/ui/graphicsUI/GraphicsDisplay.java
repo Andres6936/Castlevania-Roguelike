@@ -46,7 +46,7 @@ public class GraphicsDisplay extends Display
 	private ApplicationGraphics appFrame = ApplicationGraphics.getInstance( );
 
 	// Get instance of Asset
-	protected Asset assets = Asset.getInstance( );
+	protected Asset assets = ApplicationGraphics.assets;
 
 	public static Font FNT_TEXT;
 
