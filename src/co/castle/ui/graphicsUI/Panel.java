@@ -108,7 +108,7 @@ public class Panel extends JPanel
 
 	public void print( int x, int y, String text, Color c, boolean centered )
 	{
-		if ( centered == true )
+		if ( centered )
 		{
 			int width = fontMetrics.stringWidth( text );
 			x = x - ( width / 2 );

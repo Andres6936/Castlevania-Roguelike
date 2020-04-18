@@ -16,7 +16,7 @@ import sz.util.PropertyFilters;
  * 
  * @author Tuukka Turto
  */
-public class Asset
+public final class Asset
 {
 	/**
 	 * Class type Singleton, reference to only object
@@ -30,12 +30,12 @@ public class Asset
 	public final int SCREEN_WIDTH_IN_TILES;
 	public final int SCREEN_HEIGHT_IN_TILES;
 
-	public final int BIG_TILE_WIDTH;
+    final int BIG_TILE_WIDTH;
 	public final int HALF_TILE_WIDTH;
 	public final int NORMAL_TILE_WIDTH;
 
-	public final int CELL_HEIGHT;
-	public final int GADGET_SIZE;
+    final int CELL_HEIGHT;
+    private final int GADGET_SIZE;
 
 	private BufferedImage IMAGE_GADGETS;
 
@@ -56,17 +56,17 @@ public class Asset
 	public BufferedImage IMAGE_STEPS_TILE;
 	public BufferedImage IMAGE_SCAN_TILE;
 
-	public BufferedImage IMAGE_CHARACTERS;
-	public BufferedImage IMAGE_MONSTERS;
-	public BufferedImage IMAGE_BIG_MONSTERS;
-	public BufferedImage IMAGE_TERRAIN;
-	public BufferedImage IMAGE_NIGHT_TERRAIN;
-	public BufferedImage IMAGE_DARK_NIGHT_TERRAIN;
-	public BufferedImage IMAGE_DARK_TERRAIN;
-	public BufferedImage IMAGE_EFFECTS;
-	public BufferedImage IMAGE_FEATURES;
-	public BufferedImage IMAGE_ITEMS;
-	public BufferedImage IMAGE_SHADOW;
+    BufferedImage IMAGE_CHARACTERS;
+    BufferedImage IMAGE_MONSTERS;
+    BufferedImage IMAGE_BIG_MONSTERS;
+    BufferedImage IMAGE_TERRAIN;
+    BufferedImage IMAGE_NIGHT_TERRAIN;
+    BufferedImage IMAGE_DARK_NIGHT_TERRAIN;
+    BufferedImage IMAGE_DARK_TERRAIN;
+    BufferedImage IMAGE_EFFECTS;
+    BufferedImage IMAGE_FEATURES;
+    BufferedImage IMAGE_ITEMS;
+    BufferedImage IMAGE_SHADOW;
 
 	public final Color COLOR_BORDER_INNER;
 	public final Color COLOR_BORDER_OUTER;
@@ -78,7 +78,7 @@ public class Asset
 	public Font FONT_MESSAGE_BOX;
 	public Font FONT_MESSAGE_BOX_PERSISTANT;
 
-	protected Position playerLocationOnScreen;
+    private Position playerLocationOnScreen;
 
 	// We make the constructor private to prevent the use of 'new'
 	private Asset( )
