@@ -30,8 +30,8 @@ public class GFXAppearances
 		SetAppearances( );
 	}
 
-	public GFXAppearance createAppearance(	String ID, BufferedImage bigImage, int xpos,
-											int ypos )
+    private GFXAppearance createAppearance( String ID, BufferedImage bigImage, int xpos,
+                                            int ypos )
 	{
 		xpos--;
 		ypos--;
@@ -40,8 +40,7 @@ public class GFXAppearances
 		{
 			BufferedImage img = ImageUtils.crearImagen( bigImage, xpos * WIDTH_NORMAL,
 					ypos * WIDTH_NORMAL, WIDTH_NORMAL, WIDTH_NORMAL );
-			GFXAppearance ret = new GFXAppearance( ID, img, 0, 0 );
-			return ret;
+            return new GFXAppearance( ID, img, 0, 0 );
 		}
 		catch ( Exception e )
 		{
@@ -50,9 +49,9 @@ public class GFXAppearances
 		return null;
 	}
 
-	public GFXAppearance createAppearance(	String ID, BufferedImage bigImage, int xpos,
-											int ypos, int width, int height, int superw,
-											int superh )
+    private GFXAppearance createAppearance( String ID, BufferedImage bigImage, int xpos,
+                                            int ypos, int width, int height, int superw,
+                                            int superh )
 	{
 		xpos--;
 		ypos--;
@@ -60,8 +59,7 @@ public class GFXAppearances
 		{
 			BufferedImage img = ImageUtils.crearImagen( bigImage, xpos, ypos, width,
 					height );
-			GFXAppearance ret = new GFXAppearance( ID, img, superw, superh );
-			return ret;
+            return new GFXAppearance( ID, img, superw, superh );
 		}
 		catch ( Exception e )
 		{
@@ -70,8 +68,8 @@ public class GFXAppearances
 		return null;
 	}
 
-	public GFXAppearance createBAppearance(	String ID, BufferedImage bigImage, int xpos,
-											int ypos )
+    private GFXAppearance createBAppearance( String ID, BufferedImage bigImage, int xpos,
+                                             int ypos )
 	{
 		xpos--;
 		ypos--;
@@ -79,8 +77,7 @@ public class GFXAppearances
 		{
 			BufferedImage img = ImageUtils.crearImagen( bigImage, xpos * WIDTH_BIG,
 					ypos * WIDTH_BIG, WIDTH_BIG, WIDTH_BIG );
-			GFXAppearance ret = new GFXAppearance( ID, img, WIDTH_HALF / 2, WIDTH_HALF );
-			return ret;
+            return new GFXAppearance( ID, img, WIDTH_HALF / 2, WIDTH_HALF );
 		}
 		catch ( Exception e )
 		{
@@ -89,8 +86,8 @@ public class GFXAppearances
 		return null;
 	}
 
-	public GFXAppearance createIAppearance(	String ID, BufferedImage bigImage, int xpos,
-											int ypos )
+    private GFXAppearance createIAppearance( String ID, BufferedImage bigImage, int xpos,
+                                             int ypos )
 	{
 		xpos--;
 		ypos--;
@@ -108,7 +105,7 @@ public class GFXAppearances
 		return null;
 	}
 
-	public GFXAppearance createTAppearance( String ID, int xpos, int ypos )
+    private GFXAppearance createTAppearance( String ID, int xpos, int ypos )
 	{
 		xpos--;
 		ypos--;
@@ -127,9 +124,8 @@ public class GFXAppearances
 					xpos * WIDTH_NORMAL, ypos * CELL_HEIGHT, WIDTH_NORMAL, CELL_HEIGHT );
 			BufferedImage darkniteimg = ImageUtils.crearImagen( bigDarkNiteImage,
 					xpos * WIDTH_NORMAL, ypos * CELL_HEIGHT, WIDTH_NORMAL, CELL_HEIGHT );
-			GFXAppearance ret = new GFXAppearance( ID, img, darkimg, niteimg, darkniteimg,
-					0, 0 );
-			return ret;
+            return new GFXAppearance( ID, img, darkimg, niteimg, darkniteimg,
+                                      0, 0 );
 		}
 		catch ( Exception e )
 		{
@@ -138,8 +134,8 @@ public class GFXAppearances
 		return null;
 	}
 
-	public GFXAppearance createTAppearance(	String ID, int xpos, int ypos, int xoff,
-											int yoff )
+    private GFXAppearance createTAppearance( String ID, int xpos, int ypos, int xoff,
+                                             int yoff )
 	{
 		xpos--;
 		ypos--;
@@ -158,9 +154,8 @@ public class GFXAppearances
 					xpos * WIDTH_NORMAL, ypos * CELL_HEIGHT, WIDTH_NORMAL, CELL_HEIGHT );
 			BufferedImage darkniteimg = ImageUtils.crearImagen( bigDarkNiteImage,
 					xpos * WIDTH_NORMAL, ypos * CELL_HEIGHT, WIDTH_NORMAL, CELL_HEIGHT );
-			GFXAppearance ret = new GFXAppearance( ID, img, darkimg, niteimg, darkniteimg,
-					xoff, yoff );
-			return ret;
+            return new GFXAppearance( ID, img, darkimg, niteimg, darkniteimg,
+                                      xoff, yoff );
 		}
 		catch ( Exception e )
 		{
@@ -169,16 +164,15 @@ public class GFXAppearances
 		return null;
 	}
 
-	public GFXAppearance createXAppearance(	String ID, BufferedImage bigImage, int xpos,
-											int ypos, int width, int height )
+    private GFXAppearance createXAppearance( String ID, BufferedImage bigImage, int xpos,
+                                             int ypos, int width, int height )
 	{
 		try
 		{
 			BufferedImage img = ImageUtils.crearImagen( bigImage, xpos, ypos, width,
 					height );
-			GFXAppearance ret = new GFXAppearance( ID, img, ( width - WIDTH_NORMAL ) / 2,
-					height - WIDTH_NORMAL );
-			return ret;
+            return new GFXAppearance( ID, img, ( width - WIDTH_NORMAL ) / 2,
+                                      height - WIDTH_NORMAL );
 		}
 		catch ( Exception e )
 		{
@@ -187,16 +181,15 @@ public class GFXAppearances
 		return null;
 	}
 
-	public GFXAppearance createXAppearance(	String ID, BufferedImage bigImage, int xpos,
-											int ypos, int width, int height, int yoff )
+    private GFXAppearance createXAppearance( String ID, BufferedImage bigImage, int xpos,
+                                             int ypos, int width, int height, int yoff )
 	{
 		try
 		{
 			BufferedImage img = ImageUtils.crearImagen( bigImage, xpos, ypos, width,
 					height );
-			GFXAppearance ret = new GFXAppearance( ID, img, ( width - WIDTH_NORMAL ) / 2,
-					height - WIDTH_NORMAL + yoff );
-			return ret;
+            return new GFXAppearance( ID, img, ( width - WIDTH_NORMAL ) / 2,
+                                      height - WIDTH_NORMAL + yoff );
 		}
 		catch ( Exception e )
 		{
@@ -210,7 +203,7 @@ public class GFXAppearances
 		return defs;
 	}
 
-	protected void SetAppearances( )
+    private void SetAppearances( )
 	{
 		defs = new Appearance[ ]
 		{	createTAppearance( "VOID", 4, 5 ),
