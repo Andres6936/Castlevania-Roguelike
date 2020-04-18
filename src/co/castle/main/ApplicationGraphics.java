@@ -34,7 +34,7 @@ public final class ApplicationGraphics extends JFrame
 
 	private Position caretPosition = new Position( 0, 0 );
 
-	private Hashtable <String, Image> images = new Hashtable <String, Image>( );
+	private Hashtable< String, Image > images = new Hashtable<>( );
 
 	private Panel panelGame;
 
@@ -61,7 +61,7 @@ public final class ApplicationGraphics extends JFrame
 		// Assets depend of configurationUI for can be used
 
         // Content the asset for application
-        Asset assets = Asset.getInstance( );
+		Asset assets = Asset.getInstance( configurationUI );
 
 		Dimension size = Toolkit.getDefaultToolkit( ).getScreenSize( );
 		setBounds( ( size.width - assets.SCREEN_WIDTH ) / 2, ( size.height - assets.SCREEN_HEIGHT ) / 2,

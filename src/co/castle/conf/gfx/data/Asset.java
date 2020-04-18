@@ -81,13 +81,8 @@ public final class Asset
     private Position playerLocationOnScreen;
 
 	// We make the constructor private to prevent the use of 'new'
-	private Asset( )
+    private Asset( final Properties configuration )
 	{
-		// Instance of ApplicationFrame
-		ApplicationGraphics appFrame = ApplicationGraphics.getInstance( );
-		// Get the file of configuration for user interface from ApplicationFrame
-		Properties configuration = appFrame.configurationUI;
-
 		SCREEN_SCALE = Float.parseFloat( configuration.getProperty( "SCREEN_SCALE" ) );
 
 		SCREEN_WIDTH = Integer.parseInt( configuration.getProperty( "WINDOW_WIDTH" ) );
@@ -169,17 +164,33 @@ public final class Asset
 	}
 
 	/**
-	 * @return Instance of Asset
+     * @return Instance of Asset, if Asset not
+     * has initialized the app exit.
 	 */
 	public static Asset getInstance( )
 	{
 		if ( instance == null )
 		{
-			instance = new Asset( );
+            System.err.println( "Error, cann't initialize the Singleton Asset" );
+            System.exit( 1 );
 		}
 
 		return instance;
 	}
+
+    /**
+     * @return Initialize and return a
+     * instance of Asset
+     */
+    public static Asset getInstance( final Properties configuration )
+    {
+        if ( instance == null )
+        {
+            instance = new Asset( configuration );
+        }
+
+        return instance;
+    }
 
 	/**
 	 * @return the player location on screen
