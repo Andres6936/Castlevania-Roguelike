@@ -48,11 +48,6 @@ public final class ApplicationGraphics extends JFrame
 	 */
 	public Properties configurationUI;
 
-	/**
-	 * Content the asset for application
-	 */
-	public Asset assets;
-
 	// We make the constructor private to prevent the use of 'new'
 	private ApplicationGraphics( )
 	{
@@ -64,11 +59,13 @@ public final class ApplicationGraphics extends JFrame
 		// IMPORTANT: We have that initialize the instance of assets
 		// here, if do not make, we create a loop infinity, because
 		// Assets depend of configurationUI for can be used
-		assets = Asset.getInstance( );
+
+        // Content the asset for application
+        Asset assets = Asset.getInstance( );
 
 		Dimension size = Toolkit.getDefaultToolkit( ).getScreenSize( );
 		setBounds( ( size.width - assets.SCREEN_WIDTH ) / 2, ( size.height - assets.SCREEN_HEIGHT ) / 2,
-				assets.SCREEN_WIDTH, assets.SCREEN_HEIGHT );
+                   assets.SCREEN_WIDTH, assets.SCREEN_HEIGHT );
 		getContentPane( ).setLayout( new GridLayout( 1, 1 ) );
 		setUndecorated( true );
 		setVisible( true );
@@ -154,6 +151,7 @@ public final class ApplicationGraphics extends JFrame
 			{
 				Game.crash( "Exception trying to create image " + filename, e );
 			}
+            assert im != null;
 			images.put( filename, im );
 		}
 		panelGame.drawImage( scrX, scrY, im );
@@ -173,6 +171,7 @@ public final class ApplicationGraphics extends JFrame
 			{
 				Game.crash( "Exception trying to create image " + filename, e );
 			}
+            assert im != null;
 			images.put( filename, im );
 		}
 		panelGame.drawImage( im );
@@ -221,16 +220,15 @@ public final class ApplicationGraphics extends JFrame
 		{
 			this.wait( );
 		}
-		catch ( InterruptedException ie )
+        catch ( InterruptedException ignored )
 		{
 		}
-		CharKey ret = new CharKey( keyboard.getInkeyBuffer( ) );
-		return ret;
+        return new CharKey( keyboard.getInkeyBuffer( ) );
 	}
 
 	public String input( int xpos, int ypos, Color textColor, int maxLength )
 	{
-		String ret = "";
+        StringBuilder ret = new StringBuilder( );
 		CharKey read = new CharKey( CharKey.NONE );
 		saveBuffer( );
 		while ( true )
@@ -244,15 +242,15 @@ public final class ApplicationGraphics extends JFrame
 				break;
 			if ( read.code == CharKey.BACKSPACE )
 			{
-				if ( ret.equals( "" ) )
+                if ( ret.toString( ).equals( "" ) )
 				{
 					read.code = CharKey.NONE;
 					continue;
 				}
-				if ( ret.length( ) > 1 )
-					ret = ret.substring( 0, ret.length( ) - 1 );
-				else
-					ret = "";
+                if ( ret.length( ) > 1 )
+                { ret = new StringBuilder( ret.substring( 0, ret.length( ) - 1 ) ); }
+                else
+                { ret = new StringBuilder( ); }
 				caretPosition.x--;
 				// print(caretPosition.x, caretPosition.y, " ");
 			}
@@ -271,12 +269,12 @@ public final class ApplicationGraphics extends JFrame
 
 				String nuevo = read.toString( );
 				// print(caretPosition.x, caretPosition.y, nuevo, Color.WHITE);
-				ret += nuevo;
+                ret.append( nuevo );
 				caretPosition.x++;
 			}
 			read.code = CharKey.NONE;
 		}
-		return ret;
+        return ret.toString( );
 	}
 
 	public void print( int x, int y, String text, Color color )
@@ -344,7 +342,7 @@ public final class ApplicationGraphics extends JFrame
 
 	public void setCursor( Cursor c )
 	{
-		setCursor( c );
+        super.setCursor( c );
 	}
 
 	public void setFontToPanel( Font font )
