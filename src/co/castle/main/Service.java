@@ -113,7 +113,7 @@ public final class Service
 	/**
 	 * Save the properties of the application
 	 */
-	public Properties configurationFile;
+    private Properties configurationFile;
 
 	/**
 	 * Play all application sound as effect and music background
@@ -142,7 +142,7 @@ public final class Service
 	/**
 	 * Load the configuration file
 	 */
-	public void loadFileConfiguration( )
+    private void loadFileConfiguration( )
 	{
 		configurationFile = new Properties( );
 
@@ -322,18 +322,18 @@ public final class Service
 	private static void initializeGAppearances( )
 	{
 		Appearance[ ] definitions = new GFXAppearances( ).getAppearances( );
-		for ( int i = 0; i < definitions.length; i++ )
-		{
-			AppearanceFactory.getAppearanceFactory( ).addDefinition( definitions[ i ] );
+        for ( Appearance definition : definitions )
+        {
+            AppearanceFactory.getAppearanceFactory( ).addDefinition( definition );
 		}
 	}
 
 	private static void initializeCAppearances( )
 	{
 		Appearance[ ] definitions = new CharAppearances( ).getAppearances( );
-		for ( int i = 0; i < definitions.length; i++ )
-		{
-			AppearanceFactory.getAppearanceFactory( ).addDefinition( definitions[ i ] );
+        for ( Appearance definition : definitions )
+        {
+            AppearanceFactory.getAppearanceFactory( ).addDefinition( definition );
 		}
 	}
 
@@ -353,9 +353,9 @@ public final class Service
 		Action drop = new Drop( );
 		Action dive = new Dive( );
 
-		UserAction[ ] userActions = null;
-		UserCommand[ ] userCommands = null;
-		Properties keyBindings = null;
+        UserAction[] userActions;
+        UserCommand[] userCommands;
+        Properties keyBindings;
 		try
 		{
 			Properties keyConfig = new Properties( );
@@ -499,22 +499,7 @@ public final class Service
 			Field field = CharKey.class.getField( fieldName );
 			return field.getInt( CharKey.class );
 		}
-		catch ( SecurityException e )
-		{
-			e.printStackTrace( );
-			throw new RuntimeException( "Error reading field : " + fieldName );
-		}
-		catch ( NoSuchFieldException e )
-		{
-			e.printStackTrace( );
-			throw new RuntimeException( "Error reading field : " + fieldName );
-		}
-		catch ( IllegalArgumentException e )
-		{
-			e.printStackTrace( );
-			throw new RuntimeException( "Error reading field : " + fieldName );
-		}
-		catch ( IllegalAccessException e )
+        catch ( SecurityException | NoSuchFieldException | IllegalArgumentException | IllegalAccessException e )
 		{
 			e.printStackTrace( );
 			throw new RuntimeException( "Error reading field : " + fieldName );
@@ -533,26 +518,24 @@ public final class Service
 		{	new Dash( ), new MonsterWalk( ), new Swim( ), new MonsterCharge( ), new MonsterMissile( ),
 			new SummonMonster( ), new MummyStrangle( ), new MummyTeleport( ), new Teleport( ),
 			new MandragoraScream( ) };
-		for ( int i = 0; i < definitions.length; i++ )
-			af.addDefinition( definitions[ i ] );
+        for ( Action definition : definitions ) af.addDefinition( definition );
 	}
 
 	private static void initializeSelectors( )
 	{
 		ActionSelector[ ] definitions = getSelectorDefinitions( );
-		for ( int i = 0; i < definitions.length; i++ )
-		{
-			SelectorFactory.getSelectorFactory( ).addDefinition( definitions[ i ] );
+        for ( ActionSelector definition : definitions )
+        {
+            SelectorFactory.getSelectorFactory( ).addDefinition( definition );
 		}
 	}
 
 	private static ActionSelector[ ] getSelectorDefinitions( )
 	{
-		ActionSelector[ ] ret = new ActionSelector[ ]
+        return new ActionSelector[]
 		{	new WanderToPlayerAI( ), new UnderwaterAI( ), new RangedAI( ), new FlameAI( ), new CrossAI( ),
 			new BlastCrystalAI( ), new CountDown( ), new VillagerAI( ), new PriestAI( ), new NullSelector( ),
 			new BasicMonsterAI( ), new WildMorphAI( ) };
-		return ret;
 	}
 
 	private static void initializeCells( )
@@ -577,9 +560,9 @@ public final class Service
 	{
 		NPCDefinition[ ] definitions = NPCs.getNPCDefinitions( );
 		NPCFactory npcf = NPCFactory.getFactory( );
-		for ( int i = 0; i < definitions.length; i++ )
-		{
-			npcf.addDefinition( definitions[ i ] );
+        for ( NPCDefinition definition : definitions )
+        {
+            npcf.addDefinition( definition );
 		}
 	}
 
