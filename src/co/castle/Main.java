@@ -32,7 +32,7 @@ public final class Main
 	public static void crash( String message, Throwable exception )
 	{
 		System.out.println( "CastlevaniaRL " + Game.getVersion( ) + ": Error" );
-		System.out.println( "" );
+        System.out.println( );
 		System.out.println( "Unrecoverable error: " + message );
 		exception.printStackTrace( );
 		if ( currentGame != null )
@@ -53,7 +53,7 @@ public final class Main
 		return (MonsterRecord) monsterRecord.get( monsterID );
 	}
 
-	public static void main( String args[] )
+    public static void main( String[] args )
 	{
 		// ¿Exist arguments?
 		if ( args.length > 0 )
@@ -89,7 +89,7 @@ public final class Main
 		}
 	}
 
-	public static void setMonsterRecord( Hashtable <?, ?> monsterRecord )
+    private static void setMonsterRecord( Hashtable< ?, ? > monsterRecord )
 	{
 		Main.monsterRecord = monsterRecord;
 	}
@@ -119,6 +119,7 @@ public final class Main
 			title( );
 		try
 		{
+            assert saves != null;
 			ObjectInputStream ois = new ObjectInputStream(
 					new FileInputStream( saves[ index ] ) );
 			currentGame = (Game) ois.readObject( );
@@ -241,10 +242,7 @@ class SaveGameFilenameFilter implements FilenameFilter
 	public boolean accept( File arg0, String arg1 )
 	{
 		// if (arg0.getName().endsWith(".sav"))
-		if ( arg1.endsWith( ".sav" ) )
-			return true;
-		else
-			return false;
+        return arg1.endsWith( ".sav" );
 	}
 
 }
