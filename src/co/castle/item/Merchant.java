@@ -8,47 +8,41 @@ import co.castle.npc.NPCDefinition;
 import co.castle.player.Player;
 import sz.util.Util;
 
-public class Merchant extends NPC
-{
+public class Merchant extends NPC {
 	// private Vector merchandises = new Vector();
-	private Vector inventory;
-	private int merchandiseType;
-	private String merchantName;
+	private Vector<Item> inventory;
+	private final int merchandiseType;
+	private final String merchantName;
 
 	private int refreshTurns = -1;
 
-	private final static String[ ] merchantNames = new String[ ]
-	{	"Kaleth", "Adam", "Invenior", "Dimitri", "Merdotios", "Richard", "Tommy",
-		"Valentina", "Astrith", "Julieth", "Jazeth", "Juran", "Camilla", "Emer" };
+	private final static String[] merchantNames = new String[]
+			{"Kaleth", "Adam", "Invenior", "Dimitri", "Merdotios", "Richard", "Tommy",
+					"Valentina", "Astrith", "Julieth", "Jazeth", "Juran", "Camilla", "Emer"};
 
-	public Merchant( NPCDefinition def, int pMerchandiseType )
-	{
-		super( def );
+	public Merchant(NPCDefinition def, int pMerchandiseType) {
+		super(def);
 		merchandiseType = pMerchandiseType;
 		merchantName = merchantNames[ Util.rand( 0, merchantNames.length - 1 ) ];
 	}
 
-	public int getAttack( )
-	{
+	public int getAttack() {
 		return 4;
 	}
 
-	public String getDescription( )
-	{
+	public String getDescription() {
 		return merchantName;
 	}
 
-	public Vector getMerchandiseFor( Player player )
-	{
-		if ( refreshTurns == -1
-				|| player.getGameSessionInfo( ).getTurns( ) - refreshTurns > 1000 )
-		{
-			if ( player.getPlayerClass( ) == Player.CLASS_VAMPIREKILLER
-					&& ( merchandiseType == ItemDefinition.SHOP_WEAPONS
-							|| merchandiseType == ItemDefinition.SHOP_ARMOR ) )
+	public Vector<Item> getMerchandiseFor(Player player) {
+		if (refreshTurns == -1
+				|| player.getGameSessionInfo().getTurns() - refreshTurns > 1000) {
+			if (player.getPlayerClass() == Player.CLASS_VAMPIREKILLER
+					&& (merchandiseType == ItemDefinition.SHOP_WEAPONS
+					|| merchandiseType == ItemDefinition.SHOP_ARMOR))
 				;
 			else
-				refreshMerchandise( player );
+				refreshMerchandise(player);
 			refreshTurns = player.getGameSessionInfo( ).getTurns( );
 		}
 		return inventory;
@@ -87,25 +81,23 @@ public class Merchant extends NPC
 		return merchantName;
 	}
 
-	public void refreshMerchandise( Player player )
-	{
-		if ( player.getPlayerClass( ) == Player.CLASS_VAMPIREKILLER
-				&& ( merchandiseType == ItemDefinition.SHOP_WEAPONS
-						|| merchandiseType == ItemDefinition.SHOP_ARMOR ) )
+	public void refreshMerchandise( Player player ) {
+		if (player.getPlayerClass() == Player.CLASS_VAMPIREKILLER
+				&& (merchandiseType == ItemDefinition.SHOP_WEAPONS
+				|| merchandiseType == ItemDefinition.SHOP_ARMOR))
 			return;
 
-		inventory = new Vector( );
-		Vector vectorIDs = new Vector( );
-		ItemDefinition[ ] defs = Items.getItemDefinitions( );
-		int itemNumber = Util.rand( 6, 12 );
+		inventory = new Vector<>();
+		Vector<String> vectorIDs = new Vector<>();
+		ItemDefinition[] defs = Items.getItemDefinitions();
+		int itemNumber = Util.rand(6, 12);
 		int items = 0;
 		int tries = 0;
-		while ( items < itemNumber )
-		{
+		while (items < itemNumber) {
 			tries++;
-			if ( tries > 200 )
+			if (tries > 200)
 				break;
-			ItemDefinition def = defs[ Util.rand( 0, defs.length - 1 ) ];
+			ItemDefinition def = defs[Util.rand(0, defs.length - 1)];
 			if ( def.getShopCategory( ) != merchandiseType )
 				continue;
 			if ( !Util.chance( def.getShopChance( ) ) )
