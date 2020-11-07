@@ -131,12 +131,7 @@ public final class Service
 	 */
 	public static Service getInstance( )
 	{
-		if ( instance == null )
-		{
-			instance = new Service( );
-		}
-
-		return instance;
+		return instance == null ? instance = new Service() : instance;
 	}
 
 	/**
