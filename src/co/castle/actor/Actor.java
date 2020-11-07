@@ -181,10 +181,7 @@ public class Actor implements Cloneable, java.io.Serializable, PriorityEnqueable
 
 	public void setHoverHeight( int hoverHeight )
 	{
-		if ( hoverHeight > 0 )
-			this.hoverHeight = hoverHeight;
-		else
-			this.hoverHeight = 0;
+		this.hoverHeight = Math.max(hoverHeight, 0);
 	}
 
 	public void setLevel( Level what )
