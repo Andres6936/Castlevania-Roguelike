@@ -10,169 +10,168 @@ import co.castle.ui.AppearanceFactory;
 import sz.util.ScriptUtil;
 import sz.util.Util;
 
-public abstract class PlayerGenerator
-{
-	private int[ ] ADVANCEMENT_LEVELS_HARD = new int[ ]
-	{ 1, 5, 9, 13, 18, 23, 28, 34, 40, 46, 53, 60, 67, 75, 83, 91
+public abstract class PlayerGenerator {
+	private final int[] ADVANCEMENT_LEVELS_HARD = new int[]
+			{1, 5, 9, 13, 18, 23, 28, 34, 40, 46, 53, 60, 67, 75, 83, 91
 
-	};
+			};
 
-	private int[ ] ADVANCEMENT_LEVELS_HARDER = new int[ ]
-	{ 1, 6, 11, 16, 22, 28, 34, 41, 48, 55, 63, 71, 79, 88, 97, 106
+	private final int[] ADVANCEMENT_LEVELS_HARDER = new int[]
+			{1, 6, 11, 16, 22, 28, 34, 41, 48, 55, 63, 71, 79, 88, 97, 106
 
-	};
+			};
 
-	private int[ ] ADVANCEMENT_LEVELS_NORMAL = new int[ ]
-	{ 1, 4, 7, 10, 14, 18, 22, 27, 32, 37, 43, 49, 55, 62, 69, 76
+	private final int[] ADVANCEMENT_LEVELS_NORMAL = new int[]
+			{1, 4, 7, 10, 14, 18, 22, 27, 32, 37, 43, 49, 55, 62, 69, 76
 
-	};
+			};
 
-	private String[ ] ARMOR_MATERIALS = new String[ ]
-	{ "BRONZE" };
+	private final String[] ARMOR_MATERIALS = new String[]
+			{"BRONZE"};
 
-	private String[ ] INVOKER_ARMORS = new String[ ]
-	{ "CLOTH_TUNIC" };
+	private final String[] INVOKER_ARMORS = new String[]
+			{"CLOTH_TUNIC"};
 
-	private String[ ] INVOKER_BANNED_ARMOR = new String[ ]
-	{ "DIAMOND_PLATE", "VEST", "CUIRASS", "SUIT", "PLATE" };
+	private final String[] INVOKER_BANNED_ARMOR = new String[]
+			{"DIAMOND_PLATE", "VEST", "CUIRASS", "SUIT", "PLATE"};
 
-	private String[ ] INVOKER_DESCRIPTIONS = new String[ ]
-	{	"%%NAME, a mysterious resident of the woods of Transylvannia",
-		"%%NAME, the human who discovered %%SEX fate was to battle evil using %%SEX powers",
-		"%%NAME", "%%NAME the monster summoner" };
+	private final String[] INVOKER_DESCRIPTIONS = new String[]
+			{"%%NAME, a mysterious resident of the woods of Transylvannia",
+					"%%NAME, the human who discovered %%SEX fate was to battle evil using %%SEX powers",
+					"%%NAME", "%%NAME the monster summoner"};
 
-	private String[ ] INVOKER_ITEMS = new String[ ]
-	{ "HEAL_POTION", "GARLIC" };
+	private final String[] INVOKER_ITEMS = new String[]
+			{"HEAL_POTION", "GARLIC"};
 
-	private String[ ] INVOKER_PLOTS = new String[ ]
-	{	"Feeling the call of destiny to make use of %%SEX powers",
-		"After taking monsters out of %%SEX village, using %%SEX supernatural powers",
-		"Finally seeing an oportunity to show off %%SEX powers to battle evil",
-		"Going after a secret tome, told to be hidden inside the castle",
-		"After years of study and preparation, reading ancient tomes and discovering %%SEX true powers" };
+	private final String[] INVOKER_PLOTS = new String[]
+			{"Feeling the call of destiny to make use of %%SEX powers",
+					"After taking monsters out of %%SEX village, using %%SEX supernatural powers",
+					"Finally seeing an oportunity to show off %%SEX powers to battle evil",
+					"Going after a secret tome, told to be hidden inside the castle",
+					"After years of study and preparation, reading ancient tomes and discovering %%SEX true powers"};
 
-	private String[ ] INVOKER_WEAPONS = new String[ ]
-	{ "BASELARD", "STAFF" };
+	private final String[] INVOKER_WEAPONS = new String[]
+			{"BASELARD", "STAFF"};
 
-	private String[ ] KNIGHT_ARMORS = new String[ ]
-	{ "CUIRASS" };
+	private final String[] KNIGHT_ARMORS = new String[]
+			{"CUIRASS"};
 
-	private String[ ] KNIGHT_BANNED_ARMOR = new String[ ]
-	{ };
+	private final String[] KNIGHT_BANNED_ARMOR = new String[]
+			{};
 
-	private String[ ] KNIGHT_DESCRIPTIONS = new String[ ]
-	{	"%%NAME, knight of the Order of Light", "%%NAME, the knight of light", "%%NAME",
-		"%%NAME the sacred knight" };
+	private final String[] KNIGHT_DESCRIPTIONS = new String[]
+			{"%%NAME, knight of the Order of Light", "%%NAME, the knight of light", "%%NAME",
+					"%%NAME the sacred knight"};
 
-	private String[ ] KNIGHT_ITEMS = new String[ ]
-	{ "HEAL_POTION", "BIBUTI", "GARLIC" };
+	private final String[] KNIGHT_ITEMS = new String[]
+			{"HEAL_POTION", "BIBUTI", "GARLIC"};
 
-	private String[ ] KNIGHT_PLOTS = new String[ ]
-	{	"After seeing %%SEX village burned by Dracula's minions, and looking forward to avenge the death of %%SEX father",
-		/**/ "As the sole survivor of the company sent to battle the count Dracula on his castle",
-		"On a last effort to rid the world from the influence of the darkness that rose again",
-		"After years of preparation on %%SEX order, anticipating the return of the Dark Count" };
+	private final String[] KNIGHT_PLOTS = new String[]
+			{"After seeing %%SEX village burned by Dracula's minions, and looking forward to avenge the death of %%SEX father",
+					/**/ "As the sole survivor of the company sent to battle the count Dracula on his castle",
+					"On a last effort to rid the world from the influence of the darkness that rose again",
+					"After years of preparation on %%SEX order, anticipating the return of the Dark Count"};
 
-	private String[ ] KNIGHT_SHIELDS = new String[ ]
-	{ "BUCKLER", "WOODEN_SHIELD" };
+	private final String[] KNIGHT_SHIELDS = new String[]
+			{"BUCKLER", "WOODEN_SHIELD"};
 
-	private String[ ] KNIGHT_WEAPONS = new String[ ]
-	{ "SHORT_SPEAR", "FLAIL", "SABRE" };
+	private final String[] KNIGHT_WEAPONS = new String[]
+			{"SHORT_SPEAR", "FLAIL", "SABRE"};
 
-	private String[ ] MANBEAST_ARMORS = new String[ ]
-	{ "CLOTH_TUNIC" };
+	private final String[] MANBEAST_ARMORS = new String[]
+			{"CLOTH_TUNIC"};
 
-	private String[ ] MANBEAST_BANNED_ARMOR = new String[ ]
-	{ "DIAMOND_PLATE", "VEST", "CUIRASS", "SUIT", "PLATE" };
+	private final String[] MANBEAST_BANNED_ARMOR = new String[]
+			{"DIAMOND_PLATE", "VEST", "CUIRASS", "SUIT", "PLATE"};
 
-	private String[ ] MANBEAST_DESCRIPTIONS = new String[ ]
-	{	"%%NAME, the powerful beast morpher from the mountains",
-		"%%NAME, the only survivor of the manbeast race", "%%NAME",
-		"%%NAME the half-beast" };
-	private String[ ] MANBEAST_ITEMS = new String[ ]
-	{ "HEAL_HERB" };
-	private String[ ] MANBEAST_PLOTS = new String[ ]
-	{	"After seeing %%SEX village burned by Dracula's minions, and looking forward to avenge the death of %%SEX loved ones",
-		"As one of the few survivors from the raids of the legion of the undead, and looking forward to avenge the death of %%SEX loved ones",
-		/**/ "After being taken captive by a group of careless skeletons, smashed when %%SEX power awoke",
-		"After having learned of the destruction of the manbeast race, and abandoning %%SEX secret hideout in the caverns" };
-	private String[ ] RENEGADE_ARMORS = new String[ ]
-	{ "FINE_GARMENT" };
+	private final String[] MANBEAST_DESCRIPTIONS = new String[]
+			{"%%NAME, the powerful beast morpher from the mountains",
+					"%%NAME, the only survivor of the manbeast race", "%%NAME",
+					"%%NAME the half-beast"};
+	private final String[] MANBEAST_ITEMS = new String[]
+			{"HEAL_HERB"};
+	private final String[] MANBEAST_PLOTS = new String[]
+			{"After seeing %%SEX village burned by Dracula's minions, and looking forward to avenge the death of %%SEX loved ones",
+					"As one of the few survivors from the raids of the legion of the undead, and looking forward to avenge the death of %%SEX loved ones",
+					/**/ "After being taken captive by a group of careless skeletons, smashed when %%SEX power awoke",
+					"After having learned of the destruction of the manbeast race, and abandoning %%SEX secret hideout in the caverns"};
+	private final String[] RENEGADE_ARMORS = new String[]
+			{"FINE_GARMENT"};
 
-	private String[ ] RENEGADE_BANNED_ARMOR = new String[ ]
-	{ "DIAMOND_PLATE", "SUIT", "PLATE" };
-	private String[ ] RENEGADE_DESCRIPTIONS = new String[ ]
-	{	"%%NAME, heir to the throne of darkness",
-		"%%NAME, a vampire turned to the light side", "%%NAME", "%%NAME the renegade" };
-	private String[ ] RENEGADE_ITEMS = new String[ ]
-	{ "HEAL_HERB", "BIBUTI" };
-	private String[ ] RENEGADE_PLOTS = new String[ ]
-	{	"Coming back to the castle which once was %%SEX home",
-		"Looking for a way to redeem the evil brought by the vampire race to the mankind",
-		"After being mysteriously awaken from %%SEX self imposed eternal slumber",
-		"Looking forward to give this 'Dark Count' a lesson about true power",
-		"After being told about a powerful vampire breaking the sacred pact of peace made with mankind",
-		"After rebelling against %%SEX father and being shunned by the vampire race" };
-	private String[ ] RENEGADE_SHIELDS = new String[ ]
-	{ "BUCKLER" };
+	private final String[] RENEGADE_BANNED_ARMOR = new String[]
+			{"DIAMOND_PLATE", "SUIT", "PLATE"};
+	private final String[] RENEGADE_DESCRIPTIONS = new String[]
+			{"%%NAME, heir to the throne of darkness",
+					"%%NAME, a vampire turned to the light side", "%%NAME", "%%NAME the renegade"};
+	private final String[] RENEGADE_ITEMS = new String[]
+			{"HEAL_HERB", "BIBUTI"};
+	private final String[] RENEGADE_PLOTS = new String[]
+			{"Coming back to the castle which once was %%SEX home",
+					"Looking for a way to redeem the evil brought by the vampire race to the mankind",
+					"After being mysteriously awaken from %%SEX self imposed eternal slumber",
+					"Looking forward to give this 'Dark Count' a lesson about true power",
+					"After being told about a powerful vampire breaking the sacred pact of peace made with mankind",
+					"After rebelling against %%SEX father and being shunned by the vampire race"};
+	private final String[] RENEGADE_SHIELDS = new String[]
+			{"BUCKLER"};
 
-	private String[ ] RENEGADE_WEAPONS = new String[ ]
-	{ "SHORT_SWORD", "BOW" };
-	private String[ ] SONIA_ITEMS = new String[ ]
-	{ "HEAL_HERB", "GARLIC", "BIBUTI" };
-	private Hashtable SPECIAL_PLAYERS = new Hashtable( );
-	private String[ ] VANQUISHER_ARMORS = new String[ ]
-	{ "CLOTH_TUNIC" };
+	private final String[] RENEGADE_WEAPONS = new String[]
+			{"SHORT_SWORD", "BOW"};
+	private final String[] SONIA_ITEMS = new String[]
+			{"HEAL_HERB", "GARLIC", "BIBUTI"};
+	private final Hashtable<String, Player> SPECIAL_PLAYERS = new Hashtable<>();
+	private final String[] VANQUISHER_ARMORS = new String[]
+			{"CLOTH_TUNIC"};
 
-	private String[ ] VANQUISHER_BANNED_ARMOR = new String[ ]
-	{ "DIAMOND_PLATE", "VEST", "CUIRASS", "SUIT", "PLATE" };
-	private String[ ] VANQUISHER_DESCRIPTIONS = new String[ ]
-	{	"%%NAME, heir of the powers of Sypha",
-		"%%NAME, a witch for some, the last hope for anothers,", "%%NAME",
-		"%%NAME the slayer" };
-	private String[ ] VANQUISHER_ITEMS = new String[ ]
-	{ "HEAL_POTION", "BIBUTI" };
-	private String[ ] VANQUISHER_PLOTS = new String[ ]
-	{	/**/ "After being taken to the castle by a group of skeletons, ",
-		"After discovering %%SEX powers when %%SEX friends were killed by the armies of the count",
-		"Interpreting the latest events as a call of destiny for a need to be fulfilled with %%SEX powers",
-		"After being brought to the castle door by a mysterious cartman",
-		"After being chased as a witch on %%SEX home town" };
+	private final String[] VANQUISHER_BANNED_ARMOR = new String[]
+			{"DIAMOND_PLATE", "VEST", "CUIRASS", "SUIT", "PLATE"};
+	private final String[] VANQUISHER_DESCRIPTIONS = new String[]
+			{"%%NAME, heir of the powers of Sypha",
+					"%%NAME, a witch for some, the last hope for anothers,", "%%NAME",
+					"%%NAME the slayer"};
+	private final String[] VANQUISHER_ITEMS = new String[]
+			{"HEAL_POTION", "BIBUTI"};
+	private final String[] VANQUISHER_PLOTS = new String[]
+			{    /**/ "After being taken to the castle by a group of skeletons, ",
+					"After discovering %%SEX powers when %%SEX friends were killed by the armies of the count",
+					"Interpreting the latest events as a call of destiny for a need to be fulfilled with %%SEX powers",
+					"After being brought to the castle door by a mysterious cartman",
+					"After being chased as a witch on %%SEX home town"};
 
-	private String[ ] VANQUISHER_WEAPONS = new String[ ]
-	{ "RINGS", "STAFF" };
-	private String[ ] VKILLER_ARMORS = new String[ ]
-	{ "VARMOR" };
-	private String[ ] VKILLER_BANNED_ARMOR = new String[ ]
-	{	"DIAMOND_PLATE", "LEATHER_ARMOR", "CLOTH_TUNIC", "VEST", "CUIRASS", "SUIT",
-		"PLATE" };
+	private final String[] VANQUISHER_WEAPONS = new String[]
+			{"RINGS", "STAFF"};
+	private final String[] VKILLER_ARMORS = new String[]
+			{"VARMOR"};
+	private final String[] VKILLER_BANNED_ARMOR = new String[]
+			{"DIAMOND_PLATE", "LEATHER_ARMOR", "CLOTH_TUNIC", "VEST", "CUIRASS", "SUIT",
+					"PLATE"};
 
-	private String[ ] VKILLER_DESCRIPTIONS = new String[ ]
-	{	"%%NAME, last member on the lineage of vampire hunters, the Belmonts",
-		"%%NAME, the wielder of the vampire hunter fate", "%%NAME",
-		"%%NAME the Vampire Hunter" };
-	private String[ ] VKILLER_ITEMS = new String[ ]
-	{ "HEAL_HERB", "GARLIC" };
-	private String[ ] VKILLER_PLOTS = new String[ ]
-	{	"On a last attempt to rescue %%SEX loved one, which was taken by an evil daemon last night",
-		"Seeking to bring an end to the problem as %%SEX grandfather did, about 100 years ago",
-		"After seeing %%SEX home town leveled, and all of %%SEX friends slain by the dark armies of the count",
-		"Finally seeing an opportunity to drop some vampire blood",
-		"After a long trip around all transylvannia, becoming stronger" };
-	private String[ ] VKILLER_WEAPONS = new String[ ]
-	{ "LEATHER_WHIP" };
+	private final String[] VKILLER_DESCRIPTIONS = new String[]
+			{"%%NAME, last member on the lineage of vampire hunters, the Belmonts",
+					"%%NAME, the wielder of the vampire hunter fate", "%%NAME",
+					"%%NAME the Vampire Hunter"};
+	private final String[] VKILLER_ITEMS = new String[]
+			{"HEAL_HERB", "GARLIC"};
+	private final String[] VKILLER_PLOTS = new String[]
+			{"On a last attempt to rescue %%SEX loved one, which was taken by an evil daemon last night",
+					"Seeking to bring an end to the problem as %%SEX grandfather did, about 100 years ago",
+					"After seeing %%SEX home town leveled, and all of %%SEX friends slain by the dark armies of the count",
+					"Finally seeing an opportunity to drop some vampire blood",
+					"After a long trip around all transylvannia, becoming stronger"};
+	private final String[] VKILLER_WEAPONS = new String[]
+			{"LEATHER_WHIP"};
 
-	private String[ ] WEAPON_MATERIALS = new String[ ]
-	{ "STEEL" };
+	private final String[] WEAPON_MATERIALS = new String[]
+			{"STEEL"};
 
-	protected String[ ] CLASS_APPEARANCES = new String[ ]
-	{ "VKILLER", "RENEGADE", "VANQUISHER", "INVOKER", "MANBEAST", "KNIGHT" };
-	protected String[ ] CLASS_DESCRIPTIONS = new String[ ]
-	{	"Heir of the Belmont fate, destined to confront the dark count or die " + ""
-			+ "trying. Master in the use of the mystic vampire killer whip and the "
-			+ "only able to use mystic weapons",
-		"A Vampire turned to the side of light, his will is to clean the world "
-				+ "from the dark influence of the count. Able with weapons and wielder of "
+	protected String[] CLASS_APPEARANCES = new String[]
+			{"VKILLER", "RENEGADE", "VANQUISHER", "INVOKER", "MANBEAST", "KNIGHT"};
+	protected String[] CLASS_DESCRIPTIONS = new String[]
+			{"Heir of the Belmont fate, destined to confront the dark count or die " + ""
+					+ "trying. Master in the use of the mystic vampire killer whip and the "
+					+ "only able to use mystic weapons",
+					"A Vampire turned to the side of light, his will is to clean the world "
+							+ "from the dark influence of the count. Able with weapons and wielder of "
 				+ "vampiric skills.",
 		"An human envowed with mystical powers since childhood to fight darkness, they are able "
 				+ "to learn spells from the dark tomes hidden within the castle and enchant weapons",
