@@ -27,73 +27,67 @@ import sz.fov.FOV;
 import sz.util.Debug;
 import sz.util.Util;
 
-public class Game implements CommandListener, PlayerEventListener, java.io.Serializable
-{
+public class Game implements CommandListener, PlayerEventListener, java.io.Serializable {
 	private boolean canSave;
 	private Level currentLevel;
 
-	private String[ ] DEATHMESSAGES = new String[ ]
-	{	"You are dead... and Dracula is still alive", "All hopes are lost.",
-		"It's the end.",
-		"Let us enjoy this evening for pleasure, the night is still young...",
-		"Game Over", "Better luck next time, Son of a Belmont" };
+	private final String[] DEATHMESSAGES = new String[]
+			{"You are dead... and Dracula is still alive", "All hopes are lost.",
+					"It's the end.",
+					"Let us enjoy this evening for pleasure, the night is still young...",
+					"Game Over", "Better luck next time, Son of a Belmont"};
 	private Dispatcher dispatcher;
 	private boolean endGame;
 	private boolean isDay = true;
 
-	private Hashtable levelMetadata = new Hashtable( );
+	private final Hashtable<String, LevelMetaData> levelMetadata = new Hashtable<>();
 	// private String[] levelPath;
 
 	private Player player;
 
-	private Hashtable /* Level */ storedLevels = new Hashtable( );
+	private Hashtable<String, Level> /* Level */ storedLevels = new Hashtable<>();
 	private int timeSwitch;
 	private long turns;
 	// Configuration
 	private transient UserInterface ui;
 	private transient UISelector uiSelector;
-	private Vector uniqueRegisterObjectCopy = new Vector( );
+	private Vector<String> uniqueRegisterObjectCopy = new Vector<>();
 
 	public final static int DAY_LENGTH = 500;
 
-	private static Vector reports = new Vector( 20 );
+	private static final Vector<String> reports = new Vector<>(20);
 
-	private static Vector uniqueRegister = new Vector( );
+	private static Vector<String> uniqueRegister = new Vector<>();
 
-	public static void addReport( String report )
-	{
-		reports.add( report );
+	public static void addReport(String report) {
+		reports.add(report);
 	}
 
-	public static void crash( String message )
-	{
-		System.out.println( "CastlevaniaRL " + Game.getVersion( ) + ": Error" );
-		System.out.println( "" );
-		System.out.println( "Unrecoverable error: " + message );
-		System.exit( -1 );
+	public static void crash(String message) {
+		System.out.println("CastlevaniaRL " + Game.getVersion() + ": Error");
+		System.out.println();
+		System.out.println("Unrecoverable error: " + message);
+		System.exit(-1);
 	}
 
-	public static void crash( String message, Throwable exception )
-	{
-		System.out.println( "CastlevaniaRL " + Game.getVersion( ) + ": Error" );
-		System.out.println( "" );
-		System.out.println( "Unrecoverable error: " + message );
-		System.out.println( exception.getMessage( ) );
-		exception.printStackTrace( );
-		System.exit( -1 );
+	public static void crash(String message, Throwable exception) {
+		System.out.println("CastlevaniaRL " + Game.getVersion() + ": Error");
+		System.out.println();
+		System.out.println("Unrecoverable error: " + message);
+		System.out.println(exception.getMessage());
+		exception.printStackTrace();
+		System.exit(-1);
 	}
 
-	public static Vector getReports( )
-	{
+	public static Vector<String> getReports() {
 		return reports;
 	}
 
-	public static String getVersion( )
-	{
+	public static String getVersion() {
 		return "0.73";
 	}
 
-	public static void registerUniqueGenerated( String itemID )
+	public static void registerUniqueGenerated(String itemID)
 	{
 		uniqueRegister.add( itemID );
 	}
@@ -396,7 +390,6 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 		Display.thus.showEndgame( player );
 		player.getGameSessionInfo( ).setDeathCause( GameSessionInfo.ASCENDED );
 		finishGame( );
-		return;
 	}
 
 	private void checkTimeSwitch( )
@@ -587,52 +580,45 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 		md.setLevelID( "PROLOGUE_KEEP" );
 		levelMetadata.put( "PROLOGUE_KEEP", md );
 
-		md = new LevelMetaData( );
-		md.setLevelID( "PRELUDE_ARENA" );
-		levelMetadata.put( "PRELUDE_ARENA", md );
+		md = new LevelMetaData();
+		md.setLevelID("PRELUDE_ARENA");
+		levelMetadata.put("PRELUDE_ARENA", md);
 
-		md = new LevelMetaData( );
-		md.setLevelID( "VILLA" );
-		levelMetadata.put( "VILLA", md );
+		md = new LevelMetaData();
+		md.setLevelID("VILLA");
+		levelMetadata.put("VILLA", md);
 
 		// levelPath = (String[]) levels.toArray(new String[levels.size()]);
-		storedLevels = new Hashtable( );
+		storedLevels = new Hashtable<>();
 	}
 	private void loadLevel( String levelID )
 	{
 		loadLevel( levelID, -1 );
 	}
 
-	private void loadLevel( String levelID, int targetLevelNumber )
-	{
-		Debug.enterMethod( this, "loadLevel", levelID + "," + targetLevelNumber );
-		String formerLevelID = null;
-		if ( currentLevel != null )
-		{
-			if ( currentLevel.getBoss( ) != null && !currentLevel.getBoss( ).isDead( ) )
+	private void loadLevel( String levelID, int targetLevelNumber ) {
+		Debug.enterMethod(this, "loadLevel", levelID + "," + targetLevelNumber);
+		String formerLevelID;
+		if (currentLevel != null) {
+			if (currentLevel.getBoss() != null && !currentLevel.getBoss().isDead())
 				return;
-			formerLevelID = currentLevel.getID( );
-			Level storedLevel = (Level) storedLevels.get( formerLevelID );
-			if ( storedLevel == null )
-			{
-				storedLevels.put( formerLevelID, currentLevel );
+			formerLevelID = currentLevel.getID();
+			Level storedLevel = storedLevels.get(formerLevelID);
+			if (storedLevel == null) {
+				storedLevels.put(formerLevelID, currentLevel);
 			}
-		}
-		else
-		{
+		} else {
 			formerLevelID = "_BACK";
 		}
-		Level storedLevel = (Level) storedLevels.get( levelID );
-		if ( storedLevel != null )
-		{
+		Level storedLevel = storedLevels.get(levelID);
+		if (storedLevel != null) {
 			currentLevel = storedLevel;
-			player.setPosition( currentLevel.getExitFor( formerLevelID ) );
-			currentLevel.setIsDay( isDay );
-			currentLevel.setTimecounter( timeSwitch );
-			if ( currentLevel.isCandled( ) )
-			{
-				currentLevel.destroyCandles( );
-				LevelMaster.lightCandles( currentLevel );
+			player.setPosition(currentLevel.getExitFor(formerLevelID));
+			currentLevel.setIsDay(isDay);
+			currentLevel.setTimecounter(timeSwitch);
+			if (currentLevel.isCandled()) {
+				currentLevel.destroyCandles();
+				LevelMaster.lightCandles(currentLevel);
 			}
 		}
 		else
@@ -640,8 +626,8 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 			try
 			{
 				currentLevel = LevelMaster.createLevel(
-						(LevelMetaData) levelMetadata.get( levelID ), player );
-				currentLevel.setPlayer( player );
+						levelMetadata.get(levelID), player);
+				currentLevel.setPlayer(player);
 				ui.setPlayer( player );
 				uiSelector.setPlayer( player );
 				currentLevel.setIsDay( isDay );
@@ -717,20 +703,17 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 		Debug.exitMethod( );
 	}
 
-	private void processLevelData( String[ ][ ] order, int startLevelNumber )
-	{
-		Vector levels = new Vector( 5 );
-		Vector numbered = new Vector( 5 );
+	private void processLevelData( String[ ][ ] order, int startLevelNumber ) {
+		Vector levels = new Vector(5);
+		Vector<String> numbered = new Vector<>(5);
 		int levelCount = startLevelNumber;
-		for ( int i = 0; i < order.length; i++ )
-		{
-			int n = Util.rand( 3, 6 );
-			if ( order[ i ][ 1 ].indexOf( "ONE" ) != -1 )
+		for (int i = 0; i < order.length; i++) {
+			int n = Util.rand(3, 6);
+			if (order[i][1].indexOf("ONE") != -1)
 				n = 1;
-			for ( int j = 0; j < n; j++ )
-			{
-				levels.add( order[ i ][ 0 ] + j );
-				if ( order[ i ][ 1 ].indexOf( "NONUMBER" ) == -1 )
+			for (int j = 0; j < n; j++) {
+				levels.add(order[i][0] + j);
+				if (order[i][1].indexOf("NONUMBER") == -1)
 					numbered.add( "yes" );
 				else
 					numbered.add( "no" );
