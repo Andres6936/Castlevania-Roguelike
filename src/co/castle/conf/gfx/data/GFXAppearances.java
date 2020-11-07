@@ -8,20 +8,18 @@ import co.castle.ui.Appearance;
 import co.castle.ui.graphicsUI.GFXAppearance;
 import sz.util.ImageUtils;
 
-public class GFXAppearances
-{
-	private int CELL_HEIGHT;
-	private Appearance[ ] defs;
-	private int WIDTH_BIG;
-	private int WIDTH_HALF;
+public class GFXAppearances {
+	private final int CELL_HEIGHT;
+	private Appearance[] defs;
+	private final int WIDTH_BIG;
+	private final int WIDTH_HALF;
 
-	private int WIDTH_NORMAL;
+	private final int WIDTH_NORMAL;
 
 	// Get instance of Asset
 	protected Asset configuration = ApplicationGraphics.assets;
 
-	public GFXAppearances( )
-	{
+	public GFXAppearances() {
 		WIDTH_BIG = configuration.BIG_TILE_WIDTH;
 		WIDTH_HALF = configuration.HALF_TILE_WIDTH;
 		CELL_HEIGHT = configuration.CELL_HEIGHT;
@@ -91,12 +89,10 @@ public class GFXAppearances
 	{
 		xpos--;
 		ypos--;
-		try
-		{
-			BufferedImage img = ImageUtils.crearImagen( bigImage, xpos * WIDTH_HALF,
-					ypos * WIDTH_HALF, WIDTH_HALF, WIDTH_HALF );
-			GFXAppearance ret = new GFXAppearance( ID, img, -8, 0 );
-			return ret;
+		try {
+			BufferedImage img = ImageUtils.crearImagen(bigImage, xpos * WIDTH_HALF,
+					ypos * WIDTH_HALF, WIDTH_HALF, WIDTH_HALF);
+			return new GFXAppearance(ID, img, -8, 0);
 		}
 		catch ( Exception e )
 		{

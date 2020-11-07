@@ -24,7 +24,7 @@ public final class GFXCuts
 	public BufferedImage PRT_F5;
 	public BufferedImage PRT_F6;
 
-	private Hashtable <String, GFXChat> hashCuts = new Hashtable <String, GFXChat>( );
+	private final Hashtable<String, GFXChat> hashCuts = new Hashtable<>();
 
 	private BufferedImage PRT_DRACULA;
 	private BufferedImage PRT_CHRIS;
@@ -78,17 +78,17 @@ public final class GFXCuts
 	}
 
 	{
-		GFXChat temp = null;
-		temp = new GFXChat( );
-		temp.add( "Count Dracula", "We meet again Vampire Killer. You are old now.", PRT_DRACULA );
-		temp.add( "Christopher Belmont",
-				"I came here to fulfill my fate as a Belmont; age bears no relevance.", PRT_CHRIS );
-		temp.add( "Count Dracula",
+		GFXChat temp;
+		temp = new GFXChat();
+		temp.add("Count Dracula", "We meet again Vampire Killer. You are old now.", PRT_DRACULA);
+		temp.add("Christopher Belmont",
+				"I came here to fulfill my fate as a Belmont; age bears no relevance.", PRT_CHRIS);
+		temp.add("Count Dracula",
 				"Look at your own self! And look at me, just reborn from warm innocent blood, you stand no chance against my power!",
-				PRT_DRACULA );
-		temp.add( "Christopher Belmont",
+				PRT_DRACULA);
+		temp.add("Christopher Belmont",
 				"It is for that one same blood that my whip shall seek revenge against thee, dark lord.",
-				PRT_CHRIS );
+				PRT_CHRIS);
 		temp.add( "Count Dracula",
 				"HAHAHAHA! Don't make me laugh, pitiful excuse for a warrior, you shall regret your words!",
 				PRT_DRACULA );

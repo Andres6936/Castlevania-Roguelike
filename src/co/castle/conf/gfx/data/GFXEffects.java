@@ -21,27 +21,25 @@ import co.castle.ui.graphicsUI.effects.GFXSplashEffect;
 import sz.util.ImageUtils;
 import sz.util.Position;
 
-public class GFXEffects
-{
-	private BufferedImage[ ][ ] CURVED_FRAMES;
-	private Position[ ][ ] CURVED_VARS;
-	private GFXEffect[ ] effects;
+public class GFXEffects {
+	private BufferedImage[][] CURVED_FRAMES;
+	private Position[][] CURVED_VARS;
+	private GFXEffect[] effects;
 	private BufferedImage IMG_CURVEDSLASHES;
 	private BufferedImage IMG_EFFECTS;
 
 	private BufferedImage IMG_SLASHES;
 	private BufferedImage IMG_STRSLASHES;
-	private Vector <Position> SFX_BIBLE_STEPS = new Vector <Position>( 10 );
+	private final Vector<Position> SFX_BIBLE_STEPS = new Vector<>(10);
 
-	private BufferedImage[ ][ ] STR_FRAMES;
+	private BufferedImage[][] STR_FRAMES;
 
 	// Get instance of Asset
 	protected Asset configuration = ApplicationGraphics.assets;
 
 	{
-		try
-		{
-			IMG_EFFECTS = ImageUtils.createImage( "gfx/crl_effects.gif" );
+		try {
+			IMG_EFFECTS = ImageUtils.createImage("gfx/crl_effects.gif");
 			IMG_SLASHES = ImageUtils.createImage( "gfx/tempSlashes.gif" );
 			IMG_CURVEDSLASHES = ImageUtils.createImage( "gfx/crl_slashes1.gif" );
 			IMG_STRSLASHES = ImageUtils.createImage( "gfx/crl_slashes2.gif" );
@@ -378,13 +376,11 @@ public class GFXEffects
 
 	private BufferedImage[ ] loadMaterialize( )
 	{
-		try
-		{
-			BufferedImage[ ] ret = new BufferedImage[ ]
-			{	ImageUtils.crearImagen( IMG_EFFECTS, 0, 485, 40, 59 ),
-				ImageUtils.crearImagen( IMG_EFFECTS, 44, 485, 40, 59 ),
-				ImageUtils.crearImagen( IMG_EFFECTS, 88, 485, 40, 59 ) };
-			return ret;
+		try {
+			return new BufferedImage[]
+					{ImageUtils.crearImagen(IMG_EFFECTS, 0, 485, 40, 59),
+							ImageUtils.crearImagen(IMG_EFFECTS, 44, 485, 40, 59),
+							ImageUtils.crearImagen(IMG_EFFECTS, 88, 485, 40, 59)};
 		}
 		catch ( Exception e )
 		{
