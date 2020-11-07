@@ -6,31 +6,31 @@ import co.castle.ui.AppearanceFactory;
 
 public class Features
 {
-	private static int COMMONFAINT = 30;
 
 	public static Feature[ ] getFeatureDefinitions( AppearanceFactory apf )
 	{
 		Feature[ ] ret = new Feature[ 42 ];
-		ret[ 0 ] = new Feature( "CANDLE", apf.getAppearance( "CANDLE" ), 0, "Candlestick",
-				0, 3 );
-		ret[ 38 ] = new Feature( "COFFIN", apf.getAppearance( "COFFIN" ), 2, "Coffin", 0,
-				0 );
+		ret[0] = new Feature("CANDLE", apf.getAppearance("CANDLE"), 0, "Candlestick",
+				0, 3);
+		ret[38] = new Feature("COFFIN", apf.getAppearance("COFFIN"), 2, "Coffin", 0,
+				0);
 
-		ret[ 40 ] = new Feature( "MOUND", apf.getAppearance( "MOUND" ), 9999, "Mound", 0,
-				0 );
-		ret[ 41 ] = new Feature( "TELEPORT", apf.getAppearance( "TELEPORT" ), 9999,
-				"Teleport Pad", 0, 5 );
+		ret[40] = new Feature("MOUND", apf.getAppearance("MOUND"), 9999, "Mound", 0,
+				0);
+		ret[41] = new Feature("TELEPORT", apf.getAppearance("TELEPORT"), 9999,
+				"Teleport Pad", 0, 5);
 
-		ret[ 1 ] = new Feature( "SMALLHEART", apf.getAppearance( "SMALLHEART" ), 9999,
-				"Small Heart", COMMONFAINT, 0 );
-		ret[ 2 ] = new Feature( "DAGGERWP", apf.getAppearance( "DAGGER" ), 9999,
-				"Mystic Dagger", COMMONFAINT, 2 );
-		ret[ 3 ] = new Feature( "AXEWP", apf.getAppearance( "AXE" ), 9999, "Axe",
-				COMMONFAINT, 2 );
-		ret[ 4 ] = new Feature( "HOLYWP", apf.getAppearance( "VIAL" ), 9999,
-				"Holy Water vial", COMMONFAINT, 2 );
-		ret[ 5 ] = new Feature( "CROSSWP", apf.getAppearance( "CROSS" ), 9999,
-				"Holy Cross", COMMONFAINT, 2 );
+		int COMMONFAINT = 30;
+		ret[1] = new Feature("SMALLHEART", apf.getAppearance("SMALLHEART"), 9999,
+				"Small Heart", COMMONFAINT, 0);
+		ret[2] = new Feature("DAGGERWP", apf.getAppearance("DAGGER"), 9999,
+				"Mystic Dagger", COMMONFAINT, 2);
+		ret[3] = new Feature("AXEWP", apf.getAppearance("AXE"), 9999, "Axe",
+				COMMONFAINT, 2);
+		ret[4] = new Feature("HOLYWP", apf.getAppearance("VIAL"), 9999,
+				"Holy Water vial", COMMONFAINT, 2);
+		ret[5] = new Feature("CROSSWP", apf.getAppearance("CROSS"), 9999,
+				"Holy Cross", COMMONFAINT, 2);
 		ret[ 6 ] = new Feature( "STOPWATCHWP", apf.getAppearance( "CLOCK" ), 9999,
 				"Stopwatch", COMMONFAINT, 2 );
 		ret[ 7 ] = new Feature( "DAGGERCANDLE", apf.getAppearance( "CANDLE" ), 0,
