@@ -1,14 +1,12 @@
 package co.castle.conf.gfx.data;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.image.BufferedImage;
-import java.util.Properties;
-
-import co.castle.main.ApplicationGraphics;
 import sz.util.ImageUtils;
 import sz.util.Position;
 import sz.util.PropertyFilters;
+
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.util.Properties;
 
 /**
  * In this class is saved the configuration parameters and asset for user
@@ -30,9 +28,6 @@ public final class Asset
 	public final int NORMAL_TILE_WIDTH;
 
     final int CELL_HEIGHT;
-    private final int GADGET_SIZE;
-
-	private BufferedImage IMAGE_GADGETS;
 
 	public BufferedImage IMAGE_TITLE;
 	public BufferedImage IMAGE_PROLOGUE;
@@ -73,32 +68,32 @@ public final class Asset
 	public Font FONT_MESSAGE_BOX;
 	public Font FONT_MESSAGE_BOX_PERSISTANT;
 
-    private Position playerLocationOnScreen;
+	private final Position playerLocationOnScreen;
 
 	// We make the constructor private to prevent the use of 'new'
     public Asset( final Properties configuration )
 	{
 		SCREEN_SCALE = Float.parseFloat( configuration.getProperty( "SCREEN_SCALE" ) );
 
-		SCREEN_WIDTH = Integer.parseInt( configuration.getProperty( "WINDOW_WIDTH" ) );
-		SCREEN_HEIGHT = Integer.parseInt( configuration.getProperty( "WINDOW_HEIGHT" ) );
-		SCREEN_WIDTH_IN_TILES = Integer.parseInt( configuration.getProperty( "XRANGE" ) );
-		SCREEN_HEIGHT_IN_TILES = Integer.parseInt( configuration.getProperty( "YRANGE" ) );
+		SCREEN_WIDTH = Integer.parseInt(configuration.getProperty("WINDOW_WIDTH"));
+		SCREEN_HEIGHT = Integer.parseInt(configuration.getProperty("WINDOW_HEIGHT"));
+		SCREEN_WIDTH_IN_TILES = Integer.parseInt(configuration.getProperty("XRANGE"));
+		SCREEN_HEIGHT_IN_TILES = Integer.parseInt(configuration.getProperty("YRANGE"));
 
-		BIG_TILE_WIDTH = Integer.parseInt( configuration.getProperty( "BIG_TILESIZE" ) );
-		HALF_TILE_WIDTH = Integer.parseInt( configuration.getProperty( "HALF_TILESIZE" ) );
-		NORMAL_TILE_WIDTH = Integer.parseInt( configuration.getProperty( "TILESIZE" ) );
+		BIG_TILE_WIDTH = Integer.parseInt(configuration.getProperty("BIG_TILESIZE"));
+		HALF_TILE_WIDTH = Integer.parseInt(configuration.getProperty("HALF_TILESIZE"));
+		NORMAL_TILE_WIDTH = Integer.parseInt(configuration.getProperty("TILESIZE"));
 
-		CELL_HEIGHT = Integer.parseInt( configuration.getProperty( "CELL_HEIGHT" ) );
-		GADGET_SIZE = Integer.parseInt( configuration.getProperty( "GADGETSIZE" ) );
+		CELL_HEIGHT = Integer.parseInt(configuration.getProperty("CELL_HEIGHT"));
+		int GADGET_SIZE = Integer.parseInt(configuration.getProperty("GADGETSIZE"));
 
-		COLOR_BORDER_INNER = PropertyFilters.getColor( configuration.getProperty( "COLOR_BORDER_IN" ) );
-		COLOR_BORDER_OUTER = PropertyFilters.getColor( configuration.getProperty( "COLOR_BORDER_OUT" ) );
-		COLOR_BACKGROUND = PropertyFilters.getColor( configuration.getProperty( "COLOR_BACKGROUND" ) );
-		COLOR_BOLD = PropertyFilters.getColor( configuration.getProperty( "COLOR_BOLD" ) );
+		COLOR_BORDER_INNER = PropertyFilters.getColor(configuration.getProperty("COLOR_BORDER_IN"));
+		COLOR_BORDER_OUTER = PropertyFilters.getColor(configuration.getProperty("COLOR_BORDER_OUT"));
+		COLOR_BACKGROUND = PropertyFilters.getColor(configuration.getProperty("COLOR_BACKGROUND"));
+		COLOR_BOLD = PropertyFilters.getColor(configuration.getProperty("COLOR_BOLD"));
 
 		// NOTE: This is a big problem, move and delete of here
-		playerLocationOnScreen = PropertyFilters.getPosition( configuration.getProperty( "PC_POS" ) );
+		playerLocationOnScreen = PropertyFilters.getPosition(configuration.getProperty("PC_POS"));
 
 		// Load images, parameters and fonts, block try/catch is necessary.
 		try
@@ -109,34 +104,34 @@ public final class Asset
 			IMAGE_BACKGROUND = ImageUtils.createImage( configuration.getProperty( "IMG_BACKGROUND" ) );
 			IMAGE_ENDGAME = ImageUtils.createImage( configuration.getProperty( "IMG_ENDGAME" ) );
 			IMAGE_HISCORES = ImageUtils.createImage( configuration.getProperty( "IMG_HISCORES" ) );
-			IMAGE_LEVEL_UP = ImageUtils.createImage( configuration.getProperty( "IMG_LEVEL_UP" ) );
-			IMAGE_SAVED = ImageUtils.createImage( configuration.getProperty( "IMG_SAVED" ) );
-			IMAGE_MAP = ImageUtils.createImage( configuration.getProperty( "IMG_MAP" ) );
+			IMAGE_LEVEL_UP = ImageUtils.createImage(configuration.getProperty("IMG_LEVEL_UP"));
+			IMAGE_SAVED = ImageUtils.createImage(configuration.getProperty("IMG_SAVED"));
+			IMAGE_MAP = ImageUtils.createImage(configuration.getProperty("IMG_MAP"));
 
-			IMAGE_MAPMARKER = PropertyFilters.getImage( configuration.getProperty( "IMG_MAPMARKER" ),
-					configuration.getProperty( "IMG_MAPMARKER_BOUNDS" ) );
-			IMAGE_PICKER = PropertyFilters.getImage( configuration.getProperty( "IMG_PICKER" ),
-					configuration.getProperty( "IMG_PICKER_BOUNDS" ) );
-			IMAGE_BORDERS = PropertyFilters.getImage( configuration.getProperty( "IMG_BORDERS" ),
-					configuration.getProperty( "IMG_BORDERS_BOUNDS" ) );
-			IMAGE_GADGETS = PropertyFilters.getImage( configuration.getProperty( "IMG_GADGETS" ),
-					configuration.getProperty( "IMG_GADGETS_BOUNDS" ) );
+			IMAGE_MAPMARKER = PropertyFilters.getImage(configuration.getProperty("IMG_MAPMARKER"),
+					configuration.getProperty("IMG_MAPMARKER_BOUNDS"));
+			IMAGE_PICKER = PropertyFilters.getImage(configuration.getProperty("IMG_PICKER"),
+					configuration.getProperty("IMG_PICKER_BOUNDS"));
+			IMAGE_BORDERS = PropertyFilters.getImage(configuration.getProperty("IMG_BORDERS"),
+					configuration.getProperty("IMG_BORDERS_BOUNDS"));
+			BufferedImage IMAGE_GADGETS = PropertyFilters.getImage(configuration.getProperty("IMG_GADGETS"),
+					configuration.getProperty("IMG_GADGETS_BOUNDS"));
 
-			IMAGE_AIM_LINE_TILE = ImageUtils.crearImagen( IMAGE_GADGETS, 0, 0, GADGET_SIZE, GADGET_SIZE );
-			IMAGE_STEPS_TILE = ImageUtils.crearImagen( IMAGE_GADGETS, GADGET_SIZE * 2, 0, GADGET_SIZE,
-					GADGET_SIZE );
-			IMAGE_SCAN_TILE = ImageUtils.crearImagen( IMAGE_GADGETS, GADGET_SIZE, 0, GADGET_SIZE,
-					GADGET_SIZE );
+			IMAGE_AIM_LINE_TILE = ImageUtils.crearImagen(IMAGE_GADGETS, 0, 0, GADGET_SIZE, GADGET_SIZE);
+			IMAGE_STEPS_TILE = ImageUtils.crearImagen(IMAGE_GADGETS, GADGET_SIZE * 2, 0, GADGET_SIZE,
+					GADGET_SIZE);
+			IMAGE_SCAN_TILE = ImageUtils.crearImagen(IMAGE_GADGETS, GADGET_SIZE, 0, GADGET_SIZE,
+					GADGET_SIZE);
 
-			IMAGE_CHARACTERS = ImageUtils.createImage( configuration.getProperty( "TILES_CHARACTERS" ) );
-			IMAGE_MONSTERS = ImageUtils.createImage( configuration.getProperty( "TILES_MONSTERS" ) );
-			IMAGE_BIG_MONSTERS = ImageUtils.createImage( configuration.getProperty( "TILES_BIG_MONSTERS" ) );
-			IMAGE_TERRAIN = ImageUtils.createImage( configuration.getProperty( "TILES_TERRAIN" ) );
+			IMAGE_CHARACTERS = ImageUtils.createImage(configuration.getProperty("TILES_CHARACTERS"));
+			IMAGE_MONSTERS = ImageUtils.createImage(configuration.getProperty("TILES_MONSTERS"));
+			IMAGE_BIG_MONSTERS = ImageUtils.createImage(configuration.getProperty("TILES_BIG_MONSTERS"));
+			IMAGE_TERRAIN = ImageUtils.createImage(configuration.getProperty("TILES_TERRAIN"));
 			IMAGE_NIGHT_TERRAIN = ImageUtils
-					.createImage( configuration.getProperty( "TILES_NIGHT_TERRAIN" ) );
+					.createImage(configuration.getProperty("TILES_NIGHT_TERRAIN"));
 			IMAGE_DARK_NIGHT_TERRAIN = ImageUtils
-					.createImage( configuration.getProperty( "TILES_DARK_NIGHT_TERRAIN" ) );
-			IMAGE_DARK_TERRAIN = ImageUtils.createImage( configuration.getProperty( "TILES_DARK_TERRAIN" ) );
+					.createImage(configuration.getProperty("TILES_DARK_NIGHT_TERRAIN"));
+			IMAGE_DARK_TERRAIN = ImageUtils.createImage(configuration.getProperty("TILES_DARK_TERRAIN"));
 			IMAGE_EFFECTS = ImageUtils.createImage( configuration.getProperty( "TILES_EFFECTS" ) );
 			IMAGE_FEATURES = ImageUtils.createImage( configuration.getProperty( "TILES_FEATURES" ) );
 			IMAGE_ITEMS = ImageUtils.createImage( configuration.getProperty( "TILES_ITEMS" ) );
