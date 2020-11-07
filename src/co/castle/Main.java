@@ -27,7 +27,7 @@ public final class Main
 	/**
 	 * Provide functionality to the application, loading and starting modules
 	 */
-	private static Service app = Service.getInstance( );
+	private static final Service app = Service.getInstance();
 
 	public static void crash( String message, Throwable exception )
 	{
