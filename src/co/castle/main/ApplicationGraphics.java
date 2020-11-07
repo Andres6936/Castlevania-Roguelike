@@ -27,9 +27,16 @@ import sz.util.Position;
 
 // With keyword final, we be prevent the inheritance of this class
 public final class ApplicationGraphics extends JFrame {
+
+	// Fields Final
+
 	private static final long serialVersionUID = 3339068814173683092L;
 
+	// Fields Static
+
 	public static Asset assets;
+
+	// Fields
 
 	private Keyboard keyboard;
 
@@ -49,20 +56,46 @@ public final class ApplicationGraphics extends JFrame {
 	 */
 	public Properties configurationUI;
 
+	// Construct
+
 	// We make the constructor private to prevent the use of 'new'
-	private ApplicationGraphics( )
-	{
-		loaderFileConfigurationForUserInterface( );
+	private ApplicationGraphics() {
+		loaderFileConfigurationForUserInterface();
 	}
 
-	public void start( )
-	{
+	// Method Static
+
+	/**
+	 * @return Instance of ApplicationFrame
+	 */
+	public static ApplicationGraphics getInstance() {
+		if (instance == null) {
+			instance = new ApplicationGraphics();
+		}
+
+		return instance;
+	}
+
+	// Method Synchronized
+
+	public synchronized CharKey inkey() {
+		keyboard.informKey(Thread.currentThread());
+		try {
+			this.wait();
+		} catch (InterruptedException ignored) {
+		}
+		return new CharKey(keyboard.getInkeyBuffer());
+	}
+
+	// Method
+
+	public void start() {
 		// IMPORTANT: We have that initialize the instance of assets
 		// here, if do not make, we create a loop infinity, because
 		// Assets depend of configurationUI for can be used
 
-        // Content the asset for application
-		assets = new Asset( configurationUI );
+		// Content the asset for application
+		assets = new Asset(configurationUI);
 
 		Dimension size = Toolkit.getDefaultToolkit( ).getScreenSize( );
 		setBounds( ( size.width - assets.SCREEN_WIDTH ) / 2, ( size.height - assets.SCREEN_HEIGHT ) / 2,
@@ -102,19 +135,6 @@ public final class ApplicationGraphics extends JFrame {
 			System.out.println( "Error loading configuration for user interface.\n" );
 			System.exit( -1 );
 		}
-	}
-
-	/**
-	 * @return Instance of ApplicationFrame
-	 */
-	public static ApplicationGraphics getInstance( )
-	{
-		if ( instance == null )
-		{
-			instance = new ApplicationGraphics( );
-		}
-
-		return instance;
 	}
 
 	public void addComponentToPanel( Component c )
@@ -212,19 +232,6 @@ public final class ApplicationGraphics extends JFrame {
 	public Graphics2D getGraphics2D( )
 	{
 		return panelGame.getCurrentGraphics( );
-	}
-
-	public synchronized CharKey inkey( )
-	{
-		keyboard.informKey( Thread.currentThread( ) );
-		try
-		{
-			this.wait( );
-		}
-        catch ( InterruptedException ignored )
-		{
-		}
-        return new CharKey( keyboard.getInkeyBuffer( ) );
 	}
 
 	public String input( int xpos, int ypos, Color textColor, int maxLength )
