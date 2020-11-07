@@ -3,12 +3,11 @@ package co.castle.ai;
 import co.castle.action.Action;
 import co.castle.actor.Actor;
 
-public interface ActionSelector extends Cloneable, java.io.Serializable
-{
-	public ActionSelector derive( );
+public interface ActionSelector extends Cloneable, java.io.Serializable {
+	ActionSelector derive();
 
-	public String getID( );
+	String getID();
 
-	public Action selectAction( Actor who );
+	Action selectAction(Actor who);
 
 }
