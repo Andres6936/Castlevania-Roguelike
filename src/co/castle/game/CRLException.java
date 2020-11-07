@@ -1,16 +1,13 @@
 package co.castle.game;
 
-public class CRLException extends Exception
-{
-	private String message;
+public class CRLException extends Exception {
+	private final String message;
 
-	public CRLException( String message )
-	{
+	public CRLException(String message) {
 		this.message = message;
 	}
 
-	public String toString( )
-	{
+	public String toString() {
 		return message;
 	}
 }
