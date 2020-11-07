@@ -2,17 +2,15 @@ package co.castle.actor;
 
 import sz.util.Position;
 
-public class Message
-{
-	private Position location;
-	private String text;
+public class Message {
+	private final Position location;
+	private final String text;
 
 	/*
 	 * public void act(){ die(); }
 	 */
 
-	public Message( String pText, Position pLocation )
-	{
+	public Message(String pText, Position pLocation) {
 		text = pText;
 		location = pLocation;
 	}
