@@ -50,59 +50,39 @@ public class STMidiPlayer implements Runnable
 	public synchronized void run( )
 	{
 		boolean leave = false;
-		out: while ( true )
-		{
-			if ( currentInstruction == INS_DIE )
-			{
-				break out;
-			}
-			if ( currentInstruction == INS_STOP )
-			{
+		while (currentInstruction != INS_DIE) {
+			if (currentInstruction == INS_STOP) {
 				currentMidiFile = "__noneYet";
 			}
-			if ( currentMidiFile.equals( "__noneYet" ) )
-			{
-				try
-				{
-					this.wait( );
-				}
-				catch ( InterruptedException ie )
-				{
+			if (currentMidiFile.equals("__noneYet")) {
+				try {
+					this.wait();
+				} catch (InterruptedException ie) {
 					continue;
 				}
 			}
 
-			File midiFile = new File( currentMidiFile );
+			File midiFile = new File(currentMidiFile);
 
-			if ( currentInstruction == INS_LOAD )
-			{
-				if ( !midiFile.exists( ) || midiFile.isDirectory( )
-						|| !midiFile.canRead( ) )
-				{
-					Game.addReport( "Invalid Midi file: " + currentMidiFile );
-					try
-					{
-						this.wait( );
-					}
-					catch ( InterruptedException ie )
-					{
+			if (currentInstruction == INS_LOAD) {
+				if (!midiFile.exists() || midiFile.isDirectory()
+						|| !midiFile.canRead()) {
+					Game.addReport("Invalid Midi file: " + currentMidiFile);
+					try {
+						this.wait();
+					} catch (InterruptedException ie) {
 						continue;
 					}
 				}
 				loop = true;
 			}
-			if ( currentInstruction == INS_LOAD_ONCE )
-			{
-				if ( !midiFile.exists( ) || midiFile.isDirectory( )
-						|| !midiFile.canRead( ) )
-				{
-					Game.addReport( "Invalid Midi file: " + currentMidiFile );
-					try
-					{
-						this.wait( );
-					}
-					catch ( InterruptedException ie )
-					{
+			if (currentInstruction == INS_LOAD_ONCE) {
+				if (!midiFile.exists() || midiFile.isDirectory()
+						|| !midiFile.canRead()) {
+					Game.addReport("Invalid Midi file: " + currentMidiFile);
+					try {
+						this.wait();
+					} catch (InterruptedException ie) {
 						continue;
 					}
 				}
@@ -110,54 +90,36 @@ public class STMidiPlayer implements Runnable
 			}
 
 			leave = false;
-			while ( !leave )
-			{
-				try
-				{
-					sequencer.setSequence( MidiSystem.getSequence( midiFile ) );
-					sequencer.start( );
-					while ( true )
-					{
-						if ( sequencer.isRunning( ) )
-						{
-							try
-							{
-								Thread.sleep( 1000 ); // Check every second
-							}
-							catch ( InterruptedException ignore )
-							{
+			while (!leave) {
+				try {
+					sequencer.setSequence(MidiSystem.getSequence(midiFile));
+					sequencer.start();
+					while (true) {
+						if (sequencer.isRunning()) {
+							try {
+								Thread.sleep(1000); // Check every second
+							} catch (InterruptedException ignore) {
 								leave = true;
 								break;
 							}
-						}
-						else
-						{
+						} else {
 							break;
 						}
 					}
 					// Close the MidiDevice & free resources
-					sequencer.stop( );
-					if ( !loop )
-					{
-						try
-						{
-							this.wait( );
-						}
-						catch ( InterruptedException ie )
-						{
+					sequencer.stop();
+					if (!loop) {
+						try {
+							this.wait();
+						} catch (InterruptedException ie) {
 							leave = true;
-							continue;
 						}
 					}
-				}
-				catch ( InvalidMidiDataException imde )
-				{
-					Game.addReport( "Invalid Midi data for " + currentMidiFile );
-				}
-				catch ( IOException ioe )
-				{
-					Game.addReport( "I/O Error for " + currentMidiFile );
-					ioe.printStackTrace( );
+				} catch (InvalidMidiDataException imde) {
+					Game.addReport("Invalid Midi data for " + currentMidiFile);
+				} catch (IOException ioe) {
+					Game.addReport("I/O Error for " + currentMidiFile);
+					ioe.printStackTrace();
 				}
 			}
 		}
