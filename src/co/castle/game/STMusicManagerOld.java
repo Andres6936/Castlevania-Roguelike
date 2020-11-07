@@ -5,22 +5,20 @@ import java.util.Hashtable;
 import sz.midi.MidisLoader;
 import sz.mp3.JLayerMP3Player;
 
-public class STMusicManagerOld
-{
+public class STMusicManagerOld {
 	// private Thread currentMidiThread;
-	private Thread currentMP3Thread;
+	private final Thread currentMP3Thread;
 	private boolean enabled;
-	private Hashtable musics = new Hashtable( );
+	private Hashtable<String, String> musics = new Hashtable<>();
 	private String playing = "__nuthin";
 
 	public static STMusicManagerOld thus;
 
 	private static MidisLoader midiPlayer;
 
-	public STMusicManagerOld( )
-	{
-		midiPlayer = new MidisLoader( );
-		JLayerMP3Player mp3Player = new JLayerMP3Player( );
+	public STMusicManagerOld() {
+		midiPlayer = new MidisLoader();
+		JLayerMP3Player mp3Player = new JLayerMP3Player();
 		// currentMidiThread = new Thread(midiPlayer);
 		currentMP3Thread = new Thread( mp3Player );
 		currentMP3Thread.start( );
@@ -29,11 +27,6 @@ public class STMusicManagerOld
 	public static void initManager( )
 	{
 		thus = new STMusicManagerOld( );
-	}
-
-	public void addMusic( String levelType, String fileName )
-	{
-		musics.put( levelType, fileName );
 	}
 
 	public void die( )
@@ -74,29 +67,12 @@ public class STMusicManagerOld
 		}
 	}
 
-	public void playForLevel( int levelNo, String levelType )
-	{
-		String bgMusic = (String) musics.get( levelType );
-		if ( bgMusic != null )
-		{
-			play( bgMusic );
-		}
-		else
-		{
-			stopMusic( );
-		}
-	}
-
-	public void playKey( String key )
-	{
-		String bgMusic = (String) musics.get( key );
-		if ( bgMusic != null )
-		{
-			play( bgMusic );
-		}
-		else
-		{
-			stopMusic( );
+	public void playKey( String key ) {
+		String bgMusic = musics.get(key);
+		if (bgMusic != null) {
+			play(bgMusic);
+		} else {
+			stopMusic();
 		}
 	}
 
