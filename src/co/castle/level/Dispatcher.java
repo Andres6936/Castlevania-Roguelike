@@ -5,21 +5,16 @@ import java.util.Vector;
 import co.castle.actor.Actor;
 import sz.util.SZPriorityQueue;
 
-public class Dispatcher implements java.io.Serializable
-{
-	private SZPriorityQueue actors;
+public class Dispatcher implements java.io.Serializable {
+	private final SZPriorityQueue actors;
 	private int countdown;
 	private Actor fixed;
 
-	public static int ixx = 0;
-
-	public Dispatcher( )
-	{
-		actors = new SZPriorityQueue( );
+	public Dispatcher() {
+		actors = new SZPriorityQueue();
 	}
 
-	public void addActor( Actor what )
-	{
+	public void addActor(Actor what) {
 		if ( !actors.contains( what ) )
 			actors.enqueue( what );
 	}
