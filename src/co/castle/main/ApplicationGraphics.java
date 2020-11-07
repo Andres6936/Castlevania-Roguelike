@@ -61,6 +61,8 @@ public final class ApplicationGraphics extends JFrame {
 	/**
 	 * Loader the file of properties for the parameters of user interface and
 	 * path resources of application.
+	 * <p>
+	 * Post-condition: The configuration user interface has been initialized.
 	 *
 	 * @implNote We make the constructor private to prevent the use of 'new'.
 	 */
