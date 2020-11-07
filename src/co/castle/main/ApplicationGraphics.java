@@ -77,10 +77,6 @@ public final class ApplicationGraphics extends JFrame {
 			System.exit(-1);
 		}
 
-		// IMPORTANT: We have that initialize the instance of assets
-		// here, if do not make, we create a loop infinity, because
-		// Assets depend of configurationUI for can be used
-
 		// Content the asset for application
 		assets = new Asset(configurationUI);
 	}
