@@ -6,37 +6,31 @@ import java.util.Vector;
 
 import sz.util.Position;
 
-public class VFeatures implements Serializable
-{
-	private Vector temp = new Vector( );
-	private Vector tempVector = new Vector( );
+public class VFeatures implements Serializable {
+	private final Vector<Feature> temp = new Vector<>();
+	private final Vector<Feature> tempVector = new Vector<>();
 
-	Vector features;
+	Vector<Feature> features;
 
-	Hashtable mLocs;
+	Hashtable<Position, Feature> mLocs;
 
-	public VFeatures( int size )
-	{
-		features = new Vector( size );
-		mLocs = new Hashtable( size );
+	public VFeatures(int size) {
+		features = new Vector<>(size);
+		mLocs = new Hashtable<>(size);
 	}
 
-	public void addFeature( Feature what )
-	{
-		features.add( what );
+	public void addFeature(Feature what) {
+		features.add(what);
 		// mLocs.put(what, what.getPosition());
-		mLocs.put( what.getPosition( ), what );
+		mLocs.put(what.getPosition(), what);
 	}
 
-	public Vector getAllOf( String featureID )
-	{
-		tempVector.removeAllElements( );
-		for ( int i = 0; i < features.size( ); i++ )
-		{
-			Feature f = (Feature) features.elementAt( i );
-			if ( f.getID( ).equals( featureID ) )
-			{
-				tempVector.add( f );
+	public Vector<Feature> getAllOf(String featureID) {
+		tempVector.removeAllElements();
+		for (int i = 0; i < features.size(); i++) {
+			Feature f = features.elementAt(i);
+			if (f.getID().equals(featureID)) {
+				tempVector.add(f);
 			}
 		}
 		return tempVector;
@@ -45,11 +39,9 @@ public class VFeatures implements Serializable
 	public Feature getFeatureAt( Position p )
 	{
 		// return (Feature) mLocs.get(p);
-		for ( int i = 0; i < features.size( ); i++ )
-		{
-			if ( ( (Feature) features.elementAt( i ) ).getPosition( ).equals( p ) )
-			{
-				return (Feature) features.elementAt( i );
+		for ( int i = 0; i < features.size( ); i++ ) {
+			if (features.elementAt(i).getPosition().equals(p)) {
+				return features.elementAt(i);
 			}
 		}
 		// Debug.byebye("Feature not found! "+p);
@@ -59,20 +51,17 @@ public class VFeatures implements Serializable
 	public Feature[ ] getFeaturesAt( Position p )
 	{
 		temp.clear( );
-		for ( int i = 0; i < features.size( ); i++ )
-		{
-			if ( ( (Feature) features.elementAt( i ) ).getPosition( ).equals( p ) )
-			{
-				temp.add( features.elementAt( i ) );
+		for ( int i = 0; i < features.size( ); i++ ) {
+			if (features.elementAt(i).getPosition().equals(p)) {
+				temp.add(features.elementAt(i));
 			}
 		}
 		if ( temp.size( ) == 0 )
 		{
 			return null;
 		}
-		else
-		{
-			return (Feature[ ]) temp.toArray( new Feature[ temp.size( ) ] );
+		else {
+			return temp.toArray(new Feature[temp.size()]);
 		}
 	}
 
