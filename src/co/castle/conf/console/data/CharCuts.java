@@ -5,24 +5,23 @@ import java.util.Hashtable;
 import co.castle.game.Game;
 import co.castle.ui.consoleUI.cuts.CharChat;
 
-public class CharCuts
-{
-	private Hashtable hashCuts = new Hashtable( );
+public class CharCuts {
+	private final Hashtable<String, CharChat> hashCuts = new Hashtable<>();
 
 	public static CharCuts thus;
 
 	{
-		CharChat temp = null;
-		temp = new CharChat( );
+		CharChat temp;
+		temp = new CharChat();
 		// Prologue Sequence
-		temp.add( "Count Dracula", "We meet again Vampire Killer. You are old now." );
-		temp.add( "Christopher Belmont",
-				"I came here to fulfill my fate as a Belmont; age bears no relevance." );
-		temp.add( "Count Dracula",
-				"Look at your own self! And look at me, just reborn from warm innocent blood, you stand no chance against my power!" );
-		temp.add( "Christopher Belmont",
-				"It is for that one same blood that my whip shall seek revenge against thee, dark lord." );
-		temp.add( "Count Dracula",
+		temp.add("Count Dracula", "We meet again Vampire Killer. You are old now.");
+		temp.add("Christopher Belmont",
+				"I came here to fulfill my fate as a Belmont; age bears no relevance.");
+		temp.add("Count Dracula",
+				"Look at your own self! And look at me, just reborn from warm innocent blood, you stand no chance against my power!");
+		temp.add("Christopher Belmont",
+				"It is for that one same blood that my whip shall seek revenge against thee, dark lord.");
+		temp.add("Count Dracula",
 				"HAHAHAHA! Don't make me laugh, pitiful excuse for a warrior, you shall regret your words!" );
 		hashCuts.put( "PRELUDE_DRACULA1", temp );
 		temp = new CharChat( );
@@ -249,11 +248,10 @@ public class CharCuts
 		thus = new CharCuts( );
 	}
 
-	public CharChat get( String ID )
-	{
-		CharChat ret = (CharChat) hashCuts.get( ID );
-		if ( ret == null )
-			Game.crash( "Couldnt find CharChat " + ID, new Exception( ) );
+	public CharChat get( String ID ) {
+		CharChat ret = hashCuts.get(ID);
+		if (ret == null)
+			Game.crash("Couldnt find CharChat " + ID, new Exception());
 		return ret;
 	}
 

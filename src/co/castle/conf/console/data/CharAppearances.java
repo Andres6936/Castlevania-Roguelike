@@ -4,19 +4,18 @@ import co.castle.ui.Appearance;
 import co.castle.ui.consoleUI.CharAppearance;
 import sz.csi.ConsoleSystemInterface;
 
-public class CharAppearances
-{
-	private Appearance[ ] defs = new Appearance[ ]
-	{	new CharAppearance( "NOTHING", ' ', ConsoleSystemInterface.BLACK ),
-		new CharAppearance( "VOID", ' ', ConsoleSystemInterface.BLACK ),
-		new CharAppearance( "CHRISTOPHER_B", '@', ConsoleSystemInterface.WHITE ),
-		new CharAppearance( "SOLIEYU_B", '@', ConsoleSystemInterface.RED ),
-		new CharAppearance( "BADBELMONT", '@', ConsoleSystemInterface.GRAY ),
-		new CharAppearance( "PRELUDE_DRACULA", '@', ConsoleSystemInterface.RED ),
-		new CharAppearance( "SOLIEYU_B_KID", '@', ConsoleSystemInterface.TEAL ),
-		new CharAppearance( "SONIA_B", '@', ConsoleSystemInterface.PURPLE ),
-		new CharAppearance( "VKILLER", '@', ConsoleSystemInterface.BROWN ),
-		new CharAppearance( "VKILLER_W", '@', ConsoleSystemInterface.PURPLE ),
+public class CharAppearances {
+	private final Appearance[] defs = new Appearance[]
+			{new CharAppearance("NOTHING", ' ', ConsoleSystemInterface.BLACK),
+					new CharAppearance("VOID", ' ', ConsoleSystemInterface.BLACK),
+					new CharAppearance("CHRISTOPHER_B", '@', ConsoleSystemInterface.WHITE),
+					new CharAppearance("SOLIEYU_B", '@', ConsoleSystemInterface.RED),
+					new CharAppearance("BADBELMONT", '@', ConsoleSystemInterface.GRAY),
+					new CharAppearance("PRELUDE_DRACULA", '@', ConsoleSystemInterface.RED),
+					new CharAppearance("SOLIEYU_B_KID", '@', ConsoleSystemInterface.TEAL),
+					new CharAppearance("SONIA_B", '@', ConsoleSystemInterface.PURPLE),
+					new CharAppearance("VKILLER", '@', ConsoleSystemInterface.BROWN),
+					new CharAppearance("VKILLER_W", '@', ConsoleSystemInterface.PURPLE),
 		new CharAppearance( "MERCHANT", '@', ConsoleSystemInterface.GREEN ),
 		new CharAppearance( "CLAW", '@', ConsoleSystemInterface.GREEN ),
 		new CharAppearance( "VINDELITH", '@', ConsoleSystemInterface.DARK_BLUE ),
