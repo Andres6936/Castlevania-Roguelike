@@ -58,9 +58,21 @@ public final class ApplicationGraphics extends JFrame {
 
 	// Construct
 
-	// We make the constructor private to prevent the use of 'new'
+	/**
+	 * Loader the file of properties for the parameters of user interface and
+	 * path resources of application.
+	 *
+	 * @implNote We make the constructor private to prevent the use of 'new'.
+	 */
 	private ApplicationGraphics() {
-		loaderFileConfigurationForUserInterface();
+		configurationUI = new Properties();
+
+		try {
+			configurationUI.load(new FileInputStream("properties/configurationUI.properties"));
+		} catch (IOException e) {
+			System.out.println("Error loading configuration for user interface.\n");
+			System.exit(-1);
+		}
 	}
 
 	// Method Static
@@ -116,25 +128,6 @@ public final class ApplicationGraphics extends JFrame {
 		setFocusable( true );
 
 		panelGame.init( );
-	}
-
-	/**
-	 * Loader the file of properties for the parameters of user interface and path
-	 * resources of application
-	 */
-	private void loaderFileConfigurationForUserInterface( )
-	{
-		configurationUI = new Properties( );
-
-		try
-		{
-			configurationUI.load( new FileInputStream( "properties/configurationUI.properties" ) );
-		}
-		catch ( IOException e )
-		{
-			System.out.println( "Error loading configuration for user interface.\n" );
-			System.exit( -1 );
-		}
 	}
 
 	public void addComponentToPanel( Component c )
