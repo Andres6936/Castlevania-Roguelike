@@ -162,16 +162,13 @@ public final class Service
 			UserInterface.setSingleton( new GFXUserInterface( ) );
 
 			Display.thus = new GraphicsDisplay( );
-
 			PlayerGenerator.thus = new GFXPlayerGenerator( appFrame );
 
 			EffectFactory.setSingleton( new GFXEffectFactory( ) );
 
 			( (GFXEffectFactory) EffectFactory.getSingleton( ) )
 					.setEffects( new GFXEffects( ).getEffects( ) );
-
 			ui = UserInterface.getUI( );
-
 			initializeUI( appFrame, mode );
 		}
 		else if ( mode == SWING_CONSOLE )
