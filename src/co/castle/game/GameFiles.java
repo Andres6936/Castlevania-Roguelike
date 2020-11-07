@@ -28,34 +28,28 @@ import sz.util.SerializableChecker;
 
 public class GameFiles
 {
-	static class SaveFilenameFilter implements FilenameFilter
-	{
-		private Player p;
+	static class SaveFilenameFilter implements FilenameFilter {
+		private final Player p;
 
-		public SaveFilenameFilter( Player p )
-		{
+		public SaveFilenameFilter(Player p) {
 			this.p = p;
 		}
 
-		public boolean accept( File dir, String name )
-		{
-			return name.startsWith( p.getName( ) );
+		public boolean accept(File dir, String name) {
+			return name.startsWith(p.getName());
 		}
 	}
 
-	public static Hashtable getMonsterRecord( )
-	{
-		Hashtable ret = new Hashtable( );
-		try
-		{
-			BufferedReader lectorArchivo = FileUtil.getReader( "graveyard" );
-			String line = lectorArchivo.readLine( );
-			while ( line != null )
-			{
-				String[ ] regs = line.split( "," );
-				MonsterRecord x = new MonsterRecord( );
-				x.setMonsterID( regs[ 0 ] );
-				x.setKilled( Integer.parseInt( regs[ 1 ] ) );
+	public static Hashtable<String, MonsterRecord> getMonsterRecord() {
+		Hashtable<String, MonsterRecord> ret = new Hashtable<>();
+		try {
+			BufferedReader lectorArchivo = FileUtil.getReader("graveyard");
+			String line = lectorArchivo.readLine();
+			while (line != null) {
+				String[] regs = line.split(",");
+				MonsterRecord x = new MonsterRecord();
+				x.setMonsterID(regs[0]);
+				x.setKilled(Integer.parseInt(regs[1]));
 				x.setKillers( Integer.parseInt( regs[ 2 ] ) );
 				ret.put( x.getMonsterID( ), x );
 				line = lectorArchivo.readLine( );
