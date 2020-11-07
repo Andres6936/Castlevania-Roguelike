@@ -9,27 +9,24 @@ import co.castle.player.Player;
 import sz.util.Debug;
 import sz.util.Util;
 
-public class ItemFactory
-{
-	private Vector armorDefinitions = new Vector( );
+public class ItemFactory {
+	private final Vector<ItemDefinition> armorDefinitions = new Vector<>();
 
-	private Hashtable definitions = new Hashtable( );
+	private final Hashtable<String, ItemDefinition> definitions = new Hashtable<>();
 
-	private Vector generalItemsDefinitions = new Vector( );
+	private final Vector<ItemDefinition> generalItemsDefinitions = new Vector<>();
 
-	private Vector vDefinitions;
+	private final Vector<ItemDefinition> weaponDefinitions = new Vector<>();
 
-	private Vector weaponDefinitions = new Vector( );
+	public final static Modifier[] MOD_ADDITIONAL = new Modifier[]
+			{new Modifier("OFHUNTING", " of Hunting", 2),
+					new Modifier("OFDESTRUCTION", " of Destruction", 2),
+					new Modifier("OFPUNISHMENT", " of Punishment", 2),
+					new Modifier("OFTHEMOON", "  of the Moon", 2),};
 
-	public final static Modifier[ ] MOD_ADDITIONAL = new Modifier[ ]
-	{	new Modifier( "OFHUNTING", " of Hunting", 2 ),
-		new Modifier( "OFDESTRUCTION", " of Destruction", 2 ),
-		new Modifier( "OFPUNISHMENT", " of Punishment", 2 ),
-		new Modifier( "OFTHEMOON", "  of the Moon", 2 ), };
-
-	public final static Modifier[ ] MOD_ARMOR_ADDITIONAL = new Modifier[ ]
-	{	new Modifier( "OFTHEMOON", " of the Moon", 5 ),
-		new Modifier( "OFTHESUN", " of the Sun", 5 ), };
+	public final static Modifier[] MOD_ARMOR_ADDITIONAL = new Modifier[]
+			{new Modifier("OFTHEMOON", " of the Moon", 5),
+					new Modifier("OFTHESUN", " of the Sun", 5),};
 
 	public final static Modifier[ ] MOD_ARMOR_MAGIC = new Modifier[ ]
 	{	new Modifier( "HOLY", "Holy ", 5 ), new Modifier( "SHIELDING", "Shielding ", 10 ),
@@ -332,27 +329,22 @@ public class ItemFactory
 		return def;
 	}
 
-	public void init( ItemDefinition[ ] defs )
-	{
-		vDefinitions = new Vector( );
-		for ( int i = 0; i < defs.length; i++ )
-		{
-			definitions.put( defs[ i ].getID( ), defs[ i ] );
-			vDefinitions.add( defs[ i ] );
-			switch ( defs[ i ].getEquipCategory( ) )
-			{
-			case 0:
-				generalItemsDefinitions.add( defs[ i ] );
-				break;
-			case 1:
-				armorDefinitions.add( defs[ i ] );
-				break;
-			case 2:
-				weaponDefinitions.add( defs[ i ] );
-				break;
-			case 4:
-				armorDefinitions.add( defs[ i ] );
-				break;
+	public void init( ItemDefinition[ ] defs ) {
+		for (ItemDefinition def : defs) {
+			definitions.put(def.getID(), def);
+			switch (def.getEquipCategory()) {
+				case 0:
+					generalItemsDefinitions.add(def);
+					break;
+				case 1:
+					armorDefinitions.add(def);
+					break;
+				case 2:
+					weaponDefinitions.add(def);
+					break;
+				case 4:
+					armorDefinitions.add(def);
+					break;
 			}
 		}
 
