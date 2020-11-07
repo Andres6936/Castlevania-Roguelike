@@ -205,7 +205,7 @@ public class Player extends Actor {
 	private final Vector<Item> counteredItems = new Vector<>();
 	private Hostage currentHostage;
 	private int currentMysticWeapon;
-	private final Hashtable customMessages = new Hashtable();
+	private final Hashtable<String, String> customMessages = new Hashtable<>();
 	// Vampire Killer
 	private int daggerLevel;
 	private int defense; // Temporary stat
@@ -286,9 +286,9 @@ public class Player extends Actor {
 
 	private Item weapon;
 
-	private final Hashtable weaponSkills = new Hashtable();
+	private final Hashtable<String, Counter> weaponSkills = new Hashtable<>();
 
-	private final Hashtable weaponSkillsCounters = new Hashtable();
+	private final Hashtable<String, Counter> weaponSkillsCounters = new Hashtable<>();
 
 	private int whipLevel;
 
@@ -1567,27 +1567,23 @@ public class Player extends Actor {
 		return hits;
 	}
 
-	public int getHitsMax( )
-	{
+	public int getHitsMax() {
 		return hitsMax;
 	}
 
-	public Hostage getHostage( )
-	{
+	public Hostage getHostage() {
 		return currentHostage;
 	}
 
-	public Vector getInventory( )
-	{
-		Vector ret = new Vector( );
-		Enumeration x = inventory.elements( );
-		while ( x.hasMoreElements( ) )
-			ret.add( x.nextElement( ) );
+	public Vector<Equipment> getInventory() {
+		Vector<Equipment> ret = new Vector<>();
+		Enumeration<Equipment> x = inventory.elements();
+		while (x.hasMoreElements())
+			ret.add(x.nextElement());
 		return ret;
 	}
 
-	public int getItemCount( )
-	{
+	public int getItemCount() {
 		int eqCount = 0;
 		Enumeration en = inventory.elements( );
 		while ( en.hasMoreElements( ) )
@@ -1699,17 +1695,15 @@ public class Player extends Actor {
 		VMonster monsters = level.getMonsters( );
 		Monster nearMonster = null;
 		int minDist = 150;
-		for ( int i = 0; i < monsters.size( ); i++ )
-		{
-			Monster monster = (Monster) monsters.elementAt( i );
-			if ( monster instanceof NPC )
+		for ( int i = 0; i < monsters.size( ); i++ ) {
+			Monster monster = monsters.elementAt(i);
+			if (monster instanceof NPC)
 				continue;
-			if ( monster.getPosition( ).z != getPosition( ).z )
+			if (monster.getPosition().z != getPosition().z)
 				continue;
-			int distance = Position.flatDistance( level.getPlayer( ).getPosition( ),
-					monster.getPosition( ) );
-			if ( distance < minDist )
-			{
+			int distance = Position.flatDistance(level.getPlayer().getPosition(),
+					monster.getPosition());
+			if (distance < minDist) {
 				minDist = distance;
 				nearMonster = monster;
 			}
@@ -2420,9 +2414,6 @@ public class Player extends Actor {
 
 	/**
 	 * Lands on the destination point, steping on height changing triggers
-	 * 
-	 * @param destinationPoint
-	 * @param step
 	 */
 	public void landOn( Position destinationPoint )
 	{
@@ -2493,26 +2484,23 @@ public class Player extends Actor {
 			}
 		}
 
-		if ( step && destinationCell.getHeightMod( ) != 0 )
-		{
-			setPosition( Position.add( destinationPoint,
-					new Position( 0, 0, destinationCell.getHeightMod( ) ) ) );
+		if ( step && destinationCell.getHeightMod( ) != 0 ) {
+			setPosition(Position.add(destinationPoint,
+					new Position(0, 0, destinationCell.getHeightMod())));
 		}
 
-		if ( destinationCell.isShallowWater( ) )
-		{
+		if (destinationCell.isShallowWater()) {
 			level.addMessage(
-					"You swim in the " + destinationCell.getShortDescription( ) + "!" );
+					"You swim in the " + destinationCell.getShortDescription() + "!");
 		}
-		Vector destinationItems = level.getItemsAt( destinationPoint );
-		if ( destinationItems != null )
-		{
-			if ( destinationItems.size( ) == 1 )
-				level.addMessage( "There is a "
-						+ ( (Item) destinationItems.elementAt( 0 ) ).getDescription( )
-						+ " here" );
+		Vector<Item> destinationItems = level.getItemsAt(destinationPoint);
+		if (destinationItems != null) {
+			if (destinationItems.size() == 1)
+				level.addMessage("There is a "
+						+ ((Item) destinationItems.elementAt(0)).getDescription()
+						+ " here");
 			else
-				level.addMessage( "There are several items here" );
+				level.addMessage("There are several items here");
 		}
 
 		Actor aActor = level.getActorAt( destinationPoint );
@@ -3576,16 +3564,12 @@ public class Player extends Actor {
 		return 25;
 	}
 
-	private int getLastIncrement( String key )
-	{
-		Integer current = (Integer) lastIncrements.get( key );
-		if ( current == null )
-		{
+	private int getLastIncrement( String key ) {
+		Integer current = lastIncrements.get(key);
+		if (current == null) {
 			return 0;
-		}
-		else
-		{
-			return current.intValue( );
+		} else {
+			return current;
 		}
 	}
 
