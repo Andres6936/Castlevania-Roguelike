@@ -14,14 +14,14 @@ public class Modifier implements Serializable
 
 	private boolean harmsUndead;
 
-	private String id;
+	private final String id;
 
 	private double priceModifier;
 
 	private int rangeBonus;
 	private boolean slicesThru;
-	public Modifier( String ID, String description, int chance )
-	{
+
+	public Modifier(String ID, String description, int chance) {
 		this.id = ID;
 		this.description = description;
 		this.chance = chance;
