@@ -4,25 +4,24 @@ import co.castle.ui.Appearance;
 import co.castle.ui.AppearanceFactory;
 import sz.util.Debug;
 
-public class Cell implements Cloneable, java.io.Serializable
-{
+public class Cell implements Cloneable, java.io.Serializable {
 	private transient Appearance appearance;
 	private String appearanceID;
 	private int damageOnStep;
-	private String description, shortDescription;
+	private final String description;
+	private final String shortDescription;
 	private boolean ethereal;
 	private int height;
 	private int heightMod;
-	private String ID;
+	private final String ID;
 
 	private boolean isStair, isSolid, isWater, isOpaque, shallowWater;
 	private int keyCost;
 
 	public final static int DOOR = 0;
 
-	public Cell(	String pID, String pShortDescription, String pDescription,
-					Appearance pApp )
-	{
+	public Cell(String pID, String pShortDescription, String pDescription,
+				Appearance pApp) {
 		ID = pID;
 		appearance = pApp;
 		appearanceID = pApp.getID( );
