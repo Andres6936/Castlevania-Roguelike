@@ -31,44 +31,43 @@ import sz.util.Position;
 import sz.util.SZQueue;
 import sz.util.Util;
 
-public class Level implements FOVMap, Serializable
-{
-	private Hashtable bloods = new Hashtable( );
+public class Level implements FOVMap, Serializable {
+	private final Hashtable bloods = new Hashtable();
 	private Monster boss;
 	// private Position startPosition, endPosition;
 	private String description;
 	private Dispatcher dispatcher;
-	private Vector doomedFeatures = new Vector( );
-	private MonsterSpawnInfo[ ] dwellersInfo;
-	private Hashtable exitPositions = new Hashtable( );
-	private Hashtable exits = new Hashtable( );
-	private VFeatures features;
-	private Hashtable frosts = new Hashtable( );
-	private Hashtable hashCounters = new Hashtable( );
-	private Hashtable hashFlags = new Hashtable( );
+	private final Vector<Feature> doomedFeatures = new Vector<>();
+	private MonsterSpawnInfo[] dwellersInfo;
+	private final Hashtable<String, String> exitPositions = new Hashtable<>();
+	private final Hashtable<String, Position> exits = new Hashtable<>();
+	private final VFeatures features;
+	private final Hashtable<String, Counter> frosts = new Hashtable<>();
+	private final Hashtable<String, Counter> hashCounters = new Hashtable<>();
+	private final Hashtable<String, Boolean> hashFlags = new Hashtable<>();
 	private boolean haunted;
 	private String ID;
-	private MonsterSpawnInfo[ ] inhabitants;
+	private MonsterSpawnInfo[] inhabitants;
 	private boolean isCandled;
 	private boolean isDay;
 
 	private boolean isHostageSafe;
 	private boolean isRutinary = true;
 
-	private Hashtable items = new Hashtable( );
+	private final Hashtable<String, Vector<Item>> items = new Hashtable<>();
 	private int levelNumber;
-	private Position lightRunner = new Position( 0, 0 );
-	private Vector lightSources = new Vector( );
-	private boolean[ ][ ][ ] lit;
+	private final Position lightRunner = new Position(0, 0);
+	private final Vector<Feature> lightSources = new Vector<>();
+	private boolean[][][] lit;
 
-	private Cell[ ][ ][ ] map;
+	private Cell[][][] map;
 
 	private String mapLocationKey;
 
 	private SZQueue messagesneffects;
 	private LevelMetaData metaData;
 
-	private VMonster monsters;
+	private final VMonster monsters;
 
 	private String musicKeyMorning;
 
@@ -78,7 +77,7 @@ public class Level implements FOVMap, Serializable
 
 	private Player player;
 
-	private boolean[ ][ ][ ] remembered;
+	private boolean[][][] remembered;
 
 	private Respawner respawner;
 	// private int keyCounter;
@@ -86,22 +85,22 @@ public class Level implements FOVMap, Serializable
 	 * public void keyInminent(){ keyCounter = Util.rand(1,5); }
 	 */
 
-	private Hashtable smartFeatures = new Hashtable( );
+	private final Hashtable<String, SmartFeature> smartFeatures = new Hashtable<>();
 
 	private Vector tempActors;
 
 	// private VEffect effects;
 
-	private Position tempSeen = new Position( 0, 0 );
+	private final Position tempSeen = new Position(0, 0);
 
 	private int timeCounter;
 
-	private Unleasher[ ] unleashers = new Unleasher[ ]
-	{ };
+	private Unleasher[] unleashers = new Unleasher[]
+			{};
 
-	private boolean[ ][ ][ ] visible;
+	private boolean[][][] visible;
 
-	Position tempFeaturePosition = new Position( 0, 0 );
+	Position tempFeaturePosition = new Position(0, 0);
 
 	public final static int MORNING = 1, NOON = 2, AFTERNOON = 3, DUSK = 4, NIGHT = 5,
 			DAWN = 6;
@@ -204,15 +203,13 @@ public class Level implements FOVMap, Serializable
 		frosts.put( where.toString( ), new Counter( frostness ) );
 	}
 
-	public void addItem( Position where, Item what )
-	{
-		Vector stack = (Vector) items.get( where.toString( ) );
-		if ( stack == null )
-		{
-			stack = new Vector( 5 );
-			items.put( where.toString( ), stack );
+	public void addItem( Position where, Item what ) {
+		Vector<Item> stack = items.get(where.toString());
+		if (stack == null) {
+			stack = new Vector<>(5);
+			items.put(where.toString(), stack);
 		}
-		stack.add( what );
+		stack.add(what);
 	}
 
 	public void addMessage( Message what )
@@ -256,29 +253,26 @@ public class Level implements FOVMap, Serializable
 		addSmartFeature( x );
 	}
 
-	public void anihilate( )
-	{
-		smartFeatures.clear( );
-		Vector mounds = features.getAllOf( "MOUND" );
-		for ( int i = 0; i < mounds.size( ); i++ )
-			features.removeFeature( (Feature) mounds.elementAt( i ) );
-		monsters.removeAll( );
-		dispatcher.removeAll( );
-		dispatcher.addActor( player );
+	public void anihilate( ) {
+		smartFeatures.clear();
+		Vector<Feature> mounds = features.getAllOf("MOUND");
+		for (int i = 0; i < mounds.size(); i++)
+			features.removeFeature(mounds.elementAt(i));
+		monsters.removeAll();
+		dispatcher.removeAll();
+		dispatcher.addActor(player);
 	}
 
 	public void anihilateMonsters( )
 	{
-		for ( int i = 0; i < monsters.size( ); i++ )
-		{
-			if ( boss != null && monsters.elementAt( i ) == boss )
+		for ( int i = 0; i < monsters.size( ); i++ ) {
+			if (boss != null && monsters.elementAt(i) == boss)
 				continue;
-			if ( monsters.elementAt( i ).getID( ).equals( "IGOR" ) )
+			if (monsters.elementAt(i).getID().equals("IGOR"))
 				continue;
-			if ( ( monsters.elementAt( i ) instanceof NPC ) == false )
-			{
-				dispatcher.removeActor( monsters.elementAt( i ) );
-				monsters.remove( monsters.elementAt( i ) );
+			if (!(monsters.elementAt(i) instanceof NPC)) {
+				dispatcher.removeActor(monsters.elementAt(i));
+				monsters.remove(monsters.elementAt(i));
 				i--;
 			}
 		}
@@ -299,24 +293,18 @@ public class Level implements FOVMap, Serializable
 
 	public boolean canFloatUpward( Position where )
 	{
-		if ( where.z != 0 )
-		{
-			Position deep = new Position( where );
+		if ( where.z != 0 ) {
+			Position deep = new Position(where);
 			deep.z--;
-			if ( getMapCell( deep ).isShallowWater( ) )
-			{
-				return true;
-			}
+			return getMapCell(deep).isShallowWater();
 		}
 		return false;
 	}
 
-	public void checkUnleashers( Game game )
-	{
-		for ( int i = 0; i < unleashers.length; i++ )
-		{
-			if ( unleashers[ i ].enabled( ) )
-				unleashers[ i ].unleash( this, game );
+	public void checkUnleashers( Game game ) {
+		for (Unleasher unleasher : unleashers) {
+			if (unleasher.enabled())
+				unleasher.unleash(this, game);
 		}
 	}
 
@@ -344,11 +332,10 @@ public class Level implements FOVMap, Serializable
 		visible[ player.getPosition( ).z ][ x ][ y ] = false;
 	}
 
-	public void destroyCandles( )
-	{
-		Vector candles = features.getAllOf( "CANDLE" );
-		for ( int i = 0; i < candles.size( ); i++ )
-			destroyFeature( (Feature) candles.elementAt( i ) );
+	public void destroyCandles( ) {
+		Vector<Feature> candles = features.getAllOf("CANDLE");
+		for (int i = 0; i < candles.size(); i++)
+			destroyFeature(candles.elementAt(i));
 	}
 
 	public void destroyFeature( Feature what )
@@ -358,24 +345,20 @@ public class Level implements FOVMap, Serializable
 		{
 			lightSources.remove( what );
 			lightAt( what.getPosition( ), what.getLight( ), false );
-			for ( int i = 0; i < lightSources.size( ); i++ )
-			{
-				Feature lightSource = (Feature) lightSources.elementAt( i );
-				if ( Position.distance( what.getPosition( ),
-						lightSource.getPosition( ) ) < 10 )
-				{
-					lightAt( lightSource.getPosition( ), lightSource.getLight( ), true );
+			for ( int i = 0; i < lightSources.size( ); i++ ) {
+				Feature lightSource = lightSources.elementAt(i);
+				if (Position.distance(what.getPosition(),
+						lightSource.getPosition()) < 10) {
+					lightAt(lightSource.getPosition(), lightSource.getLight(), true);
 				}
 			}
 		}
 		features.removeFeature( what );
 	}
 
-	public void disableTriggers( )
-	{
-		for ( int i = 0; i < unleashers.length; i++ )
-		{
-			unleashers[ i ].disable( );
+	public void disableTriggers( ) {
+		for (Unleasher unleasher : unleashers) {
+			unleasher.disable();
 		}
 	}
 
@@ -418,30 +401,26 @@ public class Level implements FOVMap, Serializable
 	{
 		if ( isDay( ) )
 		{
-			switch ( (int) Math.round( timeCounter / ( Game.DAY_LENGTH / 3.0D ) ) )
-			{
-			case 0:
-				return AFTERNOON;
-			case 1:
-				return NOON;
-			case 2:
-				return MORNING;
-			case 3:
-				return MORNING;
+			switch ( (int) Math.round( timeCounter / ( Game.DAY_LENGTH / 3.0D ) ) ) {
+				case 0:
+					return AFTERNOON;
+				case 1:
+					return NOON;
+				case 2:
+				case 3:
+					return MORNING;
 			}
 		}
 		else
 		{
-			switch ( (int) Math.round( timeCounter / ( Game.DAY_LENGTH / 3.0D ) ) )
-			{
-			case 0:
-				return DAWN;
-			case 1:
-				return NIGHT;
-			case 2:
-				return DUSK;
-			case 3:
-				return DUSK;
+			switch ( (int) Math.round( timeCounter / ( Game.DAY_LENGTH / 3.0D ) ) ) {
+				case 0:
+					return DAWN;
+				case 1:
+					return NIGHT;
+				case 2:
+				case 3:
+					return DUSK;
 			}
 		}
 		return -1;
@@ -512,14 +491,12 @@ public class Level implements FOVMap, Serializable
 		return dwellersInfo;
 	}
 
-	public Position getExitFor( String levelID )
-	{
-		return (Position) exits.get( levelID );
+	public Position getExitFor( String levelID ) {
+		return exits.get(levelID);
 	}
 
-	public String getExitOn( Position pos )
-	{
-		return (String) exitPositions.get( pos.toString( ) );
+	public String getExitOn( Position pos ) {
+		return exitPositions.get(pos.toString());
 	}
 
 	public Feature getFeatureAt( int x, int y, int z )
@@ -540,13 +517,9 @@ public class Level implements FOVMap, Serializable
 		return features.getFeaturesAt( x );
 	}
 
-	public boolean getFlag( String flagID )
-	{
-		Boolean flag = (Boolean) hashFlags.get( flagID );
-		if ( flag == null || !flag.booleanValue( ) )
-			return false;
-		else
-			return true;
+	public boolean getFlag( String flagID ) {
+		Boolean flag = (Boolean) hashFlags.get(flagID);
+		return flag != null && flag;
 	}
 
 	public int getFrostAt( Position where )
@@ -558,28 +531,24 @@ public class Level implements FOVMap, Serializable
 			return 0;
 	}
 
-	public int getHeight( )
-	{
-		return map[ 0 ][ 0 ].length;
+	public int getHeight( ) {
+		return map[0][0].length;
 
 	}
 
-	public String getID( )
-	{
+	public String getID() {
 		return ID;
 	}
 
-	public Vector getItemsAt( Position where )
-	{
-		return (Vector) items.get( where.toString( ) );
+	public Vector<Item> getItemsAt(Position where) {
+		return items.get(where.toString());
 	}
 
-	public int getLevelNumber( )
-	{
+	public int getLevelNumber() {
 		return levelNumber;
 	}
 
-	public Cell getMapCell( int x, int y, int z )
+	public Cell getMapCell(int x, int y, int z)
 	{
 		if ( z < map.length && x < map[ 0 ].length && y < map[ 0 ][ 0 ].length && x >= 0
 				&& y >= 0 && z >= 0 )
@@ -881,10 +850,9 @@ public class Level implements FOVMap, Serializable
 
 	public void lightLights( )
 	{
-		for ( int i = 0; i < lightSources.size( ); i++ )
-		{
-			Feature f = (Feature) lightSources.elementAt( i );
-			lightAt( f.getPosition( ), f.getLight( ), true );
+		for ( int i = 0; i < lightSources.size( ); i++ ) {
+			Feature f = lightSources.elementAt(i);
+			lightAt(f.getPosition(), f.getLight(), true);
 		}
 	}
 
@@ -992,21 +960,18 @@ public class Level implements FOVMap, Serializable
 		hashCounters.remove( id );
 	}
 
-	public void removeExit( String exitID )
-	{
-		Position where = (Position) exits.get( exitID );
-		exitPositions.remove( where.toString( ) );
-		exits.remove( exitID );
+	public void removeExit( String exitID ) {
+		Position where = exits.get(exitID);
+		exitPositions.remove(where.toString());
+		exits.remove(exitID);
 	}
 
-	public void removeItemFrom( Item what, Position where )
-	{
-		Vector stack = (Vector) items.get( where.toString( ) );
-		if ( stack != null )
-		{
-			stack.remove( what );
-			if ( stack.size( ) == 0 )
-				items.values( ).remove( stack );
+	public void removeItemFrom( Item what, Position where ) {
+		Vector<Item> stack = items.get(where.toString());
+		if (stack != null) {
+			stack.remove(what);
+			if (stack.size() == 0)
+				items.values().remove(stack);
 		}
 	}
 
@@ -1122,10 +1087,9 @@ public class Level implements FOVMap, Serializable
 		this.dwellersInfo = dwellerIDs;
 	}
 
-	public void setFlag( String flagID, boolean value )
-	{
-		hashFlags.remove( flagID );
-		hashFlags.put( flagID, new Boolean( value ) );
+	public void setFlag( String flagID, boolean value ) {
+		hashFlags.remove(flagID);
+		hashFlags.put(flagID, value);
 	}
 
 	public void setHaunted( boolean haunted )
@@ -1330,9 +1294,8 @@ public class Level implements FOVMap, Serializable
 		 */
 		if ( hashCounters.size( ) > 0 )
 		{
-			for ( int i = 0; i < hashCounters.size( ); i++ )
-			{
-				( (Counter) hashCounters.elements( ).nextElement( ) ).reduce( );
+			for ( int i = 0; i < hashCounters.size( ); i++ ) {
+				hashCounters.elements().nextElement().reduce();
 			}
 		}
 		reduceFrosts( );
@@ -1341,18 +1304,15 @@ public class Level implements FOVMap, Serializable
 		 * doomedFeatures.elementAt(i); f.setFaint(f.getFaint()-1); if (f.getFaint() <=
 		 * 0){ doomedFeatures.remove(f); destroyFeature(f); } }
 		 */
-		for ( int i = 0; i < doomedFeatures.size( ); i++ )
-		{
-			Feature f = (Feature) doomedFeatures.elementAt( i );
-			f.setFaint( f.getFaint( ) - 1 );
+		for ( int i = 0; i < doomedFeatures.size( ); i++ ) {
+			Feature f = doomedFeatures.elementAt(i);
+			f.setFaint(f.getFaint() - 1);
 		}
-		for ( int i = 0; i < doomedFeatures.size( ); i++ )
-		{
-			Feature f = (Feature) doomedFeatures.elementAt( i );
-			if ( f.getFaint( ) <= 0 )
-			{
-				doomedFeatures.remove( f );
-				destroyFeature( f );
+		for ( int i = 0; i < doomedFeatures.size( ); i++ ) {
+			Feature f = doomedFeatures.elementAt(i);
+			if (f.getFaint() <= 0) {
+				doomedFeatures.remove(f);
+				destroyFeature(f);
 				i--;
 			}
 		}
@@ -1378,24 +1338,20 @@ public class Level implements FOVMap, Serializable
 		}
 	}
 
-	private void reduceFrosts( )
-	{
-		Enumeration counters = frosts.elements( );
-		while ( counters.hasMoreElements( ) )
-		{
-			Counter counter = (Counter) counters.nextElement( );
-			counter.reduce( );
+	private void reduceFrosts( ) {
+		Enumeration<Counter> counters = frosts.elements();
+		while (counters.hasMoreElements()) {
+			Counter counter = counters.nextElement();
+			counter.reduce();
 		}
 
-		Enumeration keys = frosts.keys( );
-		while ( keys.hasMoreElements( ) )
-		{
-			Object key = keys.nextElement( );
-			if ( ( (Counter) frosts.get( key ) ).isOver( ) )
-			{
-				addMessage( "The ice melts away!" );
-				player.land( );
-				frosts.remove( key );
+		Enumeration<String> keys = frosts.keys();
+		while (keys.hasMoreElements()) {
+			Object key = keys.nextElement();
+			if (frosts.get(key).isOver()) {
+				addMessage("The ice melts away!");
+				player.land();
+				frosts.remove(key);
 			}
 		}
 	}
