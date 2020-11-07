@@ -44,10 +44,9 @@ public class WanderToPlayerAI extends MonsterAI
 
 		if ( aMonster.getEnemy( ) != null )
 		{
-			if ( !aMonster.getLevel( ).getMonsters( )
-					.contains( (Monster) aMonster.getEnemy( ) ) )
-			{
-				aMonster.setEnemy( null );
+			if (!aMonster.getLevel().getMonsters()
+					.contains(aMonster.getEnemy())) {
+				aMonster.setEnemy(null);
 			}
 		}
 
@@ -59,7 +58,7 @@ public class WanderToPlayerAI extends MonsterAI
 			if ( aMonster.getEnemy( ) != null )
 			{
 				directionToMonster = aMonster
-						.stareMonster( (Monster) aMonster.getEnemy( ) );
+						.stareMonster(aMonster.getEnemy());
 			}
 			else
 			{
@@ -144,15 +143,13 @@ public class WanderToPlayerAI extends MonsterAI
 				if ( rangedAttacks != null )
 				{
 					// Try
-					for ( int i = 0; i < rangedAttacks.size( ); i++ )
-					{
-						RangedAttack ra = (RangedAttack) rangedAttacks.elementAt( i );
-						if ( distanceToPlayer <= ra.getRange( ) )
-							if ( Util.chance( ra.getFrequency( ) ) )
-							{
-								Action ret = ActionFactory.getActionFactory( )
-										.getAction( ra.getAttackId( ) );
-								ret.setDirection( directionToPlayer );
+					for ( int i = 0; i < rangedAttacks.size( ); i++ ) {
+						RangedAttack ra = rangedAttacks.elementAt(i);
+						if (distanceToPlayer <= ra.getRange())
+							if (Util.chance(ra.getFrequency())) {
+								Action ret = ActionFactory.getActionFactory()
+										.getAction(ra.getAttackId());
+								ret.setDirection(directionToPlayer);
 								return ret;
 							}
 					}
