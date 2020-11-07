@@ -100,10 +100,9 @@ public class BasicMonsterAI extends MonsterAI
 		// If monster has an enemy, check if he is still at the level
 		if ( aMonster.getEnemy( ) != null )
 		{
-			if ( !aMonster.getLevel( ).getMonsters( )
-					.contains( (Monster) aMonster.getEnemy( ) ) )
-			{
-				aMonster.setEnemy( null );
+			if (!aMonster.getLevel().getMonsters()
+					.contains(aMonster.getEnemy())) {
+				aMonster.setEnemy(null);
 			}
 		}
 		// If monster has an enemy, or is charmed
@@ -115,7 +114,7 @@ public class BasicMonsterAI extends MonsterAI
 			if ( aMonster.getEnemy( ) != null )
 			{
 				directionToMonster = aMonster
-						.stareMonster( (Monster) aMonster.getEnemy( ) );
+						.stareMonster(aMonster.getEnemy());
 			}
 			else
 			{
@@ -229,16 +228,16 @@ public class BasicMonsterAI extends MonsterAI
 					{
 						// If the player is on attack range, and is either a direct attack
 						// or we are at the same height as the player, and randomly
-						if ( element.getRange( ) >= playerDistance
-								&& Util.chance( element.getFrequency( ) )
-								&& ( element
-										.getAttackType( ) == MonsterMissile.TYPE_DIRECT
-										|| ( element
-												.getAttackType( ) != MonsterMissile.TYPE_DIRECT
-												&& aMonster
-														.getStandingHeight( ) == aMonster
-																.getLevel( ).getPlayer( )
-																.getStandingHeight( ) ) ) )
+						if (element.getRange() >= playerDistance
+								&& Util.chance(element.getFrequency())
+								&& (element
+								.getAttackType().equals(MonsterMissile.TYPE_DIRECT)
+								|| (!element
+								.getAttackType().equals(MonsterMissile.TYPE_DIRECT)
+								&& aMonster
+								.getStandingHeight() == aMonster
+								.getLevel().getPlayer()
+								.getStandingHeight())) )
 						{
 							Action ret = ActionFactory.getActionFactory( )
 									.getAction( element.getAttackId( ) );
@@ -246,9 +245,8 @@ public class BasicMonsterAI extends MonsterAI
 							// another attack
 							if ( element.getChargeCounter( ) > 0 )
 							{
-								if ( chargeCounter > 0 )
-								{
-									continue otherAttack;
+								if ( chargeCounter > 0 ) {
+									continue;
 								}
 								else
 								{
@@ -319,11 +317,7 @@ public class BasicMonsterAI extends MonsterAI
 	}
 
 	/**
-	 * Defines if a monster can walk toward a direction
-	 * 
-	 * @param aMonster
-	 * @param direction
-	 * @return
+	 * Defines if a monster can walk toward a direction.
 	 */
 	private boolean canWalkTowards( Monster aMonster, int direction )
 	{
@@ -335,19 +329,11 @@ public class BasicMonsterAI extends MonsterAI
 		{
 			return false;
 		}
-		if ( aMonster.getLevel( ).isAir( destination ) )
-		{
-			if ( aMonster.isEthereal( ) || aMonster.isFlying( ) )
-				return true;
-			else
-				return false;
+		if ( aMonster.getLevel( ).isAir( destination)) {
+			return aMonster.isEthereal() || aMonster.isFlying();
 		}
-		if ( !aMonster.getLevel( ).isWalkable( destination ) )
-		{
-			if ( aMonster.isEthereal( ) )
-				return true;
-			else
-				return false;
+		if ( !aMonster.getLevel( ).isWalkable( destination)) {
+			return aMonster.isEthereal();
 		}
 		else
 			return true;
@@ -368,20 +354,16 @@ public class BasicMonsterAI extends MonsterAI
 	 */
 	private void fillAlternateDirections(	OutParameter direction1,
 											OutParameter direction2,
-											int generalDirection )
-	{
-		Position var = Action.directionToVariation( generalDirection );
-		Position d1 = null;
-		Position d2 = null;
-		if ( var.x == 0 )
-		{
-			d1 = new Position( -1, var.y );
-			d2 = new Position( 1, var.y );
-		}
-		else if ( var.y == 0 )
-		{
-			d1 = new Position( var.x, -1 );
-			d2 = new Position( var.x, 1 );
+											int generalDirection) {
+		Position var = Action.directionToVariation(generalDirection);
+		Position d1;
+		Position d2;
+		if (var.x == 0) {
+			d1 = new Position(-1, var.y);
+			d2 = new Position(1, var.y);
+		} else if (var.y == 0) {
+			d1 = new Position(var.x, -1);
+			d2 = new Position(var.x, 1);
 		}
 		else
 		{
