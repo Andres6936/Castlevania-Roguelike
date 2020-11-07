@@ -32,6 +32,10 @@ public final class ApplicationGraphics extends JFrame {
 
 	private static final long serialVersionUID = 3339068814173683092L;
 
+	private final Position caretPosition = new Position(0, 0);
+
+	private final Hashtable<String, Image> images = new Hashtable<>();
+
 	// Fields Static
 
 	public static Asset assets;
@@ -39,10 +43,6 @@ public final class ApplicationGraphics extends JFrame {
 	// Fields
 
 	private Keyboard keyboard;
-
-	private final Position caretPosition = new Position(0, 0);
-
-	private final Hashtable<String, Image> images = new Hashtable<>();
 
 	private Panel panelGame;
 
