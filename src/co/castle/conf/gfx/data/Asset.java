@@ -11,23 +11,37 @@ import java.util.Properties;
 /**
  * In this class is saved the configuration parameters and asset for user
  * interface, grant part of this field are constant
- * 
+ *
  * @author Tuukka Turto
  */
-public final class Asset
-{
+public final class Asset {
 	public final float SCREEN_SCALE;
 
+	/**
+	 * Screen width in pixels.
+	 */
 	public final int SCREEN_WIDTH;
+
+	/**
+	 * Screen height in pixels.
+	 */
 	public final int SCREEN_HEIGHT;
+
+	/**
+	 * Screen width in tiles.
+	 */
 	public final int SCREEN_WIDTH_IN_TILES;
+
+	/**
+	 * Screen height in tiles.
+	 */
 	public final int SCREEN_HEIGHT_IN_TILES;
 
-    final int BIG_TILE_WIDTH;
+	final int BIG_TILE_WIDTH;
 	public final int HALF_TILE_WIDTH;
 	public final int NORMAL_TILE_WIDTH;
 
-    final int CELL_HEIGHT;
+	final int CELL_HEIGHT;
 
 	public BufferedImage IMAGE_TITLE;
 	public BufferedImage IMAGE_PROLOGUE;
@@ -73,12 +87,12 @@ public final class Asset
 	// We make the constructor private to prevent the use of 'new'
     public Asset( final Properties configuration )
 	{
-		SCREEN_SCALE = Float.parseFloat( configuration.getProperty( "SCREEN_SCALE" ) );
+		SCREEN_SCALE = Float.parseFloat(configuration.getProperty("SCREEN_SCALE"));
 
 		SCREEN_WIDTH = Integer.parseInt(configuration.getProperty("WINDOW_WIDTH"));
 		SCREEN_HEIGHT = Integer.parseInt(configuration.getProperty("WINDOW_HEIGHT"));
-		SCREEN_WIDTH_IN_TILES = Integer.parseInt(configuration.getProperty("XRANGE"));
-		SCREEN_HEIGHT_IN_TILES = Integer.parseInt(configuration.getProperty("YRANGE"));
+		SCREEN_WIDTH_IN_TILES = Integer.parseInt(configuration.getProperty("SCREEN_WIDTH_TILES"));
+		SCREEN_HEIGHT_IN_TILES = Integer.parseInt(configuration.getProperty("SCREEN_HEIGHT_TILES"));
 
 		BIG_TILE_WIDTH = Integer.parseInt(configuration.getProperty("BIG_TILESIZE"));
 		HALF_TILE_WIDTH = Integer.parseInt(configuration.getProperty("HALF_TILESIZE"));
