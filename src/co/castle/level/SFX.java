@@ -3,21 +3,18 @@ package co.castle.level;
 import co.castle.action.Action;
 import co.castle.ui.effects.EffectFactory;
 
-public class SFX extends Action
-{
-	private int effect;
+public class SFX extends Action {
 
-	private static SFX singleton = new SFX( );
+	private static final SFX singleton = new SFX();
 
 	private final static int THUNDER = 1;
 
-	public static SFX getThunder( )
-	{
-		singleton.setEffect( THUNDER );
+	public static SFX getThunder() {
+		singleton.setEffect(THUNDER);
 		return singleton;
 	}
-	public void execute( )
-	{
+
+	public void execute() {
 		Level level = performer.getLevel( );
 		// level.addEffect(new
 		// FlashEffect(performer.getLevel().getPlayer().getPosition(),
@@ -34,6 +31,5 @@ public class SFX extends Action
 
 	public void setEffect( int pEffect )
 	{
-		effect = pEffect;
 	}
 }
