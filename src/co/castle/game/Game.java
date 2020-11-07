@@ -704,36 +704,32 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 	}
 
 	private void processLevelData( String[ ][ ] order, int startLevelNumber ) {
-		Vector levels = new Vector(5);
+		Vector<String> levels = new Vector<>(5);
 		Vector<String> numbered = new Vector<>(5);
 		int levelCount = startLevelNumber;
-		for (int i = 0; i < order.length; i++) {
+		for (String[] strings : order) {
 			int n = Util.rand(3, 6);
-			if (order[i][1].indexOf("ONE") != -1)
+			if (strings[1].contains("ONE"))
 				n = 1;
 			for (int j = 0; j < n; j++) {
-				levels.add(order[i][0] + j);
-				if (order[i][1].indexOf("NONUMBER") == -1)
-					numbered.add( "yes" );
+				levels.add(strings[0] + j);
+				if (!strings[1].contains("NONUMBER"))
+					numbered.add("yes");
 				else
-					numbered.add( "no" );
+					numbered.add("no");
 			}
 		}
 
-		for ( int i = 0; i < levels.size( ); i++ )
-		{
-			LevelMetaData md = new LevelMetaData( );
-			md.setLevelID( (String) levels.get( i ) );
-			if ( i > 0 )
-			{
-				md.addExits( (String) levels.get( i - 1 ), "_BACK" );
+		for ( int i = 0; i < levels.size( ); i++ ) {
+			LevelMetaData md = new LevelMetaData();
+			md.setLevelID(levels.get(i));
+			if (i > 0) {
+				md.addExits(levels.get(i - 1), "_BACK");
 			}
-			if ( i < levels.size( ) - 1 )
-			{
-				md.addExits( (String) levels.get( i + 1 ), "_NEXT" );
+			if (i < levels.size() - 1) {
+				md.addExits(levels.get(i + 1), "_NEXT");
 			}
-			if ( numbered.get( i ).equals( "yes" ) )
-			{
+			if (numbered.get(i).equals("yes")) {
 				md.setLevelNumber( levelCount );
 				levelCount++;
 			}
