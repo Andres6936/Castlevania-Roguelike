@@ -76,6 +76,13 @@ public final class ApplicationGraphics extends JFrame {
 			System.out.println("Error loading configuration for user interface.\n");
 			System.exit(-1);
 		}
+
+		// IMPORTANT: We have that initialize the instance of assets
+		// here, if do not make, we create a loop infinity, because
+		// Assets depend of configurationUI for can be used
+
+		// Content the asset for application
+		assets = new Asset(configurationUI);
 	}
 
 	// Method Static
@@ -101,13 +108,6 @@ public final class ApplicationGraphics extends JFrame {
 	// Method
 
 	public void start() {
-		// IMPORTANT: We have that initialize the instance of assets
-		// here, if do not make, we create a loop infinity, because
-		// Assets depend of configurationUI for can be used
-
-		// Content the asset for application
-		assets = new Asset(configurationUI);
-
 		Dimension size = Toolkit.getDefaultToolkit( ).getScreenSize( );
 		setBounds( ( size.width - assets.SCREEN_WIDTH ) / 2, ( size.height - assets.SCREEN_HEIGHT ) / 2,
                    assets.SCREEN_WIDTH, assets.SCREEN_HEIGHT );
