@@ -84,7 +84,7 @@ public final class ApplicationGraphics extends JFrame {
 	 * @return Instance of ApplicationFrame
 	 */
 	public static ApplicationGraphics getInstance() {
-		return instance == null ? new ApplicationGraphics() : instance;
+		return instance == null ? instance = new ApplicationGraphics() : instance;
 	}
 
 	// Method Synchronized
