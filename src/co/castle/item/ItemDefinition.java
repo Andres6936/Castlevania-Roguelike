@@ -5,85 +5,85 @@ import java.util.Hashtable;
 import co.castle.ui.Appearance;
 import co.castle.ui.AppearanceFactory;
 
-public class ItemDefinition
-{
+public class ItemDefinition {
 	// Weapon Categories
 
-	private Appearance appearance;
+	private final Appearance appearance;
 
-	private int attack;
+	private final int attack;
 
-	private int attackCost;
+	private final int attackCost;
 
-	private String attackSFX;
+	private final String attackSFX;
 
-	private String attackSound;
+	private final String attackSound;
 
-	private int coolness;
+	private final int coolness;
 	/*
 	 * private ListItem sightListItem; Debe ser calculado por la UI, y guardado en
 	 * esta
 	 */
 
-	private int coverage;
+	private final int coverage;
 
-	private int defense;
-	private String description;;
+	private final int defense;
+	private final String description;
+	;
 
-	private String effectOnAcquire;
+	private final String effectOnAcquire;
 
 	private String effectOnStep;
-	private String effectOnUse;
-	private int equipCategory;
+	private final String effectOnUse;
+	private final int equipCategory;
 	// private String throwMessage;
-	private int featureTurns;
-	private boolean fixedMaterial;
-	private int goldPrice;
-	private boolean harmsUndead;
+	private final int featureTurns;
+	private final boolean fixedMaterial;
+	private final int goldPrice;
+	private final boolean harmsUndead;
 	// Attributes
-	private String ID;
+	private final String ID;
 	private String menuDescription;
-	private int pinLevel;
-	private String placedSmartFeature;
-	private int range;
-	private int rarity;
+	private final int pinLevel;
+	private final String placedSmartFeature;
+	private final int range;
+	private final int rarity;
 	private int reloadCostGold;
-	private int reloadTurns;
+	private final int reloadTurns;
 	private int shopCategory;
-	private int shopChance;
+	private final int shopChance;
 	// private MenuItem shopMenuItem;
-	private String shopDescription;
-	private boolean singleUse;
-	private boolean slicesThrough;
-	private int throwRange;
-	private boolean twoHanded;
-	private boolean unique;
-	private String useMessage;
-	private int verticalRange;
+	private final String shopDescription;
+	private final boolean singleUse;
+	private final boolean slicesThrough;
+	private final int throwRange;
+	private final boolean twoHanded;
+	private final boolean unique;
+	private final String useMessage;
+	private final int verticalRange;
 	private String weaponCategory;
 	public final static String CAT_UNARMED = "HAND_TO_HAND", CAT_DAGGERS = "DAGGERS",
 			CAT_SWORDS = "SWORDS", CAT_SPEARS = "SPEARS", CAT_WHIPS = "WHIPS",
 			CAT_MACES = "MACES", CAT_STAVES = "POLE_WEAPONS", CAT_RINGS = "RINGS",
 			CAT_PROJECTILES = "THROWN", CAT_BOWS = "BOWS", CAT_PISTOLS = "MISSILE_CRAFT",
 			CAT_SHIELD = "SHIELD";
-	public final static String[ ] CATS = new String[ ]
-	{	ItemDefinition.CAT_UNARMED, ItemDefinition.CAT_DAGGERS, ItemDefinition.CAT_SWORDS,
-		ItemDefinition.CAT_SPEARS, ItemDefinition.CAT_WHIPS, ItemDefinition.CAT_MACES,
-		ItemDefinition.CAT_STAVES, ItemDefinition.CAT_RINGS,
-		ItemDefinition.CAT_PROJECTILES, ItemDefinition.CAT_BOWS,
-		ItemDefinition.CAT_PISTOLS, ItemDefinition.CAT_SHIELD };
+	public final static String[] CATS = new String[]
+			{ItemDefinition.CAT_UNARMED, ItemDefinition.CAT_DAGGERS, ItemDefinition.CAT_SWORDS,
+					ItemDefinition.CAT_SPEARS, ItemDefinition.CAT_WHIPS, ItemDefinition.CAT_MACES,
+					ItemDefinition.CAT_STAVES, ItemDefinition.CAT_RINGS,
+					ItemDefinition.CAT_PROJECTILES, ItemDefinition.CAT_BOWS,
+					ItemDefinition.CAT_PISTOLS, ItemDefinition.CAT_SHIELD};
 	public static int EQUIP_ARMOR = 1, EQUIP_WEAPON = 2, EQUIP_SHIELD = 3;
-	public final static Hashtable HASH_DESCRIPTIONS = new Hashtable( );
+	public final static Hashtable<String, String> HASH_DESCRIPTIONS = new Hashtable<>();
 	// Shop Categories
 	public final static int SHOP_CRAFTS = 1, SHOP_MAGIC = 2, SHOP_WEAPONS = 3,
 			SHOP_ARMOR = 4;
-	static
-	{
-		HASH_DESCRIPTIONS.put( CAT_UNARMED, "hand to hand combat" );
-		HASH_DESCRIPTIONS.put( CAT_DAGGERS, "daggers" );
-		HASH_DESCRIPTIONS.put( CAT_SWORDS, "swords" );
-		HASH_DESCRIPTIONS.put( CAT_SPEARS, "spears" );
-		HASH_DESCRIPTIONS.put( CAT_WHIPS, "whips" );
+
+	static {
+		HASH_DESCRIPTIONS.put(CAT_UNARMED, "hand to hand combat");
+		HASH_DESCRIPTIONS.put(CAT_DAGGERS, "daggers");
+		HASH_DESCRIPTIONS.put(CAT_SWORDS, "swords");
+		HASH_DESCRIPTIONS.put(CAT_SPEARS, "spears");
+		HASH_DESCRIPTIONS.put(CAT_WHIPS, "whips");
 		HASH_DESCRIPTIONS.put( CAT_STAVES, "pole weapons" );
 		HASH_DESCRIPTIONS.put( CAT_RINGS, "rings" );
 		HASH_DESCRIPTIONS.put( CAT_PISTOLS, "missile craft" );
@@ -147,9 +147,8 @@ public class ItemDefinition
 		// sightListItem = new BasicListItem(appearance.getChar(),
 		// appearance.getColor(), description);
 	}
-	public static String getCategoryDescription( String catID )
-	{
-		return (String) HASH_DESCRIPTIONS.get( catID );
+	public static String getCategoryDescription( String catID ) {
+		return HASH_DESCRIPTIONS.get(catID);
 	}
 
 	public Appearance getAppearance( )
