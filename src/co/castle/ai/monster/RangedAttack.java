@@ -2,28 +2,26 @@ package co.castle.ai.monster;
 
 import co.castle.action.monster.MonsterMissile;
 
-public class RangedAttack implements java.io.Serializable
-{
-	private String attackId;
-	private String attackMessage;
+public class RangedAttack implements java.io.Serializable {
+	private final String attackId;
+	private final String attackMessage;
 	private String attackType;
 	private int chargeCounter;
-	private int damage;
-	private String effectID;
-	private String effectType;
+	private final int damage;
+	private final String effectID;
+	private final String effectType;
 	private String effectWav;
-	private int frequency;
-	private int range;
-	private String statusEffect;
+	private final int frequency;
+	private final int range;
+	private final String statusEffect;
 	private String summonMonsterId;
 
-	public RangedAttack(	String pAttackId, String pAttackType, String pStatusEffect,
-							int pRange, int pFrequency, String pAttackMessage,
-							String pEffectType, String pEffectString, int pDamage )
-	{
+	public RangedAttack(String pAttackId, String pAttackType, String pStatusEffect,
+						int pRange, int pFrequency, String pAttackMessage,
+						String pEffectType, String pEffectString, int pDamage) {
 		attackId = pAttackId;
 		attackType = pAttackType;
-		if ( attackType == null )
+		if (attackType == null)
 			attackType = MonsterMissile.TYPE_STRAIGHT;
 		statusEffect = pStatusEffect;
 		range = pRange;
