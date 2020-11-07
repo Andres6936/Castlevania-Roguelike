@@ -5,14 +5,13 @@ import java.util.Hashtable;
 import sz.midi.STMidiPlayer;
 import sz.mp3.JLayerMP3Player;
 
-public class MusicManager
-{
-	private Thread currentMidiThread;
-	private Thread currentMP3Thread;
+public class MusicManager {
+	private final Thread currentMidiThread;
+	private final Thread currentMP3Thread;
 
 	private boolean enabled;
 
-	private Hashtable <String, String> musics = new Hashtable <String, String>( );
+	private final Hashtable<String, String> musics = new Hashtable<>();
 
 	private String playing = "__nuthin";
 
@@ -22,7 +21,7 @@ public class MusicManager
 	private static MusicManager instance;
 
 	// We make the constructor private to prevent the use of 'new'
-	private MusicManager( )
+	private MusicManager()
 	{
 		STMidiPlayer midiPlayer = new STMidiPlayer( );
 		JLayerMP3Player mp3Player = new JLayerMP3Player( );
@@ -105,43 +104,22 @@ public class MusicManager
 		}
 	}
 
-	public void playForLevel( String levelType )
-	{
-		String bgMusic = (String) musics.get( levelType );
-		if ( bgMusic != null )
-		{
-			play( bgMusic );
-		}
-		else
-		{
-			stopMusic( );
+	public void playKey( String key) {
+		String bgMusic = musics.get(key);
+
+		if (bgMusic != null) {
+			play(bgMusic);
+		} else {
+			stopMusic();
 		}
 	}
 
-	public void playKey( String key )
-	{
-		String bgMusic = (String) musics.get( key );
-		
-		if ( bgMusic != null )
-		{
-			play( bgMusic );
-		}
-		else
-		{
-			stopMusic( );
-		}
-	}
-
-	public void playKeyOnce( String key )
-	{
-		String bgMusic = (String) musics.get( key );
-		if ( bgMusic != null )
-		{
-			playOnce( bgMusic );
-		}
-		else
-		{
-			stopMusic( );
+	public void playKeyOnce( String key) {
+		String bgMusic = musics.get(key);
+		if (bgMusic != null) {
+			playOnce(bgMusic);
+		} else {
+			stopMusic();
 		}
 	}
 
