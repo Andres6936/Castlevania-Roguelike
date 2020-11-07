@@ -12,32 +12,28 @@ import sz.util.Debug;
 import sz.util.Position;
 import sz.util.PriorityEnqueable;
 
-public class Actor implements Cloneable, java.io.Serializable, PriorityEnqueable
-{
+public class Actor implements Cloneable, java.io.Serializable, PriorityEnqueable {
 	private boolean aWannaDie;
-	private Hashtable <String, Boolean> hashFlags = new Hashtable <String, Boolean>( );
+	private final Hashtable<String, Boolean> hashFlags = new Hashtable<String, Boolean>();
 
 	private int hoverHeight;
 	private boolean isJumping;
 	private /* transient */ int nextTime = 10;
-	private /* transient */ Position position = new Position( 0, 0, 0 );
+	private /* transient */ Position position = new Position(0, 0, 0);
 
 	private int startingJumpingHeight;
 
 	protected transient Appearance appearance;
 
-	protected Hashtable hashCounters = new Hashtable( );
+	protected Hashtable<String, Integer> hashCounters = new Hashtable<>();
 
 	protected Level level;
 
-	protected /* transient */ int positionx, positiony, positionz;
-
 	protected ActionSelector selector;
 
-	public void act( )
-	{
-		Action x = getSelector( ).selectAction( this );
-		execute( x );
+	public void act() {
+		Action x = getSelector().selectAction(this);
+		execute(x);
 	}
 
 	public Object clone( )
@@ -56,9 +52,8 @@ public class Actor implements Cloneable, java.io.Serializable, PriorityEnqueable
 		return null;
 	}
 
-	public void die( )
-	{
-		/** Request to be removed from any dispatcher or structure */
+	public void die( ) {
+		// Request to be removed from any dispatcher or structure.
 		aWannaDie = true;
 	}
 
@@ -100,13 +95,12 @@ public class Actor implements Cloneable, java.io.Serializable, PriorityEnqueable
 		return nextTime;
 	}
 
-	public int getCounter( String counterID )
-	{
-		Integer val = (Integer) hashCounters.get( counterID );
-		if ( val == null )
+	public int getCounter( String counterID ) {
+		Integer val = hashCounters.get(counterID);
+		if (val == null)
 			return -1;
 		else
-			return val.intValue( );
+			return val;
 	}
 
 	public String getDescription( )
@@ -114,10 +108,9 @@ public class Actor implements Cloneable, java.io.Serializable, PriorityEnqueable
 		return "";
 	}
 
-	public boolean getFlag( String flagID )
-	{
-		Boolean val = (Boolean) hashFlags.get( flagID );
-		return val != null && val.booleanValue( );
+	public boolean getFlag( String flagID ) {
+		Boolean val = hashFlags.get(flagID);
+		return val != null && val;
 	}
 
 	public int getHoverHeight( )
@@ -178,14 +171,12 @@ public class Actor implements Cloneable, java.io.Serializable, PriorityEnqueable
 		appearance = value;
 	}
 
-	public void setCounter( String counterID, int turns )
-	{
-		hashCounters.put( counterID, new Integer( turns ) );
+	public void setCounter( String counterID, int turns ) {
+		hashCounters.put(counterID, turns);
 	}
 
-	public void setFlag( String flagID, boolean value )
-	{
-		hashFlags.put( flagID, new Boolean( value ) );
+	public void setFlag( String flagID, boolean value ) {
+		hashFlags.put(flagID, value);
 	}
 
 	public void setHoverHeight( int hoverHeight )
@@ -229,20 +220,15 @@ public class Actor implements Cloneable, java.io.Serializable, PriorityEnqueable
 		this.isJumping = false;
 	}
 
-	public void updateStatus( )
-	{
-		Enumeration countersKeys = hashCounters.keys( );
-		while ( countersKeys.hasMoreElements( ) )
-		{
-			String key = (String) countersKeys.nextElement( );
-			Integer counter = (Integer) hashCounters.get( key );
-			if ( counter.intValue( ) == 0 )
-			{
-				hashCounters.remove( key );
-			}
-			else
-			{
-				hashCounters.put( key, new Integer( counter.intValue( ) - 1 ) );
+	public void updateStatus( ) {
+		Enumeration<String> countersKeys = hashCounters.keys();
+		while (countersKeys.hasMoreElements()) {
+			String key = countersKeys.nextElement();
+			Integer counter = hashCounters.get(key);
+			if (counter == 0) {
+				hashCounters.remove(key);
+			} else {
+				hashCounters.put(key, counter - 1);
 			}
 		}
 	}
