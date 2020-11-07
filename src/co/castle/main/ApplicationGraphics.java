@@ -26,17 +26,16 @@ import sz.util.ImageUtils;
 import sz.util.Position;
 
 // With keyword final, we be prevent the inheritance of this class
-public final class ApplicationGraphics extends JFrame
-{
+public final class ApplicationGraphics extends JFrame {
 	private static final long serialVersionUID = 3339068814173683092L;
 
 	public static Asset assets;
 
 	private Keyboard keyboard;
 
-	private Position caretPosition = new Position( 0, 0 );
+	private final Position caretPosition = new Position(0, 0);
 
-	private Hashtable< String, Image > images = new Hashtable<>( );
+	private final Hashtable<String, Image> images = new Hashtable<>();
 
 	private Panel panelGame;
 
