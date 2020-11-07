@@ -4,18 +4,15 @@ import co.castle.action.Action;
 import co.castle.monster.Monster;
 import sz.util.Position;
 
-public class EmergeMonster extends Action
-{
-	private static EmergeMonster singleton = new EmergeMonster( );
+public class EmergeMonster extends Action {
+	private static final EmergeMonster singleton = new EmergeMonster();
 
-	public static EmergeMonster getAction( )
-	{
+	public static EmergeMonster getAction() {
 		return singleton;
 	}
 
-	public void execute( )
-	{
-		Level level = performer.getLevel( );
+	public void execute() {
+		Level level = performer.getLevel();
 		Emerger em = (Emerger) performer;
 		Monster monster = em.getMonster( );
 		monster.setPosition( new Position( em.getPoint( ) ) );
