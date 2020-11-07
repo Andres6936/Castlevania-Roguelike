@@ -39,11 +39,10 @@ public class STMidiPlayer implements Runnable
 	public static void setVolume( double gain )
 	{
 		Synthesizer synthesizer = (Synthesizer) sequencer;
-		MidiChannel[ ] channels = synthesizer.getChannels( );
+		MidiChannel[] channels = synthesizer.getChannels();
 		// gain is a value between 0 and 1 (loudest)
-		for ( int i = 0; i < channels.length; i++ )
-		{
-			channels[ i ].controlChange( 7, (int) ( gain * 127.0d ) );
+		for (MidiChannel channel : channels) {
+			channel.controlChange(7, (int) (gain * 127.0d));
 		}
 	}
 
