@@ -5,22 +5,19 @@ import co.castle.feature.Feature;
 import co.castle.monster.Monster;
 import sz.util.Position;
 
-public class Emerger extends Actor
-{
-	private int counter;
-	private Monster monster;
+public class Emerger extends Actor {
+	private final int counter;
+	private final Monster monster;
 	private Feature mound;
-	private Position point;
+	private final Position point;
 
-	public Emerger( Monster pMonster, Position point, int counter )
-	{
+	public Emerger(Monster pMonster, Position point, int counter) {
 		monster = pMonster;
 		this.point = point;
 		this.counter = counter;
 	}
 
-	public Emerger( Monster pMonster, Position point, int counter, Feature pMound )
-	{
+	public Emerger(Monster pMonster, Position point, int counter, Feature pMound) {
 		mound = pMound;
 		monster = pMonster;
 		this.point = point;
