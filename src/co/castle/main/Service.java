@@ -197,22 +197,21 @@ public final class Service
 		}
 		else if ( mode == SWING_CONSOLE )
 		{
-			System.out.println( "Initializing Char Appearances" );
-			initializeCAppearances( );
+			System.out.println("Initializing Char Appearances");
+			initializeCAppearances();
 
-			System.out.println( "Initializing Swing Console System Interface" );
-			ConsoleSystemInterface csi = null;
-			csi = new WSwingConsoleInterface( );
-			System.out.println( "Initializing Console User Interface" );
-			UserInterface.setSingleton( new ConsoleUserInterface( ) );
-			CharCuts.initializeSingleton( );
-			Display.thus = new CharDisplay( csi );
-			PlayerGenerator.thus = new CharPlayerGenerator( csi );
+			System.out.println("Initializing Swing Console System Interface");
+			final ConsoleSystemInterface csi = new WSwingConsoleInterface();
+			System.out.println("Initializing Console User Interface");
+			UserInterface.setSingleton(new ConsoleUserInterface());
+			CharCuts.initializeSingleton();
+			Display.thus = new CharDisplay(csi);
+			PlayerGenerator.thus = new CharPlayerGenerator(csi);
 			// PlayerGenerator.thus.initSpecialPlayers();
-			EffectFactory.setSingleton( new CharEffectFactory( ) );
-			( (CharEffectFactory) EffectFactory.getSingleton( ) )
-					.setEffects( new CharEffects( ).getEffects( ) );
-			ui = UserInterface.getUI( );
+			EffectFactory.setSingleton(new CharEffectFactory());
+			((CharEffectFactory) EffectFactory.getSingleton())
+					.setEffects(new CharEffects().getEffects());
+			ui = UserInterface.getUI();
 			initializeUI( csi, mode );
 		}
 		else if ( mode == JCURSES_CONSOLE )
