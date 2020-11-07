@@ -113,7 +113,7 @@ public final class Service
 	/**
 	 * Save the properties of the application
 	 */
-    private Properties configurationFile;
+	private final Properties configurationFile;
 
 	/**
 	 * Play all application sound as effect and music background
@@ -123,47 +123,33 @@ public final class Service
 	// We make the constructor private to prevent the use of 'new'
 	private Service( )
 	{
-		loadFileConfiguration( );
-	}
-
-	/**
-	 * @return Instance of Service
-	 */
-	public static Service getInstance( )
-	{
-		return instance == null ? instance = new Service() : instance;
-	}
-
-	/**
-	 * Load the configuration file
-	 */
-    private void loadFileConfiguration( )
-	{
 		configurationFile = new Properties( );
 
 		try
 		{
 			configurationFile.load( new FileInputStream( "properties/configuration.properties" ) );
+		} catch (FileNotFoundException e) {
+			System.out.println("Configuration file not found.\n");
+		} catch (IOException e) {
+			System.out.println("Error loading configuration file.\n");
 		}
-		catch ( FileNotFoundException e )
-		{
-			System.out.println( "Configuration file not found.\n" );
-		}
-		catch ( IOException e )
-		{
-			System.out.println( "Error loading configuration file.\n" );
-		}
+	}
+
+	/**
+	 * @return Instance of Service
+	 */
+	public static Service getInstance() {
+		return instance == null ? instance = new Service() : instance;
 	}
 
 	// NOTE: Change this defines and move, in resume: clear
 	public UserInterface ui;
 	public UISelector uiSelector;
 
-	public void start( final byte mode )
-	{
-		System.out.println( "CastlevaniaRL" );
-		System.out.println( "Slash ~ 2005-2010" );
-		System.out.println( "Reading Configuration" );
+	public void start(final byte mode) {
+		System.out.println("CastlevaniaRL");
+		System.out.println("Slash ~ 2005-2010");
+		System.out.println("Reading Configuration" );
 
 		if ( mode == SWING_GFX )
 		{
