@@ -14,7 +14,6 @@ import sz.util.Util;
 
 public class DeathAI extends MonsterAI
 {
-	private boolean powerActive;
 	private int powerCounter = 5;
 
 	public ActionSelector derive( )
@@ -37,28 +36,24 @@ public class DeathAI extends MonsterAI
 	public Action selectAction( Actor who )
 	{
 		Monster aMonster = (Monster) who;
-		Player aPlayer = aMonster.getLevel( ).getPlayer( );
-		int playerDistance = Position.flatDistance( aMonster.getPosition( ),
-				aPlayer.getPosition( ) );
-		if ( playerDistance > 20 )
-		{
+		Player aPlayer = aMonster.getLevel().getPlayer();
+		int playerDistance = Position.flatDistance(aMonster.getPosition(),
+				aPlayer.getPosition());
+		boolean powerActive;
+		if (playerDistance > 20) {
 			powerActive = false;
 			powerCounter = 15;
-		}
-		else
+		} else
 			powerActive = true;
 
-		if ( powerActive )
-		{
-			if ( powerCounter < 0 )
-			{
+		if (powerActive) {
+			if (powerCounter < 0) {
 				powerCounter = 15;
-				return new UnleashSickles( );
-			}
-			else
+				return new UnleashSickles();
+			} else
 				powerCounter--;
 		}
-		int directionToPlayer = aMonster.starePlayer( );
+		int directionToPlayer = aMonster.starePlayer();
 
 		if ( directionToPlayer == -1 )
 		{
