@@ -9,8 +9,7 @@ import sz.util.Debug;
 import sz.util.Position;
 import sz.util.Util;
 
-public class Feature implements Cloneable, java.io.Serializable
-{
+public class Feature implements Cloneable, java.io.Serializable {
 	private transient Appearance appearance;
 	private int currentResistance; // How many blows til it gives the prize
 	private boolean destroyable, isSolid;
@@ -19,9 +18,11 @@ public class Feature implements Cloneable, java.io.Serializable
 	private int healPrize;
 	private int heartPrize, mysticWeaponPrize = -1, keyPrize, upgradePrize;
 	private int heightMod;
-	private String ID, description, appearanceID;
+	private final String ID;
+	private final String description;
+	private final String appearanceID;
 	private int keyCost;
-	private int light;
+	private final int light;
 	private Position position;
 	/**
 	 * A feature is something that stays inside the level but may be moved,
@@ -29,24 +30,22 @@ public class Feature implements Cloneable, java.io.Serializable
 	 */
 	private Feature prize;
 	private boolean relevant = true;
-	private int resistance; // How many blows til it gives the prize (max)
 	private int scorePrize;
 	private String trigger;
 
 	public Feature(	String pID, Appearance pApp, int resistance, String pDescription,
-					int faint, int light )
-	{
+					int faint, int light) {
 		ID = pID;
 		appearance = pApp;
-		appearanceID = pApp.getID( );
-		this.resistance = resistance;
+		appearanceID = pApp.getID();
+		// How many blows til it gives the prize (max)
 		description = pDescription;
 		currentResistance = resistance;
 		this.faint = faint;
 		this.light = light;
 		// sightListItem = new BasicListItem(appearance.getChar(),
 		// appearance.getColor(), description);
-		Debug.doAssert( pApp != null, "No se especifico apariencia pa la featura" );
+		Debug.doAssert(pApp != null, "No se especifico apariencia pa la featura" );
 	}
 
 	public Object clone( )
@@ -291,22 +290,19 @@ public class Feature implements Cloneable, java.io.Serializable
 		upgradePrize = value;
 	}
 
-	private Feature getPrizeFor( Player p )
-	{
-		if ( p.deservesUpgrade( ) )
-			return FeatureFactory.getFactory( ).buildFeature( "UPGRADE" );
+	private Feature getPrizeFor( Player p) {
+		if (p.deservesUpgrade())
+			return FeatureFactory.getFactory().buildFeature("UPGRADE");
 
-		String[ ] prizeList = null;
+		String[] prizeList;
 
-		if ( p.getPlayerClass( ) == Player.CLASS_VAMPIREKILLER )
-		{
-			if ( Util.chance( 10 ) )
-			{
+		if (p.getPlayerClass() == Player.CLASS_VAMPIREKILLER) {
+			if (Util.chance(10)) {
 				// Will get a mystic weapon
-				if ( p.getFlag( "MYSTIC_CRYSTAL" ) && Util.chance( 50 ) )
-					prizeList = new String[ ]
-					{ "CRYSTALWP" };
-				else if ( p.getFlag( "MYSTIC_FIST" ) && Util.chance( 50 ) )
+				if (p.getFlag("MYSTIC_CRYSTAL") && Util.chance(50))
+					prizeList = new String[]
+							{"CRYSTALWP"};
+				else if (p.getFlag("MYSTIC_FIST") && Util.chance( 50 ) )
 					prizeList = new String[ ]
 					{ "FISTWP" };
 				else if ( p.getFlag( "MYSTIC_CROSS" ) && Util.chance( 50 ) )
