@@ -1,7 +1,5 @@
 package co.castle.ai.monster;
 
-import java.util.Iterator;
-
 import co.castle.action.Action;
 import co.castle.action.ActionFactory;
 import co.castle.action.monster.MonsterWalk;
@@ -62,18 +60,15 @@ public class RangedAI extends MonsterAI
 			if ( rangedAttacks != null && Util.chance( 80 ) )
 			{
 				// Try to attack the player
-				for ( Iterator iter = rangedAttacks.iterator( ); iter.hasNext( ); )
-				{
-					RangedAttack element = (RangedAttack) iter.next( );
-					if ( element.getRange( ) >= playerDistance
-							&& Util.chance( element.getFrequency( ) ) )
-					{
+				for (RangedAttack element : rangedAttacks) {
+					if (element.getRange() >= playerDistance
+							&& Util.chance(element.getFrequency())) {
 						// Perform the attack
-						Action ret = ActionFactory.getActionFactory( )
-								.getAction( element.getAttackId( ) );
-						ret.setDirection( directionToPlayer );
+						Action ret = ActionFactory.getActionFactory()
+								.getAction(element.getAttackId());
+						ret.setDirection(directionToPlayer);
 						ret.setPosition(
-								aMonster.getLevel( ).getPlayer( ).getPosition( ) );
+								aMonster.getLevel().getPlayer().getPosition());
 						return ret;
 					}
 				}
