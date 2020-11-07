@@ -12,7 +12,6 @@ import sz.util.Util;
 
 public class MedusaAI extends MonsterAI
 {
-	private boolean powerActive;
 	private int powerCounter = 5;
 
 	public ActionSelector derive( )
@@ -35,27 +34,23 @@ public class MedusaAI extends MonsterAI
 	public Action selectAction( Actor who )
 	{
 		Monster aMonster = (Monster) who;
-		int playerDistance = Position.flatDistance( aMonster.getPosition( ),
-				aMonster.getLevel( ).getPlayer( ).getPosition( ) );
-		if ( playerDistance > 20 )
-		{
+		int playerDistance = Position.flatDistance(aMonster.getPosition(),
+				aMonster.getLevel().getPlayer().getPosition());
+		boolean powerActive;
+		if (playerDistance > 20) {
 			powerActive = false;
 			powerCounter = 15;
-		}
-		else
+		} else
 			powerActive = true;
 
-		if ( powerActive )
-		{
-			if ( powerCounter < 0 )
-			{
+		if (powerActive) {
+			if (powerCounter < 0) {
 				powerCounter = 15;
-				return new SummonSnakes( );
-			}
-			else
+				return new SummonSnakes();
+			} else
 				powerCounter--;
 		}
-		int directionToPlayer = aMonster.starePlayer( );
+		int directionToPlayer = aMonster.starePlayer();
 
 		if ( directionToPlayer == -1 )
 		{
