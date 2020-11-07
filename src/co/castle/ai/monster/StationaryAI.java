@@ -31,18 +31,12 @@ public class StationaryAI extends MonsterAI
 	public Action selectAction( Actor who )
 	{
 		Monster aMonster = (Monster) who;
-		int directionToPlayer = aMonster.starePlayer( );
-		int playerDistance = Position.flatDistance( aMonster.getPosition( ),
-				aMonster.getLevel( ).getPlayer( ).getPosition( ) );
-		if ( directionToPlayer == -1 )
-		{
-			return null;
-		}
-		else
-		{
+		int directionToPlayer = aMonster.starePlayer();
+		int playerDistance = Position.flatDistance(aMonster.getPosition(),
+				aMonster.getLevel().getPlayer().getPosition());
+		if (directionToPlayer != -1) {
 			// Randomly decide if will approach the player or attack
-			if ( rangedAttacks != null && Util.chance( 80 ) )
-			{
+			if (rangedAttacks != null && Util.chance(80)) {
 				// Try to attack the player
 				for (RangedAttack element : rangedAttacks) {
 					if (element.getRange() >= playerDistance
@@ -56,7 +50,7 @@ public class StationaryAI extends MonsterAI
 				}
 			}
 			// Couldnt attack the player, so do nothing
-			return null;
 		}
+		return null;
 	}
 }
