@@ -113,7 +113,7 @@ public final class Service
 	/**
 	 * Save the properties of the application
 	 */
-	private final Properties configurationFile;
+	private final Properties configurationFile = new Properties();
 
 	/**
 	 * Play all application sound as effect and music background
@@ -123,8 +123,6 @@ public final class Service
 	// We make the constructor private to prevent the use of 'new'
 	private Service( )
 	{
-		configurationFile = new Properties( );
-
 		try
 		{
 			configurationFile.load( new FileInputStream( "properties/configuration.properties" ) );
