@@ -48,15 +48,13 @@ public class JLayerMP3Player implements Runnable
 
 	public synchronized void run( )
 	{
-		boolean leave = false;
-		out: while ( true )
-		{
-			if ( currentInstruction == INS_DIE )
-			{
-				break out;
+		boolean leave;
+		out:
+		while (true) {
+			if (currentInstruction == INS_DIE) {
+				break;
 			}
-			if ( currentInstruction == INS_STOP )
-			{
+			if (currentInstruction == INS_STOP) {
 				currentMP3File = "__noneYet";
 			}
 			if ( currentInstruction == INS_LOAD )
@@ -92,32 +90,26 @@ public class JLayerMP3Player implements Runnable
 			Player player = null;
 			while ( !leave )
 			{
-				try
-				{
-					player = new Player( new FileInputStream( soundFile ) );
-					in: while ( true )
-					{
-						player.play( 20 );
-						if ( currentInstruction == INS_STOP )
-						{
+				try {
+					player = new Player(new FileInputStream(soundFile));
+					while (true) {
+						player.play(20);
+						if (currentInstruction == INS_STOP) {
 							currentMP3File = "__noneYet";
-							player.close( );
+							player.close();
 							leave = true;
 							continue out;
 						}
-						if ( currentInstruction == INS_DIE )
-						{
+						if (currentInstruction == INS_DIE) {
 							break out;
 						}
-						if ( currentInstruction == INS_LOAD )
-						{
+						if (currentInstruction == INS_LOAD) {
 							leave = true;
 							continue out;
 						}
-						if ( player.isComplete( ) )
-						{
-							player.close( );
-							break in;
+						if (player.isComplete()) {
+							player.close();
+							break;
 						}
 					}
 				}
