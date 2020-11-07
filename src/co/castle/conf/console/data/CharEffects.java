@@ -15,19 +15,18 @@ import co.castle.ui.consoleUI.effects.CharSplashEffect;
 import sz.csi.ConsoleSystemInterface;
 import sz.util.Position;
 
-public class CharEffects
-{
-	private CharEffect[ ] effects = new CharEffect[ ]
-	{
-		// Animated Missile Effects
-		new CharAnimatedMissileEffect( "SFX_FIREBALL", "*~", ConsoleSystemInterface.RED,
-				50 ),
-		new CharAnimatedMissileEffect( "SFX_FLAMESSHOOT", "*~",
-				ConsoleSystemInterface.RED, 50 ),
-		new CharAnimatedMissileEffect( "SFX_SUMMON_SPIRIT", "sS",
-				ConsoleSystemInterface.GRAY, 45 ),
-		new CharAnimatedMissileEffect( "SFX_CHARGE_BALL", "*~",
-				ConsoleSystemInterface.RED, 50 ),
+public class CharEffects {
+	private final CharEffect[] effects = new CharEffect[]
+			{
+					// Animated Missile Effects
+					new CharAnimatedMissileEffect("SFX_FIREBALL", "*~", ConsoleSystemInterface.RED,
+							50),
+					new CharAnimatedMissileEffect("SFX_FLAMESSHOOT", "*~",
+							ConsoleSystemInterface.RED, 50),
+					new CharAnimatedMissileEffect("SFX_SUMMON_SPIRIT", "sS",
+							ConsoleSystemInterface.GRAY, 45),
+					new CharAnimatedMissileEffect("SFX_CHARGE_BALL", "*~",
+							ConsoleSystemInterface.RED, 50),
 		new CharAnimatedMissileEffect( "SFX_LIT_SPELL", "*.",
 				ConsoleSystemInterface.YELLOW, 55 ),
 		new CharAnimatedMissileEffect( "SFX_AXE", "/-\\|", ConsoleSystemInterface.WHITE,
@@ -346,27 +345,26 @@ public class CharEffects
 		new CharBeamMissileEffect( "SFX_ANCIENT_BEAM", "O", ConsoleSystemInterface.CYAN,
 				30 ),
 		new CharBeamMissileEffect( "SFX_STUN_BEAM", "X*..", ConsoleSystemInterface.YELLOW,
-				46 ),
-		new CharBeamMissileEffect( "SFX_FLAME_WAVE", "~_", ConsoleSystemInterface.RED,
-				40 ),
-		new CharBeamMissileEffect( "SFX_PURPLE_FLAME_BEAM", "~_",
-				ConsoleSystemInterface.PURPLE, 40 ),
+				46),
+					new CharBeamMissileEffect("SFX_FLAME_WAVE", "~_", ConsoleSystemInterface.RED,
+							40),
+					new CharBeamMissileEffect("SFX_PURPLE_FLAME_BEAM", "~_",
+							ConsoleSystemInterface.PURPLE, 40),
 
-		new CharIconEffect( "SFX_HOLY_RAINDROP", '/', ConsoleSystemInterface.CYAN, 30 ),
-		new CharSplashEffect( "SFX_HOLY_RAINSPLASH", "*~,-", ConsoleSystemInterface.CYAN,
-				50 ), };
+					new CharIconEffect("SFX_HOLY_RAINDROP", '/', ConsoleSystemInterface.CYAN, 30),
+					new CharSplashEffect("SFX_HOLY_RAINSPLASH", "*~,-", ConsoleSystemInterface.CYAN,
+							50),};
 
-	private final static Vector SFX_BIBLE_STEPS = new Vector( 10 );
+	private final static Vector<Position> SFX_BIBLE_STEPS = new Vector<>(10);
 
-	static
-	{
-		SFX_BIBLE_STEPS.add( new Position( 1, 0 ) );
-		SFX_BIBLE_STEPS.add( new Position( 2, -1 ) );
-		SFX_BIBLE_STEPS.add( new Position( 1, -2 ) );
-		SFX_BIBLE_STEPS.add( new Position( 0, -2 ) );
-		SFX_BIBLE_STEPS.add( new Position( -1, -2 ) );
-		SFX_BIBLE_STEPS.add( new Position( -2, -1 ) );
-		SFX_BIBLE_STEPS.add( new Position( -2, 0 ) );
+	static {
+		SFX_BIBLE_STEPS.add(new Position(1, 0));
+		SFX_BIBLE_STEPS.add(new Position(2, -1));
+		SFX_BIBLE_STEPS.add(new Position(1, -2));
+		SFX_BIBLE_STEPS.add(new Position(0, -2));
+		SFX_BIBLE_STEPS.add(new Position(-1, -2));
+		SFX_BIBLE_STEPS.add(new Position(-2, -1));
+		SFX_BIBLE_STEPS.add(new Position(-2, 0));
 		SFX_BIBLE_STEPS.add( new Position( -2, 1 ) );
 		SFX_BIBLE_STEPS.add( new Position( -1, 2 ) );
 		SFX_BIBLE_STEPS.add( new Position( 0, 2 ) );
