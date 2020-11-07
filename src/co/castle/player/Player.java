@@ -5,6 +5,7 @@ import java.util.Hashtable;
 import java.util.Vector;
 
 import co.castle.action.Action;
+import co.castle.action.Equip;
 import co.castle.action.invoker.Bird;
 import co.castle.action.invoker.Cat;
 import co.castle.action.invoker.Charm;
@@ -184,16 +185,15 @@ import sz.util.Debug;
 import sz.util.Position;
 import sz.util.Util;
 
-public class Player extends Actor
-{
-	private int[ ] advancementLevels;
+public class Player extends Actor {
+	private int[] advancementLevels;
 	private Item armor;
 	private int attack;
 	private int attackCost = 50;
 
-	private Vector availableSkills = new Vector( 10 );
+	private final Vector<Skill> availableSkills = new Vector<Skill>(10);
 
-	private String[ ] bannedArmors;
+	private String[] bannedArmors;
 	private int baseSightRange;
 	private int blockDirection, blockDirection1, blockDirection2;
 	private int breathing = 25;
@@ -202,10 +202,10 @@ public class Player extends Actor
 
 	private String classString;
 	private int coolness;
-	private Vector counteredItems = new Vector( );
+	private final Vector<Item> counteredItems = new Vector<>();
 	private Hostage currentHostage;
 	private int currentMysticWeapon;
-	private Hashtable customMessages = new Hashtable( );
+	private final Hashtable customMessages = new Hashtable();
 	// Vampire Killer
 	private int daggerLevel;
 	private int defense; // Temporary stat
@@ -226,7 +226,7 @@ public class Player extends Actor
 	private int hearts;
 	private int hits;
 	private int hitsMax;
-	private Hashtable inventory = new Hashtable( );
+	private final Hashtable<String, Equipment> inventory = new Hashtable<>();
 
 	private int invincibleCount;
 	// Status Auxiliars
@@ -238,7 +238,7 @@ public class Player extends Actor
 	 */
 	private boolean justJumped = false;
 	private int keys;
-	private Hashtable lastIncrements = new Hashtable( );
+	private final Hashtable<String, Integer> lastIncrements = new Hashtable<>();
 
 	private int minorHeartCount;
 
@@ -276,29 +276,29 @@ public class Player extends Actor
 
 	private int soulPower;
 
-	private int[ ] statAdvancementLevels;
+	private int[] statAdvancementLevels;
 
 	private int stunCount;
 
-	private Vector tmpAvailableAdvancements = new Vector( );
+	private final Vector<Advancement> tmpAvailableAdvancements = new Vector<>();
 
 	private int walkCost = 50;
 
 	private Item weapon;
 
-	private Hashtable weaponSkills = new Hashtable( );
+	private final Hashtable weaponSkills = new Hashtable();
 
-	private Hashtable weaponSkillsCounters = new Hashtable( );
+	private final Hashtable weaponSkillsCounters = new Hashtable();
 
 	private int whipLevel;
 
 	private int xp;
 
-	public static final Advancement ADV_MERCURY = new AdvMercury( ),
-			ADV_VENUS = new AdvVenus( ), ADV_TERRA = new AdvTerra( ),
-			ADV_MARS = new AdvMars( ), ADV_JUPITER = new AdvJupiter( ),
-			ADV_SATURN = new AdvSaturn( ), ADV_URANUS = new AdvUranus( ),
-			ADV_NEPTUNE = new AdvNeptune( ), ADV_PLUTO = new AdvPluto( );
+	public static final Advancement ADV_MERCURY = new AdvMercury(),
+			ADV_VENUS = new AdvVenus(), ADV_TERRA = new AdvTerra(),
+			ADV_MARS = new AdvMars(), ADV_JUPITER = new AdvJupiter(),
+			ADV_SATURN = new AdvSaturn(), ADV_URANUS = new AdvUranus(),
+			ADV_NEPTUNE = new AdvNeptune(), ADV_PLUTO = new AdvPluto();
 
 	public static Advancement[ ][ ] ADVANCEMENTS;
 
@@ -352,23 +352,20 @@ public class Player extends Actor
 	public final static String STATUS_STUN = "STUN", STATUS_POISON = "POISON",
 			STATUS_PETRIFY = "PETRIFY", STATUS_FAINTED = "FAINTED";
 
-	private static int HITMAX = 60;
+	private final static Action[] MYSTIC_ACTIONS = new Action[]
+			{new Dagger(), new Axe(), new Holy(), new Stopwatch(), new Cross(),
+					new Bible(), new BlastCrystal(), new SacredFist(), new Rebound()};
 
-	private final static Action[ ] MYSTIC_ACTIONS = new Action[ ]
-	{	new Dagger( ), new Axe( ), new Holy( ), new Stopwatch( ), new Cross( ),
-		new Bible( ), new BlastCrystal( ), new SacredFist( ), new Rebound( ) };
+	private final static Hashtable<String, Skill> skills = new Hashtable<>();
 
-	private final static Hashtable skills = new Hashtable( );
-
-	static
-	{
-		skills.put( "DIVING_SLIDE", new Skill( "Diving Slide", new DivingSlide( ), 8 ) );
-		skills.put( "SPINNING_SLICE",
-				new Skill( "Spinning Slice", new SpinningSlice( ), 8 ) );
-		skills.put( "WHIRLWIND_WHIP",
-				new Skill( "Whirlwind Whip", new WhirlwindWhip( ), 5 ) );
-		skills.put( "ENERGY_BEAM", new Skill( "Energy Beam", new EnergyBeam( ), 10 ) );
-		skills.put( "FINAL_SLASH", new Skill( "Final Slash!", new FinalSlash( ), 10 ) );
+	static {
+		skills.put("DIVING_SLIDE", new Skill("Diving Slide", new DivingSlide(), 8));
+		skills.put("SPINNING_SLICE",
+				new Skill("Spinning Slice", new SpinningSlice(), 8));
+		skills.put("WHIRLWIND_WHIP",
+				new Skill("Whirlwind Whip", new WhirlwindWhip(), 5));
+		skills.put("ENERGY_BEAM", new Skill("Energy Beam", new EnergyBeam(), 10));
+		skills.put("FINAL_SLASH", new Skill("Final Slash!", new FinalSlash(), 10));
 		skills.put( "TIGER_CLAW", new Skill( "Tiger Claw", new TigerClaw( ), 10 ) );
 		skills.put( "ENERGY_BURST", new Skill( "Energy Burst", new EnergyBurst( ), 10 ) );
 		skills.put( "REGEN", new Skill( "Regeneration" ) );
@@ -740,18 +737,14 @@ public class Player extends Actor
 		keys += x;
 	}
 
-	public void addLastIncrement( String key, int value )
-	{
-		Integer current = (Integer) lastIncrements.get( key );
-		if ( current == null )
-		{
-			current = new Integer( value );
+	public void addLastIncrement( String key, int value ) {
+		Integer current = lastIncrements.get(key);
+		if (current == null) {
+			current = value;
+		} else {
+			current = current + value;
 		}
-		else
-		{
-			current = new Integer( current.intValue( ) + value );
-		}
-		lastIncrements.put( key, current );
+		lastIncrements.put(key, current);
 	}
 
 	public void addScore( int x )
@@ -1046,11 +1039,9 @@ public class Player extends Actor
 			setCounter( Consts.C_WEREWOLFMORPH, 0 );
 	}
 
-	public boolean deservesAdvancement( int level )
-	{
-		for ( int i = 0; i < advancementLevels.length; i++ )
-		{
-			if ( advancementLevels[ i ] == level )
+	public boolean deservesAdvancement( int level ) {
+		for (int advancementLevel : advancementLevels) {
+			if (advancementLevel == level)
 				return true;
 		}
 		return false;
@@ -1071,11 +1062,9 @@ public class Player extends Actor
 		return false;
 	}
 
-	public boolean deservesStatAdvancement( int level )
-	{
-		for ( int i = 0; i < statAdvancementLevels.length; i++ )
-		{
-			if ( statAdvancementLevels[ i ] == level )
+	public boolean deservesStatAdvancement( int level ) {
+		for (int statAdvancementLevel : statAdvancementLevels) {
+			if (statAdvancementLevel == level)
 				return true;
 		}
 		return false;
@@ -1189,61 +1178,51 @@ public class Player extends Actor
 			return "Nothing";
 	}
 
-	public int getAttack( )
-	{
+	public int getAttack() {
 		return attack;
 	}
 
-	public int getAttackCost( )
-	{
+	public int getAttackCost() {
 		return attackCost;
 	}
 
-	public Vector getAvailableAdvancements( )
-	{
-		tmpAvailableAdvancements.clear( );
-		out: for ( int i = 0; i < ADVANCEMENTS[ getPlayerClass( ) ].length; i++ )
-		{
-			if ( getFlag( ADVANCEMENTS[ getPlayerClass( ) ][ i ].getID( ) ) )
-			{
+	public Vector<Advancement> getAvailableAdvancements() {
+		tmpAvailableAdvancements.clear();
+		out:
+		for (int i = 0; i < ADVANCEMENTS[getPlayerClass()].length; i++) {
+			if (getFlag(ADVANCEMENTS[getPlayerClass()][i].getID())) {
 				// Already has the advancement
 				continue;
 			}
-			String[ ] requirements = ADVANCEMENTS[ getPlayerClass( ) ][ i ]
-					.getRequirements( );
-			for ( int j = 0; j < requirements.length; j++ )
-			{
-				if ( !getFlag( requirements[ j ] ) )
-				{
+			String[] requirements = ADVANCEMENTS[getPlayerClass()][i]
+					.getRequirements();
+			for (String requirement : requirements) {
+				if (!getFlag(requirement)) {
 					// Misses a requirement
 					continue out;
 				}
 			}
-			String[ ] bans = ADVANCEMENTS[ getPlayerClass( ) ][ i ].getBans( );
-			for ( int j = 0; j < bans.length; j++ )
-			{
-				if ( getFlag( bans[ j ] ) )
-				{
+			String[] bans = ADVANCEMENTS[getPlayerClass()][i].getBans();
+			for (String ban : bans) {
+				if (getFlag(ban)) {
 					// Has a ban
 					continue out;
 				}
 			}
-			tmpAvailableAdvancements.add( ADVANCEMENTS[ getPlayerClass( ) ][ i ] );
+			tmpAvailableAdvancements.add(ADVANCEMENTS[getPlayerClass()][i]);
 		}
 		return tmpAvailableAdvancements;
 	}
 
-	public Vector getAvailableSkills( )
-	{
-		availableSkills.removeAllElements( );
-		if ( getFlag( "PASIVE_DODGE" ) )
-			availableSkills.add( skills.get( "DODGE" ) );
-		if ( getFlag( "PASIVE_DODGE2" ) )
-			availableSkills.add( skills.get( "DODGE2" ) );
-		if ( playerClass == CLASS_VAMPIREKILLER )
-		{
-			if ( getFlag( "SKILL_WARP_DASH" ) )
-				availableSkills.add( skills.get( "WARP_DASH" ) );
+	public Vector<Skill> getAvailableSkills() {
+		availableSkills.removeAllElements();
+		if (getFlag("PASIVE_DODGE"))
+			availableSkills.add(skills.get("DODGE"));
+		if (getFlag("PASIVE_DODGE2"))
+			availableSkills.add(skills.get("DODGE2"));
+		if (playerClass == CLASS_VAMPIREKILLER) {
+			if (getFlag("SKILL_WARP_DASH"))
+				availableSkills.add(skills.get("WARP_DASH"));
 			if ( getFlag( "SKILL_AIR_DASH" ) )
 				availableSkills.add( skills.get( "AIR_DASH" ) );
 			if ( getFlag( "SKILL_SLIDEKICK" ) )
@@ -1427,27 +1406,24 @@ public class Player extends Actor
 			availableSkills.add( skills.get( "FINAL_SLASH" ) );
 		if ( ( weapon == null
 				|| weapon.getWeaponCategory( ).equals( ItemDefinition.CAT_UNARMED ) )
-				&& weaponSkill( ItemDefinition.CAT_UNARMED ) == 10 )
-			availableSkills.add( skills.get( "TIGER_CLAW" ) );
-		if ( weapon != null
-				&& weapon.getWeaponCategory( ).equals( ItemDefinition.CAT_PISTOLS )
-				&& weaponSkill( ItemDefinition.CAT_PISTOLS ) == 10 )
-			availableSkills.add( skills.get( "ENERGY_BURST" ) );
+				&& weaponSkill(ItemDefinition.CAT_UNARMED) == 10)
+			availableSkills.add(skills.get("TIGER_CLAW"));
+		if (weapon != null
+				&& weapon.getWeaponCategory().equals(ItemDefinition.CAT_PISTOLS)
+				&& weaponSkill(ItemDefinition.CAT_PISTOLS) == 10)
+			availableSkills.add(skills.get("ENERGY_BURST"));
 
 		return availableSkills;
 	}
 
-	public Vector getAvailableStatAdvancements( )
-	{
-		tmpAvailableAdvancements.clear( );
-		for ( int i = 0; i < STATADVANCEMENTS[ getPlayerClass( ) ].length; i++ )
-		{
-			tmpAvailableAdvancements.add( STATADVANCEMENTS[ getPlayerClass( ) ][ i ] );
+	public Vector<Advancement> getAvailableStatAdvancements() {
+		tmpAvailableAdvancements.clear();
+		for (int i = 0; i < STATADVANCEMENTS[getPlayerClass()].length; i++) {
+			tmpAvailableAdvancements.add(STATADVANCEMENTS[getPlayerClass()][i]);
 		}
-		int rand = Util.rand( 2, 3 );
-		for ( int i = 0; i < rand; i++ )
-		{
-			Advancement adv = (Advancement) Util.randomElementOf( ALL_ADVANCEMENTS );
+		int rand = Util.rand(2, 3);
+		for (int i = 0; i < rand; i++) {
+			Advancement adv = (Advancement) Util.randomElementOf(ALL_ADVANCEMENTS);
 			if ( !tmpAvailableAdvancements.contains( adv ) )
 				tmpAvailableAdvancements.add( adv );
 		}
@@ -2234,10 +2210,10 @@ public class Player extends Actor
 		heartMax += how;
 	}
 
-	public void increaseHitsMax( int how )
-	{
+	public void increaseHitsMax( int how ) {
 		hitsMax += how;
-		if ( hitsMax > HITMAX )
+		int HITMAX = 60;
+		if (hitsMax > HITMAX)
 			hitsMax = HITMAX;
 	}
 
