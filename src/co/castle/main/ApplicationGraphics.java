@@ -68,6 +68,7 @@ public final class ApplicationGraphics extends JFrame {
 		configurationUI = new Properties();
 
 		try {
+			// TODO: Load from Gradle Resource
 			configurationUI.load(new FileInputStream("properties/configurationUI.properties"));
 		} catch (IOException e) {
 			System.out.println("Error loading configuration for user interface.\n");
