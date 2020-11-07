@@ -14,23 +14,21 @@ import co.castle.ui.graphicsUI.GFXAppearance;
 import sz.csi.textcomponents.MenuItem;
 import sz.gadgets.GFXMenuItem;
 
-public class Item implements Serializable, MenuItem, GFXMenuItem
-{
-	private String defID;
+public class Item implements Serializable, MenuItem, GFXMenuItem {
+	private final String defID;
 	private transient ItemDefinition definition;
-	private ArrayList /* Modifier */ postmodifiers = new ArrayList( 10 );
-	private ArrayList /* Modifier */ premodifiers = new ArrayList( 10 );
+	private final ArrayList<Modifier> postmodifiers = new ArrayList<>(10);
+	private final ArrayList<Modifier> premodifiers = new ArrayList<>(10);
 	// Status
 	private int remainingTurnsToReload;
-	protected Hashtable hashCounters = new Hashtable( );
+	protected Hashtable<String, Integer> hashCounters = new Hashtable<>();
 
 	public static boolean shopMode = false;
 
-	public Item( ItemDefinition itemDef )
-	{
+	public Item(ItemDefinition itemDef) {
 		definition = itemDef;
-		defID = definition.getID( );
-		reload( );
+		defID = definition.getID();
+		reload();
 	}
 
 	public void addPostModifier( Modifier post )
@@ -121,10 +119,10 @@ public class Item implements Serializable, MenuItem, GFXMenuItem
 	public int getCounter( String counterID )
 	{
 		Integer val = (Integer) hashCounters.get( counterID );
-		if ( val == null )
+		if (val == null)
 			return -1;
 		else
-			return val.intValue( );
+			return val;
 	}
 
 	public int getCoverage( )
@@ -317,25 +315,19 @@ public class Item implements Serializable, MenuItem, GFXMenuItem
 		return !getDefinition( ).getAppearance( ).getID( ).equals( "VOID" );
 	}
 
-	public void reduceCounters( Player p )
-	{
-		Enumeration countersKeys = hashCounters.keys( );
-		while ( countersKeys.hasMoreElements( ) )
-		{
-			String key = (String) countersKeys.nextElement( );
-			Integer counter = (Integer) hashCounters.get( key );
-			if ( counter.intValue( ) == 0 )
-			{
-				if ( key.equals( Consts.C_WEAPON_ENCHANTMENT ) )
-				{
-					p.getLevel( ).addMessage(
-							"Your " + getDescription( ) + " stops glowing." );
+	public void reduceCounters( Player p ) {
+		Enumeration<String> countersKeys = hashCounters.keys();
+		while (countersKeys.hasMoreElements()) {
+			String key = countersKeys.nextElement();
+			Integer counter = hashCounters.get(key);
+			if (counter == 0) {
+				if (key.equals(Consts.C_WEAPON_ENCHANTMENT)) {
+					p.getLevel().addMessage(
+							"Your " + getDescription() + " stops glowing.");
 				}
-				hashCounters.remove( key );
-			}
-			else
-			{
-				hashCounters.put( key, new Integer( counter.intValue( ) - 1 ) );
+				hashCounters.remove(key);
+			} else {
+				hashCounters.put(key, counter - 1);
 			}
 		}
 	}
@@ -345,9 +337,8 @@ public class Item implements Serializable, MenuItem, GFXMenuItem
 		setRemainingTurnsToReload( getDefinition( ).getReloadTurns( ) );
 	}
 
-	public void setCounter( String counterID, int turns )
-	{
-		hashCounters.put( counterID, new Integer( turns ) );
+	public void setCounter( String counterID, int turns ) {
+		hashCounters.put(counterID, turns);
 	}
 
 	public void setRemainingTurnsToReload( int value )
@@ -427,14 +418,12 @@ public class Item implements Serializable, MenuItem, GFXMenuItem
 
 	private boolean modifiersHarmUndead( )
 	{
-		for ( int i = 0; i < premodifiers.size( ); i++ )
-		{
-			if ( ( (Modifier) premodifiers.get( i ) ).isHarmsUndead( ) )
+		for ( int i = 0; i < premodifiers.size( ); i++ ) {
+			if (premodifiers.get(i).isHarmsUndead())
 				return true;
 		}
-		for ( int i = 0; i < postmodifiers.size( ); i++ )
-		{
-			if ( ( (Modifier) postmodifiers.get( i ) ).isHarmsUndead( ) )
+		for ( int i = 0; i < postmodifiers.size( ); i++ ) {
+			if (postmodifiers.get(i).isHarmsUndead())
 				return true;
 		}
 		return false;
@@ -442,14 +431,12 @@ public class Item implements Serializable, MenuItem, GFXMenuItem
 
 	private boolean modifiersSliceThru( )
 	{
-		for ( int i = 0; i < premodifiers.size( ); i++ )
-		{
-			if ( ( (Modifier) premodifiers.get( i ) ).isSlicesThru( ) )
+		for ( int i = 0; i < premodifiers.size( ); i++ ) {
+			if (premodifiers.get(i).isSlicesThru())
 				return true;
 		}
-		for ( int i = 0; i < postmodifiers.size( ); i++ )
-		{
-			if ( ( (Modifier) postmodifiers.get( i ) ).isSlicesThru( ) )
+		for ( int i = 0; i < postmodifiers.size( ); i++ ) {
+			if (postmodifiers.get(i).isSlicesThru())
 				return true;
 		}
 		return false;
