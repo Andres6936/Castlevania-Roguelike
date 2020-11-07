@@ -49,7 +49,7 @@ public class STMidiPlayer implements Runnable
 
 	public synchronized void run( )
 	{
-		boolean leave = false;
+		boolean leave;
 		while (currentInstruction != INS_DIE) {
 			if (currentInstruction == INS_STOP) {
 				currentMidiFile = "__noneYet";
