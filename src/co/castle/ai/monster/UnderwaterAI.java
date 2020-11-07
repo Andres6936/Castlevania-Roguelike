@@ -39,7 +39,6 @@ public class UnderwaterAI extends MonsterAI
 	{
 		Debug.doAssert( who instanceof Monster, "Underwater AI selectAction" );
 		Monster aMonster = (Monster) who;
-		Player aPlayer = who.getLevel( ).getPlayer( );
 		int directionToPlayer = aMonster.starePlayer( );
 		if ( directionToPlayer == -1 )
 		{
@@ -76,13 +75,12 @@ public class UnderwaterAI extends MonsterAI
 				// Try to attack
 				for ( int i = 0; i < rangedAttacks.size( ); i++ )
 				{
-					RangedAttack ra = (RangedAttack) rangedAttacks.elementAt( i );
-					if ( distanceToPlayer <= ra.getRange( ) )
-						if ( Util.chance( ra.getFrequency( ) ) )
-						{
-							Action ret = ActionFactory.getActionFactory( )
-									.getAction( ra.getAttackId( ) );
-							ret.setDirection( directionToPlayer );
+					RangedAttack ra = rangedAttacks.elementAt(i);
+					if (distanceToPlayer <= ra.getRange())
+						if (Util.chance(ra.getFrequency())) {
+							Action ret = ActionFactory.getActionFactory()
+									.getAction(ra.getAttackId());
+							ret.setDirection(directionToPlayer);
 							return ret;
 						}
 				}
