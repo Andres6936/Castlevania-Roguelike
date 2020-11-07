@@ -38,17 +38,16 @@ public class MonsterLoader
 		BufferedReader br = null;
 		try
 		{
-			Vector vecMonsters = new Vector( 10 );
-			DESEncrypter encrypter = new DESEncrypter( "65csvlk3489585f9rjh" );
-			br = new BufferedReader( new InputStreamReader(
-					encrypter.decrypt( new FileInputStream( monsterFile ) ) ) );
-			String line = br.readLine( );
-			line = br.readLine( );
-			while ( line != null )
-			{
-				String[ ] data = line.split( ";" );
-				MonsterDefinition def = new MonsterDefinition( data[ 0 ] );
-				def.setAppearance( AppearanceFactory.getAppearanceFactory( )
+			Vector<MonsterDefinition> vecMonsters = new Vector<>(10);
+			DESEncrypter encrypter = new DESEncrypter("65csvlk3489585f9rjh");
+			br = new BufferedReader(new InputStreamReader(
+					encrypter.decrypt(new FileInputStream(monsterFile))));
+			String line = br.readLine();
+			line = br.readLine();
+			while (line != null) {
+				String[] data = line.split(";");
+				MonsterDefinition def = new MonsterDefinition(data[0]);
+				def.setAppearance(AppearanceFactory.getAppearanceFactory()
 						.getAppearance( data[ 1 ] ) );
 				def.setDescription( data[ 2 ] );
 				def.setLongDescription( data[ 3 ] );
@@ -61,18 +60,18 @@ public class MonsterLoader
 				def.setScore( Integer.parseInt( data[ 10 ] ) );
 				def.setSightRange( Integer.parseInt( data[ 11 ] ) );
 				def.setMaxHits( Integer.parseInt( data[ 12 ] ) );
-				def.setAttack( Integer.parseInt( data[ 13 ] ) );
-				def.setWalkCost( Integer.parseInt( data[ 14 ] ) );
-				def.setAttackCost( Integer.parseInt( data[ 15 ] ) );
-				def.setEvadeChance( Integer.parseInt( data[ 16 ] ) );
-				def.setEvadeMessage( data[ 17 ] );
-				def.setAutorespawnCount( Integer.parseInt( data[ 18 ] ) );
+				def.setAttack(Integer.parseInt(data[13]));
+				def.setWalkCost(Integer.parseInt(data[14]));
+				def.setAttackCost(Integer.parseInt(data[15]));
+				def.setEvadeChance(Integer.parseInt(data[16]));
+				def.setEvadeMessage(data[17]);
+				def.setAutorespawnCount(Integer.parseInt(data[18]));
 
-				vecMonsters.add( def );
-				line = br.readLine( );
+				vecMonsters.add(def);
+				line = br.readLine();
 			}
-			return (MonsterDefinition[ ]) vecMonsters
-					.toArray( new MonsterDefinition[ vecMonsters.size( ) ] );
+			return vecMonsters
+					.toArray(new MonsterDefinition[vecMonsters.size()]);
 		}
 		catch ( IOException ioe )
 		{
@@ -94,22 +93,20 @@ public class MonsterLoader
 	public static MonsterDefinition[ ] getMonsterDefinitions(	String monsterDefFile,
 																String monsterXMLAIFile ) throws CRLException
 	{
-		try
-		{
-			MonsterDefinition[ ] monsters = getBaseMonsters( monsterDefFile );
-			Hashtable hashMonsters = new Hashtable( );
-			for ( int i = 0; i < monsters.length; i++ )
-			{
-				hashMonsters.put( monsters[ i ].getID( ), monsters[ i ] );
+		try {
+			MonsterDefinition[] monsters = getBaseMonsters(monsterDefFile);
+			Hashtable<String, MonsterDefinition> hashMonsters = new Hashtable<>();
+			for (MonsterDefinition monster : monsters) {
+				hashMonsters.put(monster.getID(), monster);
 			}
 
-			MonsterDocumentHandler handler = new MonsterDocumentHandler( hashMonsters );
-			MinML parser = new MinML( );
-			DESEncrypter encrypter = new DESEncrypter( "65csvlk3489585f9rjh" );
+			MonsterDocumentHandler handler = new MonsterDocumentHandler(hashMonsters);
+			MinML parser = new MinML();
+			DESEncrypter encrypter = new DESEncrypter("65csvlk3489585f9rjh");
 			// parser.setContentHandler(handler);
-			parser.setDocumentHandler( handler );
-			parser.parse( new InputSource(
-					encrypter.decrypt( new FileInputStream( monsterXMLAIFile ) ) ) );
+			parser.setDocumentHandler(handler);
+			parser.parse(new InputSource(
+					encrypter.decrypt(new FileInputStream(monsterXMLAIFile))));
 			return monsters;
 
 			/*
@@ -142,25 +139,23 @@ public class MonsterLoader
 
 }
 
-class MonsterDocumentHandler implements DocumentHandler
-{
+class MonsterDocumentHandler implements DocumentHandler {
 	private MonsterDefinition currentMD;
 
-	private Vector currentRangedAttacks;
+	private Vector<RangedAttack> currentRangedAttacks;
 
 	private ActionSelector currentSelector;
-	private Hashtable hashMonsters;
-	MonsterDocumentHandler( Hashtable hashMonsters )
-	{
+	private final Hashtable<String, MonsterDefinition> hashMonsters;
+
+	MonsterDocumentHandler(Hashtable<String, MonsterDefinition> hashMonsters) {
 		this.hashMonsters = hashMonsters;
 	}
 
-	public void characters(	char[ ] values, int param,
-							int param2 ) throws org.xml.sax.SAXException
-	{
+	public void characters(char[] values, int param,
+						   int param2) throws org.xml.sax.SAXException {
 	}
 
-	public void endDocument( ) throws org.xml.sax.SAXException
+	public void endDocument() throws org.xml.sax.SAXException
 	{
 	}
 
@@ -178,10 +173,6 @@ class MonsterDocumentHandler implements DocumentHandler
 
 	}
 
-	public void endPrefixMapping( String str ) throws org.xml.sax.SAXException
-	{
-	}
-
 	public void ignorableWhitespace(	char[ ] values, int param,
 										int param2 ) throws org.xml.sax.SAXException
 	{
@@ -196,10 +187,6 @@ class MonsterDocumentHandler implements DocumentHandler
 	{
 	}
 
-	public void skippedEntity( String str ) throws org.xml.sax.SAXException
-	{
-	}
-
 	public void startDocument( ) throws org.xml.sax.SAXException
 	{
 	}
@@ -207,9 +194,8 @@ class MonsterDocumentHandler implements DocumentHandler
 	public void startElement(	String localName,
 								AttributeList at ) throws org.xml.sax.SAXException
 	{
-		if ( localName.equals( "monster" ) )
-		{
-			currentMD = (MonsterDefinition) hashMonsters.get( at.getValue( "id" ) );
+		if ( localName.equals( "monster" ) ) {
+			currentMD = hashMonsters.get(at.getValue("id"));
 		}
 		else if ( localName.equals( "sel_wander" ) )
 		{
@@ -269,19 +255,15 @@ class MonsterDocumentHandler implements DocumentHandler
 			( (RangedAI) currentSelector )
 					.setApproachLimit( inte( at.getValue( "approachLimit" ) ) );
 		}
-		else if ( localName.equals( "rangedAttacks" ) )
-		{
-			currentRangedAttacks = new Vector( 10 );
+		else if ( localName.equals( "rangedAttacks" ) ) {
+			currentRangedAttacks = new Vector<>(10);
 		}
 		else if ( localName.equals( "rangedAttack" ) )
 		{
 			int damage = 0;
-			try
-			{
-				damage = Integer.parseInt( at.getValue( "damage" ) );
-			}
-			catch ( NumberFormatException nfe )
-			{
+			try {
+				damage = Integer.parseInt(at.getValue("damage"));
+			} catch (NumberFormatException ignored) {
 
 			}
 
@@ -303,11 +285,6 @@ class MonsterDocumentHandler implements DocumentHandler
 
 			currentRangedAttacks.add( ra );
 		}
-	}
-
-	public void startPrefixMapping(	String str,
-									String str1 ) throws org.xml.sax.SAXException
-	{
 	}
 
 	private int inte( String s )
