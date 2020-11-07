@@ -4,25 +4,25 @@ import co.castle.actor.Actor;
 import co.castle.ui.Appearance;
 import co.castle.ui.AppearanceFactory;
 
-public class SmartFeature extends Actor implements Cloneable
-{
+public class SmartFeature extends Actor implements Cloneable {
 	private transient Appearance appearance;
 	private int damageOnStep;
 	private boolean destroyable;
 	private String effectOnStep;
 	private int height;
 
-	private String ID, description, appearanceID;
+	private String ID;
+	private String description;
+	private final String appearanceID;
 
-	public SmartFeature( String pID, String pDescription, Appearance pAppearance )
-	{
+	public SmartFeature(String pID, String pDescription, Appearance pAppearance) {
 		ID = pID;
 		description = pDescription;
 		appearance = pAppearance;
-		appearanceID = pAppearance.getID( );
+		appearanceID = pAppearance.getID();
 	}
 
-	public Object clone( )
+	public Object clone()
 	{
 		// try {
 		SmartFeature x = (SmartFeature) super.clone( );
