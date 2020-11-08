@@ -248,28 +248,15 @@ public final class Service
 				// STMidiPlayer.setVolume(0.1d);
 				STMidiPlayer.sequencer.open( );
 
-			}
-			catch ( MidiUnavailableException mue )
-			{
-				Game.addReport( "Midi device unavailable" );
-				System.out.println( "Midi Device Unavailable" );
-				Service.musicManager.setEnabled( false );
+			} catch (MidiUnavailableException mue) {
+				Game.addReport("Midi device unavailable");
+				System.out.println("Midi Device Unavailable");
+				Service.musicManager.setEnabled(false);
 				return;
 			}
-			System.out.println( "Initializing Music Manager" );
+			System.out.println("Initializing Music Manager");
 
-			Enumeration <?> keys = configurationFile.keys( );
-
-			while ( keys.hasMoreElements( ) )
-			{
-				String key = (String) keys.nextElement();
-				if (key.startsWith("mus_")) {
-					String music = key.substring(4);
-					Service.musicManager.addMusic(music, configurationFile.getProperty(key));
-				}
-			}
-
-			Service.musicManager.setEnabled(true);
+			Service.musicManager.addMusic(configurationFile);
 
 			SFXManager.setEnabled(configurationFile.getProperty("enableSFX") != null
 					&& configurationFile.getProperty("enableSFX").equals("true"));

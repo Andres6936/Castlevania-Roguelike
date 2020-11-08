@@ -17,7 +17,7 @@ public class MusicManager {
 
 	private final Hashtable<String, String> musics = new Hashtable<>();
 
-	private boolean enabled;
+	private boolean enabled = false;
 
 	private String playing = "__nuthin";
 
@@ -84,6 +84,9 @@ public class MusicManager {
 				addMusic(keyTrack, properties.getProperty(key));
 			}
 		}
+
+		// The hash with the tracks has been filled, enable the music manager.
+		enabled = true;
 	}
 
 	public void addMusic(String levelType, String fileName) {
