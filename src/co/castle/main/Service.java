@@ -262,25 +262,17 @@ public final class Service
 
 			while ( keys.hasMoreElements( ) )
 			{
-				String key = (String) keys.nextElement( );
-				if ( key.startsWith( "mus_" ) )
-				{
-					String music = key.substring( 4 );
-					Service.musicManager.addMusic( music, configurationFile.getProperty( key ) );
+				String key = (String) keys.nextElement();
+				if (key.startsWith("mus_")) {
+					String music = key.substring(4);
+					Service.musicManager.addMusic(music, configurationFile.getProperty(key));
 				}
 			}
 
-			Service.musicManager.setEnabled( true );
+			Service.musicManager.setEnabled(true);
 
-			if ( configurationFile.getProperty( "enableSFX" ) == null
-					|| !configurationFile.getProperty( "enableSFX" ).equals( "true" ) )
-			{
-				SFXManager.setEnabled( false );
-			}
-			else
-			{
-				SFXManager.setEnabled( true );
-			}
+			SFXManager.setEnabled(configurationFile.getProperty("enableSFX") != null
+					&& configurationFile.getProperty("enableSFX").equals("true"));
 		}
 		else
 		{
