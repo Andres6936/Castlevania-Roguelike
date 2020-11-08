@@ -255,10 +255,6 @@ public final class Service
 			SFXManager.setEnabled(configurationFile.getProperty("enableSFX") != null
 					&& configurationFile.getProperty("enableSFX").equals("true"));
 		}
-		else
-		{
-			musicManager.setEnabled( false );
-		}
 
 		Player.initializeWhips( "LEATHER_WHIP", "CHAIN_WHIP", "VKILLERW", "THORN_WHIP", "FLAME_WHIP",
 				"LIT_WHIP" );
