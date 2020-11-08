@@ -7,6 +7,9 @@ import java.util.Properties;
 import sz.midi.STMidiPlayer;
 import sz.mp3.JLayerMP3Player;
 
+/**
+ * Role: Play tracks of format mp3 and waw.
+ */
 public class MusicManager {
 
 	// Field Final
