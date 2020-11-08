@@ -164,4 +164,11 @@ public class MusicManager {
 		}
 		playing = "__nuthin";
 	}
+
+	// Method Debug
+
+	@Override
+	public String toString() {
+		return String.format("Total tracks: %d", musics.size());
+	}
 }
