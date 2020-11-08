@@ -111,11 +111,6 @@ public final class Service
 	private static Service instance;
 
 	/**
-	 * Save the properties of the application
-	 */
-	private final Properties configurationFile = new Properties();
-
-	/**
 	 * Play all application sound as effect and music background
 	 */
 	public static MusicManager musicManager = MusicManager.getInstance( );
@@ -123,14 +118,7 @@ public final class Service
 	// We make the constructor private to prevent the use of 'new'
 	private Service( )
 	{
-		try
-		{
-			configurationFile.load( new FileInputStream( "properties/configuration.properties" ) );
-		} catch (FileNotFoundException e) {
-			System.out.println("Configuration file not found.\n");
-		} catch (IOException e) {
-			System.out.println("Error loading configuration file.\n");
-		}
+
 	}
 
 	/**
@@ -227,26 +215,32 @@ public final class Service
 		try
 		{
 			initializeMonsters( );
-		}
-		catch ( CRLException e )
-		{
-			System.out.println( "Faild to load monster configuration." );
-			e.printStackTrace( );
+		} catch (CRLException e) {
+			System.out.println("Faild to load monster configuration.");
+			e.printStackTrace();
 		}
 
-		initializeNPCs( );
-		initializeFeatures( );
-		initializeSmartFeatures( );
+		initializeNPCs();
+		initializeFeatures();
+		initializeSmartFeatures();
+
+		final Properties configurationFile = new Properties();
+
+		try {
+			configurationFile.load(new FileInputStream("properties/configuration.properties"));
+		} catch (FileNotFoundException e) {
+			System.out.println("Configuration file not found.\n");
+		} catch (IOException e) {
+			System.out.println("Error loading configuration file.\n");
+		}
 
 		// NOTE: Move and Clear
-		if ( configurationFile.getProperty( "enableSound" ).equals( "true" ) )
-		{
-			System.out.println( "Initializing Midi Sequencer" );
-			try
-			{
-				STMidiPlayer.sequencer = MidiSystem.getSequencer( );
+		if (configurationFile.getProperty("enableSound").equals("true")) {
+			System.out.println("Initializing Midi Sequencer");
+			try {
+				STMidiPlayer.sequencer = MidiSystem.getSequencer();
 				// STMidiPlayer.setVolume(0.1d);
-				STMidiPlayer.sequencer.open( );
+				STMidiPlayer.sequencer.open();
 
 			} catch (MidiUnavailableException mue) {
 				Game.addReport("Midi device unavailable");
