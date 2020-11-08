@@ -991,29 +991,26 @@ public class GFXUserInterface extends UserInterface implements Runnable
 				actionSelectedByCommand = null;
 			}
 			break;
-		case CommandListener.SHOWMESSAGEHISTORY:
-			showMessageHistory( );
-			break;
-		case CommandListener.SHOWMAP:
-			Display.thus.showMap( level.getMapLocationKey( ), level.getDescription( ) );
-			break;
-		case CommandListener.SWITCHMUSIC:
-			boolean enabled = Service.musicManager.isEnabled( );
-			if ( enabled )
-			{
-				showMessage( "Turn off music" );
-				Service.musicManager.stopMusic( );
-				Service.musicManager.setEnabled( false );
-			}
-			else
-			{
-				showMessage( "Turn on music" );
-				Service.musicManager.setEnabled( true );
-				if ( !level.isDay( ) && level.hasNoonMusic( ) )
-					Service.musicManager.playKey( level.getMusicKeyNoon( ) );
-				else
-					Service.musicManager.playKey( level.getMusicKeyMorning( ) );
-			}
+			case CommandListener.SHOWMESSAGEHISTORY:
+				showMessageHistory();
+				break;
+			case CommandListener.SHOWMAP:
+				Display.thus.showMap(level.getMapLocationKey(), level.getDescription());
+				break;
+			case CommandListener.SWITCHMUSIC:
+				boolean enabled = Service.isEnabled();
+				if (enabled) {
+					showMessage("Turn off music");
+					Service.stopMusic();
+					Service.setEnabled(false);
+				} else {
+					showMessage("Turn on music");
+					Service.setEnabled(true);
+					if (!level.isDay() && level.hasNoonMusic())
+						Service.playKey(level.getMusicKeyNoon());
+					else
+						Service.playKey(level.getMusicKeyMorning());
+				}
 			break;
 		case CommandListener.EXAMINELEVELMAP:
 			examineLevelMap( );

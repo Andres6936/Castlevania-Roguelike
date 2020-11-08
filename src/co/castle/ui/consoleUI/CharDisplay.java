@@ -736,27 +736,26 @@ public class CharDisplay extends Display
 		si.print( logox + 5, logoy + 2, "\\/", ConsoleSystemInterface.YELLOW );
 		String messageX = "'CastleVania' is a trademark of Konami Corporation.";
 		si.print( ( 80 - messageX.length( ) ) / 2, 20, messageX,
-				ConsoleSystemInterface.DARK_RED );
-		messageX = "CastlevaniaRL v" + Game.getVersion( )
+				ConsoleSystemInterface.DARK_RED);
+		messageX = "CastlevaniaRL v" + Game.getVersion()
 				+ ", Developed by Santiago Zapata 2005-2010";
-		si.print( ( 80 - messageX.length( ) ) / 2, 21, messageX,
-				ConsoleSystemInterface.WHITE );
+		si.print((80 - messageX.length()) / 2, 21, messageX,
+				ConsoleSystemInterface.WHITE);
 		messageX = "Midi Tracks by Jorge E. Fuentes, JiLost, Nicholas and Tom Kim";
-		si.print( ( 80 - messageX.length( ) ) / 2, 22, messageX,
-				ConsoleSystemInterface.WHITE );
+		si.print((80 - messageX.length()) / 2, 22, messageX,
+				ConsoleSystemInterface.WHITE);
 
-		si.refresh( );
-		Service.musicManager.playKey( "TITLE" );
-		CharKey x = new CharKey( CharKey.NONE );
-		while ( x.code != CharKey.A && x.code != CharKey.a && x.code != CharKey.B
+		si.refresh();
+		Service.playKey("TITLE");
+		CharKey x = new CharKey(CharKey.NONE);
+		while (x.code != CharKey.A && x.code != CharKey.a && x.code != CharKey.B
 				&& x.code != CharKey.b && x.code != CharKey.C && x.code != CharKey.c
 				&& x.code != CharKey.E && x.code != CharKey.e && x.code != CharKey.D
 				&& x.code != CharKey.d && x.code != CharKey.G && x.code != CharKey.g
-				&& x.code != CharKey.F && x.code != CharKey.f )
-			x = si.inkey( );
-		si.cls( );
-		switch ( x.code )
-		{
+				&& x.code != CharKey.F && x.code != CharKey.f)
+			x = si.inkey();
+		si.cls();
+		switch (x.code) {
 		case CharKey.A:
 		case CharKey.a:
 			return 0;

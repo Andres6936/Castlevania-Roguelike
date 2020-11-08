@@ -17,17 +17,17 @@ public class Dracula1 extends Unleasher
 	{
 		Monster dracula = level.getMonsterByID( "DRACULA" );
 		int distance = Position.distance( dracula.getPosition( ),
-				game.getPlayer( ).getPosition( ) );
-		if ( distance > 3 && !( (DraculaAI) dracula.getSelector( ) ).isOnBattle( ) )
+				game.getPlayer().getPosition());
+		if (distance > 3 && !((DraculaAI) dracula.getSelector()).isOnBattle())
 			return;
-		Display.thus.showChat( "DRACULA1", game );
-		level.getMapCell( level.getExitFor( "#DRACPOS" ) )
-				.setAppearance( AppearanceFactory.getAppearanceFactory( )
-						.getAppearance( "DRACULA_THRONE2_X" ) );
-		( (DraculaAI) dracula.getSelector( ) ).setOnBattle( true );
-		dracula.setVisible( true );
-		level.setMusicKeyMorning( "DRACULA" );
-		Service.musicManager.playKey( "DRACULA" );
+		Display.thus.showChat("DRACULA1", game);
+		level.getMapCell(level.getExitFor("#DRACPOS"))
+				.setAppearance(AppearanceFactory.getAppearanceFactory()
+						.getAppearance("DRACULA_THRONE2_X"));
+		((DraculaAI) dracula.getSelector()).setOnBattle(true);
+		dracula.setVisible(true);
+		level.setMusicKeyMorning("DRACULA");
+		Service.playKey("DRACULA");
 		enabled = false;
 	}
 

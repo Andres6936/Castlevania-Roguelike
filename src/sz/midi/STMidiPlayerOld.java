@@ -41,8 +41,8 @@ public class STMidiPlayerOld implements Runnable
 		}
 		catch ( MidiUnavailableException mue )
 		{
-			Game.addReport( "Midi device unavailable" );
-			Service.musicManager.setEnabled( false );
+			Game.addReport("Midi device unavailable");
+			Service.setEnabled(false);
 			return;
 		}
 

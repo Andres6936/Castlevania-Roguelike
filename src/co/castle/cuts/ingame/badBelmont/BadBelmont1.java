@@ -25,9 +25,9 @@ public class BadBelmont1 extends Unleasher
 		}
 		else
 		{
-			level.setMusicKeyMorning( "BADBELMONT" );
-			level.setMusicKeyNoon( "BADBELMONT" );
-			Service.musicManager.playKey( "BADBELMONT" );
+			level.setMusicKeyMorning("BADBELMONT");
+			level.setMusicKeyNoon("BADBELMONT");
+			Service.playKey("BADBELMONT");
 		}
 		enabled = false;
 	}

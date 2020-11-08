@@ -34,24 +34,22 @@ public class Intro3 extends Unleasher
 					String monsterId = "WHITE_SKELETON";
 					if ( i == 0 )
 						monsterId = "WARG";
-					Monster warg = MonsterFactory.getFactory( ).buildMonster( monsterId );
-					warg.setPosition( wargPosition );
-					level.addMonster( warg );
-				}
-				else
-				{
+					Monster warg = MonsterFactory.getFactory().buildMonster(monsterId);
+					warg.setPosition(wargPosition);
+					level.addMonster(warg);
+				} else {
 					i--;
 				}
 			}
-			Service.musicManager.playKey( "WRECKAGE" );
-			level.setMusicKeyMorning( "WRECKAGE" );
-			if ( level.getNPCByID( "MELDUCK" ) != null )
-				level.getNPCByID( "MELDUCK" ).setTalkMessage(
-						"On your way! I will take care of anything you leave here" );
+			Service.playKey("WRECKAGE");
+			level.setMusicKeyMorning("WRECKAGE");
+			if (level.getNPCByID("MELDUCK") != null)
+				level.getNPCByID("MELDUCK").setTalkMessage(
+						"On your way! I will take care of anything you leave here");
 			enabled = false;
-			level.removeCounter( "COUNTBACK_INTRO_2" );
-			level.getPlayer( ).see( );
-			UserInterface.getUI( ).refresh( );
+			level.removeCounter("COUNTBACK_INTRO_2");
+			level.getPlayer().see();
+			UserInterface.getUI().refresh();
 		}
 	}
 

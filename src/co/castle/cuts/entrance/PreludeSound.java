@@ -9,8 +9,8 @@ public class PreludeSound extends Unleasher
 {
 	public void unleash( Level level, Game game )
 	{
-		Service.musicManager.stopMusic( );
-		Service.musicManager.playKeyOnce( "PRELUDE" );
+		Service.stopMusic();
+		Service.playKeyOnce("PRELUDE");
 		enabled = false;
 	}
 

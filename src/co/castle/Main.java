@@ -181,17 +181,16 @@ public final class Main
 
 	private static void title( )
 	{
-		Service.musicManager.playKey( "TITLE" );
+		app.playKey("TITLE");
 
-		int choice = Display.thus.showTitleScreen( );
+		int choice = Display.thus.showTitleScreen();
 
-		switch ( choice )
-		{
-		case 0:
-			newGame( );
-			break;
-		case 1:
-			loadGame( );
+		switch (choice) {
+			case 0:
+				newGame();
+				break;
+			case 1:
+				loadGame();
 			break;
 		case 2:
 			prologue( );

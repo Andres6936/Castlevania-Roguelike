@@ -97,9 +97,12 @@ import sz.csi.jcurses.JCursesConsoleInterface;
 import sz.csi.wswing.WSwingConsoleInterface;
 import sz.midi.STMidiPlayer;
 
-//With keyword final, we be prevent the inheritance of this class
-public final class Service
-{
+/**
+ * Roles: Play all application sound as effect and music background.
+ *
+ * @implNote With keyword final, we be prevent the inheritance of this class.
+ */
+public final class Service extends MusicManager {
 	private final static byte JCURSES_CONSOLE = 0;
 	private final static byte SWING_GFX = 1;
 	private final static byte SWING_CONSOLE = 2;
@@ -109,15 +112,9 @@ public final class Service
 	 */
 	private static Service instance;
 
-	/**
-	 * Play all application sound as effect and music background
-	 */
-	public static MusicManager musicManager = MusicManager.getInstance( );
-
 	// We make the constructor private to prevent the use of 'new'
-	private Service( )
-	{
-
+	private Service() {
+		super();
 	}
 
 	/**
@@ -245,12 +242,10 @@ public final class Service
 			} catch (MidiUnavailableException mue) {
 				Game.addReport("Midi device unavailable");
 				System.out.println("Midi Device Unavailable");
-				Service.musicManager.setEnabled(false);
 				return;
 			}
 			System.out.println("Initializing Music Manager");
-
-			Service.musicManager.addTracks(configurationFile);
+			addTracks(configurationFile);
 
 			SFXManager.setEnabled(configurationFile.getProperty("enableSFX") != null
 					&& configurationFile.getProperty("enableSFX").equals("true"));

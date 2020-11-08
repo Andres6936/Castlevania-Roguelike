@@ -12,13 +12,13 @@ public class Dracula3 extends Unleasher
 
 	public void unleash( Level level, Game game )
 	{
-		Monster dracula = level.getMonsterByID( "DEMON_DRACULA" );
-		if ( dracula != null )
+		Monster dracula = level.getMonsterByID("DEMON_DRACULA");
+		if (dracula != null)
 			return;
-		Service.musicManager.stopMusic( );
-		Display.thus.showChat( "DRACULA3", game );
-		Service.musicManager.playKey( "VICTORY" );
-		game.wonGame( );
+		Service.stopMusic();
+		Display.thus.showChat("DRACULA3", game);
+		Service.playKey("VICTORY");
+		game.wonGame();
 		enabled = false;
 	}
 }

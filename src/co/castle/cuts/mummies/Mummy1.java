@@ -48,19 +48,16 @@ public class Mummy1 extends Unleasher
 		if ( level.getBoss( ) == null )
 		{
 			Display.thus.showScreen(
-					"As you destroy the mummy of Akmodan, the whole room trembles, and a cold hurricaned wind covers all the place, shredding everything on sight. All of a sudden, the floor under you collapses." );
-			level.getPlayer( ).reduceKeys( 1 );
-			level.setMusicKeyMorning( "" );
-			level.setMusicKeyNoon( "" );
-			Service.musicManager.stopMusic( );
-			try
-			{
-				StaticGenerator.getGenerator( ).renderOverLevel( level, newMap, charMap,
-						new Position( 0, 0 ) );
-			}
-			catch ( CRLException crle )
-			{
-				Game.crash( "Error on Mummy1 unleasher", crle );
+					"As you destroy the mummy of Akmodan, the whole room trembles, and a cold hurricaned wind covers all the place, shredding everything on sight. All of a sudden, the floor under you collapses.");
+			level.getPlayer().reduceKeys(1);
+			level.setMusicKeyMorning("");
+			level.setMusicKeyNoon("");
+			Service.stopMusic();
+			try {
+				StaticGenerator.getGenerator().renderOverLevel(level, newMap, charMap,
+						new Position(0, 0));
+			} catch (CRLException crle) {
+				Game.crash("Error on Mummy1 unleasher", crle);
 			}
 			enabled = false;
 		}

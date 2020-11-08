@@ -11,48 +11,38 @@ public class MusicManager {
 
 	// Field Final
 
-	private final Thread currentMidiThread;
-
-	private final Thread currentMP3Thread;
-
-	private final Hashtable<String, String> musics = new Hashtable<>();
-
-	private boolean enabled = false;
-
-	private String playing = "__nuthin";
-
-	// Field Static
+	/**
+	 * Needed for play waw files.
+	 */
+	private static final Thread currentMidiThread = new Thread(new STMidiPlayer());
 
 	/**
-	 * Class type Singleton, reference to only object
+	 * Needed for play mp3 files.
 	 */
-	private static MusicManager instance;
+	private static final Thread currentMP3Thread = new Thread(new JLayerMP3Player());
+
+	/**
+	 * Save the path to tracks.
+	 */
+	private static final Hashtable<String, String> musics = new Hashtable<>();
+
+	/**
+	 * For default to false, false if exist errors that not allow play tracks,
+	 * true if not errors has been produced. If this variable is false, the
+	 * music manager cannot play tracks (effects, ambient sound, etc ... ).
+	 */
+	private static boolean enabled = false;
+
+	/**
+	 * Current path or name of file playing.
+	 */
+	private static String playing = "__nuthin";
 
 	// Construct
 
-	// We make the constructor private to prevent the use of 'new'
-	private MusicManager() {
-		STMidiPlayer midiPlayer = new STMidiPlayer();
-		JLayerMP3Player mp3Player = new JLayerMP3Player();
-
-		currentMidiThread = new Thread(midiPlayer);
-		currentMP3Thread = new Thread(mp3Player);
-
+	public MusicManager() {
 		currentMP3Thread.start();
 		currentMidiThread.start();
-	}
-
-	// Method Static
-
-	/**
-	 * @return Instance of MusicManager
-	 */
-	public static MusicManager getInstance() {
-		if (instance == null) {
-			instance = new MusicManager();
-		}
-
-		return instance;
 	}
 
 	// Method
@@ -90,56 +80,37 @@ public class MusicManager {
 
 	public void die() {
 		STMidiPlayer.setInstruction(STMidiPlayer.INS_DIE);
-		if (currentMidiThread != null) {
-			currentMidiThread.interrupt();
-		}
-		JLayerMP3Player.setInstruction( JLayerMP3Player.INS_DIE );
-		if ( currentMP3Thread != null )
-		{
-			currentMP3Thread.interrupt( );
-		}
+		currentMidiThread.interrupt();
+		JLayerMP3Player.setInstruction(JLayerMP3Player.INS_DIE);
+		currentMP3Thread.interrupt();
 	}
 
-	public boolean isEnabled( )
-	{
+	public static boolean isEnabled() {
 		return enabled;
 	}
 
-	public void play( String fileName )
-	{
-		if ( !enabled || playing.equals( fileName ) )
+	public static void play(String fileName) {
+		if (!enabled || playing.equals(fileName))
 			return;
-		stopMusic( );
-		try
-		{
+		stopMusic();
+		try {
 			playing = fileName;
-			if ( fileName.endsWith( "mp3" ) )
-			{
-				JLayerMP3Player.setMP3( fileName );
-				JLayerMP3Player.setInstruction( JLayerMP3Player.INS_LOAD );
-				if ( currentMP3Thread != null )
-				{
-					currentMP3Thread.interrupt( );
-				}
-			}
-			else
-			{
-				STMidiPlayer.setMidi( fileName );
-				STMidiPlayer.setInstruction( STMidiPlayer.INS_LOAD );
-				if ( currentMidiThread != null )
-				{
-					currentMidiThread.interrupt( );
-				}
+			if (fileName.endsWith("mp3")) {
+				JLayerMP3Player.setMP3(fileName);
+				JLayerMP3Player.setInstruction(JLayerMP3Player.INS_LOAD);
+				currentMP3Thread.interrupt();
+			} else {
+				STMidiPlayer.setMidi(fileName);
+				STMidiPlayer.setInstruction(STMidiPlayer.INS_LOAD);
+				currentMidiThread.interrupt();
 			}
 
-		}
-		catch ( Exception e )
-		{
-			System.out.println( "Error trying to play " + fileName );
+		} catch (Exception e) {
+			System.out.println("Error trying to play " + fileName);
 		}
 	}
 
-	public void playKey( String key) {
+	public static void playKey(String key) {
 		String bgMusic = musics.get(key);
 
 		if (bgMusic != null) {
@@ -149,7 +120,7 @@ public class MusicManager {
 		}
 	}
 
-	public void playKeyOnce( String key) {
+	public static void playKeyOnce(String key) {
 		String bgMusic = musics.get(key);
 		if (bgMusic != null) {
 			playOnce(bgMusic);
@@ -158,60 +129,38 @@ public class MusicManager {
 		}
 	}
 
-	public void playOnce( String fileName )
-	{
-		if ( !enabled || playing.equals( fileName ) )
+	public static void playOnce(String fileName) {
+		if (!enabled || playing.equals(fileName))
 			return;
-		stopMusic( );
-		try
-		{
+		stopMusic();
+		try {
 			playing = fileName;
-			if ( fileName.endsWith( "mp3" ) )
-			{
-				JLayerMP3Player.setMP3( fileName );
-				JLayerMP3Player.setInstruction( JLayerMP3Player.INS_LOAD );
-				if ( currentMP3Thread != null )
-				{
-					currentMP3Thread.interrupt( );
-				}
-			}
-			else
-			{
-				STMidiPlayer.setMidi( fileName );
-				STMidiPlayer.setInstruction( STMidiPlayer.INS_LOAD_ONCE );
-				if ( currentMidiThread != null )
-				{
-					currentMidiThread.interrupt( );
-				}
+			if (fileName.endsWith("mp3")) {
+				JLayerMP3Player.setMP3(fileName);
+				JLayerMP3Player.setInstruction(JLayerMP3Player.INS_LOAD);
+				currentMP3Thread.interrupt();
+			} else {
+				STMidiPlayer.setMidi(fileName);
+				STMidiPlayer.setInstruction(STMidiPlayer.INS_LOAD_ONCE);
+				currentMidiThread.interrupt();
 			}
 
-		}
-		catch ( Exception e )
-		{
-			Game.crash( "Error trying to play " + fileName, e );
+		} catch (Exception e) {
+			Game.crash("Error trying to play " + fileName, e);
 		}
 	}
 
-	public void setEnabled( boolean value )
-	{
+	public static void setEnabled(boolean value) {
 		enabled = value;
 	}
 
-	public void stopMusic( )
-	{
-		if ( playing.endsWith( "mp3" ) )
-		{
-			JLayerMP3Player.setInstruction( JLayerMP3Player.INS_STOP );
-			if ( currentMP3Thread != null )
-			{
-				currentMP3Thread.interrupt( );
-			}
-		}
-		else
-		{
-			STMidiPlayer.setInstruction( STMidiPlayer.INS_STOP );
-			if ( currentMidiThread != null )
-				currentMidiThread.interrupt( );
+	public static void stopMusic() {
+		if (playing.endsWith("mp3")) {
+			JLayerMP3Player.setInstruction(JLayerMP3Player.INS_STOP);
+			currentMP3Thread.interrupt();
+		} else {
+			STMidiPlayer.setInstruction(STMidiPlayer.INS_STOP);
+			currentMidiThread.interrupt( );
 		}
 		playing = "__nuthin";
 	}
