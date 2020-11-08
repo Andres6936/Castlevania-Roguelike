@@ -6,55 +6,62 @@ import sz.midi.STMidiPlayer;
 import sz.mp3.JLayerMP3Player;
 
 public class MusicManager {
-	private final Thread currentMidiThread;
-	private final Thread currentMP3Thread;
 
-	private boolean enabled;
+	// Field Final
+
+	private final Thread currentMidiThread;
+
+	private final Thread currentMP3Thread;
 
 	private final Hashtable<String, String> musics = new Hashtable<>();
 
+	private boolean enabled;
+
 	private String playing = "__nuthin";
+
+	// Field Static
 
 	/**
 	 * Class type Singleton, reference to only object
 	 */
 	private static MusicManager instance;
 
+	// Construct
+
 	// We make the constructor private to prevent the use of 'new'
-	private MusicManager()
-	{
-		STMidiPlayer midiPlayer = new STMidiPlayer( );
-		JLayerMP3Player mp3Player = new JLayerMP3Player( );
-		
-		currentMidiThread = new Thread( midiPlayer );
-		currentMP3Thread = new Thread( mp3Player );
-		
-		currentMP3Thread.start( );
-		currentMidiThread.start( );
+	private MusicManager() {
+		STMidiPlayer midiPlayer = new STMidiPlayer();
+		JLayerMP3Player mp3Player = new JLayerMP3Player();
+
+		currentMidiThread = new Thread(midiPlayer);
+		currentMP3Thread = new Thread(mp3Player);
+
+		currentMP3Thread.start();
+		currentMidiThread.start();
 	}
+
+	// Method Static
 
 	/**
 	 * @return Instance of MusicManager
 	 */
-	public static MusicManager getInstance( )
-	{
-		if ( instance == null )
-		{
-			instance = new MusicManager( );
+	public static MusicManager getInstance() {
+		if (instance == null) {
+			instance = new MusicManager();
 		}
 
 		return instance;
 	}
 
-	public void addMusic( String levelType, String fileName )
-	{
-		musics.put( levelType, fileName );
+	// Method
+
+	public void addMusic(String levelType, String fileName) {
+		musics.put(levelType, fileName);
 	}
 
-	public void die( )
-	{
-		STMidiPlayer.setInstruction( STMidiPlayer.INS_DIE );
-		if ( currentMidiThread != null )
+	public void die() {
+		STMidiPlayer.setInstruction(STMidiPlayer.INS_DIE);
+		if (currentMidiThread != null)
 		{
 			currentMidiThread.interrupt( );
 		}
