@@ -230,6 +230,7 @@ public final class Service
 			configurationFile.load(in);
 		} catch (IOException exception) {
 			System.err.println("Configuration file not found or error while loading the file.\n");
+			exception.printStackTrace();
 		}
 
 		// NOTE: Move and Clear
