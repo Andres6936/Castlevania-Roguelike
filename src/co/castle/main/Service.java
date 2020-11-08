@@ -226,12 +226,10 @@ public final class Service
 
 		final Properties configurationFile = new Properties();
 
-		try {
-			configurationFile.load(new FileInputStream("properties/configuration.properties"));
-		} catch (FileNotFoundException e) {
-			System.out.println("Configuration file not found.\n");
-		} catch (IOException e) {
-			System.out.println("Error loading configuration file.\n");
+		try (var in = new FileInputStream("properties/configuration.properties")) {
+			configurationFile.load(in);
+		} catch (IOException exception) {
+			System.err.println("Configuration file not found or error while loading the file.\n");
 		}
 
 		// NOTE: Move and Clear
