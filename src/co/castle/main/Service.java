@@ -214,7 +214,7 @@ public final class Service
 
 		try
 		{
-			initializeMonsters( );
+			initializeMonsters();
 		} catch (CRLException e) {
 			System.out.println("Faild to load monster configuration.");
 			e.printStackTrace();
@@ -224,6 +224,8 @@ public final class Service
 		initializeFeatures();
 		initializeSmartFeatures();
 
+		// Load the file of configuration, this properties file have the path
+		// to tracks of app.
 		final Properties configurationFile = new Properties();
 
 		try (var in = new FileInputStream("properties/configuration.properties")) {
