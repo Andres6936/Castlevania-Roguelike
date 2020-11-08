@@ -150,7 +150,7 @@ public class MusicManager {
 		}
 	}
 
-	public static void setEnabled(boolean value) {
+	public static void setEnabledMusicManager(boolean value) {
 		enabled = value;
 	}
 
@@ -160,7 +160,7 @@ public class MusicManager {
 			currentMP3Thread.interrupt();
 		} else {
 			STMidiPlayer.setInstruction(STMidiPlayer.INS_STOP);
-			currentMidiThread.interrupt( );
+			currentMidiThread.interrupt();
 		}
 		playing = "__nuthin";
 	}

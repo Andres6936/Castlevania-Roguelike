@@ -1002,10 +1002,10 @@ public class GFXUserInterface extends UserInterface implements Runnable
 				if (enabled) {
 					showMessage("Turn off music");
 					Service.stopMusic();
-					Service.setEnabled(false);
+					Service.setEnabledMusicManager(false);
 				} else {
 					showMessage("Turn on music");
-					Service.setEnabled(true);
+					Service.setEnabledMusicManager(true);
 					if (!level.isDay() && level.hasNoonMusic())
 						Service.playKey(level.getMusicKeyNoon());
 					else
