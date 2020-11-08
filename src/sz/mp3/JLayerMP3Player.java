@@ -10,13 +10,13 @@ import javazoom.jl.player.Player;
 public class JLayerMP3Player implements Runnable {
 	// Fields Static Finals
 
-	public static final int INS_DIE = 2;
+	public static final byte INS_DIE = 2;
 
-	public static final int INS_LOAD = 1;
+	public static final byte INS_LOAD = 1;
 
-	public static final int INS_PLAYING = 3;
+	public static final byte INS_PLAYING = 3;
 
-	public static final int INS_STOP = 0;
+	public static final byte INS_STOP = 0;
 
 	// Fields Static
 
