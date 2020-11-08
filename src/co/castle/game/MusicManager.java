@@ -80,17 +80,12 @@ public class MusicManager {
 				// Deleted the part of "mus_" and use the rest of key name
 				// like key.
 				// Example: mus_TITLE will be TITLE
-				final String keyTrack = key.substring(4);
-				addMusic(keyTrack, properties.getProperty(key));
+				musics.put(key.substring(4), properties.getProperty(key));
 			}
 		}
 
 		// The hash with the tracks has been filled, enable the music manager.
 		enabled = true;
-	}
-
-	public void addMusic(String levelType, String fileName) {
-		musics.put(levelType, fileName);
 	}
 
 	public void die() {
