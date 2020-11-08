@@ -65,7 +65,7 @@ public class MusicManager {
 	 *
 	 * @param properties File with the key and path to tracks.
 	 */
-	public void addMusic(final Properties properties) {
+	public void addTracks(final Properties properties) {
 		Enumeration<?> keys = properties.keys();
 
 		while (keys.hasMoreElements()) {

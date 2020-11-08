@@ -4,7 +4,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Field;
-import java.util.Enumeration;
 import java.util.Properties;
 
 import javax.sound.midi.MidiSystem;
@@ -236,7 +235,7 @@ public final class Service
 		}
 
 		// NOTE: Move and Clear
-		if (configurationFile.getProperty("enableSound").equals("true")) {
+		if (configurationFile.getProperty("enableSound", "false").equals("true")) {
 			System.out.println("Initializing Midi Sequencer");
 			try {
 				STMidiPlayer.sequencer = MidiSystem.getSequencer();
@@ -251,7 +250,7 @@ public final class Service
 			}
 			System.out.println("Initializing Music Manager");
 
-			Service.musicManager.addMusic(configurationFile);
+			Service.musicManager.addTracks(configurationFile);
 
 			SFXManager.setEnabled(configurationFile.getProperty("enableSFX") != null
 					&& configurationFile.getProperty("enableSFX").equals("true"));
