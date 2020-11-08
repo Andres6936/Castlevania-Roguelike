@@ -78,13 +78,6 @@ public class MusicManager {
 		enabled = true;
 	}
 
-	public void die() {
-		STMidiPlayer.setInstruction(STMidiPlayer.INS_DIE);
-		currentMidiThread.interrupt();
-		JLayerMP3Player.setInstruction(JLayerMP3Player.INS_DIE);
-		currentMP3Thread.interrupt();
-	}
-
 	public static boolean isEnabled() {
 		return enabled;
 	}
