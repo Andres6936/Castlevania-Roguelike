@@ -7,47 +7,51 @@ import java.io.IOException;
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.Player;
 
-public class JLayerMP3Player implements Runnable
-{
+public class JLayerMP3Player implements Runnable {
+	// Fields Static Finals
+
 	public static final int INS_DIE = 2;
+
 	public static final int INS_LOAD = 1;
 
 	public static final int INS_PLAYING = 3;
+
 	public static final int INS_STOP = 0;
+
+	// Fields Static
+
 	private static int currentInstruction;
+
 	private static String currentMP3File = "__noneYet";
 
-	public static void main( String[ ] args )
-	{
-		new Thread( new JLayerMP3Player( ) ).start( );
-		JLayerMP3Player.setMP3( "music/Wyvern - upbeat.mp3" );
+	public static void main(String[] args) {
+		new Thread(new JLayerMP3Player()).start();
+		JLayerMP3Player.setMP3("music/Wyvern - upbeat.mp3");
 
 		// JLayerMP3Player.setMP3("music/Craig Stern - Exploring the Depths.mp3");
 		JLayerMP3Player.setInstruction( INS_LOAD );
 
-		try
-		{
-			Thread.sleep( 10000 );
-			JLayerMP3Player.setInstruction( INS_DIE );
-		}
-		catch ( InterruptedException e )
-		{
-			e.printStackTrace( );
+		try {
+			Thread.sleep(10000);
+			JLayerMP3Player.setInstruction(INS_DIE);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
 	}
 
-	public static void setInstruction( int instruction )
-	{
+	// Method Static
+
+	public static void setInstruction(int instruction) {
 		currentInstruction = instruction;
 	}
 
-	public static void setMP3( String pMP3File )
-	{
+	public static void setMP3(String pMP3File) {
 		currentMP3File = pMP3File;
 	}
 
-	public synchronized void run( )
-	{
+	// Method Synchronized
+
+	public synchronized void run() {
 		boolean leave;
 		out:
 		while (true) {
