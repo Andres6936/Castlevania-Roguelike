@@ -1,0 +1,112 @@
+(Town)
+TOWN_ROOF, '^', LIGHT_GRAY (You can walk over it, it is the one used on the 'third floor' of the town, you can make it like shingles if you want)
+TOWN_STAIRSDOWN, '>', BROWN (Like the ones on the moat)
+TOWN_STAIRSUP, '<', BROWN 
+
+(Dark Forest)
+FOREST_GRASS, '.', GREEN (Like town but a bit more grown)
+FOREST_DIRT, ',', BROWN (Like town but more dirty)
+WRECKED_CHARRIOT, '#', LIGHT_GRAY
+WRECKED_WHEEL, 'o', LIGHT_GRAY
+SIGN_POST, '+', LIGHT_GRAY
+
+(Castle Bridge)
+WOODEN_BRIDGE, '#', BROWN
+DARK_LAKE, '~', DARK_BLUE
+BRIDGE_WALKWAY, ':', LIGHT_GRAY
+BRIDGE_COLUMN, 'O', LIGHT_GRAY
+
+(Castle Garden)
+GARDEN_WALKWAY,  '.', BROWN
+
+(Chapel)
+CHURCH_WALL, '#', DARK_RED
+CHURCH_FLOOR, '.', WHITE
+CHURCH_WOODEN_BARRIER_H, '+', BROWN (Like these things before atriums) (Pic attached)
+CHURCH_WOODEN_BARRIER_V, '|', BROWN  (Pic attached)3
+CHURCH_CHAIR, ';', BROWN (VerticalTileable)
+CHURCH_CHAIR_H (horizontal, tileable)
+CHURCH_CONFESSIONARY, '#', BROWN 
+CONFESSIONARY_DOOR
+CHURCH_CARPET, '-', RED
+**ATRIUM, ':', BROWN (Midfloor) (It is a midfloor, the part in front of churches that is more elevated where the priest and relics are)
+*CHURCH_STAIR, '=', YELLOW
+CHURCH_STAINED_WINDOW, '+', MAGENTA
+CHURCH_FLOOR_H, ':', WHITE (This is not an high floor walkway, it is used in the second floor.) 
+
+
+(Ruins)
+RUINS_COLUMN, 'O', WHITE
+RUINS_FLOOR, '.', WHITE
+RUINS_WALL, '#', WHITE
+**RUINS_FLOOR_H, ':', WHITE
+*RUINS_STAIRS, '=', WHITE
+
+(Caves)
+
+(Courtyard)
+COURTYARD_WALL, '#', LIGHT_GRAY 
+COURTYARD_FLOOR, '.', BROWN
+COURTYARD_COLUMN, 'O', WHITE
+COURTYARD_FENCE, '+', GRAY
+COURTYARD_GRASS, ',', RED
+COURTYARD_FLOWERS, '*', DARK_RED
+
+(Dungeon)
+DUNGEON_FLOOR, '.', WHITE (Done)
+DUNGEON_DOOR, '+', YELLOW
+DUNGEON_WALL, '#', LIGHT_GRAY (Done)
+DUNGEON_PASSAGE, '.', GRAY (Dark floor)
+DUNGEON_DOWN, '>', YELLOW
+DUNGEON_UP, '<', YELLOW
+
+(Frank Lab, goes with Dungeon Theme)
+WIRES, '', GRAY (Change them to gray background?)
+FRANK_TABLE, 'I', RED (Done)
+
+(Clock Tower)
+TOWER_FLOOR, '.', LIGHT_GRAY
+TOWER_WALL, '#', DARK_RED
+TOWER_COLUMN, 'O', DARK_RED
+TOWER_WINDOW, '#', LIGHT_GRAY
+TOWER_DOWN, '>', YELLOW
+TOWER_UP, '<', YELLOW
+CAMPANARIUM, '^', BROWN (High, like a wall, soli)
+**TOWER_FLOOR_H, ':', BROWN (Midfloor)
+*TOWER_STAIRS, '=', BROWN (Midstairs)
+CLOCK_GEAR_1, '>', DARK_RED
+CLOCK_GEAR_2, '<', DARK_RED
+CLOCK_GEAR_3, 'o', BROWN
+CLOCK_GEAR_4, '-', DARK_RED
+
+
+(New People)
+CG_BARRET - The town artist
+
+(Big Portraits)
+MELDUCK, '@', TEAL (A charriotman who brings you to the castle, long brown hair, thin? big nose :P whatever you want)
+BLACKSMITH_MAIDEN A girl that lives inside the castle villa
+PLOT_BEASTMORPHER Needs one for woman and other for a feline beast,
+PLOT_SORCERESS - no name yet
+
+:: NOTES ::
+
+Marked with ** are the high floors, marked with * are the midfloors like town stairs
+
+Confessionary pattern for the chapel is like 
+wwwwwww
+#  #  #
+#d###d#
+where w is a church wall and # is confessionary
+
+
+
+Clock gear for the tower is like
+ 
+ -
+<o>
+ -
+
+If you want to use 9 different tiles, we can change it 
+
+Picture of the wooden barriers can be found at http://www.irnham.org/photos/church/altar.jpg

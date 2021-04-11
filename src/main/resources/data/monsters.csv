@@ -1,0 +1,119 @@
+ID;Appearance;Description;LongDescription;WavOnHit;BloodContent;Undead;Ethereal;Can Swim;Flying;Score;SightRange;Hits;Attack;WalkCost;AttackCost;EvadeChance;EvadeMessage;AutoRespawn
+S_BIRD;S_BIRD;Soul Bird;The invoked soul of a bird. Scratches enemies to the death. Can fly;;20;false;true;false;true;0;10;10;10;50;50;0;;0
+S_CAT;S_CAT;Soul Cat;The invoked soul of a cat. Slashes enemies to their death. Quick;;20;false;false;false;false;0;10;15;15;40;40;0;;0
+S_TURTLE;S_TURTLE;Soul Turtle;The invoked soul of a turtle. Withstands a lot of damage;;20;false;false;true;false;0;10;30;5;80;80;0;;0
+S_EAGLE;S_EAGLE;Soul Eagle;The invoked soul of a wild eagle. Scratches enemies to the death. Can fly;;20;false;true;false;true;0;10;20;40;50;50;0;;0
+S_TIGER;S_TIGER;Soul Tiger;The invoked soul of a fierce tiger. Slashes enemies to their death. Quick;;20;false;false;false;false;0;10;30;50;40;40;0;;0
+S_TORTOISE;S_TORTOISE;Soul Tortoise;The invoked soul of a massive tortoise. Withstands a lot of damage;;20;false;false;true;false;0;10;60;10;80;80;0;;0
+BLOOD_SKELETON;BLOOD_SKELETON;Blood Skeleton;A skeleton soaked in blood. Revives after being destroyed.;;0;true;false;false;false;0;10;20;3;80;80;0;;10
+S_DRAGON;S_DRAGON;Soul Dragon;The invoked soul of an ancient dragon. Massive destruction over enemies;;20;false;true;false;true;0;10;45;50;40;40;0;;0
+IGOR;IGOR;Igor;Helper of the CastleVania labs. Cannot be killed;;1;false;false;false;false;1;20;7777;6;25;25;0;;0
+SICKLE;SICKLE;Sickle;A sickle invoked by the grim reaper.;;0;false;true;false;true;50;5;1;4;75;75;0;;0
+BAT;BAT;Bat;Common blood sucking transylvannian bat. Can fly;wav/m_bat.wav;30;false;false;false;true;100;10;4;2;40;40;0;;0
+R_SKELETON;R_SKELETON;Skeleton Rib;A common servant of Dracula. Can throw bones;;0;true;false;false;false;150;10;6;3;50;50;0;;0
+PANTHER;PANTHER;Black Panther;An evil panther tamed to serve the army of dracula. Waits for the enemy to come close and then charges.;;60;false;false;false;false;150;10;8;4;40;40;0;;0
+GZOMBIE;GZOMBIE;Town Zombie;The terror of Transylvannian towns at night. Wanders around with his arms raised.;;20;true;false;false;false;150;10;8;3;60;60;0;;0
+WARG;WARG;Warg;A giant wolf-like creature;wav/m_warg.wav;60;false;false;false;false;200;10;10;6;70;70;0;;0
+MIMIC;MIMIC;Mimic;Disguises as a valuable item;;0;false;false;false;false;200;10;40;4;50;50;0;;0
+MERMAN;MERMAN;Merman;A half fish creature that dwells on the water, can spit fireballs.;;60;false;false;true;false;250;5;8;4;50;50;0;;0
+SNAKE;SNAKE;Snake;A snake from the medusa head;;10;false;false;false;false;300;5;20;3;40;40;0;;0
+WHITE_SKELETON;WHITE_SKELETON;White Skeleton;A common servant of Dracula. Can throw bones;;0;true;false;false;false;350;10;12;6;50;50;0;;0
+ZOMBIE;ZOMBIE;Zombie;One of the many undead servants of Dracula;;20;true;false;false;false;350;10;9;3;60;60;0;;0
+APE_SKELETON;APE_SKELETON;Ape Skeleton;Skeleton of a giant Ape, can throw flaming barrels;;0;true;false;false;false;400;10;20;7;75;75;0;;0
+MEDUSA_HEAD;MEDUSA_HEAD;Medusa Head;;;10;false;false;false;true;400;10;10;3;25;25;0;;0
+BONE_PILLAR;BONE_PILLAR;Bone Pillar;;;0;true;false;false;false;500;6;40;4;50;50;0;;0
+MANDRAGORA;MANDRAGORA;Mandragora;;;0;false;false;false;false;500;10;30;0;50;50;0;;0
+SPEAR_KNIGHT;SPEAR_KNIGHT;Spear Knight;;;0;true;false;false;false;550;10;35;7;50;50;0;;0
+SKULL_HEAD;SKULL_HEAD;Skull Head;;;0;true;true;false;true;600;10;15;3;50;50;0;;0
+BLACK_KNIGHT;BLACK_KNIGHT;Black Knight;;;50;false;false;false;false;700;10;35;7;75;75;0;;0
+AXE_KNIGHT;AXE_KNIGHT;Axe Knight;;;0;false;false;false;false;700;10;35;7;75;75;0;;0
+KILLER_PLANT;KILLER_PLANT;Killer Plant;;;0;false;false;false;false;700;10;20;6;50;50;0;;0
+PARANTHROPUS;PARANTHROPUS;Paranthropus;;;0;true;false;false;false;800;10;40;7;75;75;0;;0
+WEREBEAR;WEREBEAR;Werebear;;;80;false;false;false;false;800;10;55;8;65;65;0;;0
+BALLOON_POD;BALLOON_POD;Balloon Pod;;;0;false;false;false;true;900;10;40;6;50;50;0;;0
+BONE_ARCHER;BONE_ARCHER;Bone Archer;;;0;true;false;false;false;900;10;38;7;50;50;0;;0
+SALOME;SALOME;Salome Witch;;;60;false;false;false;true;900;10;45;7;50;50;40;blocks your attack with a magic shield!;0
+SKELETON_PANTHER;SKELETON_PANTHER;Panther Skeleton;;;0;true;false;false;false;900;10;50;8;25;25;0;;0
+SKULL_LORD;SKULL_LORD;Skull Lord;;;0;true;true;false;true;1000;10;40;4;75;75;0;;0
+BLADE_SOLDIER;BLADE_SOLDIER;Blade Soldier;;;0;true;false;false;false;1000;10;80;8;40;40;0;;0
+LIZARD_SWORDSMAN;LIZARD_SWORDSMAN;Lizard Swordsman;;;60;false;false;true;false;1000;10;65;7;40;40;0;;0
+MUD_MAN;MUD_MAN;Mud Man;;;0;false;false;true;false;1000;10;30;6;40;40;0;;0
+GARGOYLE;GARGOYLE;Gargoyle;;;0;false;false;false;true;1000;10;50;8;75;75;0;;0
+HUNCHBACK;HUNCHBACK;HunchBack;;;10;false;false;false;false;1000;10;30;6;15;15;0;;0
+SKELETON_ATHLETE;SKELETON_ATHLETE;Skeleton Athlete;;;0;true;false;false;false;1000;10;40;8;20;20;0;;0
+BONE_HALBERD;BONE_HALBERD;Bone Halberd;;;0;true;false;false;false;1100;10;65;10;50;50;0;;0
+RULER_SWORD_LV1;RULER_SWORD_LV1;Ruler Sword Lv 1;;;0;false;false;false;true;1200;10;80;10;70;70;30;blocks your attack with a floating shield!;0
+COCKATRICE;COCKATRICE;Cockatrice;;;80;false;false;false;false;1200;10;90;7;50;50;0;;0
+CROW;CROW;Crow;;;10;false;false;false;true;1200;10;40;8;50;50;0;;0
+COOPER_ARMOR;COOPER_ARMOR;Cooper Armor;;;0;false;false;false;false;1250;10;120;11;75;75;0;;0
+DEATH_MANTIS;DEATH_MANTIS;Death Mantis;;;0;false;false;false;false;1250;10;80;10;40;40;0;;0
+BEAST_DEMON;BEAST_DEMON;Beast Demon;;;90;false;false;false;false;1300;10;100;12;65;65;0;;0
+SPECTER;SPECTER;Specter;;;0;true;false;false;true;1300;20;50;10;50;50;0;;0
+VAMPIRE_BAT;VAMPIRE_BAT;Vampire Bat;;;20;false;false;false;true;1300;10;75;11;40;40;0;;0
+FLYING_SPEAR_SKELETON;FLYING_SPEAR_SKELETON;Flying Spear Bone;;;0;true;false;false;true;1300;8;40;10;50;50;0;;0
+GOLEM;GOLEM;Golem;;;0;false;false;false;false;1350;10;120;11;100;100;0;;0
+CAGNAZOO;CAGNAZOO;Cagnazoo;;;60;false;false;false;true;1350;10;80;12;50;50;0;;0
+ZELDO;ZELDO;Zeldo;;;0;true;false;false;false;1400;10;90;11;60;60;0;;0
+SPEAR_SKELETON;SPEAR_SKELETON;Spear Skeleton;;;0;true;false;false;false;1400;10;90;12;50;50;0;;0
+ALRAUNE;ALRAUNE;Alraune;;;0;false;false;false;false;1500;10;115;12;50;50;0;;0
+DURGA;DURGA;Durga;;;30;false;false;false;false;1500;10;80;12;40;40;0;;0
+GHOUL;GHOUL;Ghoul;;;30;true;false;false;false;1500;10;30;11;60;60;0;;0
+ECTOPLASM;ECTOPLASM;Ectoplasm;;;0;true;false;false;true;1500;10;40;8;50;50;0;;0
+WIGHT;WIGHT;Wight;;;0;true;false;false;false;1550;10;90;13;70;70;0;;0
+FLEA_ARMOR;FLEA_ARMOR;Flea Armor;;;0;false;false;false;false;1550;10;70;6;25;25;0;;0
+WITCH;WITCH;Witch;;;60;false;false;false;true;1550;10;90;11;40;40;0;;0
+BONE_MUSKET;BONE_MUSKET;Bone Musket;;;0;true;false;false;false;1550;10;60;10;50;50;0;;0
+FROZEN_SHADE;FROZEN_SHADE;Frozen Shade;;;0;false;false;false;true;1550;10;100;13;50;50;0;;0
+KNIFE_MERMAN;KNIFE_MERMAN;Blade Merman;;;60;false;false;true;false;1550;10;65;13;50;50;0;;0
+NOVA_SKELETON;NOVA_SKELETON;Nova Skeleton;;;0;true;false;false;false;1600;10;40;6;50;50;0;;0
+LILITH;LILITH;Lilith;;;10;false;false;false;false;1600;10;70;15;40;40;0;;0
+HEAT_SHADE;HEAT_SHADE;Heat Shade;;;0;false;false;false;true;1650;10;100;12;50;50;0;;0
+MUMMY_MAN;MUMMY_MAN;Mummy Man;;;0;true;false;false;false;1650;10;70;13;50;50;0;;0
+MASTER_LIZARD;MASTER_LIZARD;Master Lizard;;;80;false;false;true;false;1650;10;80;13;40;40;0;;0
+MINOTAUR;MINOTAUR;Minotaur;;;100;false;false;false;false;1650;10;120;16;60;60;0;;0
+FIRE_WARG;FIRE_WARG;Fire Warg;;;120;false;false;false;false;1700;10;60;12;60;60;0;;0
+FLAME_KNIGHT;FLAME_KNIGHT;Flame Knight;;;0;false;false;false;false;1700;10;100;13;50;50;0;;0
+BONE_ARK;BONE_ARK;Bone Ark;;;0;true;false;false;false;1700;10;100;0;100;100;0;;0
+DHURON;DHURON;Dhuron;;;0;true;false;false;false;1700;10;95;13;50;50;0;;0
+BASILISK;BASILISK;Basilisk;;;80;false;false;false;false;1800;10;120;11;75;75;0;;0
+RULER_SWORD_LV2;RULER_SWORD_LV2;Ruler Sword Lv2;;;0;false;false;false;true;1800;10;150;16;65;65;35;blocks your attack with a floating shield!;0
+FLESH_GOLEM;FLESH_GOLEM;Flesh Golem;;;210;false;false;false;false;1800;10;180;16;50;50;0;;0
+TRITON;TRITON;Triton;;;100;false;false;true;false;1800;10;140;16;50;50;0;;0
+ARACHNE;ARACHNE;Arachne;;;80;false;false;false;false;1800;10;150;13;75;75;0;;0
+WHIP_SKELETON;WHIP_SKELETON;Whip Skeleton;;;0;true;false;false;false;1800;10;60;13;50;50;0;;0
+ARMOR_GUARDIAN;ARMOR_GUARDIAN;Armor Guardian;;;0;false;false;false;false;1800;10;250;17;75;75;0;;0
+DISCUS_LORD;DISCUS_LORD;Discus Lord;;;0;false;false;false;false;1800;10;150;17;75;75;0;;0
+KICKER_SKELETON;KICKER_SKELETON;Kicker Skeleton;;;0;true;false;false;false;1800;10;40;11;20;20;0;;0
+ARMOR_LORD;ARMOR_LORD;Armor Lord;;;0;false;false;false;false;1850;10;130;16;70;70;0;;0
+BUER;BUER;Buer;;;0;false;false;false;false;1850;10;80;15;50;50;0;;0
+DEMON_LORD;DEMON_LORD;Demon Lord;;;120;false;false;false;true;2000;10;200;19;50;50;0;;0
+BEHEMOTH;BEHEMOTH;Behemoth;;;190;false;false;false;false;2000;10;180;19;50;50;0;;0
+CURLY;CURLY;Curly;;;88;false;false;false;false;2000;10;100;15;40;40;0;;0
+DRAHIGNAZOO;DRAHIGNAZOO;Drahignazoo;;;60;false;false;false;true;2000;10;130;19;40;40;0;;0
+HARPY;HARPY;Harpy;;;60;false;false;false;true;2050;10;100;15;40;40;0;;0
+DEVIL;DEVIL;Devil;;;0;false;false;false;true;2100;10;250;20;40;60;0;;0
+DRAGON_SKULL_CANNON;DRAGON_SKULL_CANNON;Dragon Skull Cannon;;;0;true;false;false;false;2250;10;160;12;50;50;0;;0
+ALURA_UNE;ALURA_UNE;Alura Une;;;0;false;false;true;false;2550;10;200;13;50;50;0;;0
+BLADE_MASTER;BLADE_MASTER;Blade Master;;;0;true;false;false;false;2550;10;130;20;20;20;0;;0
+SUCCUBUS;SUCCUBUS;Succubus;;;30;false;false;false;false;2550;10;90;19;40;40;0;;0
+WEREWOLF;WEREWOLF;WereWolf;;;40;false;false;false;false;2550;10;150;17;25;25;0;;0
+GIANT_ARMOR;GIANT_ARMOR;Giant Armor;;;0;false;false;false;false;2800;10;280;20;100;100;0;;0
+IRON_GOLEM;IRON_GOLEM;Iron Golem;;;0;false;false;false;false;2800;10;350;19;100;100;0;;0
+MANTICORE;MANTICORE;Manticore;;;120;false;false;false;false;3000;10;200;21;50;50;0;;0
+RULER_SWORD_LV3;RULER_SWORD_LV3;Ruler Sword Lv3;;;0;false;false;false;true;3000;10;200;23;50;50;0;;0
+VICTORY_ARMOR;VICTORY_ARMOR;Victory Armor;;;0;false;false;false;false;3000;10;180;20;25;25;0;;0
+GIANTBAT;GIANTBAT;Giant Bat;;;60;false;false;false;true;5000;20;280;7;40;40;0;;0
+ORLOX;ORLOX;Count Orlox;;;20;false;false;false;false;5000;20;900;26;40;40;0;;0
+WATER_DRAGON;WATER_DRAGON;Giant Water Dragon;;;0;false;false;true;true;5000;20;900;26;40;40;0;;0
+LEGION;LEGION;Legion;;;100;true;true;false;true;5000;20;1500;26;40;40;0;;0
+CERBERUS;CERBERUS;Cerberus;;;20;false;false;false;false;5000;20;1000;26;40;40;0;;0
+MEDUSA;MEDUSA;Medusa;;;90;false;false;false;false;7000;10;400;7;50;50;0;;0
+AKMODAN;AKMODAN;Akmodan I;;;200;false;false;false;false;8000;20;600;13;75;75;0;;0
+DRAGON_KING;DRAGON_KING;Bone Dragon King;;;0;false;false;true;true;8000;20;720;11;50;50;0;;0
+DEMON_DRACULA;DEMON_DRACULA;Dracula;;;200;false;true;false;false;9000;20;2000;26;25;25;0;;0
+FRANK;FRANK;Frankenstein's Monster;;;50;false;false;false;false;10000;10;900;16;75;75;0;;0
+DEATH;DEATH;Death;;;0;false;true;false;false;20000;10;1200;20;40;40;0;;0
+DRACULA;DRACULA;Count Dracula;;;0;false;true;false;true;50000;20;800;13;60;60;0;;0
+PRELUDE_DRACULA;PRELUDE_DRACULA;Count Dracula;;;0;false;true;false;false;50000;20;800;13;60;60;0;;0
+DOPPELGANGER;DOPPELGANGER;Doppelganger;;;20;false;false;false;false;50000;20;1200;33;40;40;0;;0
+BADBELMONT;BADBELMONT;Demon Soleiyu;Transformed to a Demon by count Dracula, this powerful and quick warrior attacks with his sword, launch fireballs and teleports away;;100;true;false;false;false;5000;20;700;10;40;40;0;;0

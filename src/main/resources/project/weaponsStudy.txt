@@ -1,0 +1,128 @@
+* Types
+** Thrusting Small Swords
+Combat Knife Flat Combat Dagger | ATT +24
+Dagger
+Baselard Basic Short Sword | ATT +1
+Rapier Long Bladed Sword | ATT +7
+Short Sword Common Short Sword | ATT +2
+** Slicing Swords
+Gladius (Sword of Ancient Rome) +3 
+Scimitar Single-Edged Curved Sword | ATT +5
+Cutlass +7
+Saber Light Cavalry Sword | ATT +9
+Falchion (Curved Sword) +10
+Broadsword +12
+Bastard Sword +20
+** Two Handed Swords
+Claymore Scotch Two-Handed Sword | ATT +26
+Estoc German Thrust Sword | ATT +39
+Katana Unsigned Katana | ATT +32
+** Clubs
+Rod
+Mace
+Morning Star
+Flail
+Staff
+** Fists
+Gauntlet
+Knuckles
+Combat Gauntlet
+Spiky Knuckles
+Martial Armband
+
+** Rings
+Small RingSet
+Combat RingSet
+Spiked Rings
+Blade RingSet
+** Spears
+Short Spear
+Long Spear
+Battle Spear
+Halberd
+Dualblade Spear
+** Whip
+Whip
+** Bows
+Bow
+Crossbow
+** Guns
+Handgun
+Revolver
+***Gun Mods
+Accurate
+Extended
+**Bullets
+Silver bullets
+
+
+
+*Uniques
+** Swords
+Gram (Giant Sword) +30
+Firebrand (Fire Sword of Oberon) +25
+Marsil Powerful Sword Of Flame | ATT +33 DEF +1
+Icebrand Ice Sword of Mim | ATT +25
+Thunderbrand Lightning Sword of Indra | ATT +25
+Gurthang Gets Stronger When Bloodied | ATT + 25
+Luminus Sword Forged By Elves | ATT +26 {Stronger Holy Sword}
+Mormegil Black Sword - Strong Versus Holy | ATT +25
+Mablung Spirit Sword- Improves DEF | ATT +29 DEF +2
+Crissaengrim (Countess Blades Dice Enemy) +36
+Mourneblade Feeds Upon Enemy's Soul | ATT + 36 DEF + 1
+Vorpal Blade Slices Cleanly Through Enemies | ATT +25
+Harper The Sword Named Harper | ATT + 28
+Hador Sword House of Hador Heirloom | ATT +24
+Talwar Curved Indian Sword | ATT +32
+**Daggers
+Holbein Dagger Swift Upper Diagonal Attack | ATT +6
+Shotel Abyssian Curved Sword | ATT +20
+Werebane effective Against Werebeasts | ATT +18
+Ethaniel Blade
+**Two Handed
+Flamberge Flame-Edged Sword | ATT +31
+Aubec Sword Great Sword of Aubec | ATT +36
+Masamune Legendary Masamune Katana | ATT +61 DEF -30
+Osafune Osafune-Made Katana | ATT +50
+Yasutsuna-Made Katana | ATT +31 DEF -20
+Zwei Hander German Two-handed Sword | ATT +38
+** Fists
+Fist of Tulkas: Blessed By Tulkas the Valar | ATT +36 DEF +5
+** Spears
+Alcarde Spear
+
+* Magic
+Pulsating
+Holy
+Shielding
+Darkness
+Star
+
+* Mods
+of Hunting
+Great
+of the Moon
+Rusty
+
+* Strength
+Simple
+Reinforced
+Deadly
+
+* Material
+Steel
+Iron
+Silver
+Obsidian
+
+Schema for weapons {Strength}{Magic}{Material}{Type}{Mod}
+ Reinforced Pulsating Silver Cutlass of the Moon (7+4)
+ Iron Short Sword (2+1)
+ Deadly Holy Obsidian Katana of Hunting 
+Schema for guns {Mod}{Bullets}{Type}
+ Extended Revolver
+ Extended Silver bullets Handgun
+
+
+
+

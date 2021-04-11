@@ -1,0 +1,229 @@
+Layout for CvRL 1.21
+SZ: 2/August/2006
+
+
+                P
+                 \
+      G-H         O    
+      |  \         \N h
+      F   I   e f   |/
+       \  |    \|/g-M
+A-B-C-D-E | c-K-d   |
+          |  / \    |
+      i-a-J-/   \-L-/
+        |
+        b
+
+                      c
+                      |
+A-B-C-D-E-F-G-H-I-J---K-L-M-N-O-P
+                  |   |  /|
+                i-a f-d-g h
+                  |   |
+                  b   e
+
+A. Town of Petra (Static) {Jorge Fuentes - Silence of the Daylight (CV2).mid} {Jorge Fuentes - Monster Dance (CV2).mid}
+ Night Population:
+  GZOMBIE
+B Dark forest {Jorge Fuentes - Bloody Tears (CV2).mid} {Jorge Fuentes - Monster Dance (CV2).mid}
+  Population
+   WARG
+   PANTHER
+   R_SKELETON
+  Spawns
+   R_SKELETON
+   BAT
+C Castle bridge (Static) {Nicholas - Cross A Fear (CVX).mid}
+  Population
+   R_SKELETON
+   MERMAN
+  Spanws
+   MERMAN
+D Castle entrance (Static) 
+E Main halls x2 {RPGFan - Vampire Killer (CV).mid}
+  Population
+   WHITE_SKELETON
+   PANTHER
+   WARG
+   APE_SKELETON
+  Spawns
+   ZOMBIE
+E Moat {RPGFan - Vampire Killer (CV).mid}
+  Population
+   BAT
+   MERMAN
+   BONE_PILLAR
+  Spawns
+   BAT
+   MERMAN
+E Giant Bat Lair {Tom Kim - Poison Mind (CV) .mid}
+  Population
+   PANTHER
+   SPEAR_KNIGHT
+   BONE_PILLAR
+  Spawns
+   ZOMBIE
+  Boss 
+   GIANT_BAT
+F Torture/Alchemy Lab x 3 {Nicholas - Stalker (CV).mid}
+  Population
+   BLACK_KNIGHT
+   PARANTHROPUS
+   WEREBEAR
+   BONE_PILLAR
+   AXE_KNIGHT
+  Spawns
+   BAT
+   MEDUSA_HEAD
+F Medusa Lair {Nicholas - Big Battle (CV3).mid}
+  Spawns
+   BAT
+  Boss
+   MEDUSA
+G Chapel {Fate To Despair (CoTM).mid}
+  Population
+   SKULL_LORD
+   BONDE_ARCHER
+   SALOME
+   RULER_SWORD_LV1
+   BALLOON_POD
+  Spawn
+   SKULL_HEAD
+H Upper Ruins x 3 {Jorge Fuentes - Wicked Child (CV).mid}
+  Population
+   BLADE_SOLDIER
+   BONE_HALBERD
+   LIZARD_SWORDSMAN
+   COCKATRICE
+  Spawns
+   SKELETON_PANTHER
+H Akmodan Tomb
+  Boss
+   Akmodan I
+I Abyss -NO-
+J Underground Area x 3 {Nicholas - Walking On The Edge (CV).mid}
+  Population
+   BLOOD_SKELETON
+   COOPER_ARMOR
+   DEATH_MANTIS
+   BEAST_DEMON
+   GOLEM
+  Spawns
+   KILLER_PLANT
+   MERMAN
+   MUD_MAN
+J Bone Dragon Lair {Nicholas - Big Battle (CV3).mid}
+  Spawns
+   MERMAN
+  Boss
+   Bone Dragon King
+K Courtyard {Jorge Fuentes - Maze Garden (CV64).mid}
+  Population
+   HUNCHBACK
+   DURGA
+   RULER_SWORD_LV2
+   FIRE_WARG
+   BASILISK
+  Spawns
+   GHOUL
+L Dungeon x3 {JiLost - Heart Of Fire (CV).mid}
+  Population
+   FLAME_KNIGHT
+  Spawns
+   KILLER_PLANT
+   VAMPIRE_BAT
+   WIGHT
+   SPECTER
+L Dr. Frank Lab {Nicholas - Big Battle (CV3).mid}
+  Boss
+   FRANKESTEIN_MONSTER
+ M Storage Area 
+  Population
+   DEVIL
+   LILITH
+   ARMOR_GUARDIAN
+   DISCUS_LORD
+N Final bridge
+  Population
+   CURLY
+   KICKER_SKELETON
+  Spawns
+   MEDUSA_HEAD
+   VAMPIRE_BAT
+O Clock tower {Jorge Fuentes - Clocktower (HoD).mid}
+  Population
+   CROW
+   DRAGON_SKULL_CANNON
+   BUER
+   HARPY
+   BONE_MUSKET
+   LILITH  
+  Spawns
+   MEDUSA_HEAD
+O Tower Top {Jorge Fuentes - Dancing in Phantasmic Hell (CVX).mid}
+  Boss
+   DEATH
+P Castle keep {Jorge Fuentes - Iron Blue Intention (CVB).mid}
+ Boss {Jorge Fuentes - Dance of Illusions (CVX).mid}
+  Count Dracula
+  
+a Warehouse x2 (Static, Pending)
+  Zeldo
+  Gargoyle
+  Spear Skeleton
+  Vampire Bat
+b Catacombs x3 (Pending)
+  Mummy man
+  Arachne
+  Bone Ark
+  Demon Lord
+  Heat Shade
+ Boss
+  *Legion
+c Villa ruins (Static, Pending) {Jorge Fuentes - Maze Garden (CV64).mid}
+d Castle center (Static, Pending)
+  Cagnazoo
+  Alraune
+e Twin towers (Static, Pending)
+  Crow
+  Bone Musket
+  Spear Skeleton
+  *Flying Spear Skeleton
+f Long library x 2 (Pending)
+  Nova Skeleton
+  Armor Lord
+  Flea Armor
+  Mimic
+  Flesh Golem
+  Witch
+ Boss
+  *Orlox
+g Colosseum (Static, Pending)
+  Skeleton Athlete
+  Dhuron
+  Master Lizard
+  Whip Skeleton
+  Minotaur
+  Behemoth
+ Boss
+  Cerberus
+h Armory (Static, Pending)
+  Manticore
+  Werewolf
+  Alura Une
+  Drahignazoo
+  Succubus
+  Blade Master
+  Giant Armor
+  Iron Golem
+  Victory Armor
+  Ruler Sword Lv3
+ Boss
+ *Doppelganger
+i Underwater Reservoir (Static, Pending)
+  Knife Merman
+  Frozen Shade
+  Triton
+  Mandragora
+ Boss
+  *Water Dragon

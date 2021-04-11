@@ -1,0 +1,63 @@
+
+This is the current map Layout
+
+                P
+                 \
+      G-H         O    
+      |  \         \N h
+      F   I   e f   |/
+       \  |    \|/g-M
+A-B-C-D-E | c-K-d   |
+          |  / \    |
+      i-a-J-/   \-L-/
+        |
+        b
+
+This is the areas I think must be visible, the rest are hidden and I just need an icon to put on their location when the player is there
+
+                P
+                 \
+      G-H         O    
+      |  \         \N  
+      F   I         | 
+       \  |         M
+A-B-C-D-E | c-K-d   |
+          |  / \    |
+        a-J-/   \-L-/
+         
+         
+        
+
+A Town of Petra {Jorge Fuentes - Silence of the Daylight (CV2).mid} {Jorge Fuentes - Monster Dance (CV2).mid}
+B Dark forest {Jorge Fuentes - Bloody Tears (CV2).mid} {Jorge Fuentes - Monster Dance (CV2).mid}
+C Castle bridge {Nicholas - Cross A Fear (CVX).mid}
+D Castle entrance 
+E Main halls x2 {RPGFan - Vampire Killer (CV).mid}
+E Moat {RPGFan - Vampire Killer (CV).mid}
+E Giant Bat Lair {Tom Kim - Poison Mind (CV) .mid}
+F Torture/Alchemy Lab x 3 {Nicholas - Stalker (CV).mid}
+F Medusa Lair {Nicholas - Big Battle (CV3).mid}
+G Chapel {Fate To Despair (CoTM).mid}
+H Upper Ruins x 3 {Jorge Fuentes - Wicked Child (CV).mid}
+H Akmodan Tomb
+I Abyss -NO-
+J Underground Area x 3 {Nicholas - Walking On The Edge (CV).mid}
+J Bone Dragon Lair {Nicholas - Big Battle (CV3).mid}
+K Courtyard {Jorge Fuentes - Maze Garden (CV64).mid}
+L Dungeon x3 {JiLost - Heart Of Fire (CV).mid}
+L Dr. Frank Lab {Nicholas - Big Battle (CV3).mid}
+M Storage Area 
+N Final bridge
+O Clock tower {Jorge Fuentes - Clocktower (HoD).mid}
+O Tower Top {Jorge Fuentes - Dancing in Phantasmic Hell (CVX).mid}
+P Castle keep {Jorge Fuentes - Iron Blue Intention (CVB).mid}
+a Warehouse x2 
+b Catacombs x3 
+c Villa ruins {Jorge Fuentes - Maze Garden (CV64).mid}
+d Castle center 
+e Twin towers 
+f Long library x 2 
+g Colosseum 
+h Armory 
+i Underwater Reservoir 
+  

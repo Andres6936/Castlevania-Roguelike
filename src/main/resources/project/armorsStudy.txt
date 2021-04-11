@@ -1,0 +1,42 @@
+* Types
+** Suits
+Vest
+Cuirass
+Suit
+Plate
+
+
+*Uniques
+** Clotes
+** Suits
+Vampire Killer Armor
+
+* Magic
+Holy
+Shielding
+Dark
+Star
+
+* Mods
+of Hunting
+of the Moon
+of the Sun
+Rusty
+
+* Strength
+Simple
+Reinforced
+
+* Material
+Leather
+Bronze
+Steel
+Iron
+Silver
+Obsidian
+Diamond
+
+Schema for armors {Strength}{Magic}{Material}{Type}{Mod}
+ Reinforced Holy Diamond Cuirass of the Moon
+ Iron Suit (2+1)
+ Shielding Steel Suit of Hunting 

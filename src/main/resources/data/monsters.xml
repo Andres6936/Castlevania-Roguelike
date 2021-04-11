@@ -1,0 +1,1166 @@
+<monsters>
+	<monster id="GZOMBIE">
+		<selector>
+			<sel_wander />
+		</selector>
+	</monster>
+	<monster id="ZOMBIE">
+		<selector>
+			<sel_wander />
+		</selector>
+	</monster>
+	<monster id="WHITE_SKELETON">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="AXE"
+						range="5" frequency="80" charge="3" message="throws a bone at you"
+						effectType="missile" effectID="SFX_ROTATING_BONE"
+						effectWav="wav/m_skeleton.wav" />
+					<rangedAttack id="MONSTER_MISSILE"
+						status_effect="STUN" type="AXE" range="5" frequency="40"
+						charge="3" message="throws a yellow bone at you"
+						effectType="missile" effectID="SFX_ROTATING_BONE"
+						effectWav="wav/m_skeleton.wav" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="R_SKELETON">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="AXE"
+						range="6" charge="2" frequency="80" message="throws a bone at you"
+						effectType="missile" effectID="SFX_ROTATING_BONE"
+						effectWav="wav/m_skeleton.wav" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+
+	<monster id="PANTHER">
+		<selector>
+			<sel_basic waitPlayerRange="4">
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_CHARGE" range="2"
+						frequency="60" message="dashes over you" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="WARG">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_CHARGE" range="2"
+						frequency="60" message="jumps over you" effectWav="wav/m_warg.wav" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="BLACK_KNIGHT">
+		<selector>
+			<sel_basic patrolRange="3">
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="STRAIGHT"
+						range="2" frequency="50" message="swings his axe at you"
+						effectType="melee" effectID="SFX_AXE_MELEE" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="APE_SKELETON">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="STRAIGHT"
+						charge="15" range="5" frequency="30"
+						message="throws a barrel at you" effectType="missile"
+						effectID="SFX_FLAMING_BARREL" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="SPEAR_KNIGHT">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="STRAIGHT"
+						range="3" frequency="50" message="attacks you with his spear"
+						effectType="melee" effectID="SFX_SPEAR_MELEE" />
+					<rangedAttack id="MONSTER_CHARGE" charge="10"
+						range="4" frequency="5"
+						message="executes a cutting nakigata slash!" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="PARANTHROPUS">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="STRAIGHT"
+						charge="5" range="3" frequency="50"
+						message="bashes with a giant bone" effectType="melee"
+						effectID="SFX_GIANT_BONE_MELEE" />
+					<rangedAttack id="MONSTER_CHARGE" range="3"
+						frequency="70" message="jumps over you!" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+
+	<monster id="BAT">
+		<selector>
+			<sel_wander />
+		</selector>
+	</monster>
+	<monster id="SKULL_HEAD">
+		<selector>
+			<sel_basic waitPlayerRange="4">
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="SKULL_LORD">
+		<selector>
+			<sel_wander />
+		</selector>
+	</monster>
+	<monster id="MERMAN">
+		<selector>
+			<sel_basic approachLimit="3">
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="STRAIGHT"
+						charge="2" range="8" frequency="80" message="spits fire at you"
+						effectType="missile" effectID="SFX_FIREBALL" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="WEREBEAR">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_CHARGE" range="2"
+						frequency="60" message="sweeps you with its claws" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="HUNCHBACK">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="STRAIGHT"
+						range="8" frequency="10" message="throws a dagger at you"
+						effectType="directionalmissile" effectID="SFX_THROWN_DAGGER" />
+					<rangedAttack id="MONSTER_CHARGE" range="2"
+						frequency="30" message="kicks you" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="BONE_ARCHER">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="STRAIGHT"
+						charge="5" range="10" frequency="80"
+						message="shoots an arrow at you" effectType="directionalmissile"
+						effectID="SFX_ARROW" />
+					<rangedAttack id="MONSTER_MISSILE" type="STRAIGHT"
+						charge="5" range="10" frequency="5"
+						message="shoots a poisoned arrow at you" status_effect="POISON"
+						effectType="directionalmissile" effectID="SFX_ARROW" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="SKELETON_PANTHER">
+		<selector>
+			<sel_basic waitPlayerRange="4">
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_CHARGE" range="2"
+						frequency="70" message="dashes over you" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="BONE_PILLAR">
+		<selector>
+			<sel_basic stationary="true">
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="STRAIGHT"
+						charge="3" range="8" frequency="90" message="spits a fireball"
+						effectType="missile" effectID="SFX_FIREBALL" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="AXE_KNIGHT">
+		<selector>
+			<sel_basic patrolRange="3">
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="STRAIGHT"
+						charge="3" range="6" frequency="30"
+						message="throws a whirling axe" effectType="missile"
+						effectID="SFX_ROTATING_AXE" />
+					<rangedAttack id="MONSTER_CHARGE" range="3"
+						frequency="30" message="slashes with its axe" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="MEDUSA_HEAD">
+		<selector>
+			<sel_basic waitPlayerRange="4">
+				<rangedAttack id="MONSTER_MISSILE" type="STRAIGHT"
+					range="1" frequency="95" message="touches you"
+					status_effect="PETRIFY" effectType="missile"
+					effectID="SFX_ROTATING_AXE" />
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="DURGA">
+		<selector>
+			<sel_basic patrolRange="3">
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_CHARGE" charge="5" range="3"
+						frequency="40" message="executes a tetra-stab!" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="SKELETON_ATHLETE">
+		<selector>
+			<sel_wander />
+		</selector>
+	</monster>
+	<monster id="BLADE_SOLDIER">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="STRAIGHT"
+						range="2" frequency="70" message="swings its sword at you"
+						effectType="melee" effectID="SFX_BLADE_SOLDIER_MELEE" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="BONE_HALBERD">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="AXE"
+						charge="5" range="4" frequency="70"
+						message="slashes with his halberd" effectType="melee"
+						effectID="SFX_BONE_HALBERD_MELEE" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="CROW">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_CHARGE" range="2"
+						frequency="80" message="scratches you" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="BLOOD_SKELETON">
+		<selector>
+			<sel_wander />
+		</selector>
+	</monster>
+	<monster id="LIZARD_SWORDSMAN">
+		<selector>
+			<sel_basic approachLimit="3">
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="STRAIGHT"
+						range="3" frequency="70" message="slashes with his rapier"
+						effectType="melee" effectID="SFX_LIZARD_SWORDSMAN_MELEE" />
+				</rangedAttacks>
+			</sel_basic>
+
+		</selector>
+
+	</monster>
+	<monster id="COCKATRICE">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE"
+						status_effect="PETRIFY" type="DIRECT" range="3" frequency="40"
+						message="shoots a petrifying beam" charge="10" effectType="beam"
+						effectID="SFX_STONE_BEAM" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="COOPER_ARMOR">
+		<selector>
+			<sel_basic patrolRange="4">
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="STRAIGHT"
+						range="2" frequency="80" message="swings his axe at you"
+						effectType="melee" effectID="SFX_AXE_MELEE" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+
+	<monster id="GHOUL">
+		<selector>
+			<sel_wander />
+		</selector>
+	</monster>
+
+	<monster id="SALOME">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="DIRECT"
+						charge="5" range="6" frequency="60"
+						message="casts a magic missile" effectType="missile"
+						effectID="SFX_MAGIC_MISSILE" />
+					<rangedAttack id="MONSTER_MISSILE" type="STRAIGHT"
+						charge="15" range="6" frequency="30"
+						message="summons a cute kitty!" effectType="missile"
+						effectID="SFX_SUMMON_CAT_WITCH" />
+					<rangedAttack id="MONSTER_CHARGE" range="3"
+						frequency="50" message="charges on her broom" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="ECTOPLASM">
+		<selector>
+			<sel_wander />
+		</selector>
+	</monster>
+	<monster id="RULER_SWORD_LV1">
+		<selector>
+			<sel_basic waitPlayerRange="5">
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="DIRECT"
+						charge="5" range="5" frequency="30"
+						message="throws a sword at you" effectType="directionalmissile"
+						effectID="SFX_THROWN_SWORD" />
+					<rangedAttack id="MONSTER_CHARGE" range="4"
+						frequency="60" message="slashes forward" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="BEAST_DEMON">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="STRAIGHT"
+						charge="5" range="8" frequency="20" message="throws a fireball"
+						effectType="missile" effectID="SFX_BIG_FIREBALL" />
+					<rangedAttack id="MONSTER_CHARGE" range="2"
+						frequency="60" message="punches forward" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="DEVIL">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="DIRECT"
+						charge="2" range="4" frequency="70" message="throws a fireball"
+						effectType="missile" effectID="SFX_BIG_FIREBALL" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="BALLOON_POD">
+		<selector>
+			<sel_wander />
+		</selector>
+	</monster>
+	<monster id="LILITH">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_CHARGE" range="3"
+						frequency="40" message="backstabs you!" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="BONE_MUSKET">
+		<selector>
+			<sel_basic stationary="true">
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="STRAIGHT"
+						charge="10" range="15" frequency="30" message="fires his musket!"
+						effectType="missile" effectID="SFX_BULLET" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="KILLER_PLANT">
+		<selector>
+			<sel_basic stationary="true">
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="STRAIGHT"
+						charge="2" range="10" frequency="20" message="shoots seeds at you"
+						effectType="missile" effectID="SFX_SEED" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="VAMPIRE_BAT">
+		<selector>
+			<sel_basic approachLimit="4">
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_CHARGE" range="4"
+						frequency="40" message="flies to you!" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="DEATH_MANTIS">
+		<selector>
+			<sel_basic patrolRange="4">
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_CHARGE" range="3"
+						frequency="50" message="slices you" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="DHURON">
+		<selector>
+			<sel_wander />
+		</selector>
+	</monster>
+
+	<monster id="DRAGON_SKULL_CANNON">
+		<selector>
+			<sel_basic stationary="true">
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="STRAIGHT"
+						charge="5" range="8" frequency="60"
+						message="shoots a fire beam at you" effectType="beam"
+						effectID="SFX_FIRE_BEAM" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="MUMMY_MAN">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="STRAIGHT"
+						charge="5" range="8" frequency="20"
+						message="throws a winding shard at you" effectType="missile"
+						effectID="SFX_WINDING_SHARD" />
+					<rangedAttack id="MONSTER_MISSILE" type="STRAIGHT"
+						charge="5" range="8" frequency="10"
+						message="throws a poisonous shard at you" status_effect="POISON"
+						effectType="missile" effectID="SFX_WINDING_SHARD" />
+
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="ZELDO">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="AXE"
+						charge="5" range="8" frequency="30"
+						message="throws a whirling sickle" effectType="missile"
+						effectID="SFX_WHIRLING_SICKLE" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="MUD_MAN">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="STRAIGHT"
+						charge="2" range="8" frequency="15" message="throws a fireball"
+						effectType="missile" effectID="SFX_FIREBALL" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+
+	</monster>
+	<monster id="CAGNAZOO">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_CHARGE" range="3"
+						frequency="60" message="stabs you with its spear" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="ALRAUNE">
+		<selector>
+			<sel_basic stationary="true">
+				<rangedAttacks>
+					<rangedAttack id="SUMMON_MONSTER" range="10"
+						frequency="100" charge="10" summonMonsterId="KILLER_PLANT"
+						message="invokes deadly plants" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="GOLEM">
+		<selector>
+			<sel_wander />
+		</selector>
+	</monster>
+	<monster id="ARACHNE">
+		<selector>
+			<sel_wander />
+		</selector>
+	</monster>
+	<monster id="SPEAR_SKELETON">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="STRAIGHT"
+						charge="5" range="6" frequency="40"
+						message="throws a spear at you" effectType="missile"
+						effectID="SFX_THROWN_SPEAR" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="KNIFE_MERMAN">
+		<selector>
+			<sel_basic approachLimit="3">
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_CHARGE" range="2"
+						frequency="60" message="slashes you with its arms" />
+					<rangedAttack id="MONSTER_MISSILE" type="STRAIGHT"
+						charge="3" range="8" frequency="50"
+						message="spits a water beam to you" effectType="beam"
+						effectID="SFX_FIRE_BEAM" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="MASTER_LIZARD">
+		<selector>
+			<sel_wander />
+		</selector>
+	</monster>
+	<monster id="WHIP_SKELETON">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="STRAIGHT"
+						range="3" frequency="60" message="attacks you with its whip"
+						effectType="whip" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="FROZEN_SHADE">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="DIRECT"
+						charge="5" range="6" frequency="40"
+						message="throws an iceball at you" effectType="missile"
+						effectID="SFX_ICEBALL" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="MINOTAUR">
+		<selector>
+			<sel_wander />
+		</selector>
+	</monster>
+	<monster id="TRITON">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="SUMMON_MONSTER" range="15"
+						frequency="80" charge="15" summonMonsterId="KNIFE_MERMAN"
+						message="calls for help from the sea kingdom" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="NOVA_SKELETON">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="STRAIGHT"
+						range="4" frequency="40" message="emits a blazing beam!"
+						effectType="beam" charge="10" effectID="SFX_NOVA_BEAM" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="ARMOR_LORD">
+		<selector>
+			<sel_wander />
+		</selector>
+	</monster>
+	<monster id="FLEA_ARMOR">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_CHARGE" range="3"
+						frequency="70" message="jumps to you" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="BUER">
+		<selector>
+			<sel_wander />
+		</selector>
+	</monster>
+	<monster id="WIGHT">
+		<selector>
+			<sel_wander />
+		</selector>
+	</monster>
+	<monster id="SPECTER">
+		<selector>
+			<sel_wander />
+		</selector>
+	</monster>
+
+	<monster id="RULER_SWORD_LV2">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="DIRECT"
+						charge="5" range="6" frequency="60"
+						message="throws a spear at you" effectType="missile"
+						effectID="SFX_THROWN_SPEAR" />
+					<rangedAttack id="MONSTER_CHARGE" range="4"
+						frequency="60" message="slashes forward" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="CURLY">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_CHARGE" charge="2" range="3"
+						frequency="70" message="slashes forward with its swords" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="FIRE_WARG">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="STRAIGHT"
+						charge="2" range="4" frequency="50" message="spits fire at you"
+						effectType="missile" effectID="SFX_FIREBALL" />
+					<rangedAttack id="MONSTER_CHARGE" range="2"
+						frequency="60" message="jumps over you" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="BONE_ARK">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="STRAIGHT"
+						charge="10" range="3" frequency="40"
+						message="emits a blazing beam" effectType="beam"
+						effectID="SFX_ARK_BEAM" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="MIMIC">
+		<selector>
+			<sel_wander />
+		</selector>
+	</monster>
+	<monster id="MANTICORE">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="DIRECT"
+						charge="5" range="4" frequency="30"
+						message="spits poison from its serpent head" effectType="missile"
+						effectID="SFX_POISON_CLOUD" />
+					<rangedAttack id="MONSTER_CHARGE" range="3"
+						frequency="70" message="dashes over you with its lion claws" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="FLAME_KNIGHT">
+		<selector>
+			<sel_basic approachLimit="3">
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="STRAIGHT"
+						charge="5" range="3" frequency="40"
+						message="swings a fiery sword at you" effectType="melee"
+						effectID="SFX_FLAME_SWORD_MELEE" />
+					<rangedAttack id="MONSTER_MISSILE" type="AXE"
+						charge="5" range="8" frequency="40" message="summons a fire wave!"
+						effectType="beam" effectID="SFX_FLAME_WAVE" />
+
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="ARMOR_GUARDIAN">
+		<selector>
+			<sel_wander />
+		</selector>
+	</monster>
+	<monster id="DEMON_LORD">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="DIRECT"
+						charge="5" range="3" frequency="60" message="spits fire at you"
+						effectType="missile" effectID="SFX_BIG_FIREBALL" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="HEAT_SHADE">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="DIRECT"
+						charge="5" range="6" frequency="40"
+						message="throws an fireball at you" effectType="missile"
+						effectID="SFX_FIREBALL" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="FLESH_GOLEM">
+		<selector>
+			<sel_wander />
+		</selector>
+	</monster>
+	<monster id="WEREWOLF">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_CHARGE" range="4"
+						frequency="30" message="dashes forward" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="ALURA_UNE">
+		<selector>
+			<sel_basic stationary="true">
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="DIRECT"
+						range="8" frequency="40" message="spits poison at you"
+						effectType="missile" effectID="SFX_POISON_CLOUD" />
+					<rangedAttack id="SUMMON_MONSTER" range="10"
+						frequency="80" charge="10"
+						message="invokes deadly plants from the ground"
+						summonMonsterId="KILLER_PLANT" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="DRAHIGNAZOO">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_CHARGE" range="3"
+						frequency="60" message="stabs you with its trident" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="SUCCUBUS">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_CHARGE" range="3"
+						frequency="60"
+						message="gives you a deep kiss, then backstabs you!" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="BLADE_MASTER">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_CHARGE" range="3"
+						frequency="70" message="slashes with its two swords" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="BASILISK">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE"
+						status_effect="POISON" type="DIRECT" charge="5" range="3"
+						frequency="50" message="breathes toxic powder"
+						effectType="missile" effectID="SFX_TOXIC_POWDER" />
+					<rangedAttack id="MONSTER_MISSILE"
+						status_effect="PETRIFY" type="STRAIGHT" charge="5" range="3"
+						frequency="40" message="shoots a petrifying beam"
+						effectType="beam" effectID="SFX_STONE_BEAM" />
+					<rangedAttack id="MONSTER_MISSILE"
+						status_effect="STUN" type="STRAIGHT" charge="5" range="3"
+						frequency="40" message="shoots a stunning beam" effectType="beam"
+						effectID="SFX_STUN_BEAM" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="GARGOYLE">
+		<selector>
+			<sel_wander />
+		</selector>
+	</monster>
+	<monster id="HARPY">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_CHARGE" charge="2" range="4"
+						frequency="40" message="claws you" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="KICKER_SKELETON">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_CHARGE" range="4"
+						frequency="40" message="jumps and kicks you" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="BEHEMOTH">
+		<selector>
+			<sel_wander />
+		</selector>
+	</monster>
+	<monster id="DISCUS_LORD">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="AXE"
+						charge="10" range="4" frequency="80"
+						message="throws a spinning disc at you" effectType="missile"
+						effectID="SFX_SPINNING_DISK" />
+					<rangedAttack id="MONSTER_CHARGE" range="3"
+						frequency="30" message="slashes with its axe" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="GIANT_ARMOR">
+		<selector>
+			<sel_wander />
+		</selector>
+	</monster>
+	<monster id="WITCH">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="STRAIGHT"
+						charge="10" range="6" frequency="60"
+						message="invokes an energy beam" effectType="beam"
+						effectID="SFX_ENERGY_BEAM" />
+					<rangedAttack id="MONSTER_CHARGE" range="5"
+						frequency="50" message="charges on her broom" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="MANDRAGORA">
+		<selector>
+			<sel_basic stationary="true">
+				<rangedAttacks>
+					<rangedAttack id="MANDRAGORA_SCREAM" range="10"
+						frequency="80" charge="15" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<monster id="IRON_GOLEM">
+		<selector>
+			<sel_wander />
+		</selector>
+	</monster>
+	<monster id="VICTORY_ARMOR">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="AXE"
+						charge="5" range="6" frequency="40"
+						message="throws its spinning sword at you" effectType="missile"
+						effectID="SFX_SPINNING_SWORD" />
+					<rangedAttack id="MONSTER_CHARGE" range="6"
+						frequency="40" message="slashes forward" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+
+	<monster id="RULER_SWORD_LV3">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="DIRECT"
+						charge="5" range="7" frequency="50"
+						message="throws a sword at you" effectType="missile"
+						effectID="SFX_THROWN_SWORD" />
+					<rangedAttack id="MONSTER_CHARGE" range="4"
+						frequency="40" message="slashes forward" />
+				</rangedAttacks>
+			</sel_basic>
+		</selector>
+	</monster>
+	<!-- Summons -->
+
+	<monster id="S_CAT">
+		<selector>
+			<sel_wander />
+		</selector>
+	</monster>
+
+	<monster id="S_BIRD">
+		<selector>
+			<sel_wander />
+		</selector>
+	</monster>
+
+	<monster id="S_TURTLE">
+		<selector>
+			<sel_wander />
+		</selector>
+	</monster>
+
+	<monster id="S_TIGER">
+		<selector>
+			<sel_wander />
+		</selector>
+	</monster>
+
+	<monster id="S_EAGLE">
+		<selector>
+			<sel_wander />
+		</selector>
+	</monster>
+
+	<monster id="S_TORTOISE">
+		<selector>
+			<sel_wander />
+		</selector>
+	</monster>
+
+	<monster id="S_DRAGON">
+		<selector>
+			<sel_wander />
+		</selector>
+	</monster>
+
+	<!-- End summons -->
+
+	<monster id="GIANTBAT">
+		<selector>
+			<sel_basic approachLimit="3">
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="STRAIGHT"
+						charge="3" range="10" frequency="60"
+						message="shoots a flaming ball!" effectType="missile"
+						effectID="SFX_FIREBALL" />
+
+					<rangedAttack id="SLICE_DIVE" range="8" frequency="70" />
+				</rangedAttacks>
+			</sel_basic>
+
+		</selector>
+	</monster>
+	<monster id="MEDUSA">
+		<selector>
+			<sel_medusa />
+		</selector>
+	</monster>
+	<monster id="SNAKE">
+		<selector>
+			<sel_wander />
+		</selector>
+	</monster>
+	<monster id="FRANK">
+		<selector>
+			<sel_frank />
+		</selector>
+	</monster>
+	<monster id="IGOR">
+		<selector>
+			<sel_ranged approachLimit="2">
+				<rangedAttacks>
+					<rangedAttack id="SLICE_DIVE" range="5" frequency="80" />
+				</rangedAttacks>
+			</sel_ranged>
+		</selector>
+	</monster>
+	<monster id="DEATH">
+		<selector>
+			<sel_death />
+		</selector>
+	</monster>
+	<monster id="SICKLE">
+		<selector>
+			<sel_sickle />
+		</selector>
+	</monster>
+	<monster id="DRACULA">
+		<selector>
+			<sel_dracula />
+		</selector>
+	</monster>
+	<monster id="DEMON_DRACULA">
+		<selector>
+			<sel_demondracula>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_CHARGE" charge="2" range="4"
+						frequency="60" message="crushes you!" />
+					<rangedAttack id="MONSTER_MISSILE" type="DIRECT"
+						charge="10" range="12" frequency="40"
+						message="invokes a beam of pure energy!" effectType="beam"
+						effectID="SFX_ANCIENT_BEAM" />
+				</rangedAttacks>
+			</sel_demondracula>
+		</selector>
+	</monster>
+
+	<monster id="AKMODAN">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MUMMY_STRANGLE" range="2"
+						frequency="90" />
+					<rangedAttack id="MUMMY_TELEPORT" charge="3"
+						range="10" frequency="70" />
+					<rangedAttack id="MONSTER_MISSILE" type="DIRECT"
+						charge="3" range="10" frequency="60"
+						message="shoots a flaming ball!" effectType="missile"
+						effectID="SFX_FIREBALL" />
+				</rangedAttacks>
+			</sel_basic>
+
+		</selector>
+
+	</monster>
+
+	<monster id="BADBELMONT">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_MISSILE" type="STRAIGHT"
+						range="2" frequency="90" message="swings its sword at you"
+						effectType="melee" effectID="SFX_WP_MORMEGIL" />
+					<rangedAttack id="TELEPORT" charge="3" range="10"
+						frequency="70" />
+					<rangedAttack id="MONSTER_MISSILE" type="DIRECT"
+						charge="3" range="10" frequency="60"
+						message="shoots a flaming ball!" effectType="missile"
+						effectID="SFX_FIREBALL" />
+					<rangedAttack id="MONSTER_CHARGE" range="4"
+						frequency="40" message="slashes forward" />
+				</rangedAttacks>
+			</sel_basic>
+
+		</selector>
+
+	</monster>
+
+
+	<monster id="DRAGON_KING">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_CHARGE" damage="12"
+						charge="5" range="3" frequency="60" message="crushes you!" />
+					<rangedAttack id="MONSTER_MISSILE" type="DIRECT"
+						charge="5" range="8" frequency="40" message="shoots a fire ball!"
+						effectType="missile" effectID="SFX_BIG_FIREBALL" />
+					<rangedAttack id="MONSTER_MISSILE" damage="12"
+						type="STRAIGHT" charge="5" range="5" frequency="40"
+						message="shoots purple flames!" effectType="beam"
+						effectID="SFX_PURPLE_FLAME_BEAM" />
+				</rangedAttacks>
+			</sel_basic>
+
+		</selector>
+
+	</monster>
+
+	<monster id="WATER_DRAGON">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="MONSTER_CHARGE" damage="16"
+						charge="5" range="4" frequency="60" message="crushes you!" />
+					<rangedAttack id="MONSTER_MISSILE" type="DIRECT"
+						charge="5" range="12" frequency="40"
+						message="shoots a sparkling ice ball!" effectType="missile"
+						effectID="SFX_ICEBALL" />
+				</rangedAttacks>
+			</sel_basic>
+
+		</selector>
+
+	</monster>
+
+
+	<monster id="LEGION">
+		<selector>
+			<sel_basic>
+				<rangedAttacks>
+					<rangedAttack id="SUMMON_MONSTER" range="10"
+						frequency="80" summonMonsterId="ZOMBIE"
+						message="raises an undead minion" charge="6" />
+					<rangedAttack id="SUMMON_MONSTER" range="6"
+						frequency="50" summonMonsterId="GHOUL"
+						message="raises an undead minion" charge="10" />
+					<rangedAttack id="SUMMON_MONSTER" range="6"
+						frequency="30" summonMonsterId="MUMMY_MAN"
+						message="raises an undead minion" charge="15" />
+					<rangedAttack id="MONSTER_MISSILE" damage="25"
+						type="STRAIGHT" charge="10" range="10" frequency="40"
+						message="shoots a purple beam!" effectType="beam"
+						effectID="SFX_PURPLE_FLAME_BEAM" />
+				</rangedAttacks>
+			</sel_basic>
+
+		</selector>
+
+	</monster>
+
+	<monster id="PRELUDE_DRACULA">
+		<selector>
+			<sel_dracula />
+		</selector>
+	</monster>
+</monsters>
+
