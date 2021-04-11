@@ -72,6 +72,7 @@ import co.castle.monster.MonsterFactory;
 import co.castle.npc.NPCDefinition;
 import co.castle.npc.NPCFactory;
 import co.castle.player.Player;
+import co.castle.system.FileLoader;
 import co.castle.ui.Appearance;
 import co.castle.ui.AppearanceFactory;
 import co.castle.ui.CommandListener;
@@ -224,7 +225,7 @@ public final class Service extends MusicManager {
 		// to tracks of app.
 		final Properties configurationFile = new Properties();
 
-		try (var in = new FileInputStream("properties/configuration.properties")) {
+		try (var in = FileLoader.getFileInputStream("properties/configuration.properties")) {
 			configurationFile.load(in);
 		} catch (IOException exception) {
 			System.err.println("Configuration file not found or error while loading the file.\n");
@@ -292,20 +293,19 @@ public final class Service extends MusicManager {
         UserAction[] userActions;
         UserCommand[] userCommands;
         Properties keyBindings;
-		try
-		{
-			Properties keyConfig = new Properties( );
-			keyConfig.load( new FileInputStream( "keys.cfg" ) );
+		try {
+			Properties keyConfig = new Properties();
+			keyConfig.load(FileLoader.getFileInputStream("keys.cfg"));
 
-			keyBindings = new Properties( );
-			keyBindings.put( "WEAPON_KEY", readKeyString( keyConfig, "weapon" ) );
-			keyBindings.put( "DONOTHING1_KEY", readKeyString( keyConfig, "doNothing" ) );
-			keyBindings.put( "DONOTHING2_KEY", readKeyString( keyConfig, "doNothing2" ) );
-			keyBindings.put( "UP1_KEY", readKeyString( keyConfig, "up" ) );
-			keyBindings.put( "UP2_KEY", readKeyString( keyConfig, "up2" ) );
-			keyBindings.put( "LEFT1_KEY", readKeyString( keyConfig, "left" ) );
-			keyBindings.put( "LEFT2_KEY", readKeyString( keyConfig, "left2" ) );
-			keyBindings.put( "RIGHT1_KEY", readKeyString( keyConfig, "right" ) );
+			keyBindings = new Properties();
+			keyBindings.put("WEAPON_KEY", readKeyString(keyConfig, "weapon"));
+			keyBindings.put("DONOTHING1_KEY", readKeyString(keyConfig, "doNothing"));
+			keyBindings.put("DONOTHING2_KEY", readKeyString(keyConfig, "doNothing2"));
+			keyBindings.put("UP1_KEY", readKeyString(keyConfig, "up"));
+			keyBindings.put("UP2_KEY", readKeyString(keyConfig, "up2"));
+			keyBindings.put("LEFT1_KEY", readKeyString(keyConfig, "left"));
+			keyBindings.put("LEFT2_KEY", readKeyString(keyConfig, "left2"));
+			keyBindings.put("RIGHT1_KEY", readKeyString(keyConfig, "right"));
 			keyBindings.put( "RIGHT2_KEY", readKeyString( keyConfig, "right2" ) );
 			keyBindings.put( "DOWN1_KEY", readKeyString( keyConfig, "down" ) );
 			keyBindings.put( "DOWN2_KEY", readKeyString( keyConfig, "down2" ) );

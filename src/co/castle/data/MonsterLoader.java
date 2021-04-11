@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.util.Hashtable;
 import java.util.Vector;
 
+import co.castle.system.FileLoader;
 import org.xml.sax.AttributeList;
 import org.xml.sax.DocumentHandler;
 import org.xml.sax.InputSource;
@@ -41,7 +42,7 @@ public class MonsterLoader
 			Vector<MonsterDefinition> vecMonsters = new Vector<>(10);
 			DESEncrypter encrypter = new DESEncrypter("65csvlk3489585f9rjh");
 			br = new BufferedReader(new InputStreamReader(
-					encrypter.decrypt(new FileInputStream(monsterFile))));
+					encrypter.decrypt(FileLoader.getFileInputStream(monsterFile))));
 			String line = br.readLine();
 			line = br.readLine();
 			while (line != null) {
@@ -106,7 +107,7 @@ public class MonsterLoader
 			// parser.setContentHandler(handler);
 			parser.setDocumentHandler(handler);
 			parser.parse(new InputSource(
-					encrypter.decrypt(new FileInputStream(monsterXMLAIFile))));
+					encrypter.decrypt(FileLoader.getFileInputStream(monsterXMLAIFile))));
 			return monsters;
 
 			/*

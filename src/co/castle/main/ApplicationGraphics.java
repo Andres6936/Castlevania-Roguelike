@@ -20,6 +20,7 @@ import javax.swing.JFrame;
 import co.castle.conf.gfx.data.Asset;
 import co.castle.event.Keyboard;
 import co.castle.game.Game;
+import co.castle.system.FileLoader;
 import co.castle.ui.graphicsUI.Panel;
 import sz.csi.CharKey;
 import sz.util.ImageUtils;
@@ -70,8 +71,7 @@ public final class ApplicationGraphics extends JFrame {
 		configurationUI = new Properties();
 
 		try {
-			// TODO: Load from Gradle Resource
-			configurationUI.load(new FileInputStream("properties/configurationUI.properties"));
+			configurationUI.load(FileLoader.getFileInputStream("properties/configurationUI.properties"));
 		} catch (IOException e) {
 			System.out.println("Error loading configuration for user interface.\n");
 			System.exit(-1);

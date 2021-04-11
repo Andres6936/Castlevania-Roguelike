@@ -60,6 +60,7 @@ import co.castle.player.GameSessionInfo;
 import co.castle.player.Player;
 import co.castle.player.Skill;
 import co.castle.player.advancements.Advancement;
+import co.castle.system.FileLoader;
 import co.castle.ui.ActionCancelException;
 import co.castle.ui.AppearanceFactory;
 import co.castle.ui.CommandListener;
@@ -1180,8 +1181,8 @@ public class GFXUserInterface extends UserInterface implements Runnable
 		try
 		{
 			FNT_MESSAGEBOX = Font
-					.createFont( Font.TRUETYPE_FONT,
-							new FileInputStream( new File( "res/v5easter.ttf" ) ) )
+					.createFont(Font.TRUETYPE_FONT,
+							FileLoader.getFileInputStream("res/v5easter.ttf"))
 					.deriveFont( Font.PLAIN, 15 );
 		}
 		catch ( FontFormatException ffe )
