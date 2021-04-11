@@ -37,59 +37,58 @@ public class GFXPlayerGenerator extends PlayerGenerator {
 
 	public Player generatePlayer( )
 	{
-		si.drawImage( configuration.IMAGE_BACKGROUND );
-		si.printAtPixel( 69, 86, "CHOOSE YOUR DESTINY", configuration.COLOR_BOLD );
-		si.getGraphics2D( ).setColor( Color.DARK_GRAY );
-		si.getGraphics2D( ).fillRect( 70, 94, 661, 3 );
-		si.refresh( );
-		si.printAtPixel( 69, 118, "Hero Name:", Color.WHITE );
-		String name = si.input( 143, 118, configuration.COLOR_BOLD, 10 );
-		si.printAtPixel( 69, 133, "Sex: [m/f]", Color.WHITE );
-		si.refresh( );
-		CharKey x = new CharKey( CharKey.NONE );
-		while ( x.code != CharKey.M && x.code != CharKey.m && x.code != CharKey.F
-				&& x.code != CharKey.f )
-			x = si.inkey( );
+		si.drawImage(configuration.IMAGE_BACKGROUND);
+		si.printAtPixel(69, 86, "CHOOSE YOUR DESTINY", Asset.COLOR_BOLD);
+		si.getGraphics2D().setColor(Color.DARK_GRAY);
+		si.getGraphics2D().fillRect(70, 94, 661, 3);
+		si.refresh();
+		si.printAtPixel(69, 118, "Hero Name:", Color.WHITE);
+		String name = si.input(143, 118, Asset.COLOR_BOLD, 10);
+		si.printAtPixel(69, 133, "Sex: [m/f]", Color.WHITE);
+		si.refresh();
+		CharKey x = new CharKey(CharKey.NONE);
+		while (x.code != CharKey.M && x.code != CharKey.m && x.code != CharKey.F
+				&& x.code != CharKey.f)
+			x = si.inkey();
 		int sex = 0;
-		if ( x.code == CharKey.M || x.code == CharKey.m )
+		if (x.code == CharKey.M || x.code == CharKey.m)
 			sex = Player.MALE;
 		else
 			sex = Player.FEMALE;
-		si.printAtPixel( 138, 133, x.toString( ), configuration.COLOR_BOLD );
+		si.printAtPixel(138, 133, x.toString(), Asset.COLOR_BOLD);
 
-		GFXAppearance[ ] apps = new GFXAppearance[ CLASS_APPEARANCES.length ];
-		for ( int i = 0; i < CLASS_APPEARANCES.length; i++ )
-		{
-			if ( sex == Player.MALE )
-				apps[ i ] = (GFXAppearance) AppearanceFactory.getAppearanceFactory( )
-						.getAppearance( CLASS_APPEARANCES[ i ] );
+		GFXAppearance[] apps = new GFXAppearance[CLASS_APPEARANCES.length];
+		for (int i = 0; i < CLASS_APPEARANCES.length; i++) {
+			if (sex == Player.MALE)
+				apps[i] = (GFXAppearance) AppearanceFactory.getAppearanceFactory()
+						.getAppearance(CLASS_APPEARANCES[i]);
 			else
-				apps[ i ] = (GFXAppearance) AppearanceFactory.getAppearanceFactory( )
-						.getAppearance( CLASS_APPEARANCES[ i ] + "_W" );
+				apps[i] = (GFXAppearance) AppearanceFactory.getAppearanceFactory()
+						.getAppearance(CLASS_APPEARANCES[i] + "_W");
 		}
 
-		si.printAtPixel( 80, 173, CLASS_NAMES[ 0 ], Color.WHITE );
-		si.printAtPixel( 80, 191, CLASS_NAMES[ 1 ], Color.WHITE );
-		si.printAtPixel( 80, 209, CLASS_NAMES[ 2 ], Color.WHITE );
-		si.printAtPixel( 80, 227, CLASS_NAMES[ 3 ], Color.WHITE );
-		si.printAtPixel( 80, 245, CLASS_NAMES[ 4 ], Color.WHITE );
-		si.printAtPixel( 80, 263, CLASS_NAMES[ 5 ], Color.WHITE );
+		si.printAtPixel(80, 173, CLASS_NAMES[0], Color.WHITE);
+		si.printAtPixel(80, 191, CLASS_NAMES[1], Color.WHITE);
+		si.printAtPixel(80, 209, CLASS_NAMES[2], Color.WHITE);
+		si.printAtPixel(80, 227, CLASS_NAMES[3], Color.WHITE);
+		si.printAtPixel(80, 245, CLASS_NAMES[4], Color.WHITE);
+		si.printAtPixel(80, 263, CLASS_NAMES[5], Color.WHITE);
 
-		si.printAtPixel( 350, 260, "Attack      ", configuration.COLOR_BOLD );
-		si.printAtPixel( 350, 280, "Soul Power  ", configuration.COLOR_BOLD );
-		si.printAtPixel( 350, 300, "Resistance  ", configuration.COLOR_BOLD );
-		si.printAtPixel( 350, 320, "Evasion     ", configuration.COLOR_BOLD );
-		si.printAtPixel( 350, 340, "Movement    ", configuration.COLOR_BOLD );
-		si.printAtPixel( 350, 360, "Combat      ", configuration.COLOR_BOLD );
-		si.printAtPixel( 350, 380, "Invokation  ", configuration.COLOR_BOLD );
-		si.printAtPixel( 350, 400, "Strength    ", configuration.COLOR_BOLD );
-		si.printAtPixel( 350, 420, "Sight       ", configuration.COLOR_BOLD );
-		si.printAtPixel( 350, 440, "Wealth      ", configuration.COLOR_BOLD );
-		txtClassDescription.setVisible( true );
-		x = new CharKey( CharKey.NONE );
+		si.printAtPixel(350, 260, "Attack      ", Asset.COLOR_BOLD);
+		si.printAtPixel(350, 280, "Soul Power  ", Asset.COLOR_BOLD);
+		si.printAtPixel(350, 300, "Resistance  ", Asset.COLOR_BOLD);
+		si.printAtPixel(350, 320, "Evasion     ", Asset.COLOR_BOLD);
+		si.printAtPixel(350, 340, "Movement    ", Asset.COLOR_BOLD);
+		si.printAtPixel(350, 360, "Combat      ", Asset.COLOR_BOLD);
+		si.printAtPixel(350, 380, "Invokation  ", Asset.COLOR_BOLD);
+		si.printAtPixel(350, 400, "Strength    ", Asset.COLOR_BOLD);
+		si.printAtPixel(350, 420, "Sight       ", Asset.COLOR_BOLD);
+		si.printAtPixel(350, 440, "Wealth      ", Asset.COLOR_BOLD);
+		txtClassDescription.setVisible(true);
+		x = new CharKey(CharKey.NONE);
 		int choice = 0;
-		si.saveBuffer( );
-		while ( true ) {
+		si.saveBuffer();
+		while (true) {
 			si.restore();
 			txtClassDescription.setText(CLASS_DESCRIPTIONS[choice]);
 			si.drawImage(70, 158 + 18 * choice, "gfx/barrett-picker.gif");
