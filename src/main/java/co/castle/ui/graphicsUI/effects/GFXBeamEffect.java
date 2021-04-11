@@ -31,7 +31,7 @@ public class GFXBeamEffect extends GFXDirectedEffect
 			if (too == missile.length)
 				too = 0;
 
-			final int height = getHeight(ui, next);
+			final int height = getCellHeight(ui, next);
 			Position relative = Position.subs(next, ui.getPlayer().getPosition());
 			Position toPrint = Position.add(ui.PC_POS, relative);
 			if (!ui.insideViewPort(toPrint))

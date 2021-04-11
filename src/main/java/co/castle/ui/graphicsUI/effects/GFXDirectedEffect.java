@@ -29,7 +29,7 @@ public abstract class GFXDirectedEffect extends GFXEffect
 	public void set(	Position loc, Position startPosition, Position pivotPosition,
 						int depth )
 	{
-        super.set(loc);
+		super.set(loc);
 		Position startPosition1 = new Position(loc);
 		effectLine = new Line(startPosition, pivotPosition);
 		setDepth(depth);
@@ -39,7 +39,7 @@ public abstract class GFXDirectedEffect extends GFXEffect
 		depth = value;
 	}
 
-	protected int getHeight(final GFXUserInterface userInterface, final Position next) {
+	protected int getCellHeight(final GFXUserInterface userInterface, final Position next) {
 		final Cell mapCell = userInterface.getPlayer().getLevel().getMapCell(next);
 		return mapCell == null ? 0 : mapCell.getHeight();
 	}
