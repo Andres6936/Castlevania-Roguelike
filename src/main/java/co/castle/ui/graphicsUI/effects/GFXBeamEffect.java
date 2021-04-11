@@ -26,22 +26,21 @@ public class GFXBeamEffect extends GFXDirectedEffect
 		int too = 0;
 		for ( int i = 0; i < depth; i++ )
 		{
-			Position next = effectLine.next( );
+			Position next = effectLine.next();
 			too++;
-			if ( too == missile.length )
+			if (too == missile.length)
 				too = 0;
-			int height = 0;
-			if ( ui.getPlayer( ).getLevel( ).getMapCell( next ) != null )
-				height = ui.getPlayer( ).getLevel( ).getMapCell( next ).getHeight( );
-			Position relative = Position.subs( next, ui.getPlayer( ).getPosition( ) );
-			Position toPrint = Position.add( ui.PC_POS, relative );
-			if ( !ui.insideViewPort( toPrint ) )
+
+			int height = getHeight(ui, next);
+			Position relative = Position.subs(next, ui.getPlayer().getPosition());
+			Position toPrint = Position.add(ui.PC_POS, relative);
+			if (!ui.insideViewPort(toPrint))
 				break;
-			si.drawImage( toPrint.x( ) * configuration.NORMAL_TILE_WIDTH,
-					toPrint.y( ) * configuration.NORMAL_TILE_WIDTH - 4 * height,
-					missile[ too ] );
-			si.refresh( );
-			animationPause( );
+			si.drawImage(toPrint.x() * configuration.NORMAL_TILE_WIDTH,
+					toPrint.y() * configuration.NORMAL_TILE_WIDTH - 4 * height,
+					missile[too]);
+			si.refresh();
+			animationPause();
 		}
 		si.restore( );
 	}

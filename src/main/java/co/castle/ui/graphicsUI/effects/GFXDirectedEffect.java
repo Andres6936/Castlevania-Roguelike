@@ -1,6 +1,7 @@
 package co.castle.ui.graphicsUI.effects;
 
 import co.castle.conf.gfx.data.Asset;
+import co.castle.ui.graphicsUI.GFXUserInterface;
 import sz.util.Line;
 import sz.util.Position;
 
@@ -28,14 +29,21 @@ public abstract class GFXDirectedEffect extends GFXEffect
 						int depth )
 	{
         super.set(loc);
-        Position startPosition1 = new Position(loc);
-        effectLine = new Line(startPosition, pivotPosition);
-        setDepth(depth);
-    }
+		Position startPosition1 = new Position(loc);
+		effectLine = new Line(startPosition, pivotPosition);
+		setDepth(depth);
+	}
 
-	public void setDepth( int value )
-	{
+	public void setDepth(int value) {
 		depth = value;
+	}
+
+	protected int getHeight(final GFXUserInterface userInterface, final Position next) {
+		int height = 0;
+		if (userInterface.getPlayer().getLevel().getMapCell(next) != null) {
+			height = userInterface.getPlayer().getLevel().getMapCell(next).getHeight();
+		}
+		return height;
 	}
 
 }

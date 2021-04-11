@@ -49,29 +49,27 @@ public class GFXDirectionalMissileEffect extends GFXDirectedEffect
 			case Action.DOWNRIGHT:
 				icon = missile[ 4 ];
 				break;
-			case Action.DOWNLEFT:
-				icon = missile[ 5 ];
-				break;
-			case Action.UPLEFT:
-				icon = missile[ 6 ];
-				break;
-			case Action.UPRIGHT:
-				icon = missile[ 7 ];
-				break;
+				case Action.DOWNLEFT:
+					icon = missile[5];
+					break;
+				case Action.UPLEFT:
+					icon = missile[6];
+					break;
+				case Action.UPRIGHT:
+					icon = missile[7];
+					break;
 			}
-			int height = 0;
-			if ( ui.getPlayer( ).getLevel( ).getMapCell( next ) != null )
-				height = ui.getPlayer( ).getLevel( ).getMapCell( next ).getHeight( );
-			Position relative = Position.subs( next, ui.getPlayer( ).getPosition( ) );
-			Position toPrint = Position.add( ui.PC_POS, relative );
-			if ( !ui.insideViewPort( toPrint ) )
+			int height = getHeight(ui, next);
+			Position relative = Position.subs(next, ui.getPlayer().getPosition());
+			Position toPrint = Position.add(ui.PC_POS, relative);
+			if (!ui.insideViewPort(toPrint))
 				break;
-			si.drawImage( toPrint.x( ) * configuration.NORMAL_TILE_WIDTH,
-					toPrint.y( ) * configuration.NORMAL_TILE_WIDTH - 4 * height,
-					icon );
-			si.refresh( );
-			animationPause( );
-			si.restore( );
+			si.drawImage(toPrint.x() * configuration.NORMAL_TILE_WIDTH,
+					toPrint.y() * configuration.NORMAL_TILE_WIDTH - 4 * height,
+					icon);
+			si.refresh();
+			animationPause();
+			si.restore();
 		}
 
 		/*
