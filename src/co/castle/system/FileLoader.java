@@ -10,6 +10,15 @@ import java.io.FileNotFoundException;
 public class FileLoader {
 
     /**
+     * @param filename The file to be opened for reading.
+     * @return A new File instance by converting the given pathname string into
+     * an abstract pathname.
+     */
+    public static File getResourceFile(final String filename) {
+        return new File(filename);
+    }
+
+    /**
      * @param filename The system-dependent file name.
      * @return Creates and return a FileInputStream by opening a connection to
      * an actual file, the file named by the path name name in the file system.
