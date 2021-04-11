@@ -112,18 +112,17 @@ public final class Main
 
 	private static void loadGame( )
 	{
-		File saveDirectory = new File( "savegame" );
-		File[ ] saves = saveDirectory.listFiles( new SaveGameFilenameFilter( ) );
+		File saveDirectory = new File("savegame");
+		File[] saves = saveDirectory.listFiles((dir, name) -> name.endsWith(".sav"));
 
-		int index = Display.thus.showSavedGames( saves );
-		if ( index == -1 )
-			title( );
-		try
-		{
-            assert saves != null;
+		int index = Display.thus.showSavedGames(saves);
+		if (index == -1)
+			title();
+		try {
+			assert saves != null;
 			ObjectInputStream ois = new ObjectInputStream(
 					FileLoader.getFileInputStream(saves[index]));
-			currentGame = (Game) ois.readObject( );
+			currentGame = (Game) ois.readObject();
 			ois.close( );
 		}
 		catch ( IOException ioe )
@@ -232,17 +231,6 @@ public final class Main
 		setMonsterRecord( GameFiles.getMonsterRecord( ) );
 		currentGame.training( );
 		title( );
-	}
-
-}
-
-class SaveGameFilenameFilter implements FilenameFilter
-{
-
-	public boolean accept( File arg0, String arg1 )
-	{
-		// if (arg0.getName().endsWith(".sav"))
-        return arg1.endsWith( ".sav" );
 	}
 
 }
