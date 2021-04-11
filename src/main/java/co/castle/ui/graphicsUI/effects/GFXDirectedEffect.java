@@ -39,6 +39,11 @@ public abstract class GFXDirectedEffect extends GFXEffect
 		depth = value;
 	}
 
+	/**
+	 * @param userInterface The user interface.
+	 * @param next          The position of cell in the user interface.
+	 * @return The height of cell, if it is null the return 0.
+	 */
 	protected int getCellHeight(final GFXUserInterface userInterface, final Position next) {
 		final Cell mapCell = userInterface.getPlayer().getLevel().getMapCell(next);
 		return mapCell == null ? 0 : mapCell.getHeight();
