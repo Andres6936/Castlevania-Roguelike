@@ -125,8 +125,10 @@ public final class Asset {
 	private static final Position playerLocationOnScreen;
 
 	static {
+		// Define the file of configuration that content the constant of application.
 		var configuration = new Properties();
 		try {
+			// Load the file from the resource directory.
 			configuration.load(FileLoader.getFileInputStream("properties/configurationUI.properties"));
 		} catch (IOException e) {
 			System.out.println("Error loading configuration for user interface.\n");
