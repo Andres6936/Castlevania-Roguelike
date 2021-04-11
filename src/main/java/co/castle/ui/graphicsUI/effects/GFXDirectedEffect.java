@@ -1,6 +1,7 @@
 package co.castle.ui.graphicsUI.effects;
 
 import co.castle.conf.gfx.data.Asset;
+import co.castle.level.Cell;
 import co.castle.ui.graphicsUI.GFXUserInterface;
 import sz.util.Line;
 import sz.util.Position;
@@ -39,11 +40,8 @@ public abstract class GFXDirectedEffect extends GFXEffect
 	}
 
 	protected int getHeight(final GFXUserInterface userInterface, final Position next) {
-		int height = 0;
-		if (userInterface.getPlayer().getLevel().getMapCell(next) != null) {
-			height = userInterface.getPlayer().getLevel().getMapCell(next).getHeight();
-		}
-		return height;
+		final Cell mapCell = userInterface.getPlayer().getLevel().getMapCell(next);
+		return mapCell == null ? 0 : mapCell.getHeight();
 	}
 
 }
