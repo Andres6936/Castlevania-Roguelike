@@ -17,7 +17,9 @@ public class FileLoader {
      * @return A new FileReader, given the name of the file to read, using the
      * platform's default charset.
      * @throws FileNotFoundException If the named file does not exist, is a
-     *                               directory rather than a regular file, or for some other reason cannot be opened for reading.
+     *                               directory rather than a regular file, or
+     *                               for some other reason cannot be opened for
+     *                               reading.
      */
     public static FileReader getFileReader(final String filename) throws FileNotFoundException {
         return new FileReader(ClassLoader.getSystemResource(filename).getFile());
