@@ -14,34 +14,31 @@ import co.castle.conf.gfx.data.Asset;
 import co.castle.main.ApplicationGraphics;
 import co.castle.ui.graphicsUI.AddornedBorderPanel;
 
-public class GFXChatBox extends AddornedBorderPanel
-{
-	private JLabel lblImageIcon;
-	private JLabel lblName;
-	private JTextArea txtText;
+public class GFXChatBox extends AddornedBorderPanel {
+	private final JLabel lblImageIcon;
+	private final JLabel lblName;
+	private final JTextArea txtText;
 
-	// Get instance of Asset
-	private Asset asset = ApplicationGraphics.assets;
+	public GFXChatBox(Image UPRIGHT, Image UPLEFT, Image DOWNRIGHT, Image DOWNLEFT,
+					  Color OUT_COLOR, Color IN_COLOR, int borderWidth,
+					  int borderHeight) {
+		super(UPRIGHT, UPLEFT, DOWNRIGHT, DOWNLEFT, OUT_COLOR, IN_COLOR, borderWidth,
+				borderHeight);
+		lblImageIcon = new JLabel();
+		lblName = new JLabel();
+		txtText = new JTextArea();
 
-	public GFXChatBox(	Image UPRIGHT, Image UPLEFT, Image DOWNRIGHT, Image DOWNLEFT,
-						Color OUT_COLOR, Color IN_COLOR, int borderWidth,
-						int borderHeight )
-	{
-		super( UPRIGHT, UPLEFT, DOWNRIGHT, DOWNLEFT, OUT_COLOR, IN_COLOR, borderWidth,
-				borderHeight );
-		lblImageIcon = new JLabel( );
-		lblName = new JLabel( );
-		txtText = new JTextArea( );
+		// Get instance of Asset
+		Asset asset = ApplicationGraphics.assets;
+		lblName.setFont(asset.FONT_TITLE);
+		lblName.setForeground(Color.WHITE);
 
-		lblName.setFont( asset.FONT_TITLE );
-		lblName.setForeground( Color.WHITE );
-
-		txtText.setWrapStyleWord( true );
-		txtText.setLineWrap( true );
-		txtText.setFont( asset.FONT_TEXT );
-		txtText.setForeground( Color.WHITE );
-		txtText.setEditable( false );
-		txtText.setFocusable( false );
+		txtText.setWrapStyleWord(true);
+		txtText.setLineWrap(true);
+		txtText.setFont(asset.FONT_TEXT);
+		txtText.setForeground(Color.WHITE);
+		txtText.setEditable(false);
+		txtText.setFocusable(false);
 
 		txtText.setOpaque( false );
 		lblName.setOpaque( false );
