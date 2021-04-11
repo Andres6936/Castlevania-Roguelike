@@ -7,19 +7,16 @@ import co.castle.main.ApplicationGraphics;
 import co.castle.ui.graphicsUI.GFXUserInterface;
 import sz.util.Position;
 
-public class GFXSplashEffect extends GFXEffect
-{
-	private Image[ ] tiles;
+public class GFXSplashEffect extends GFXEffect {
+	private final Image[] tiles;
 
-	public GFXSplashEffect(	String ID, Image[ ] tiles, int delay,
-							Asset configuration )
-	{
-		super( ID, delay, configuration );
+	public GFXSplashEffect(String ID, Image[] tiles, int delay,
+						   Asset configuration) {
+		super(ID, delay, configuration);
 		this.tiles = tiles;
 	}
 
-	public void drawEffect( GFXUserInterface ui, ApplicationGraphics si )
-	{
+	public void drawEffect(GFXUserInterface ui, ApplicationGraphics si) {
 		si.saveBuffer( );
 		// ui.refresh();
 		Position relative = Position.subs( getPosition( ),

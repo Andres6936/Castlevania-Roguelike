@@ -10,20 +10,16 @@ import co.castle.main.ApplicationGraphics;
 import co.castle.ui.graphicsUI.GFXUserInterface;
 import sz.util.Position;
 
-public class GFXCircleBlastEffect extends GFXEffect
-{
-	private int ADVANCE = 9;
-	private Color blastColor;
+public class GFXCircleBlastEffect extends GFXEffect {
+    private final Color blastColor;
 
-	public GFXCircleBlastEffect(	String ID, Color blastColor, int delay,
-									Asset configuration )
-	{
-		super( ID, delay, configuration );
-		this.blastColor = blastColor;
-	}
+    public GFXCircleBlastEffect(String ID, Color blastColor, int delay,
+                                Asset configuration) {
+        super(ID, delay, configuration);
+        this.blastColor = blastColor;
+    }
 
-	public void drawEffect( GFXUserInterface ui, ApplicationGraphics si )
-	{
+    public void drawEffect(GFXUserInterface ui, ApplicationGraphics si) {
 		ui.refresh( );
 		si.saveBuffer( );
 		Position relative = Position.subs( getPosition( ),
@@ -37,14 +33,14 @@ public class GFXCircleBlastEffect extends GFXEffect
 				+ configuration.HALF_TILE_WIDTH;
 		int ycenter = center.y * configuration.NORMAL_TILE_WIDTH
 				+ configuration.HALF_TILE_WIDTH;
-		for ( int i = 0; i < 30; i++ )
-		{
-			g.fillOval( xcenter - i * ( ADVANCE + i ), ycenter - i * ( ADVANCE + i ),
-					i * ( ADVANCE + i ) * 2, i * ( ADVANCE + i ) * 2 );
-			si.refresh( );
-			animationPause( );
-			// si.restore();
-		}
+		for ( int i = 0; i < 30; i++ ) {
+            int ADVANCE = 9;
+            g.fillOval(xcenter - i * (ADVANCE + i), ycenter - i * (ADVANCE + i),
+                    i * (ADVANCE + i) * 2, i * (ADVANCE + i) * 2);
+            si.refresh();
+            animationPause();
+            // si.restore();
+        }
 		g.setStroke( oldStroke );
 		si.cls( );
 		si.restore( );

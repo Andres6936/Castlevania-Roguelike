@@ -6,7 +6,6 @@ import sz.util.Position;
 
 public abstract class GFXDirectedEffect extends GFXEffect
 {
-	private Position startPosition;
 	protected int depth;
 	protected Line effectLine;
 
@@ -41,11 +40,11 @@ public abstract class GFXDirectedEffect extends GFXEffect
 	public void set(	Position loc, Position startPosition, Position pivotPosition,
 						int depth )
 	{
-		super.set( loc );
-		this.startPosition = new Position( loc );
-		effectLine = new Line( startPosition, pivotPosition );
-		setDepth( depth );
-	}
+        super.set(loc);
+        Position startPosition1 = new Position(loc);
+        effectLine = new Line(startPosition, pivotPosition);
+        setDepth(depth);
+    }
 
 	public void setDepth( int value )
 	{

@@ -8,11 +8,6 @@ public abstract class GFXDirectionalEffect extends GFXEffect
 	protected int depth;
 	protected int direction;
 
-	public GFXDirectionalEffect( String id, Asset configuration )
-	{
-		super( id, configuration );
-	}
-
 	public GFXDirectionalEffect( String id, int delay, Asset configuration )
 	{
 		super( id, delay, configuration );

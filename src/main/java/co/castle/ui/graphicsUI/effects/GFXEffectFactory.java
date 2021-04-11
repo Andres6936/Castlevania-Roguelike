@@ -6,19 +6,15 @@ import co.castle.ui.effects.Effect;
 import co.castle.ui.effects.EffectFactory;
 import sz.util.Position;
 
-public class GFXEffectFactory extends EffectFactory
-{
-	private Hashtable <String, Effect> effects = new Hashtable <String, Effect>( );
+public class GFXEffectFactory extends EffectFactory {
+	private final Hashtable<String, Effect> effects = new Hashtable<>();
 
-	public Effect createDirectedEffect(	Position start, Position end, String ID,
-										int length )
-	{
-		try
-		{
-			GFXDirectedEffect x = (GFXDirectedEffect) effects.get( ID );
-			if ( x == null )
-			{
-				System.out.println( "Warning! effect " + ID + " is not registered" );
+	public Effect createDirectedEffect(Position start, Position end, String ID,
+									   int length) {
+		try {
+			GFXDirectedEffect x = (GFXDirectedEffect) effects.get(ID);
+			if (x == null) {
+				System.out.println("Warning! effect " + ID + " is not registered");
 				return null;
 			}
 			x.set( start, start, end, length );
@@ -72,11 +68,9 @@ public class GFXEffectFactory extends EffectFactory
 		}
 	}
 
-	public void setEffects( Effect[ ] effectsA )
-	{
-		for ( int i = 0; i < effectsA.length; i++ )
-		{
-			effects.put( effectsA[ i ].getID( ), effectsA[ i ] );
+	public void setEffects( Effect[ ] effectsA ) {
+		for (Effect effect : effectsA) {
+			effects.put(effect.getID(), effect);
 		}
 	}
 

@@ -9,16 +9,14 @@ import co.castle.main.ApplicationGraphics;
 import co.castle.ui.graphicsUI.GFXUserInterface;
 import sz.util.Position;
 
-public class GFXSequentialEffect extends GFXEffect
-{
+public class GFXSequentialEffect extends GFXEffect {
 	private Vector sequence;
-	private Image[ ] tiles;
+	private final Image[] tiles;
 
-	public GFXSequentialEffect(	String ID, Vector sequence, Image[ ] tiles, int delay,
-								Asset configuration )
-	{
-		super( ID, configuration );
-		setAnimationDelay( delay );
+	public GFXSequentialEffect(String ID, Vector sequence, Image[] tiles, int delay,
+							   Asset configuration) {
+		super(ID, configuration);
+		setAnimationDelay(delay);
 		this.tiles = tiles;
 		this.sequence = sequence;
 	}

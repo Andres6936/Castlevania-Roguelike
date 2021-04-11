@@ -8,24 +8,21 @@ import co.castle.main.ApplicationGraphics;
 import co.castle.ui.graphicsUI.GFXUserInterface;
 import sz.util.Position;
 
-public class GFXAnimatedMeleeEffect extends GFXDirectionalEffect
-{
-	private BufferedImage[ ][ ] frames;
-	private Position[ ][ ] variations;
+public class GFXAnimatedMeleeEffect extends GFXDirectionalEffect {
+	private BufferedImage[][] frames;
+	private final Position[][] variations;
 
-	public GFXAnimatedMeleeEffect(	String ID, BufferedImage[ ][ ] frames,
-									Position vars[][], int delay,
-									Asset configuration )
-	{
-		super( ID, delay, configuration );
-		setMissile( frames );
+	public GFXAnimatedMeleeEffect(String ID, BufferedImage[][] frames,
+								  Position[][] vars, int delay,
+								  Asset configuration) {
+		super(ID, delay, configuration);
+		setMissile(frames);
 		variations = vars;
 	}
 
-	public void drawEffect( GFXUserInterface ui, ApplicationGraphics si )
-	{
-		BufferedImage[ ] sequence = null;
-		Position[ ] vars = null;
+	public void drawEffect(GFXUserInterface ui, ApplicationGraphics si) {
+		BufferedImage[] sequence = null;
+		Position[] vars = null;
 		si.saveBuffer( );
 		setAnimationDelay( animationDelay );
 
