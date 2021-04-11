@@ -1,11 +1,13 @@
 package co.castle.conf.gfx.data;
 
+import co.castle.system.FileLoader;
 import sz.util.ImageUtils;
 import sz.util.Position;
 import sz.util.PropertyFilters;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.Properties;
 
 /**
@@ -19,33 +21,45 @@ public final class Asset {
 	/**
 	 * The scale of screen.
 	 */
-	public final float SCREEN_SCALE;
+	public static final float SCREEN_SCALE;
 
 	/**
 	 * Screen width in pixels.
 	 */
-	public final int SCREEN_WIDTH;
+	public static final int SCREEN_WIDTH;
 
 	/**
 	 * Screen height in pixels.
 	 */
-	public final int SCREEN_HEIGHT;
+	public static final int SCREEN_HEIGHT;
 
 	/**
 	 * Screen width in tiles.
 	 */
-	public final int SCREEN_WIDTH_IN_TILES;
+	public static final int SCREEN_WIDTH_IN_TILES;
 
 	/**
 	 * Screen height in tiles.
 	 */
-	public final int SCREEN_HEIGHT_IN_TILES;
+	public static final int SCREEN_HEIGHT_IN_TILES;
 
-	final int BIG_TILE_WIDTH;
-	public final int HALF_TILE_WIDTH;
-	public final int NORMAL_TILE_WIDTH;
+	public static final int BIG_TILE_WIDTH;
 
-	final int CELL_HEIGHT;
+	public static final int HALF_TILE_WIDTH;
+
+	public static final int GADGET_SIZE;
+
+	public static final int NORMAL_TILE_WIDTH;
+
+	public static final int CELL_HEIGHT;
+
+	public static final Color COLOR_BORDER_INNER;
+
+	public static final Color COLOR_BORDER_OUTER;
+
+	public static final Color COLOR_BACKGROUND;
+
+	public static final Color COLOR_BOLD;
 
 	public BufferedImage IMAGE_TITLE;
 	public BufferedImage IMAGE_PROLOGUE;
@@ -71,26 +85,28 @@ public final class Asset {
     BufferedImage IMAGE_NIGHT_TERRAIN;
     BufferedImage IMAGE_DARK_NIGHT_TERRAIN;
     BufferedImage IMAGE_DARK_TERRAIN;
-    BufferedImage IMAGE_EFFECTS;
-    BufferedImage IMAGE_FEATURES;
-    BufferedImage IMAGE_ITEMS;
-    BufferedImage IMAGE_SHADOW;
-
-	public final Color COLOR_BORDER_INNER;
-	public final Color COLOR_BORDER_OUTER;
-	public final Color COLOR_BACKGROUND;
-	public final Color COLOR_BOLD;
+	BufferedImage IMAGE_EFFECTS;
+	BufferedImage IMAGE_FEATURES;
+	BufferedImage IMAGE_ITEMS;
+	BufferedImage IMAGE_SHADOW;
 
 	public Font FONT_TITLE;
 	public Font FONT_TEXT;
 	public Font FONT_MESSAGE_BOX;
 	public Font FONT_MESSAGE_BOX_PERSISTANT;
 
-	private final Position playerLocationOnScreen;
+	private static final Position playerLocationOnScreen;
 
-	// We make the constructor private to prevent the use of 'new'
-    public Asset( final Properties configuration )
-	{
+	static {
+		var configuration = new Properties();
+		try {
+			configuration.load(FileLoader.getFileInputStream("properties/configurationUI.properties"));
+		} catch (IOException e) {
+			System.out.println("Error loading configuration for user interface.\n");
+			e.printStackTrace();
+			System.exit(-1);
+		}
+
 		SCREEN_SCALE = Float.parseFloat(configuration.getProperty("SCREEN_SCALE"));
 
 		SCREEN_WIDTH = Integer.parseInt(configuration.getProperty("WINDOW_WIDTH"));
@@ -103,7 +119,7 @@ public final class Asset {
 		NORMAL_TILE_WIDTH = Integer.parseInt(configuration.getProperty("TILESIZE"));
 
 		CELL_HEIGHT = Integer.parseInt(configuration.getProperty("CELL_HEIGHT"));
-		int GADGET_SIZE = Integer.parseInt(configuration.getProperty("GADGETSIZE"));
+		GADGET_SIZE = Integer.parseInt(configuration.getProperty("GADGETSIZE"));
 
 		COLOR_BORDER_INNER = PropertyFilters.getColor(configuration.getProperty("COLOR_BORDER_IN"));
 		COLOR_BORDER_OUTER = PropertyFilters.getColor(configuration.getProperty("COLOR_BORDER_OUT"));
@@ -112,13 +128,15 @@ public final class Asset {
 
 		// NOTE: This is a big problem, move and delete of here
 		playerLocationOnScreen = PropertyFilters.getPosition(configuration.getProperty("PC_POS"));
+	}
 
+	// We make the constructor private to prevent the use of 'new'
+	public Asset(final Properties configuration) {
 		// Load images, parameters and fonts, block try/catch is necessary.
-		try
-		{
-			IMAGE_TITLE = ImageUtils.createImage( configuration.getProperty( "IMG_TITLE" ) );
-			IMAGE_PROLOGUE = ImageUtils.createImage( configuration.getProperty( "IMG_PROLOGUE" ) );
-			IMAGE_RESUME = ImageUtils.createImage( configuration.getProperty( "IMG_RESUME" ) );
+		try {
+			IMAGE_TITLE = ImageUtils.createImage(configuration.getProperty("IMG_TITLE"));
+			IMAGE_PROLOGUE = ImageUtils.createImage(configuration.getProperty("IMG_PROLOGUE"));
+			IMAGE_RESUME = ImageUtils.createImage(configuration.getProperty( "IMG_RESUME" ) );
 			IMAGE_BACKGROUND = ImageUtils.createImage( configuration.getProperty( "IMG_BACKGROUND" ) );
 			IMAGE_ENDGAME = ImageUtils.createImage( configuration.getProperty( "IMG_ENDGAME" ) );
 			IMAGE_HISCORES = ImageUtils.createImage( configuration.getProperty( "IMG_HISCORES" ) );
