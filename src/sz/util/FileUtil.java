@@ -1,5 +1,7 @@
 package sz.util;
 
+import co.castle.system.FileLoader;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -13,18 +15,16 @@ import java.io.IOException;
 public class FileUtil
 {
 
-	public static void copyFile( File origen, File destino ) throws Exception
-	{
-		FileInputStream fis = new FileInputStream( origen );
-		FileOutputStream fos = new FileOutputStream( destino );
-		byte[ ] buf = new byte[ 1024 ];
+	public static void copyFile( File origen, File destino ) throws Exception {
+		FileInputStream fis = FileLoader.getFileInputStream(origen);
+		FileOutputStream fos = new FileOutputStream(destino);
+		byte[] buf = new byte[1024];
 		int i = 0;
-		while ( ( i = fis.read( buf ) ) != -1 )
-		{
-			fos.write( buf, 0, i );
+		while ((i = fis.read(buf)) != -1) {
+			fos.write(buf, 0, i);
 		}
-		fis.close( );
-		fos.close( );
+		fis.close();
+		fos.close();
 	}
 
 	public static void deleteFile( String what )

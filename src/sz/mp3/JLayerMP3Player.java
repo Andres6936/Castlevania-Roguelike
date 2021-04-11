@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+import co.castle.system.FileLoader;
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.Player;
 
@@ -95,7 +96,7 @@ public class JLayerMP3Player implements Runnable {
 			while ( !leave )
 			{
 				try {
-					player = new Player(new FileInputStream(soundFile));
+					player = new Player(FileLoader.getFileInputStream(soundFile));
 					while (true) {
 						player.play(20);
 						if (currentInstruction == INS_STOP) {

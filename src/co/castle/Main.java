@@ -12,6 +12,7 @@ import co.castle.game.Game;
 import co.castle.game.GameFiles;
 import co.castle.game.MonsterRecord;
 import co.castle.main.Service;
+import co.castle.system.FileLoader;
 import co.castle.ui.Display;
 
 public final class Main
@@ -121,7 +122,7 @@ public final class Main
 		{
             assert saves != null;
 			ObjectInputStream ois = new ObjectInputStream(
-					new FileInputStream( saves[ index ] ) );
+					FileLoader.getFileInputStream(saves[index]));
 			currentGame = (Game) ois.readObject( );
 			ois.close( );
 		}

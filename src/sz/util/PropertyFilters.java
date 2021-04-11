@@ -1,5 +1,7 @@
 package sz.util;
 
+import co.castle.system.FileLoader;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
@@ -33,8 +35,8 @@ public class PropertyFilters
 																IOException
 	{
 		return Font
-				.createFont( Font.TRUETYPE_FONT,
-						new FileInputStream( new File( fontName ) ) )
+				.createFont(Font.TRUETYPE_FONT,
+						FileLoader.getFileInputStream(new File(fontName)))
 				.deriveFont( Font.PLAIN, inte( size ) );
 	}
 
