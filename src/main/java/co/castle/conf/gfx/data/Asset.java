@@ -43,22 +43,49 @@ public final class Asset {
 	 */
 	public static final int SCREEN_HEIGHT_IN_TILES;
 
+	/**
+	 * The width of a bigger tile.
+	 */
 	public static final int BIG_TILE_WIDTH;
 
+	/**
+	 * The width of a half tile.
+	 */
 	public static final int HALF_TILE_WIDTH;
 
-	public static final int GADGET_SIZE;
-
+	/**
+	 * The width of a normal tile
+	 */
 	public static final int NORMAL_TILE_WIDTH;
 
+	/**
+	 * The size of gadget.
+	 */
+	public static final int GADGET_SIZE;
+
+	/**
+	 * The height of cell.
+	 */
 	public static final int CELL_HEIGHT;
 
+	/**
+	 * The color of border inner.
+	 */
 	public static final Color COLOR_BORDER_INNER;
 
+	/**
+	 * The color of border outer.
+	 */
 	public static final Color COLOR_BORDER_OUTER;
 
+	/**
+	 * The color of background.
+	 */
 	public static final Color COLOR_BACKGROUND;
 
+	/**
+	 * The color of bold.
+	 */
 	public static final Color COLOR_BOLD;
 
 	public BufferedImage IMAGE_TITLE;
