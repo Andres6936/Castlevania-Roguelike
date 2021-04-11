@@ -8,19 +8,17 @@ import java.awt.Image;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
-public class AddornedBorderTextArea extends AddornedBorderPanel
-{
-	private JTextArea textArea;
+public class AddornedBorderTextArea extends AddornedBorderPanel {
+	private final JTextArea textArea;
 
-	public AddornedBorderTextArea(	Image UPRIGHT, Image UPLEFT, Image DOWNRIGHT,
-									Image DOWNLEFT, Color OUT_COLOR, Color IN_COLOR,
-									int borderWidth, int borderHeight )
-	{
-		super( UPRIGHT, UPLEFT, DOWNRIGHT, DOWNLEFT, OUT_COLOR, IN_COLOR, borderWidth,
-				borderHeight );
+	public AddornedBorderTextArea(Image UPRIGHT, Image UPLEFT, Image DOWNRIGHT,
+								  Image DOWNLEFT, Color OUT_COLOR, Color IN_COLOR,
+								  int borderWidth, int borderHeight) {
+		super(UPRIGHT, UPLEFT, DOWNRIGHT, DOWNLEFT, OUT_COLOR, IN_COLOR, borderWidth,
+				borderHeight);
 
-		textArea = new JTextArea( );
-		setLayout( new GridLayout( 1, 1 ) );
+		textArea = new JTextArea();
+		setLayout(new GridLayout(1, 1));
 		textArea.setWrapStyleWord( true );
 		textArea.setLineWrap( true );
 		textArea.setFocusable( false );

@@ -4,18 +4,17 @@ import java.awt.Image;
 
 import co.castle.ui.Appearance;
 
-public class GFXAppearance extends Appearance
-{
+public class GFXAppearance extends Appearance {
 	private Image darkImage;
 	private Image darkniteImage;
-	private Image img;
+	private final Image img;
 	private Image niteImage;
-	private int superWidth, superHeight;
+	private final int superWidth;
+	private final int superHeight;
 
-	public GFXAppearance(	String ID, Image pimg, Image darkImage, Image niteImage,
-							Image darkniteImage, int superWidth, int superHeight )
-	{
-		super( ID );
+	public GFXAppearance(String ID, Image pimg, Image darkImage, Image niteImage,
+						 Image darkniteImage, int superWidth, int superHeight) {
+		super(ID);
 		img = pimg;
 		this.darkImage = darkImage;
 		this.niteImage = niteImage;

@@ -6,18 +6,21 @@ import java.awt.Image;
 
 import javax.swing.JPanel;
 
-public class AddornedBorderPanel extends JPanel
-{
-	private int borderWidth, borderHeight;
-	private Color OUT_COLOR, IN_COLOR;
-	private Image UPRIGHT, UPLEFT, DOWNRIGHT, DOWNLEFT;
+public class AddornedBorderPanel extends JPanel {
+	private final int borderWidth;
+	private final int borderHeight;
+	private final Color OUT_COLOR;
+	private final Color IN_COLOR;
+	private final Image UPRIGHT;
+	private final Image UPLEFT;
+	private final Image DOWNRIGHT;
+	private final Image DOWNLEFT;
 	// private static Color TRANSPARENT_BLUE = new Color(100,100,100,200);
-	private static Color TRANSPARENT_BLUE = new Color( 20, 20, 20, 200 );
+	private static final Color TRANSPARENT_BLUE = new Color(20, 20, 20, 200);
 
-	public AddornedBorderPanel(	Image UPRIGHT, Image UPLEFT, Image DOWNRIGHT,
-								Image DOWNLEFT, Color OUT_COLOR, Color IN_COLOR,
-								int borderWidth, int borderHeight )
-	{
+	public AddornedBorderPanel(Image UPRIGHT, Image UPLEFT, Image DOWNRIGHT,
+							   Image DOWNLEFT, Color OUT_COLOR, Color IN_COLOR,
+							   int borderWidth, int borderHeight) {
 		this.UPRIGHT = UPRIGHT;
 		this.UPLEFT = UPLEFT;
 		this.DOWNRIGHT = DOWNRIGHT;
