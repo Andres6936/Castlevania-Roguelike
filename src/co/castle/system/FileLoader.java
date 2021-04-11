@@ -5,7 +5,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 /**
- * Load resources from resources folder directory.
+ * Load resources from resources folder directory. Allow the change of
+ * structure of project without affect the load of resources needed for
+ * execute the application.
  */
 public class FileLoader {
 
