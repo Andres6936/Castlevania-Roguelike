@@ -8,42 +8,25 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.Iterator;
 import java.util.Vector;
 
 import javax.swing.JPanel;
 
-public class GFXButton extends JPanel implements MouseListener
-{
+public class GFXButton extends JPanel implements MouseListener {
 	private boolean habilitado = true;
 	private boolean hovering;
-	private Image imgActivado;
-	private Image imgDesactivado;
-	private Image imgHover;
+	private final Image imgActivado;
+	private final Image imgDesactivado;
+	private final Image imgHover;
 
-	private Vector objListeners = new Vector( );
+	private final Vector<ActionListener> objListeners = new Vector<>();
 
-	public GFXButton( GFXButton base )
-	{
-		imgActivado = base.imgActivado;
-		imgDesactivado = base.imgDesactivado;
-		imgHover = base.imgHover;
-		setLocation( base.getLocation( ) );
-		Dimension preferredSize = new Dimension( imgActivado.getWidth( this ),
-				imgActivado.getHeight( this ) );
-		setSize( preferredSize );
-		setPreferredSize( preferredSize );
-		addMouseListener( this );
+	public GFXButton(Image iimgActivado) {
+		this(iimgActivado, iimgActivado);
 	}
 
-	public GFXButton( Image iimgActivado )
-	{
-		this( iimgActivado, iimgActivado );
-	}
-
-	public GFXButton( Image iimgActivado, Image iimgDesactivado )
-	{
-		super( );
+	public GFXButton(Image iimgActivado, Image iimgDesactivado) {
+		super();
 		imgActivado = iimgActivado;
 		imgHover = iimgActivado;
 		imgDesactivado = iimgDesactivado;
@@ -55,12 +38,6 @@ public class GFXButton extends JPanel implements MouseListener
 		addMouseListener( this );
 		this.setOpaque( false );
 		// this.setBackground(java.awt.Color.RED);
-	}
-
-	public GFXButton( Image iimgActivado, Image iimgDesactivado, Image iimgHover )
-	{
-		this( iimgActivado, iimgDesactivado );
-		imgHover = iimgHover;
 	}
 
 	public void addActionListener( ActionListener iobjListener )
@@ -129,12 +106,9 @@ public class GFXButton extends JPanel implements MouseListener
 		habilitado = value;
 	}
 
-	private void fireActionEvent( )
-	{
-		for ( Iterator iter = objListeners.iterator( ); iter.hasNext( ); )
-		{
-			ActionListener element = (ActionListener) iter.next( );
-			element.actionPerformed( new ActionEvent( this, 1, "" ) );
+	private void fireActionEvent( ) {
+		for (ActionListener objListener : objListeners) {
+			objListener.actionPerformed(new ActionEvent(this, 1, ""));
 		}
 	}
 
