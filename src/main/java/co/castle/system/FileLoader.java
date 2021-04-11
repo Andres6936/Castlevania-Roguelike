@@ -3,6 +3,7 @@ package co.castle.system;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 
 /**
  * Load resources from resources folder directory. Allow the change of
@@ -10,6 +11,17 @@ import java.io.FileNotFoundException;
  * execute the application.
  */
 public class FileLoader {
+
+    /**
+     * @param filename The name of the file to read.
+     * @return A new FileReader, given the name of the file to read, using the
+     * platform's default charset.
+     * @throws FileNotFoundException If the named file does not exist, is a
+     *                               directory rather than a regular file, or for some other reason cannot be opened for reading.
+     */
+    public static FileReader getFileReader(final String filename) throws FileNotFoundException {
+        return new FileReader(ClassLoader.getSystemResource(filename).getFile());
+    }
 
     /**
      * @param filename The file to be opened for reading.
