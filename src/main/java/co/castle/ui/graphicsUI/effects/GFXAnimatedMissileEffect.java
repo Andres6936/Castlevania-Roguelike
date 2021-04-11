@@ -30,7 +30,7 @@ public class GFXAnimatedMissileEffect extends GFXDirectedEffect
 			if (too == missile.length)
 				too = 0;
 
-			int height = getHeight(ui, next);
+			final int height = getHeight(ui, next);
 			Position relative = Position.subs(next, ui.getPlayer().getPosition());
 			Position toPrint = Position.add(ui.PC_POS, relative);
 			if (!ui.insideViewPort(toPrint))

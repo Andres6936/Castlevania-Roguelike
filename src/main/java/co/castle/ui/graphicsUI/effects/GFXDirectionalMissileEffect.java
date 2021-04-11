@@ -59,7 +59,7 @@ public class GFXDirectionalMissileEffect extends GFXDirectedEffect
 					icon = missile[7];
 					break;
 			}
-			int height = getHeight(ui, next);
+			final int height = getHeight(ui, next);
 			Position relative = Position.subs(next, ui.getPlayer().getPosition());
 			Position toPrint = Position.add(ui.PC_POS, relative);
 			if (!ui.insideViewPort(toPrint))
