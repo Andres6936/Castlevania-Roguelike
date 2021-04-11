@@ -19,19 +19,6 @@ public abstract class GFXDirectedEffect extends GFXEffect
 		super( id, delay, configuration );
 	}
 
-	/*
-	 * public void drawEffect(GFXUserInterface ui, SwingSystemInterface si){
-	 * Position toPrint = null; for (int i = 0; i < depth; i+=10){ Position next =
-	 * effectLine.next(); Position relative = Position.subs(next,
-	 * ui.getPlayer().getPosition()); toPrint = Position.add(ui.PC_POS, relative);
-	 * if (!ui.insideViewPort(toPrint)) break; } startPosition =
-	 * Position.add(ui.PC_POS, Position.subs(startPosition,
-	 * ui.getPlayer().getPosition())); toPrint = Position.mul(toPrint, 36);
-	 * startPosition = Position.mul(startPosition, 36); depth =
-	 * Position.distance(startPosition, toPrint); effectLine = new
-	 * Line(startPosition, toPrint); }
-	 */
-
 	public int getDepth( )
 	{
 		return depth;
