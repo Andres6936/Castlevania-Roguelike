@@ -5,23 +5,21 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 
+import co.castle.system.FileLoader;
 import sz.util.FileUtil;
 
 public class Converter
 {
-	public static void main( String[ ] args )
-	{
-		File[ ] files = new File( args[ 0 ] ).listFiles( );
+	public static void main( String[ ] args ) {
+		File[] files = FileLoader.getResourceFile(args[0]).listFiles();
 
-		for ( int i = 0; i < files.length; i++ )
-		{
-			try
-			{
-				if ( files[ i ].isDirectory( ) )
+		for (int i = 0; i < files.length; i++) {
+			try {
+				if (files[i].isDirectory())
 					continue;
-				BufferedReader r = FileUtil.getReader( files[ i ].getAbsolutePath( ) );
-				BufferedWriter w = FileUtil.getWriter( files[ i ].getParent( ) + "/html/"
-						+ files[ i ].getName( ) + ".html" );
+				BufferedReader r = FileUtil.getReader(files[i].getAbsolutePath());
+				BufferedWriter w = FileUtil.getWriter(files[i].getParent() + "/html/"
+						+ files[i].getName() + ".html");
 				w.write( "<table width = \"80%\">" );
 				w.newLine( );
 				w.write( "<tr><th width = \"70%\">Game</th><th width = \"30%\">Author</th></tr>" );

@@ -1,5 +1,7 @@
 package sz.util;
 
+import co.castle.system.FileLoader;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -9,9 +11,8 @@ import java.io.IOException;
 
 public class FileUtil
 {
-	public static boolean fileExists( String filename )
-	{
-		return new File( filename ).exists( );
+	public static boolean fileExists( String filename ) {
+		return FileLoader.getResourceFile(filename).exists();
 	}
 
 	public static BufferedReader getReader( String fileName ) throws IOException

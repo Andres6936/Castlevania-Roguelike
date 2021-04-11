@@ -9,6 +9,7 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.SourceDataLine;
 
 import co.castle.game.Game;
+import co.castle.system.FileLoader;
 
 public class WavPlayer implements Runnable
 {
@@ -21,19 +22,17 @@ public class WavPlayer implements Runnable
 
 	public void play( String file )
 	{
-		try
-		{
-			AudioInputStream ais = AudioSystem.getAudioInputStream( new File( file ) );
+		try {
+            AudioInputStream ais = AudioSystem.getAudioInputStream(FileLoader.getResourceFile(file));
 
-			AudioFormat af = ais.getFormat( );
-			DataLine.Info info = new DataLine.Info( SourceDataLine.class, af );
-			if ( !AudioSystem.isLineSupported( info ) )
-			{
-				System.out.println( "Unsupported line" );
-				System.exit( -1 );
-			}
-			int frameRate = (int) af.getFrameRate( );
-			int frameSize = af.getFrameSize( );
+            AudioFormat af = ais.getFormat();
+            DataLine.Info info = new DataLine.Info(SourceDataLine.class, af);
+            if (!AudioSystem.isLineSupported(info)) {
+                System.out.println("Unsupported line");
+                System.exit(-1);
+            }
+            int frameRate = (int) af.getFrameRate();
+            int frameSize = af.getFrameSize();
 			int bufSize = frameRate * frameSize / 10;
 			SourceDataLine line = (SourceDataLine) AudioSystem.getLine( info );
 			line.open( af, bufSize );

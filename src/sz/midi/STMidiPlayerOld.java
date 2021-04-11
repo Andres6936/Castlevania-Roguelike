@@ -10,6 +10,7 @@ import javax.sound.midi.Sequencer;
 
 import co.castle.game.Game;
 import co.castle.main.Service;
+import co.castle.system.FileLoader;
 
 public class STMidiPlayerOld implements Runnable
 {
@@ -56,27 +57,19 @@ public class STMidiPlayerOld implements Runnable
 			{
 				currentMidiFile = "__noneYet";
 			}
-			if ( currentMidiFile.equals( "__noneYet" ) )
-			{
-				try
-				{
-					this.wait( );
-				}
-				catch ( InterruptedException ie )
-				{
+			if ( currentMidiFile.equals( "__noneYet" ) ) {
+				try {
+					this.wait();
+				} catch (InterruptedException ie) {
 					continue;
 				}
 			}
-			File midiFile = new File( currentMidiFile );
-			if ( !midiFile.exists( ) || midiFile.isDirectory( ) || !midiFile.canRead( ) )
-			{
-				Game.addReport( "Invalid Midi file: " + currentMidiFile );
-				try
-				{
-					this.wait( );
-				}
-				catch ( InterruptedException ie )
-				{
+			File midiFile = FileLoader.getResourceFile(currentMidiFile);
+			if (!midiFile.exists() || midiFile.isDirectory() || !midiFile.canRead()) {
+				Game.addReport("Invalid Midi file: " + currentMidiFile);
+				try {
+					this.wait();
+				} catch (InterruptedException ie) {
 					continue;
 				}
 			}

@@ -11,6 +11,8 @@ Looping is controlled by MidisLoader by calling tryLooping().
 MidisLoader passes a reference to its sequencer to each
 MidiInfo object, so that it can play its sequence.
 */
+import co.castle.system.FileLoader;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -121,12 +123,11 @@ public class MidiInfo
 	private void loadMidi( )
 	// load the Midi sequence
 	{
-		try
-		{
-			URL x = getClass( ).getResource( filename );
-			File file = new File( filename );
+		try {
+			URL x = getClass().getResource(filename);
+			File file = FileLoader.getResourceFile(filename);
 			// seq = MidiSystem.getSequence( getClass().getResource(filename) );
-			seq = MidiSystem.getSequence( file );
+			seq = MidiSystem.getSequence(file);
 		}
 		catch ( InvalidMidiDataException e )
 		{

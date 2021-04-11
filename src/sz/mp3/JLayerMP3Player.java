@@ -66,28 +66,20 @@ public class JLayerMP3Player implements Runnable {
 			{
 				currentInstruction = INS_PLAYING;
 			}
-			if ( currentMP3File.equals( "__noneYet" ) )
-			{
-				try
-				{
-					this.wait( );
-				}
-				catch ( InterruptedException ie )
-				{
+			if ( currentMP3File.equals( "__noneYet" ) ) {
+				try {
+					this.wait();
+				} catch (InterruptedException ie) {
 					continue;
 				}
 			}
-			File soundFile = new File( currentMP3File );
-			if ( !soundFile.exists( ) || soundFile.isDirectory( )
-					|| !soundFile.canRead( ) )
-			{
-				System.out.println( "Invalid MP3 file: " + currentMP3File );
-				try
-				{
-					this.wait( );
-				}
-				catch ( InterruptedException ie )
-				{
+			File soundFile = FileLoader.getResourceFile(currentMP3File);
+			if (!soundFile.exists() || soundFile.isDirectory()
+					|| !soundFile.canRead()) {
+				System.out.println("Invalid MP3 file: " + currentMP3File);
+				try {
+					this.wait();
+				} catch (InterruptedException ie) {
 					continue;
 				}
 			}

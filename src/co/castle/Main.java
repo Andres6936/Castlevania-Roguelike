@@ -112,7 +112,7 @@ public final class Main
 
 	private static void loadGame( )
 	{
-		File saveDirectory = new File("savegame");
+		File saveDirectory = FileLoader.getResourceFile("savegame");
 		File[] saves = saveDirectory.listFiles((dir, name) -> name.endsWith(".sav"));
 
 		int index = Display.thus.showSavedGames(saves);

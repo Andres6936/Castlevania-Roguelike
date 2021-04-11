@@ -1,5 +1,7 @@
 package sz.util;
 
+import co.castle.system.FileLoader;
+
 import java.awt.Component;
 import java.awt.Graphics2D;
 import java.awt.GraphicsConfiguration;
@@ -63,11 +65,10 @@ public class ImageUtils
 		return crearImagen( tempImage, x, y, width, height );
 	}
 
-	public static BufferedImage createImage( String filename ) throws Exception
-	{
-		BufferedImage im = ImageIO.read( new File( filename ) );
-		return im;
-	}
+	public static BufferedImage createImage( String filename ) throws Exception {
+        BufferedImage im = ImageIO.read(FileLoader.getResourceFile(filename));
+        return im;
+    }
 
 	public static BufferedImage hFlip( BufferedImage image )
 	{

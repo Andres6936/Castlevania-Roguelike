@@ -1,5 +1,7 @@
 package sz;
 
+import co.castle.system.FileLoader;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -42,7 +44,7 @@ public class MP3Test
 			// Create a stream from the given file.
 			// Throws IOException or UnsupportedAudioFileException
 			AudioInputStream audioInputStream = AudioSystem
-					.getAudioInputStream(new File(fileName));
+					.getAudioInputStream(FileLoader.getResourceFile(fileName));
 			// AudioSystem.getAudioInputStream( inputStream ); // alternate audio stream
 			// from inputstream
 			playAudioStream( audioInputStream );

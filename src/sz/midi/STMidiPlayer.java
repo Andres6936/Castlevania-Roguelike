@@ -10,6 +10,7 @@ import javax.sound.midi.Sequencer;
 import javax.sound.midi.Synthesizer;
 
 import co.castle.game.Game;
+import co.castle.system.FileLoader;
 
 public class STMidiPlayer implements Runnable
 {
@@ -61,7 +62,7 @@ public class STMidiPlayer implements Runnable
 				}
 			}
 
-			File midiFile = new File(currentMidiFile);
+			File midiFile = FileLoader.getResourceFile(currentMidiFile);
 
 			if (currentInstruction == INS_LOAD) {
 				if (!midiFile.exists() || midiFile.isDirectory()

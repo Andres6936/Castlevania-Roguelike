@@ -21,6 +21,7 @@ import co.castle.player.HiScore;
 import co.castle.player.MonsterDeath;
 import co.castle.player.Player;
 import co.castle.player.Skill;
+import co.castle.system.FileLoader;
 import co.castle.ui.UserInterface;
 import sz.util.Debug;
 import sz.util.FileUtil;
@@ -102,13 +103,11 @@ public class GameFiles
 		return null;
 	}
 
-	public static void permadeath( Player p )
-	{
-		File saveDirectory = new File( "savegame" );
-		File[ ] previousSaves = saveDirectory.listFiles( new SaveFilenameFilter( p ) );
-		for ( File file : previousSaves )
-		{
-			file.delete( );
+	public static void permadeath( Player p ) {
+		File saveDirectory = FileLoader.getResourceFile("savegame");
+		File[] previousSaves = saveDirectory.listFiles(new SaveFilenameFilter(p));
+		for (File file : previousSaves) {
+			file.delete();
 		}
 
 	}
@@ -293,19 +292,17 @@ public class GameFiles
 		}
 	}
 
-	public static void saveGame( Game g, Player p )
-	{
+	public static void saveGame( Game g, Player p ) {
 		// Delete previous saves
-		File saveDirectory = new File( "savegame" );
-		File[ ] previousSaves = saveDirectory.listFiles( new SaveFilenameFilter( p ) );
-		for ( File file : previousSaves )
-		{
-			file.delete( );
+		File saveDirectory = FileLoader.getResourceFile("savegame");
+		File[] previousSaves = saveDirectory.listFiles(new SaveFilenameFilter(p));
+		for (File file : previousSaves) {
+			file.delete();
 		}
 
-		String filename = "savegame/" + p.getName( ) + ", a Lv" + p.getPlayerLevel( )
-				+ " " + p.getClassString( ) + ".sav";
-		p.setSelector( null );
+		String filename = "savegame/" + p.getName() + ", a Lv" + p.getPlayerLevel()
+				+ " " + p.getClassString() + ".sav";
+		p.setSelector(null);
 		try
 		{
 			SerializableChecker sc = new SerializableChecker( );
