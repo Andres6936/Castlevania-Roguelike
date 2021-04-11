@@ -9,12 +9,16 @@ import java.awt.image.BufferedImage;
 import java.util.Properties;
 
 /**
- * In this class is saved the configuration parameters and asset for user
- * interface, grant part of this field are constant
+ * In this class is store the configuration parameters and asset (images) for
+ * user interface, grant part of this field are constant
  *
  * @author Tuukka Turto
  */
 public final class Asset {
+
+	/**
+	 * The scale of screen.
+	 */
 	public final float SCREEN_SCALE;
 
 	/**
