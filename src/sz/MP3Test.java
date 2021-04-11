@@ -36,14 +36,13 @@ public class MP3Test
 	public static void playAudioFile( String fileName )
 	{
 		System.out.println( "playAudioFile " + fileName );
-		File soundFile = new File( fileName );
 
 		try
 		{
 			// Create a stream from the given file.
 			// Throws IOException or UnsupportedAudioFileException
 			AudioInputStream audioInputStream = AudioSystem
-					.getAudioInputStream( soundFile );
+					.getAudioInputStream(new File(fileName));
 			// AudioSystem.getAudioInputStream( inputStream ); // alternate audio stream
 			// from inputstream
 			playAudioStream( audioInputStream );
