@@ -11,22 +11,19 @@ import co.castle.player.Player;
 import co.castle.ui.AppearanceFactory;
 import sz.csi.CharKey;
 
-public class GFXPlayerGenerator extends PlayerGenerator
-{
-	private String IMG_FLAME = "gfx/barrett-picker.gif";
+public class GFXPlayerGenerator extends PlayerGenerator {
 
-	private ApplicationGraphics si;
-	private JTextArea txtClassDescription;
+	private final ApplicationGraphics si;
+	private final JTextArea txtClassDescription;
 
 	// Get instance of Asset
 	protected Asset configuration = ApplicationGraphics.assets;
 
-	public GFXPlayerGenerator( ApplicationGraphics si )
-	{
+	public GFXPlayerGenerator(ApplicationGraphics si) {
 		this.si = si;
-		txtClassDescription = new JTextArea( );
-		txtClassDescription.setOpaque( false );
-		txtClassDescription.setForeground( Color.WHITE );
+		txtClassDescription = new JTextArea();
+		txtClassDescription.setOpaque(false);
+		txtClassDescription.setForeground(Color.WHITE);
 		txtClassDescription.setVisible( false );
 		txtClassDescription.setBounds( 345, 162, 302, 84 );
 		txtClassDescription.setLineWrap( true );
@@ -92,21 +89,20 @@ public class GFXPlayerGenerator extends PlayerGenerator
 		x = new CharKey( CharKey.NONE );
 		int choice = 0;
 		si.saveBuffer( );
-		while ( true )
-		{
-			si.restore( );
-			txtClassDescription.setText( CLASS_DESCRIPTIONS[ choice ] );
-			si.drawImage( 70, 158 + 18 * choice, IMG_FLAME );
-			si.printAtPixel( 80, 173 + 18 * choice, CLASS_NAMES[ choice ], Color.WHITE );
-			si.printAtPixel( 398, 142, CLASS_NAMES[ choice ], Color.WHITE );
-			si.drawImage( 353, 113, apps[ choice ].getImage( ) );
+		while ( true ) {
+			si.restore();
+			txtClassDescription.setText(CLASS_DESCRIPTIONS[choice]);
+			si.drawImage(70, 158 + 18 * choice, "gfx/barrett-picker.gif");
+			si.printAtPixel(80, 173 + 18 * choice, CLASS_NAMES[choice], Color.WHITE);
+			si.printAtPixel(398, 142, CLASS_NAMES[choice], Color.WHITE);
+			si.drawImage(353, 113, apps[choice].getImage());
 
-			si.printAtPixel( 440, 260, "+" + CLASS_STATS[ choice ][ 0 ], Color.WHITE );
-			si.printAtPixel( 440, 280, "+" + CLASS_STATS[ choice ][ 1 ], Color.WHITE );
-			si.printAtPixel( 440, 300, CLASS_STATS[ choice ][ 2 ], Color.WHITE );
-			si.printAtPixel( 440, 320, CLASS_STATS[ choice ][ 3 ] + "%", Color.WHITE );
-			si.printAtPixel( 440, 340, CLASS_STATS[ choice ][ 4 ], Color.WHITE );
-			si.printAtPixel( 440, 360, CLASS_STATS[ choice ][ 5 ], Color.WHITE );
+			si.printAtPixel(440, 260, "+" + CLASS_STATS[choice][0], Color.WHITE);
+			si.printAtPixel(440, 280, "+" + CLASS_STATS[choice][1], Color.WHITE);
+			si.printAtPixel(440, 300, CLASS_STATS[choice][2], Color.WHITE);
+			si.printAtPixel(440, 320, CLASS_STATS[choice][3] + "%", Color.WHITE);
+			si.printAtPixel(440, 340, CLASS_STATS[choice][4], Color.WHITE);
+			si.printAtPixel(440, 360, CLASS_STATS[choice][5], Color.WHITE);
 			si.printAtPixel( 440, 380, CLASS_STATS[ choice ][ 6 ], Color.WHITE );
 			si.printAtPixel( 440, 400, CLASS_STATS[ choice ][ 7 ], Color.WHITE );
 			si.printAtPixel( 440, 420, CLASS_STATS[ choice ][ 8 ], Color.WHITE );
