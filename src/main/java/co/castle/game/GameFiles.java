@@ -44,16 +44,16 @@ public class GameFiles
 	public static Hashtable<String, MonsterRecord> getMonsterRecord() {
 		Hashtable<String, MonsterRecord> ret = new Hashtable<>();
 		try {
-			BufferedReader lectorArchivo = FileUtil.getReader("graveyard");
+			BufferedReader lectorArchivo = new BufferedReader(FileLoader.getFileReader("graveyard"));
 			String line = lectorArchivo.readLine();
 			while (line != null) {
 				String[] regs = line.split(",");
 				MonsterRecord x = new MonsterRecord();
 				x.setMonsterID(regs[0]);
 				x.setKilled(Integer.parseInt(regs[1]));
-				x.setKillers( Integer.parseInt( regs[ 2 ] ) );
-				ret.put( x.getMonsterID( ), x );
-				line = lectorArchivo.readLine( );
+				x.setKillers(Integer.parseInt(regs[2]));
+				ret.put(x.getMonsterID(), x);
+				line = lectorArchivo.readLine();
 			}
 			return ret;
 		}
@@ -72,19 +72,16 @@ public class GameFiles
 	{
 		Debug.enterStaticMethod( "GameFiles", "loadScores" );
 		HiScore[ ] ret = new HiScore[ 10 ];
-		try
-		{
-			BufferedReader lectorArchivo = FileUtil.getReader( hiscorefile );
-			for ( int i = 0; i < 10; i++ )
-			{
-				String line = lectorArchivo.readLine( );
-				String[ ] regs = line.split( ";" );
-				if ( regs == null )
-				{
-					Game.crash( "Invalid or corrupt hiscore table" );
+		try {
+			BufferedReader lectorArchivo = new BufferedReader(FileLoader.getFileReader(hiscorefile));
+			for (int i = 0; i < 10; i++) {
+				String line = lectorArchivo.readLine();
+				String[] regs = line.split(";");
+				if (regs == null) {
+					Game.crash("Invalid or corrupt hiscore table");
 				}
-				HiScore x = new HiScore( );
-				x.setName( regs[ 0 ] );
+				HiScore x = new HiScore();
+				x.setName(regs[0]);
 				x.setPlayerClass( regs[ 1 ] );
 				x.setScore( Integer.parseInt( regs[ 2 ] ) );
 				x.setDate( regs[ 3 ] );

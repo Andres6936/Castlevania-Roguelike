@@ -8,6 +8,7 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.io.BufferedReader;
 
+import co.castle.system.FileLoader;
 import sz.csi.CharKey;
 import sz.csi.ConsoleSystemInterface;
 import sz.util.FileUtil;
@@ -424,13 +425,12 @@ public class WSwingConsoleInterface
 	private String loadFont( )
 	{
 		BufferedReader br = null;
-		try
-		{
-			br = FileUtil.getReader( "font.sz" );
-			br.readLine( );
-			String fnt = br.readLine( );
-			br.close( );
-			if ( !fnt.equals( "NFE" ) )
+		try {
+			br = new BufferedReader(FileLoader.getFileReader("font.sz"));
+			br.readLine();
+			String fnt = br.readLine();
+			br.close();
+			if (!fnt.equals("NFE"))
 				return fnt;
 
 		}

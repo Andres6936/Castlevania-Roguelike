@@ -17,17 +17,16 @@ public class Converter
 			try {
 				if (files[i].isDirectory())
 					continue;
-				BufferedReader r = FileUtil.getReader(files[i].getAbsolutePath());
+				BufferedReader r = new BufferedReader(FileLoader.getFileReader(files[i].getAbsolutePath()));
 				BufferedWriter w = FileUtil.getWriter(files[i].getParent() + "/html/"
 						+ files[i].getName() + ".html");
-				w.write( "<table width = \"80%\">" );
-				w.newLine( );
-				w.write( "<tr><th width = \"70%\">Game</th><th width = \"30%\">Author</th></tr>" );
-				w.newLine( );
-				String line = r.readLine( );
-				while ( line != null )
-				{
-					System.out.println( line );
+				w.write("<table width = \"80%\">");
+				w.newLine();
+				w.write("<tr><th width = \"70%\">Game</th><th width = \"30%\">Author</th></tr>");
+				w.newLine();
+				String line = r.readLine();
+				while (line != null) {
+					System.out.println(line);
 					String[ ] tokens = line.split( "," );
 					w.write( "<tr>" );
 					w.newLine( );

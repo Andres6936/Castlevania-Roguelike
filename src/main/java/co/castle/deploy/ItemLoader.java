@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import co.castle.system.FileLoader;
 import sz.util.FileUtil;
 
 public class ItemLoader
@@ -11,25 +12,23 @@ public class ItemLoader
 
 	public static void main( String[ ] args )
 	{
-		try
-		{
-			System.out.println( "Beginning" );
-			// BufferedWriter bw =
-			// FileUtil.getWriter("D:/Slash/Proyectos/CastlevaniaRL/src/crl/data/Items.java");
-			BufferedWriter bw = FileUtil.getWriter( "Items.java" );
-			// BufferedReader br =
-			// FileUtil.getReader("D:/Slash/Proyectos/CastlevaniaRL/items.csv");
-			BufferedReader br = FileUtil.getReader( "items.csv" );
-			bw.write( "package crl.data;\n\nimport crl.item.*;\npublic class Items {\n" );
+		try {
+            System.out.println("Beginning");
+            // BufferedWriter bw =
+            // FileUtil.getWriter("D:/Slash/Proyectos/CastlevaniaRL/src/crl/data/Items.java");
+            BufferedWriter bw = FileUtil.getWriter("Items.java");
+            // BufferedReader br =
+            // FileUtil.getReader("D:/Slash/Proyectos/CastlevaniaRL/items.csv");
+            BufferedReader br = new BufferedReader(FileLoader.getFileReader("items.csv"));
+            bw.write("package crl.data;\n\nimport crl.item.*;\npublic class Items {\n");
 
-			bw.write(
-					"\t\tprivate final static ItemDefinition [] defs = new ItemDefinition[]{\n" );
-			String line = br.readLine( );
-			line = br.readLine( );
-			while ( line != null )
-			{
-				String[ ] tokens = line.split( ";" );
-				bw.write( "\t\t\tnew ItemDefinition (" );
+            bw.write(
+                    "\t\tprivate final static ItemDefinition [] defs = new ItemDefinition[]{\n");
+            String line = br.readLine();
+            line = br.readLine();
+            while (line != null) {
+                String[] tokens = line.split(";");
+                bw.write("\t\t\tnew ItemDefinition (");
 				for ( int i = 0; i < tokens.length; i++ )
 				{
 					if ( tokens[ i ].equals( "" ) )

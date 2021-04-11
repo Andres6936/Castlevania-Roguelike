@@ -15,14 +15,6 @@ public class FileUtil
 		return FileLoader.getResourceFile(filename).exists();
 	}
 
-	public static BufferedReader getReader( String fileName ) throws IOException
-	{
-		Debug.enterStaticMethod( "FileUtil", "getReader" );
-		BufferedReader x = new BufferedReader( new FileReader( fileName ) );
-		Debug.exitMethod( x );
-		return x;
-	}
-
 	public static BufferedWriter getWriter( String fileName ) throws IOException
 	{
 		Debug.enterStaticMethod( "FileUtil", "getWriter" );
