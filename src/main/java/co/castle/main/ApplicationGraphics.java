@@ -104,18 +104,18 @@ public final class ApplicationGraphics extends JFrame {
 	// Method
 
 	public void start() {
-		Dimension size = Toolkit.getDefaultToolkit( ).getScreenSize( );
-		setBounds( ( size.width - assets.SCREEN_WIDTH ) / 2, ( size.height - assets.SCREEN_HEIGHT ) / 2,
-                   assets.SCREEN_WIDTH, assets.SCREEN_HEIGHT );
-		getContentPane( ).setLayout( new GridLayout( 1, 1 ) );
-		setUndecorated( true );
-		setVisible( true );
+		Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
+		setBounds((size.width - Asset.SCREEN_WIDTH) / 2, (size.height - Asset.SCREEN_HEIGHT) / 2,
+				Asset.SCREEN_WIDTH, Asset.SCREEN_HEIGHT);
+		getContentPane().setLayout(new GridLayout(1, 1));
+		setUndecorated(true);
+		setVisible(true);
 
-		panelGame = new Panel( assets );
+		panelGame = new Panel(assets);
 
-		getContentPane( ).add( panelGame );
-		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-		setBackground( Color.BLACK );
+		getContentPane().add(panelGame);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBackground(Color.BLACK);
 
 		keyboard = new Keyboard( );
 
