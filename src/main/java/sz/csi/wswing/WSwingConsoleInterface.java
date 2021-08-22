@@ -7,6 +7,7 @@ import java.awt.GraphicsEnvironment;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 import co.castle.system.FileLoader;
 import sz.csi.CharKey;
@@ -426,7 +427,7 @@ public class WSwingConsoleInterface
 	{
 		BufferedReader br = null;
 		try {
-			br = new BufferedReader(FileLoader.getFileReader("font.sz"));
+			br = new BufferedReader(new InputStreamReader(FileLoader.getInputStream("font.sz")));
 			br.readLine();
 			String fnt = br.readLine();
 			br.close();

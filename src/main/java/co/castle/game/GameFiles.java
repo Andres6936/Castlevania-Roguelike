@@ -1,12 +1,6 @@
 package co.castle.game;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FilenameFilter;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Enumeration;
@@ -44,7 +38,7 @@ public class GameFiles
 	public static Hashtable<String, MonsterRecord> getMonsterRecord() {
 		Hashtable<String, MonsterRecord> ret = new Hashtable<>();
 		try {
-			BufferedReader lectorArchivo = new BufferedReader(FileLoader.getFileReader("graveyard"));
+			BufferedReader lectorArchivo = new BufferedReader(new InputStreamReader(FileLoader.getInputStream("graveyard")));
 			String line = lectorArchivo.readLine();
 			while (line != null) {
 				String[] regs = line.split(",");
@@ -73,7 +67,7 @@ public class GameFiles
 		Debug.enterStaticMethod( "GameFiles", "loadScores" );
 		HiScore[ ] ret = new HiScore[ 10 ];
 		try {
-			BufferedReader lectorArchivo = new BufferedReader(FileLoader.getFileReader(hiscorefile));
+			BufferedReader lectorArchivo = new BufferedReader(new InputStreamReader(FileLoader.getInputStream(hiscorefile)));
 			for (int i = 0; i < 10; i++) {
 				String line = lectorArchivo.readLine();
 				String[] regs = line.split(";");
@@ -82,8 +76,8 @@ public class GameFiles
 				}
 				HiScore x = new HiScore();
 				x.setName(regs[0]);
-				x.setPlayerClass( regs[ 1 ] );
-				x.setScore( Integer.parseInt( regs[ 2 ] ) );
+				x.setPlayerClass(regs[1]);
+				x.setScore(Integer.parseInt(regs[2]));
 				x.setDate( regs[ 3 ] );
 				x.setTurns( regs[ 4 ] );
 				x.setDeathString( regs[ 5 ] );
