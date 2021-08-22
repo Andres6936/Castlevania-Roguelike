@@ -66,9 +66,8 @@ public class ImageUtils
 	}
 
 	public static BufferedImage createImage( String filename ) throws Exception {
-        BufferedImage im = ImageIO.read(FileLoader.getResourceFile(filename));
-        return im;
-    }
+		return ImageIO.read(FileLoader.getInputStream(filename));
+	}
 
 	public static BufferedImage hFlip( BufferedImage image )
 	{
