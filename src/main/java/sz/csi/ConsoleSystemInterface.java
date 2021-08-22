@@ -15,8 +15,8 @@ public interface ConsoleSystemInterface
 
 	/**
 	 * Makes the screen flash with a given color
-	 * 
-	 * @param color
+	 *
+	 * @param color The color to use.
 	 */
 	public void flash( int color );
 
@@ -39,69 +39,69 @@ public interface ConsoleSystemInterface
 	 * 
 	 * @return The String that was read after pressing enter
 	 */
-	public String input( int length );
+	public String input( int length);
 
 	/**
 	 * Checks if the position is valid
-	 * 
-	 * @param e
+	 *
+	 * @param e The position to check.
 	 * @return true if the position is valid
 	 */
-	public boolean isInsideBounds( Position e );
+	public boolean isInsideBounds( Position e);
 
 	/**
 	 * Locates the input caret on a given position
-	 * 
-	 * @param x
-	 * @param y
+	 *
+	 * @param x Coordinate in X.
+	 * @param y Coordinate in Y.
 	 */
-	public void locateCaret( int x, int y );
+	public void locateCaret(int x, int y);
 
 	/**
 	 * Checks what character is at a given position
-	 * 
-	 * @param x
-	 * @param y
+	 *
+	 * @param x Coordinate in X.
+	 * @param y Coordinate in Y.
 	 * @return The character at the x,y position
 	 */
-	public char peekChar( int x, int y );
+	public char peekChar(int x, int y);
 
 	/**
 	 * Checks what color is at a given position
-	 * 
-	 * @param x
-	 * @param y
+	 *
+	 * @param x Coordinate in X.
+	 * @param y Coordinate in Y.
 	 * @return The color at the x,y position
 	 */
-	public int peekColor( int x, int y );
+	public int peekColor(int x, int y);
 
 	/**
 	 * Prints a character on the console
-	 * 
-	 * @param x
-	 * @param y
+	 *
+	 * @param x Coordinate in X.
+	 * @param y Coordinate in Y.
 	 * @param what
 	 *            The character to be printed
 	 * @param color
 	 *            The color, one of the ConsoleSystemInterface constants
 	 */
-	public void print( int x, int y, char what, int color );
+	public void print( int x, int y, char what, int color);
 
 	/**
 	 * Prints a String on the console with the default color
-	 * 
-	 * @param x
-	 * @param y
+	 *
+	 * @param x Coordinate in X.
+	 * @param y Coordinate in Y.
 	 * @param what
 	 *            The String to be printed
 	 */
-	public void print( int x, int y, String what );
+	public void print( int x, int y, String what);
 
 	/**
 	 * Prints a String on the console
-	 * 
-	 * @param x
-	 * @param y
+	 *
+	 * @param x Coordinate in X.
+	 * @param y Coordinate in Y.
 	 * @param what
 	 *            The string to be printed
 	 * @param color
@@ -125,13 +125,13 @@ public interface ConsoleSystemInterface
 	/**
 	 * Restores the contents of the backup buffer to screen
 	 */
-	public void restore( );
+	public void restore();
 
 	/**
 	 * Same as print but must check for validity of the coordinates
-	 * 
-	 * @param x
-	 * @param y
+	 *
+	 * @param x Coordinate in X.
+	 * @param y Coordinate in Y.
 	 * @param what
 	 *            The character to be printed
 	 * @param color
@@ -142,19 +142,19 @@ public interface ConsoleSystemInterface
 	/**
 	 * Saves the screen contents to a backup buffer
 	 */
-	public void saveBuffer( );
+	public void saveBuffer();
 
 	/**
 	 * Sets whether or not a buffer will be used
-	 * 
-	 * @param value
+	 *
+	 * @param value True if the buffer will be used.
 	 */
-	public void setAutoRefresh( boolean value );
+	public void setAutoRefresh( boolean value);
 
 	/**
 	 * Waits for the user to press a key
-	 * 
-	 * @param keyCode
+	 *
+	 * @param keyCode KeyCode to wait.
 	 */
 	public void waitKey( int keyCode );
 }
