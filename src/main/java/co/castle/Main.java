@@ -56,37 +56,13 @@ public final class Main
 
     public static void main( String[] args )
 	{
-		// ¿Exist arguments?
-		if ( args.length > 0 )
-		{
-			if ( args[ 0 ].equalsIgnoreCase( "sgfx" ) )
-			{
-				app.start( SWING_GFX );
-			}
-			else if ( args[ 0 ].equalsIgnoreCase( "jc" ) )
-			{
-				app.start( JCURSES_CONSOLE );
-			}
-			else if ( args[ 0 ].equalsIgnoreCase( "sc" ) )
-			{
-				app.start( SWING_CONSOLE );
-			}
-		}
-		else
-		{
-			// Initiation for defect in mode graphics
-			app.start( SWING_GFX );
-		}
+		app.start();
+		System.out.println("Launching game");
 
-		System.out.println( "Launching game" );
-
-		try
-		{
-			title( );
-		}
-		catch ( Exception e )
-		{
-			System.out.println( "Unrecoverable Exception, Game cann't start.\n" );
+		try {
+			title();
+		} catch (Exception e) {
+			System.out.println("Unrecoverable Exception, Game cann't start.\n");
 		}
 	}
 

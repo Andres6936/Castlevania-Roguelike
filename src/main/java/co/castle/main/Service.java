@@ -129,88 +129,39 @@ public final class Service extends MusicManager {
 	public UserInterface ui;
 	public UISelector uiSelector;
 
-	public void start(final byte mode) {
+	public void start() {
 		System.out.println("CastlevaniaRL");
 		System.out.println("Slash ~ 2005-2010");
-		System.out.println("Reading Configuration" );
+		System.out.println("Reading Configuration");
 
-		if ( mode == SWING_GFX )
-		{
-			System.out.println( "Initializing Swing GFX System Interface" );
-			ApplicationGraphics appFrame = ApplicationGraphics.getInstance( );
-			appFrame.start( );
+		System.out.println("Initializing Swing GFX System Interface");
+		ApplicationGraphics appFrame = ApplicationGraphics.getInstance();
+		appFrame.start();
 
-			System.out.println( "Initializing Graphics Appearances" );
-			initializeGAppearances( );
+		System.out.println("Initializing Graphics Appearances");
+		initializeGAppearances();
 
-			System.out.println( "Initializing Swing GFX User Interface" );
-			UserInterface.setSingleton( new GFXUserInterface( ) );
+		System.out.println("Initializing Swing GFX User Interface");
+		UserInterface.setSingleton(new GFXUserInterface());
 
-			Display.thus = new GraphicsDisplay( );
-			PlayerGenerator.thus = new GFXPlayerGenerator( appFrame );
+		Display.thus = new GraphicsDisplay();
+		PlayerGenerator.thus = new GFXPlayerGenerator(appFrame);
 
-			EffectFactory.setSingleton( new GFXEffectFactory( ) );
+		EffectFactory.setSingleton(new GFXEffectFactory());
 
-			( (GFXEffectFactory) EffectFactory.getSingleton( ) )
-					.setEffects( new GFXEffects( ).getEffects( ) );
-			ui = UserInterface.getUI( );
-			initializeUI( appFrame, mode );
-		}
-		else if ( mode == SWING_CONSOLE )
-		{
-			System.out.println("Initializing Char Appearances");
-			initializeCAppearances();
+		((GFXEffectFactory) EffectFactory.getSingleton())
+				.setEffects(new GFXEffects().getEffects());
+		ui = UserInterface.getUI();
+		initializeUI(appFrame);
 
-			System.out.println("Initializing Swing Console System Interface");
-			final ConsoleSystemInterface csi = new WSwingConsoleInterface();
+		System.out.println("Initializing Action Objects");
+		initializeActions();
+		initializeSelectors();
+		System.out.println("Loading Data");
+		initializeCells();
+		initializeItems();
 
-			System.out.println("Initializing Console User Interface");
-			UserInterface.setSingleton(new ConsoleUserInterface());
-
-			CharCuts.initializeSingleton();
-			Display.thus = new CharDisplay(csi);
-			PlayerGenerator.thus = new CharPlayerGenerator(csi);
-			// PlayerGenerator.thus.initSpecialPlayers();
-
-			EffectFactory.setSingleton(new CharEffectFactory());
-
-			((CharEffectFactory) EffectFactory.getSingleton())
-					.setEffects(new CharEffects().getEffects());
-			ui = UserInterface.getUI();
-			initializeUI( csi, mode );
-		}
-		else if ( mode == JCURSES_CONSOLE ) {
-			System.out.println("Initializing Char Appearances");
-			initializeCAppearances();
-
-			System.out.println("Initializing JCurses System Interface");
-			ConsoleSystemInterface csi = new JCursesConsoleInterface();
-
-			System.out.println("Initializing Console User Interface");
-			UserInterface.setSingleton(new ConsoleUserInterface());
-
-			CharCuts.initializeSingleton();
-			Display.thus = new CharDisplay(csi);
-			PlayerGenerator.thus = new CharPlayerGenerator(csi);
-			// PlayerGenerator.thus.initSpecialPlayers();
-
-			EffectFactory.setSingleton(new CharEffectFactory());
-
-			( (CharEffectFactory) EffectFactory.getSingleton( ) )
-					.setEffects( new CharEffects( ).getEffects( ) );
-			ui = UserInterface.getUI( );
-			initializeUI( csi, mode );
-		}
-
-		System.out.println( "Initializing Action Objects" );
-		initializeActions( );
-		initializeSelectors( );
-		System.out.println( "Loading Data" );
-		initializeCells( );
-		initializeItems( );
-
-		try
-		{
+		try {
 			initializeMonsters();
 		} catch (CRLException e) {
 			System.out.println("Faild to load monster configuration.");
@@ -265,26 +216,23 @@ public final class Service extends MusicManager {
 		}
 	}
 
-	private static void initializeCAppearances( )
-	{
-		Appearance[ ] definitions = new CharAppearances( ).getAppearances( );
-        for ( Appearance definition : definitions )
-        {
-            AppearanceFactory.getAppearanceFactory( ).addDefinition( definition );
+	private static void initializeCAppearances() {
+		Appearance[] definitions = new CharAppearances().getAppearances();
+		for (Appearance definition : definitions) {
+			AppearanceFactory.getAppearanceFactory().addDefinition(definition);
 		}
 	}
 
-	private void initializeUI( Object si, final byte mode )
-	{
-		Action walkAction = new Walk( );
-		Action jump = new Jump( );
-		Action thrown = new Throw( );
-		Action use = new Use( );
-		Action equip = new Equip( );
-		Action unequip = new Unequip( );
-		Action attack = new Attack( );
-		Action reload = new Reload( );
-		Action target = new TargetPS( );
+	private void initializeUI(Object si) {
+		Action walkAction = new Walk();
+		Action jump = new Jump();
+		Action thrown = new Throw();
+		Action use = new Use();
+		Action equip = new Equip();
+		Action unequip = new Unequip();
+		Action attack = new Attack();
+		Action reload = new Reload();
+		Action target = new TargetPS();
 		Action switchWeapons = new SwitchWeapons( );
 		Action get = new Get( );
 		Action drop = new Drop( );
@@ -388,36 +336,18 @@ public final class Service extends MusicManager {
 						i( keyBindings.getProperty( "SWITCH_MUSIC_KEY" ) ) ), };
 
 		}
-		catch ( FileNotFoundException e )
-		{
-			e.printStackTrace( );
-			throw new RuntimeException( "keys.cfg config file not found" );
-		}
-		catch ( IOException e )
-		{
-			e.printStackTrace( );
-			throw new RuntimeException( "Problem reading keys.cfg config file" );
+		catch ( FileNotFoundException e ) {
+			e.printStackTrace();
+			throw new RuntimeException("keys.cfg config file not found");
+		} catch (IOException e) {
+			e.printStackTrace();
+			throw new RuntimeException("Problem reading keys.cfg config file");
 		}
 
-		switch ( mode )
-		{
-		case SWING_GFX:
-			( (GFXUserInterface) ui ).init( (ApplicationGraphics) si, userCommands, target );
-			uiSelector = new GFXUISelector( );
-			( (GFXUISelector) uiSelector ).init( userActions, walkAction, target, attack,
-					(GFXUserInterface) ui, keyBindings );
-			break;
-		case JCURSES_CONSOLE:
-			( (ConsoleUserInterface) ui ).init( (ConsoleSystemInterface) si, userCommands, target );
-			uiSelector = new ConsoleUISelector( );
-			( (ConsoleUISelector) uiSelector ).init( (ConsoleSystemInterface) si, userActions, walkAction,
-					target, attack, (ConsoleUserInterface) ui, keyBindings );
-			break;
-		case SWING_CONSOLE:
-			// ((ConsoleUserInterface)ui).init((WSwingConsoleInterface)si, userActions,
-			// userCommands, walkAction, target, attack);
-			break;
-		}
+		((GFXUserInterface) ui).init((ApplicationGraphics) si, userCommands, target);
+		uiSelector = new GFXUISelector();
+		((GFXUISelector) uiSelector).init(userActions, walkAction, target, attack,
+				(GFXUserInterface) ui, keyBindings);
 	}
 
 	private static String readKeyString( Properties config, String keyName )
