@@ -36,7 +36,7 @@ public class PropertyFilters
 	{
 		return Font
 				.createFont(Font.TRUETYPE_FONT,
-						FileLoader.getFileInputStream(fontName))
+						FileLoader.getInputStream(fontName))
 				.deriveFont( Font.PLAIN, inte( size ) );
 	}
 

@@ -1182,7 +1182,7 @@ public class GFXUserInterface extends UserInterface implements Runnable
 		{
 			FNT_MESSAGEBOX = Font
 					.createFont(Font.TRUETYPE_FONT,
-							FileLoader.getFileInputStream("res/v5easter.ttf"))
+							FileLoader.getInputStream("res/v5easter.ttf"))
 					.deriveFont( Font.PLAIN, 15 );
 		}
 		catch ( FontFormatException ffe )

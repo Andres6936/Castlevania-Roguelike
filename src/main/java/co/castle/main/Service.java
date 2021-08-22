@@ -225,7 +225,7 @@ public final class Service extends MusicManager {
 		// to tracks of app.
 		final Properties configurationFile = new Properties();
 
-		try (var in = FileLoader.getFileInputStream("properties/configuration.properties")) {
+		try (var in = FileLoader.getInputStream("properties/configuration.properties")) {
 			configurationFile.load(in);
 		} catch (IOException exception) {
 			System.err.println("Configuration file not found or error while loading the file.\n");
@@ -295,7 +295,7 @@ public final class Service extends MusicManager {
         Properties keyBindings;
 		try {
 			Properties keyConfig = new Properties();
-			keyConfig.load(FileLoader.getFileInputStream("keys.cfg"));
+			keyConfig.load(FileLoader.getInputStream("keys.cfg"));
 
 			keyBindings = new Properties();
 			keyBindings.put("WEAPON_KEY", readKeyString(keyConfig, "weapon"));

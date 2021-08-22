@@ -42,7 +42,7 @@ public class MonsterLoader
 			Vector<MonsterDefinition> vecMonsters = new Vector<>(10);
 			DESEncrypter encrypter = new DESEncrypter("65csvlk3489585f9rjh");
 			br = new BufferedReader(new InputStreamReader(
-					encrypter.decrypt(FileLoader.getFileInputStream(monsterFile))));
+					encrypter.decrypt(FileLoader.getInputStream(monsterFile))));
 			String line = br.readLine();
 			line = br.readLine();
 			while (line != null) {
@@ -107,7 +107,7 @@ public class MonsterLoader
 			// parser.setContentHandler(handler);
 			parser.setDocumentHandler(handler);
 			parser.parse(new InputSource(
-					encrypter.decrypt(FileLoader.getFileInputStream(monsterXMLAIFile))));
+					encrypter.decrypt(FileLoader.getInputStream(monsterXMLAIFile))));
 			return monsters;
 
 			/*

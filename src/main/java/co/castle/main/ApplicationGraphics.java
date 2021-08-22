@@ -71,7 +71,7 @@ public final class ApplicationGraphics extends JFrame {
 		configurationUI = new Properties();
 
 		try {
-			configurationUI.load(FileLoader.getFileInputStream("properties/configurationUI.properties"));
+			configurationUI.load(FileLoader.getInputStream("properties/configurationUI.properties"));
 		} catch (IOException e) {
 			System.out.println("Error loading configuration for user interface.\n");
 			System.exit(-1);
