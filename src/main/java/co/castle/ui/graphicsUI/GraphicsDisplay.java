@@ -661,23 +661,7 @@ public class GraphicsDisplay extends Display
 
 	private void initProperties( )
 	{
-
-		Properties configuration = appFrame.configurationUI;
-
-		try
-		{
-			// NOTE: This is static, clear and fix
-			FNT_TEXT = PropertyFilters.getFont( configuration.getProperty( "FNT_TEXT" ),
-					configuration.getProperty( "FNT_TEXT_SIZE" ) );
-		}
-		catch ( FontFormatException ffe )
-		{
-			System.out.println( "Error loading the font" );
-		}
-		catch ( IOException ioe )
-		{
-			System.out.println( "Error loading the font" );
-		}
+		FNT_TEXT = appFrame.getFont();
 	}
 
 	private int readAlphaToNumber( int numbers )

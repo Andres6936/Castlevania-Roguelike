@@ -1,22 +1,5 @@
 package co.castle.main;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Cursor;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics2D;
-import java.awt.GridLayout;
-import java.awt.Image;
-import java.awt.Toolkit;
-import java.awt.image.BufferedImage;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Hashtable;
-import java.util.Properties;
-
-import javax.swing.JFrame;
-
 import co.castle.conf.gfx.data.Asset;
 import co.castle.event.Keyboard;
 import co.castle.game.Game;
@@ -25,6 +8,14 @@ import co.castle.ui.graphicsUI.Panel;
 import sz.csi.CharKey;
 import sz.util.ImageUtils;
 import sz.util.Position;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.Hashtable;
+import java.util.Objects;
+import java.util.Properties;
 
 // With keyword final, we be prevent the inheritance of this class
 public final class ApplicationGraphics extends JFrame {
@@ -57,6 +48,8 @@ public final class ApplicationGraphics extends JFrame {
 	 */
 	public final Properties configurationUI = new Properties();
 
+	private Font font;
+
 	// Construct
 
 	/**
@@ -70,9 +63,14 @@ public final class ApplicationGraphics extends JFrame {
 	private ApplicationGraphics() {
 		try {
 			configurationUI.load(FileLoader.getInputStream("properties/configurationUI.properties"));
+			var fontName = configurationUI.getProperty("FNT_TEXT");
+			var fontSize = configurationUI.getProperty("FNT_TEXT_SIZE");
+			font = Font.createFont(Font.TRUETYPE_FONT, FileLoader.getInputStream(fontName)).deriveFont(Font.PLAIN, Integer.parseInt(fontSize));
 		} catch (IOException e) {
 			System.out.println("Error loading configuration for user interface.\n");
 			System.exit(-1);
+		} catch (FontFormatException e) {
+			System.out.println("Error loading the font" );
 		}
 
 		// Content the asset for application
@@ -100,6 +98,10 @@ public final class ApplicationGraphics extends JFrame {
 	}
 
 	// Method Static
+
+	public Font getFont() {
+		return Objects.requireNonNull(font);
+	}
 
 	public boolean isMouseEnable() {
 		return configurationUI.getProperty("useMouse").equals("true");
