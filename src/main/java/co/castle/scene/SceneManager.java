@@ -14,6 +14,11 @@ public class SceneManager {
 
     public void process() {
         TypeScene nextScene = current.process();
+        if (nextScene == TypeScene.NONE) return;
+
+        if (nextScene == TypeScene.QUIT) {
+            running = false;
+        }
     }
 
     public boolean isRunning() {
