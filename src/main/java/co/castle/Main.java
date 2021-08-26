@@ -12,6 +12,7 @@ import co.castle.game.Game;
 import co.castle.game.GameFiles;
 import co.castle.game.MonsterRecord;
 import co.castle.main.Service;
+import co.castle.scene.SceneManager;
 import co.castle.system.FileLoader;
 import co.castle.ui.Display;
 
@@ -54,8 +55,14 @@ public final class Main
 		return (MonsterRecord) monsterRecord.get( monsterID );
 	}
 
-    public static void main( String[] args )
-	{
+    public static void main( String[] args ) {
+		var sceneManager = new SceneManager();
+		while (sceneManager.isRunning()) {
+			sceneManager.process();
+			sceneManager.update();
+			sceneManager.draw();
+		}
+
 		app.start();
 		System.out.println("Launching game");
 
