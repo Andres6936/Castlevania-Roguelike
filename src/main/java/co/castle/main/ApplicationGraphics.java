@@ -79,6 +79,26 @@ public final class ApplicationGraphics extends JFrame {
 
 		// Content the asset for application
 		assets = new Asset(configurationUI);
+
+		Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
+		setBounds((size.width - Asset.SCREEN_WIDTH) / 2, (size.height - Asset.SCREEN_HEIGHT) / 2,
+				Asset.SCREEN_WIDTH, Asset.SCREEN_HEIGHT);
+		getContentPane().setLayout(new GridLayout(1, 1));
+		setUndecorated(true);
+		setVisible(true);
+
+		panelGame = new Panel(assets);
+
+		getContentPane().add(panelGame);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBackground(Color.BLACK);
+
+		keyboard = new Keyboard();
+
+		addKeyListener(keyboard);
+		setFocusable(true);
+
+		panelGame.init();
 	}
 
 	// Method Static
@@ -102,28 +122,6 @@ public final class ApplicationGraphics extends JFrame {
 	}
 
 	// Method
-
-	public void start() {
-		Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
-		setBounds((size.width - Asset.SCREEN_WIDTH) / 2, (size.height - Asset.SCREEN_HEIGHT) / 2,
-				Asset.SCREEN_WIDTH, Asset.SCREEN_HEIGHT);
-		getContentPane().setLayout(new GridLayout(1, 1));
-		setUndecorated(true);
-		setVisible(true);
-
-		panelGame = new Panel(assets);
-
-		getContentPane().add(panelGame);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBackground(Color.BLACK);
-
-		keyboard = new Keyboard( );
-
-		addKeyListener( keyboard );
-		setFocusable( true );
-
-		panelGame.init( );
-	}
 
 	public void addComponentToPanel( Component c )
 	{

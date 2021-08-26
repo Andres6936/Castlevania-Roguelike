@@ -87,7 +87,6 @@ public final class Service extends MusicManager {
 
 		System.out.println("Initializing Swing GFX System Interface");
 		ApplicationGraphics appFrame = ApplicationGraphics.getInstance();
-		appFrame.start();
 
 		System.out.println("Initializing Graphics Appearances");
 		initializeGAppearances();

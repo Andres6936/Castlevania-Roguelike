@@ -56,12 +56,12 @@ public final class Main
 	}
 
     public static void main( String[] args ) {
-		var sceneManager = new SceneManager();
-		while (sceneManager.isRunning()) {
-			sceneManager.process();
-			sceneManager.update();
-			sceneManager.draw();
-		}
+//		var sceneManager = new SceneManager();
+//		while (sceneManager.isRunning()) {
+//			sceneManager.process();
+//			sceneManager.update();
+//			sceneManager.draw();
+//		}
 
 		app.start();
 		System.out.println("Launching game");
