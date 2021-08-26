@@ -509,8 +509,6 @@ public class ConsoleUserInterface extends UserInterface
 			}
 		}
 		si.saveBuffer( );
-		( (CharDisplay) Display.thus ).showBoxedMessage( "LEVEL UP!",
-				player.getLastIncrementString( ), 3, 4, 30, 10 );
 		player.resetLastIncrements( );
 		si.restore( );
 		si.refresh( );
