@@ -55,7 +55,7 @@ public final class ApplicationGraphics extends JFrame {
 	/**
 	 * File with properties of user interface and path resource
 	 */
-	public Properties configurationUI;
+	public final Properties configurationUI = new Properties();
 
 	// Construct
 
@@ -68,8 +68,6 @@ public final class ApplicationGraphics extends JFrame {
 	 * @implNote We make the constructor private to prevent the use of 'new'.
 	 */
 	private ApplicationGraphics() {
-		configurationUI = new Properties();
-
 		try {
 			configurationUI.load(FileLoader.getInputStream("properties/configurationUI.properties"));
 		} catch (IOException e) {
@@ -102,6 +100,10 @@ public final class ApplicationGraphics extends JFrame {
 	}
 
 	// Method Static
+
+	public boolean isMouseEnable() {
+		return configurationUI.getProperty("useMouse").equals("true");
+	}
 
 	/**
 	 * @return Instance of ApplicationFrame

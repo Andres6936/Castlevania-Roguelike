@@ -102,18 +102,14 @@ public class GFXUISelector extends UISelector
 						Action advance, Action target,
 						Action attack, GFXUserInterface ui, Properties keyBindings )
 	{
-		super.init( gameActions, advance, target, attack, ui, keyBindings );
+		super.init(gameActions, advance, target, attack, ui, keyBindings);
 
 		// NOTE: Asset can container the property, clear this function
 
-		// Get the file properties with configuration of user interface
-		final Properties configurationUI = appFrame.configurationUI;
-
 		// Get the valor of property and compare
-		if ( configurationUI.getProperty( "useMouse" ).equals( "true" ) )
-		{
-			appFrame.addMouseListener( this );
-			appFrame.addMouseMotionListener( this );
+		if (appFrame.isMouseEnable()) {
+			appFrame.addMouseListener(this);
+			appFrame.addMouseMotionListener(this);
 			useMouse = true;
 		}
 
