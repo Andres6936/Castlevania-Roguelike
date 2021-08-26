@@ -22,6 +22,8 @@ public final class ApplicationGraphics extends JFrame {
 
 	// Fields Final
 
+	private boolean mouseEnable = false;
+
 	private static final long serialVersionUID = 3339068814173683092L;
 
 	private final Position caretPosition = new Position(0, 0);
@@ -43,11 +45,6 @@ public final class ApplicationGraphics extends JFrame {
 	 */
 	private static ApplicationGraphics instance;
 
-	/**
-	 * File with properties of user interface and path resource
-	 */
-	public final Properties configurationUI = new Properties();
-
 	private Font font;
 
 	// Construct
@@ -61,8 +58,10 @@ public final class ApplicationGraphics extends JFrame {
 	 * @implNote We make the constructor private to prevent the use of 'new'.
 	 */
 	private ApplicationGraphics() {
+		Properties configurationUI = new Properties();
 		try {
 			configurationUI.load(FileLoader.getInputStream("properties/configurationUI.properties"));
+			mouseEnable = configurationUI.getProperty("useMouse").equals("true");
 			var fontName = configurationUI.getProperty("FNT_TEXT");
 			var fontSize = configurationUI.getProperty("FNT_TEXT_SIZE");
 			font = Font.createFont(Font.TRUETYPE_FONT, FileLoader.getInputStream(fontName)).deriveFont(Font.PLAIN, Integer.parseInt(fontSize));
@@ -104,7 +103,7 @@ public final class ApplicationGraphics extends JFrame {
 	}
 
 	public boolean isMouseEnable() {
-		return configurationUI.getProperty("useMouse").equals("true");
+		return mouseEnable;
 	}
 
 	/**
