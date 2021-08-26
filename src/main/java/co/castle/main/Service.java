@@ -1,36 +1,7 @@
 package co.castle.main;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.lang.reflect.Field;
-import java.util.Properties;
-
-import javax.sound.midi.MidiSystem;
-import javax.sound.midi.MidiUnavailableException;
-
-import co.castle.action.Action;
-import co.castle.action.ActionFactory;
-import co.castle.action.Attack;
-import co.castle.action.Dive;
-import co.castle.action.Drop;
-import co.castle.action.Equip;
-import co.castle.action.Get;
-import co.castle.action.Jump;
-import co.castle.action.Reload;
-import co.castle.action.SwitchWeapons;
-import co.castle.action.TargetPS;
-import co.castle.action.Throw;
-import co.castle.action.Unequip;
-import co.castle.action.Use;
-import co.castle.action.Walk;
-import co.castle.action.monster.Dash;
-import co.castle.action.monster.MandragoraScream;
-import co.castle.action.monster.MonsterCharge;
-import co.castle.action.monster.MonsterMissile;
-import co.castle.action.monster.MonsterWalk;
-import co.castle.action.monster.SummonMonster;
-import co.castle.action.monster.Swim;
+import co.castle.action.*;
+import co.castle.action.monster.*;
 import co.castle.action.monster.boss.MummyStrangle;
 import co.castle.action.monster.boss.MummyTeleport;
 import co.castle.action.monster.boss.Teleport;
@@ -43,17 +14,9 @@ import co.castle.ai.monster.WanderToPlayerAI;
 import co.castle.ai.npc.PriestAI;
 import co.castle.ai.npc.VillagerAI;
 import co.castle.ai.player.WildMorphAI;
-import co.castle.conf.console.data.CharAppearances;
-import co.castle.conf.console.data.CharCuts;
-import co.castle.conf.console.data.CharEffects;
 import co.castle.conf.gfx.data.GFXAppearances;
 import co.castle.conf.gfx.data.GFXEffects;
-import co.castle.data.Cells;
-import co.castle.data.Features;
-import co.castle.data.Items;
-import co.castle.data.MonsterLoader;
-import co.castle.data.NPCs;
-import co.castle.data.SmartFeatures;
+import co.castle.data.*;
 import co.castle.feature.CountDown;
 import co.castle.feature.FeatureFactory;
 import co.castle.feature.SmartFeatureFactory;
@@ -61,11 +24,7 @@ import co.castle.feature.ai.BlastCrystalAI;
 import co.castle.feature.ai.CrossAI;
 import co.castle.feature.ai.FlameAI;
 import co.castle.feature.ai.NullSelector;
-import co.castle.game.CRLException;
-import co.castle.game.Game;
-import co.castle.game.MusicManager;
-import co.castle.game.PlayerGenerator;
-import co.castle.game.SFXManager;
+import co.castle.game.*;
 import co.castle.item.ItemFactory;
 import co.castle.level.MapCellFactory;
 import co.castle.monster.MonsterFactory;
@@ -73,30 +32,22 @@ import co.castle.npc.NPCDefinition;
 import co.castle.npc.NPCFactory;
 import co.castle.player.Player;
 import co.castle.system.FileLoader;
-import co.castle.ui.Appearance;
-import co.castle.ui.AppearanceFactory;
-import co.castle.ui.CommandListener;
-import co.castle.ui.Display;
-import co.castle.ui.UISelector;
-import co.castle.ui.UserAction;
-import co.castle.ui.UserCommand;
-import co.castle.ui.UserInterface;
-import co.castle.ui.consoleUI.CharDisplay;
-import co.castle.ui.consoleUI.CharPlayerGenerator;
-import co.castle.ui.consoleUI.ConsoleUISelector;
-import co.castle.ui.consoleUI.ConsoleUserInterface;
-import co.castle.ui.consoleUI.effects.CharEffectFactory;
+import co.castle.ui.*;
 import co.castle.ui.effects.EffectFactory;
-import co.castle.ui.graphicsUI.GraphicsDisplay;
 import co.castle.ui.graphicsUI.GFXPlayerGenerator;
 import co.castle.ui.graphicsUI.GFXUISelector;
 import co.castle.ui.graphicsUI.GFXUserInterface;
+import co.castle.ui.graphicsUI.GraphicsDisplay;
 import co.castle.ui.graphicsUI.effects.GFXEffectFactory;
 import sz.csi.CharKey;
-import sz.csi.ConsoleSystemInterface;
-import sz.csi.jcurses.JCursesConsoleInterface;
-import sz.csi.wswing.WSwingConsoleInterface;
 import sz.midi.STMidiPlayer;
+
+import javax.sound.midi.MidiSystem;
+import javax.sound.midi.MidiUnavailableException;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.lang.reflect.Field;
+import java.util.Properties;
 
 /**
  * Roles: Play all application sound as effect and music background.
@@ -213,13 +164,6 @@ public final class Service extends MusicManager {
         for ( Appearance definition : definitions )
         {
             AppearanceFactory.getAppearanceFactory( ).addDefinition( definition );
-		}
-	}
-
-	private static void initializeCAppearances() {
-		Appearance[] definitions = new CharAppearances().getAppearances();
-		for (Appearance definition : definitions) {
-			AppearanceFactory.getAppearanceFactory().addDefinition(definition);
 		}
 	}
 
