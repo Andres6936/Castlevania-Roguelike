@@ -89,7 +89,9 @@ public final class Service extends MusicManager {
 		ApplicationGraphics appFrame = ApplicationGraphics.getInstance();
 
 		System.out.println("Initializing Graphics Appearances");
-		initializeGAppearances();
+		for (Appearance definition : new GFXAppearances().getAppearances()) {
+			AppearanceFactory.getAppearanceFactory().addDefinition(definition);
+		}
 
 		System.out.println("Initializing Swing GFX User Interface");
 		UserInterface.setSingleton(new GFXUserInterface());
@@ -155,13 +157,6 @@ public final class Service extends MusicManager {
 
 		Player.initializeWhips( "LEATHER_WHIP", "CHAIN_WHIP", "VKILLERW", "THORN_WHIP", "FLAME_WHIP",
 				"LIT_WHIP" );
-	}
-
-	private static void initializeGAppearances( )
-	{
-		for (Appearance definition : new GFXAppearances().getAppearances()) {
-			AppearanceFactory.getAppearanceFactory().addDefinition(definition);
-		}
 	}
 
 	private void initializeUI(Object si) {
