@@ -2,6 +2,7 @@ package co.castle.scene;
 
 import co.castle.conf.gfx.data.Asset;
 import co.castle.game.Game;
+import co.castle.main.ApplicationGraphics;
 import co.castle.ui.UserInterface;
 import co.castle.ui.graphicsUI.GFXUserInterface;
 import sz.csi.CharKey;
@@ -16,14 +17,14 @@ public class MenuScene implements IScene {
 
     public MenuScene() {
         middlePoint = Asset.SCREEN_WIDTH / 2;
-        pickerXCoordinate = (Asset.SCREEN_WIDTH / 2) - (assets.IMAGE_PICKER.getWidth() / 2);
+        pickerXCoordinate = (Asset.SCREEN_WIDTH / 2) - (ApplicationGraphics.assets.IMAGE_PICKER.getWidth() / 2);
 
         ((GFXUserInterface) UserInterface.getUI()).messageBox.setVisible(false);
         ((GFXUserInterface) UserInterface.getUI()).persistantMessageBox
                 .setVisible(false);
 
-        renderer.setFontToPanel(assets.FONT_TEXT);
-        renderer.drawImage(assets.IMAGE_TITLE);
+        renderer.setFontToPanel(ApplicationGraphics.assets.FONT_TEXT);
+        renderer.drawImage(ApplicationGraphics.assets.IMAGE_TITLE);
 
         renderer.printAtPixelCentered(middlePoint, (int) (530 * Asset.SCREEN_SCALE),
                 "'CastleVania' is a trademark of Konami Corporation.",
@@ -45,7 +46,7 @@ public class MenuScene implements IScene {
         renderer.restore();
 
         renderer.drawImage(pickerXCoordinate, (int) ((356 + choice * 20) * Asset.SCREEN_SCALE),
-                assets.IMAGE_PICKER);
+                ApplicationGraphics.assets.IMAGE_PICKER);
         renderer.printAtPixelCentered(middlePoint, (int) (368 * Asset.SCREEN_SCALE), "a. New Game",
                 Color.WHITE);
         renderer.printAtPixelCentered(middlePoint, (int) (388 * Asset.SCREEN_SCALE),
