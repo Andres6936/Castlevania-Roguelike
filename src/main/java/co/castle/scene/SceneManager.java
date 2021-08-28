@@ -43,6 +43,28 @@ public class SceneManager {
 
         if (nextScene == TypeScene.QUIT) {
             running = false;
+        } else if (nextScene == TypeScene.MENU) {
+            current = menuScene;
+        } else if (nextScene == TypeScene.ARENA) {
+            // Lazy Evaluation
+            if (arenaScene == null) arenaScene = new ArenaScene();
+            current = arenaScene;
+        } else if (nextScene == TypeScene.PROLOGUE) {
+            // Lazy Evaluation
+            if (prologueScene == null) prologueScene = new PrologueScene();
+            current = prologueScene;
+        } else if (nextScene == TypeScene.TRAINING) {
+            // Lazy Evaluation
+            if (trainingScene == null) trainingScene = new TrainingScene();
+            current = trainingScene;
+        } else if (nextScene == TypeScene.NEW_GAME) {
+            // Lazy Evaluation
+            if (newGameScene == null) newGameScene = new NewGameScene();
+            current = newGameScene;
+        } else if (nextScene == TypeScene.LOAD_GAME) {
+            // Lazy Evaluation
+            if (loadGameScene == null) loadGameScene = new LoadGameScene();
+            current = loadGameScene;
         }
     }
 
