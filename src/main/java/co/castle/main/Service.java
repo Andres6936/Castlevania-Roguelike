@@ -159,10 +159,8 @@ public final class Service extends MusicManager {
 
 	private static void initializeGAppearances( )
 	{
-		Appearance[ ] definitions = new GFXAppearances( ).getAppearances( );
-        for ( Appearance definition : definitions )
-        {
-            AppearanceFactory.getAppearanceFactory( ).addDefinition( definition );
+		for (Appearance definition : new GFXAppearances().getAppearances()) {
+			AppearanceFactory.getAppearanceFactory().addDefinition(definition);
 		}
 	}
 
