@@ -39,7 +39,7 @@ public class GraphicsDisplay extends Display
 	private Hashtable <String, Position> locationKeys;
 
 	// Get instance of ApplicationFrame
-	private ApplicationGraphics appFrame = ApplicationGraphics.getInstance( );
+	private ApplicationGraphics renderer = ApplicationGraphics.getInstance();
 
 	// Get instance of Asset
 	protected Asset assets = ApplicationGraphics.assets;
@@ -67,9 +67,8 @@ public class GraphicsDisplay extends Display
 		locationKeys.put( "KEEP", new Position( 462, 69 ) );
 	}
 
-	public GraphicsDisplay( )
-	{
-		FNT_TEXT = appFrame.getFont();
+	public GraphicsDisplay( ) {
+		FNT_TEXT = renderer.getFont();
 
 		try {
 			// BufferedImage BORDERS = ImageUtils.createImage(IMG_BORDERS);
@@ -79,7 +78,7 @@ public class GraphicsDisplay extends Display
 			BufferedImage b4 = ImageUtils.crearImagen(assets.IMAGE_BORDERS, 67, 1, 32, 32);
 
 			addornedTextArea = new AddornedBorderTextArea(b1, b2, b3, b4,
-					new Color( 187, 161, 80 ), new Color( 92, 78, 36 ), 32, 32 );
+					new Color(187, 161, 80), new Color(92, 78, 36), 32, 32);
 			addornedTextArea.setVisible( false );
 			addornedTextArea.setEnabled( false );
 			addornedTextArea.setForeground( Color.WHITE );
@@ -88,18 +87,16 @@ public class GraphicsDisplay extends Display
 			addornedTextArea.setOpaque( false );
 
 			gfxChatBox = new GFXChatBox( b1, b2, b3, b4, new Color( 187, 161, 80 ),
-					new Color( 92, 78, 36 ), 32, 32 );
+					new Color(92, 78, 36), 32, 32);
 
-			gfxChatBox.setBounds( 50, 20, 700, 220 );
-			gfxChatBox.setVisible( false );
-		}
-		catch ( Exception e )
-		{
-			Game.crash( "Error loading UI data", e );
+			gfxChatBox.setBounds(50, 20, 700, 220);
+			gfxChatBox.setVisible(false);
+		} catch (Exception e) {
+			Game.crash("Error loading UI data", e);
 		}
 
-		appFrame.addComponentToPanel( addornedTextArea );
-		appFrame.addComponentToPanel( gfxChatBox );
+		renderer.addComponentToPanel(addornedTextArea);
+		renderer.addComponentToPanel(gfxChatBox);
 	}
 
 	public static JTextArea createTempArea( int xpos, int ypos, int w, int h )
@@ -122,39 +119,36 @@ public class GraphicsDisplay extends Display
 		addornedTextArea.setVisible( false );
 	}
 
-	public void init( ApplicationGraphics syst )
-	{
-		appFrame = syst;
+	public void init( ApplicationGraphics syst ) {
+		renderer = syst;
 	}
 
-	public void showChat( String chatID, Game game )
-	{
-		appFrame.saveBuffer( );
-		GFXChat chat = GFXCuts.getInstance( ).get( chatID );
-		String[ ] marks = new String[ ]
-		{ "%NAME", "%%INTRO_1", "%%CLARA1" };
-		String[ ] replacements = new String[ ]
-		{	game.getPlayer( ).getName( ), game.getPlayer( ).getCustomMessage( "INTRO_1" ),
-			game.getPlayer( ).getCustomMessage( "CLARA1" ) };
+	public void showChat( String chatID, Game game ) {
+		renderer.saveBuffer();
+		GFXChat chat = GFXCuts.getInstance().get(chatID);
+		String[] marks = new String[]
+				{"%NAME", "%%INTRO_1", "%%CLARA1"};
+		String[] replacements = new String[]
+				{game.getPlayer().getName(), game.getPlayer().getCustomMessage("INTRO_1"),
+						game.getPlayer().getCustomMessage("CLARA1")};
 		Image image = null;
-		for ( int i = 0; i < chat.getConversations( ); i++ )
-		{
-			appFrame.restore( );
+		for (int i = 0; i < chat.getConversations(); i++) {
+			renderer.restore();
 			// si.setColor(TRANSPARENT_BLUE);
 			// si.getGraphics2D().fillRect(26,26,665,185);
-			if ( chat.getPortrait( i ) != null )
-				image = chat.getPortrait( i );
+			if (chat.getPortrait(i) != null)
+				image = chat.getPortrait(i);
 			else
-				image = getPortraitForPlayer( game.getPlayer( ) );
-			gfxChatBox.set( image,
-					ScriptUtil.replace( marks, replacements, chat.getName( i ) ),
-					ScriptUtil.replace( marks, replacements,
-							chat.getConversation( i ) ) );
-			gfxChatBox.setVisible( true );
-			appFrame.waitKey( CharKey.SPACE );
+				image = getPortraitForPlayer(game.getPlayer());
+			gfxChatBox.set(image,
+					ScriptUtil.replace(marks, replacements, chat.getName(i)),
+					ScriptUtil.replace(marks, replacements,
+							chat.getConversation(i)));
+			gfxChatBox.setVisible(true);
+			renderer.waitKey(CharKey.SPACE);
 		}
-		gfxChatBox.setVisible( false );
-		appFrame.restore( );
+		gfxChatBox.setVisible(false);
+		renderer.restore();
 	}
 
 	public void showDraculaSequence( )
@@ -165,32 +159,31 @@ public class GraphicsDisplay extends Display
 
 	}
 
-	public void showEndgame( Player player )
-	{
-		( (GFXUserInterface) UserInterface.getUI( ) ).messageBox.setVisible( false );
-		appFrame.drawImage( assets.IMAGE_ENDGAME );
-		appFrame.setFontToPanel( assets.FONT_TITLE );
-		appFrame.printAtPixel( 426, 95, "Epilogue", Color.RED );
-		String heshe = ( player.getSex( ) == Player.MALE ? "he" : "she" );
+	public void showEndgame( Player player ) {
+		((GFXUserInterface) UserInterface.getUI()).messageBox.setVisible(false);
+		renderer.drawImage(assets.IMAGE_ENDGAME);
+		renderer.setFontToPanel(assets.FONT_TITLE);
+		renderer.printAtPixel(426, 95, "Epilogue", Color.RED);
+		String heshe = (player.getSex() == Player.MALE ? "he" : "she");
 		// String hisher = (player.getSex() == Player.MALE ? "his" : "her");
-		JTextArea t1 = createTempArea( 20, 125, 700, 400 );
-		t1.setForeground( Color.WHITE );
-		t1.setText( player.getName( )
+		JTextArea t1 = createTempArea(20, 125, 700, 400);
+		t1.setForeground(Color.WHITE);
+		t1.setText(player.getName()
 				+ " made many sacrifices, but now the long fight is over. Dracula is dead "
 				+ "and all other spirits are asleep. In the shadows, a person watches the castle fall. "
-				+ player.getName( ) + " must go for now but " + heshe + " hopes someday "
+				+ player.getName() + " must go for now but " + heshe + " hopes someday "
 				+ heshe + " will get the " + "respect that " + heshe
 				+ " deserves.    After this fight the new Belmont name shall be honored "
 				+ "by all people. \n\n\n"
 				+ "You played the greatest role in this history... \n\n"
-				+ "Thank you for playing.\n\n\n" + "CastlevaniaRL: v" + Game.getVersion( )
-				+ "\n\nSantiago Zapata 2005-2010" );
-		appFrame.addComponentToPanel( t1 );
-		appFrame.setFontToPanel( assets.FONT_TEXT );
-		appFrame.print( 2, 20, "[Press Space]", Color.WHITE );
-		appFrame.refresh( );
-		appFrame.waitKey( CharKey.SPACE );
-		appFrame.remove( t1 );
+				+ "Thank you for playing.\n\n\n" + "CastlevaniaRL: v" + Game.getVersion()
+				+ "\n\nSantiago Zapata 2005-2010");
+		renderer.addComponentToPanel(t1);
+		renderer.setFontToPanel(assets.FONT_TEXT);
+		renderer.print(2, 20, "[Press Space]", Color.WHITE);
+		renderer.refresh();
+		renderer.waitKey(CharKey.SPACE);
+		renderer.remove(t1);
 
 	}
 
@@ -204,46 +197,42 @@ public class GraphicsDisplay extends Display
 		int leftMargin;
 		int widthAdjustment;
 
-		if ( assets.SCREEN_WIDTH == 1024 )
-		{
+		if (assets.SCREEN_WIDTH == 1024) {
 			leftMargin = 9;
 			widthAdjustment = 112;
-		}
-		else
-		{
+		} else {
 			leftMargin = 0;
 			widthAdjustment = 0;
 		}
-		appFrame.drawImage( assets.IMAGE_HISCORES );
-		addornedTextArea.setBounds( 8, 110, 782, 395 );
-		addornedTextArea.paintAt( appFrame.getGraphics2D( ), 8 + widthAdjustment, 110 );
-		appFrame.setFontToPanel( assets.FONT_TITLE );
-		appFrame.printAtPixelCentered( assets.SCREEN_WIDTH / 2, 160,
-				"The most brave of Belmonts", Color.WHITE );
-		appFrame.setFontToPanel( assets.FONT_TEXT );
-		appFrame.print( 18 + leftMargin, 8, "SCORE", assets.COLOR_BOLD );
-		appFrame.print( 25 + leftMargin, 8, "DATE", assets.COLOR_BOLD );
-		appFrame.print( 36 + leftMargin, 8, "TURNS", assets.COLOR_BOLD );
-		appFrame.print( 43 + leftMargin, 8, "DEATH", assets.COLOR_BOLD );
+		renderer.drawImage(assets.IMAGE_HISCORES);
+		addornedTextArea.setBounds(8, 110, 782, 395);
+		addornedTextArea.paintAt(renderer.getGraphics2D(), 8 + widthAdjustment, 110);
+		renderer.setFontToPanel(assets.FONT_TITLE);
+		renderer.printAtPixelCentered(assets.SCREEN_WIDTH / 2, 160,
+				"The most brave of Belmonts", Color.WHITE);
+		renderer.setFontToPanel(assets.FONT_TEXT);
+		renderer.print(18 + leftMargin, 8, "SCORE", assets.COLOR_BOLD);
+		renderer.print(25 + leftMargin, 8, "DATE", assets.COLOR_BOLD);
+		renderer.print(36 + leftMargin, 8, "TURNS", assets.COLOR_BOLD);
+		renderer.print(43 + leftMargin, 8, "DEATH", assets.COLOR_BOLD);
 
-		for ( int i = 0; i < scores.length; i++ )
-		{
-			appFrame.print( 7 + leftMargin, ( 9 + i ),
-					scores[ i ].getName( ) + " (" + scores[ i ].getPlayerClass( ) + ")",
-					Color.WHITE );
-			appFrame.print( 18 + leftMargin, ( 9 + i ), "" + scores[ i ].getScore( ),
-					Color.GRAY );
-			appFrame.print( 25 + leftMargin, ( 9 + i ), "" + scores[ i ].getDate( ),
-					Color.GRAY );
-			appFrame.print( 36 + leftMargin, ( 9 + i ), "" + scores[ i ].getTurns( ),
-					Color.GRAY );
-			appFrame.print( 43 + leftMargin, ( 9 + i ), "" + scores[ i ].getDeathString( )
-					+ " on level " + scores[ i ].getDeathLevel( ), Color.GRAY );
+		for (int i = 0; i < scores.length; i++) {
+			renderer.print(7 + leftMargin, (9 + i),
+					scores[i].getName() + " (" + scores[i].getPlayerClass() + ")",
+					Color.WHITE);
+			renderer.print(18 + leftMargin, (9 + i), "" + scores[i].getScore(),
+					Color.GRAY);
+			renderer.print(25 + leftMargin, (9 + i), "" + scores[i].getDate(),
+					Color.GRAY);
+			renderer.print(36 + leftMargin, (9 + i), "" + scores[i].getTurns(),
+					Color.GRAY);
+			renderer.print(43 + leftMargin, (9 + i), "" + scores[i].getDeathString()
+					+ " on level " + scores[i].getDeathLevel(), Color.GRAY);
 
 		}
-		appFrame.print( 7 + leftMargin, 20, "[space] to continue", assets.COLOR_BOLD );
-		appFrame.refresh( );
-		appFrame.waitKey( CharKey.SPACE );
+		renderer.print(7 + leftMargin, 20, "[space] to continue", assets.COLOR_BOLD);
+		renderer.refresh();
+		renderer.waitKey(CharKey.SPACE);
 	}
 
 	public void showHostageRescue( Hostage h )
@@ -256,16 +245,15 @@ public class GraphicsDisplay extends Display
 		showTextBox( text, 30, 40, 300, 300 );
 	}
 
-	public void showIntro( Player player )
-	{
-		appFrame.drawImage( assets.IMAGE_PROLOGUE );
-		appFrame.setFontToPanel( assets.FONT_TITLE );
-		appFrame.printAtPixel( 156, 136, "prologue", Color.WHITE );
+	public void showIntro( Player player ) {
+		renderer.drawImage(assets.IMAGE_PROLOGUE);
+		renderer.setFontToPanel(assets.FONT_TITLE);
+		renderer.printAtPixel(156, 136, "prologue", Color.WHITE);
 		// si.drawImage(311,64, IMG_GBAT);
-		appFrame.setFontToPanel( assets.FONT_TEXT );
-		appFrame.setColor( Color.GRAY );
-		JTextArea t1 = createTempArea( 150, 170, 510, 300 );
-		t1.setForeground( Color.LIGHT_GRAY );
+		renderer.setFontToPanel(assets.FONT_TEXT);
+		renderer.setColor(Color.GRAY);
+		JTextArea t1 = createTempArea(150, 170, 510, 300);
+		t1.setForeground(Color.LIGHT_GRAY);
 		t1.setText(
 				"In the year of 1691, a dark castle emerges from the cursed soils of the plains of Transylvannia. "
 						+ "Chaos and death spread along the land, as the evil count Dracula unleases his powers, "
@@ -274,202 +262,186 @@ public class GraphicsDisplay extends Display
 						+ "you are close to the castle of chaos. You are almost at Castlevania, and you are here on business: "
 						+ "To destroy forever the Curse of the Evil Count.\n\n" +
 
-						player.getPlot( ) + ", " + player.getDescription( )
+						player.getPlot() + ", " + player.getDescription()
 						+ " stands on a forest near the town of Petra and the cursed castle; "
-						+ player.getPlot2( )
-						+ " and the fate running through his veins being the sole hope for mankind." );
+						+ player.getPlot2()
+						+ " and the fate running through his veins being the sole hope for mankind.");
 
-		appFrame.addComponentToPanel( t1 );
-		appFrame.printAtPixel( 156, 490, "[Space] to continue", assets.COLOR_BOLD );
-		appFrame.refresh( );
-		appFrame.waitKey( CharKey.SPACE );
-		appFrame.remove( t1 );
+		renderer.addComponentToPanel(t1);
+		renderer.printAtPixel(156, 490, "[Space] to continue", assets.COLOR_BOLD);
+		renderer.refresh();
+		renderer.waitKey(CharKey.SPACE);
+		renderer.remove(t1);
 	}
 
-	public Advancement showLevelUp( Vector <Advancement> advancements )
-	{
-		( (GFXUserInterface) UserInterface.getUI( ) ).messageBox.setVisible( false );
+	public Advancement showLevelUp( Vector <Advancement> advancements ) {
+		((GFXUserInterface) UserInterface.getUI()).messageBox.setVisible(false);
 
-		appFrame.saveBuffer( );
-		appFrame.drawImage( assets.IMAGE_LEVEL_UP );
-		appFrame.print( 4, 3, "You have gained a chance to pick an advancement!",
-				assets.COLOR_BOLD );
-		for ( int i = 0; i < advancements.size( ); i++ )
-		{
-			appFrame.print( 3, 4 + i * 2,
-					( (char) ( 'a' + i ) ) + ". "
-							+ ( (Advancement) advancements.elementAt( i ) ).getName( ),
-					assets.COLOR_BOLD );
-			appFrame.print( 3, 5 + i * 2, "   "
-					+ ( (Advancement) advancements.elementAt( i ) ).getDescription( ),
-					Color.WHITE );
+		renderer.saveBuffer();
+		renderer.drawImage(assets.IMAGE_LEVEL_UP);
+		renderer.print(4, 3, "You have gained a chance to pick an advancement!",
+				assets.COLOR_BOLD);
+		for (int i = 0; i < advancements.size(); i++) {
+			renderer.print(3, 4 + i * 2,
+					((char) ('a' + i)) + ". "
+							+ ((Advancement) advancements.elementAt(i)).getName(),
+					assets.COLOR_BOLD);
+			renderer.print(3, 5 + i * 2, "   "
+							+ ((Advancement) advancements.elementAt(i)).getDescription(),
+					Color.WHITE);
 		}
-		appFrame.refresh( );
-		int choice = readAlphaToNumber( advancements.size( ) );
-		appFrame.restore( );
-		appFrame.refresh( );
-		( (GFXUserInterface) UserInterface.getUI( ) ).messageBox.setVisible( true );
-		return (Advancement) advancements.elementAt( choice );
+		renderer.refresh();
+		int choice = readAlphaToNumber(advancements.size());
+		renderer.restore();
+		renderer.refresh();
+		((GFXUserInterface) UserInterface.getUI()).messageBox.setVisible(true);
+		return (Advancement) advancements.elementAt(choice);
 	}
 
-	public void showMap( String locationKey, String locationDescription )
-	{
-		appFrame.saveBuffer( );
-		appFrame.drawImage( 50, 50, assets.IMAGE_MAP );
-		appFrame.print( 180, 200, locationDescription, Color.BLACK );
-		if ( locationKey != null )
-		{
-			Position location = (Position) locationKeys.get( locationKey );
-			if ( location != null )
-				appFrame.drawImage( location.x + 53, location.y + 53, assets.IMAGE_MAPMARKER );
+	public void showMap( String locationKey, String locationDescription ) {
+		renderer.saveBuffer();
+		renderer.drawImage(50, 50, assets.IMAGE_MAP);
+		renderer.print(180, 200, locationDescription, Color.BLACK);
+		if (locationKey != null) {
+			Position location = (Position) locationKeys.get(locationKey);
+			if (location != null)
+				renderer.drawImage(location.x + 53, location.y + 53, assets.IMAGE_MAPMARKER);
 		}
-		appFrame.refresh( );
-		appFrame.waitKey( CharKey.SPACE );
-		appFrame.restore( );
-		appFrame.refresh( );
+		renderer.refresh();
+		renderer.waitKey(CharKey.SPACE);
+		renderer.restore();
+		renderer.refresh();
 	}
 
-	public void showMonsterScreen( Monster who, Player player )
-	{
-		( (GFXUserInterface) UserInterface.getUI( ) ).messageBox.setVisible( false );
-		GFXAppearance app = (GFXAppearance) who.getAppearance( );
+	public void showMonsterScreen( Monster who, Player player ) {
+		((GFXUserInterface) UserInterface.getUI()).messageBox.setVisible(false);
+		GFXAppearance app = (GFXAppearance) who.getAppearance();
 		// si.saveBuffer();
-		appFrame.drawImage( assets.IMAGE_LEVEL_UP );
-		appFrame.print( 6, 3, who.getDescription( ), assets.COLOR_BOLD );
-		appFrame.drawImage( 15, 40, app.getImage( ) );
-		JTextArea t1 = createTempArea( 20, 125, 700, 400 );
-		t1.setForeground( Color.WHITE );
-		t1.setText( who.getLongDescription( ) );
-		appFrame.addComponentToPanel( t1 );
-		appFrame.setFontToPanel( assets.FONT_TEXT );
-		MonsterRecord record = Main.getMonsterRecordFor( who.getID( ) );
+		renderer.drawImage(assets.IMAGE_LEVEL_UP);
+		renderer.print(6, 3, who.getDescription(), assets.COLOR_BOLD);
+		renderer.drawImage(15, 40, app.getImage());
+		JTextArea t1 = createTempArea(20, 125, 700, 400);
+		t1.setForeground(Color.WHITE);
+		t1.setText(who.getLongDescription());
+		renderer.addComponentToPanel(t1);
+		renderer.setFontToPanel(assets.FONT_TEXT);
+		MonsterRecord record = Main.getMonsterRecordFor(who.getID());
 		long baseKilled = 0;
 		long baseKillers = 0;
-		if ( record != null )
-		{
-			baseKilled = record.getKilled( );
-			baseKillers = record.getKillers( );
+		if (record != null) {
+			baseKilled = record.getKilled();
+			baseKillers = record.getKillers();
 		}
-		appFrame.print( 2, 17, "You have killed "
-				+ ( baseKilled + player.getGameSessionInfo( ).getDeathCountFor( who ) )
-				+ " " + who.getDescription( ) + "s", Color.WHITE );
-		if ( baseKillers == 0 )
-		{
-			appFrame.print( 2, 18, "No " + who.getDescription( ) + "s have killed you",
-					Color.WHITE );
+		renderer.print(2, 17, "You have killed "
+				+ (baseKilled + player.getGameSessionInfo().getDeathCountFor(who))
+				+ " " + who.getDescription() + "s", Color.WHITE);
+		if (baseKillers == 0) {
+			renderer.print(2, 18, "No " + who.getDescription() + "s have killed you",
+					Color.WHITE);
+		} else {
+			renderer.print(2, 18, "You have been killed by " + baseKillers + " "
+					+ who.getDescription() + "s", Color.WHITE);
 		}
-		else
-		{
-			appFrame.print( 2, 18, "You have been killed by " + baseKillers + " "
-					+ who.getDescription( ) + "s", Color.WHITE );
-		}
-		appFrame.print( 2, 20, "[Press Space]", Color.WHITE );
-		appFrame.refresh( );
-		appFrame.waitKey( CharKey.SPACE );
-		( (GFXUserInterface) UserInterface.getUI( ) ).messageBox.setVisible( true );
-		t1.setVisible( false );
-		appFrame.remove( t1 );
-		appFrame.restore( );
-		appFrame.refresh( );
+		renderer.print(2, 20, "[Press Space]", Color.WHITE);
+		renderer.refresh();
+		renderer.waitKey(CharKey.SPACE);
+		((GFXUserInterface) UserInterface.getUI()).messageBox.setVisible(true);
+		t1.setVisible(false);
+		renderer.remove(t1);
+		renderer.restore();
+		renderer.refresh();
 	}
 
-	public boolean showResumeScreen( Player player )
-	{
-		( (GFXUserInterface) UserInterface.getUI( ) ).messageBox.setVisible( false );
-		appFrame.drawImage( assets.IMAGE_RESUME );
+	public boolean showResumeScreen( Player player ) {
+		((GFXUserInterface) UserInterface.getUI()).messageBox.setVisible(false);
+		renderer.drawImage(assets.IMAGE_RESUME);
 
-		GameSessionInfo gsi = player.getGameSessionInfo( );
-		String heshe = ( player.getSex( ) == Player.MALE ? "He" : "She" );
+		GameSessionInfo gsi = player.getGameSessionInfo();
+		String heshe = (player.getSex() == Player.MALE ? "He" : "She");
 
-		appFrame.setFontToPanel( assets.FONT_TITLE );
-		appFrame.print( 2, 3, "The chronicles of " + player.getName( ), assets.COLOR_BOLD );
-		JTextArea t1 = createTempArea( 20, 125, 700, 120 );
-		t1.setForeground( Color.WHITE );
-		t1.setText( "  ...And so it was that " + player.getDescription( ) + ", "
-				+ gsi.getDeathString( ) + " on the "
-				+ player.getLevel( ).getDescription( ) + "...\n\n" + heshe + " scored "
-				+ player.getScore( ) + " points and earned " + player.getGold( )
-				+ " gold \n\n" + heshe + " survived for " + gsi.getTurns( )
-				+ " turns \n\n" + heshe + " took " + gsi.getTotalDeathCount( )
-				+ " monsters to the other world" );
-		appFrame.addComponentToPanel( t1 );
+		renderer.setFontToPanel(assets.FONT_TITLE);
+		renderer.print(2, 3, "The chronicles of " + player.getName(), assets.COLOR_BOLD);
+		JTextArea t1 = createTempArea(20, 125, 700, 120);
+		t1.setForeground(Color.WHITE);
+		t1.setText("  ...And so it was that " + player.getDescription() + ", "
+				+ gsi.getDeathString() + " on the "
+				+ player.getLevel().getDescription() + "...\n\n" + heshe + " scored "
+				+ player.getScore() + " points and earned " + player.getGold()
+				+ " gold \n\n" + heshe + " survived for " + gsi.getTurns()
+				+ " turns \n\n" + heshe + " took " + gsi.getTotalDeathCount()
+				+ " monsters to the other world");
+		renderer.addComponentToPanel(t1);
 		/*
 		 * int i = 0; Enumeration monsters = gsi.getDeathCount().elements(); while
 		 * (monsters.hasMoreElements()){ MonsterDeath mons = (MonsterDeath)
 		 * monsters.nextElement(); si.print(5,11+i, mons.getTimes()
 		 * +" "+mons.getMonsterDescription(), ConsoleSystemInterface.RED); i++; }
-		 */ appFrame.setFontToPanel( assets.FONT_TEXT );
-		appFrame.print( 2, 14, "Do you want to save your character memorial? [Y/N]",
-				Color.WHITE );
-		appFrame.refresh( );
-		boolean ret = UserInterface.getUI( ).prompt( );
-		appFrame.remove( t1 );
+		 */
+		renderer.setFontToPanel(assets.FONT_TEXT);
+		renderer.print(2, 14, "Do you want to save your character memorial? [Y/N]",
+				Color.WHITE);
+		renderer.refresh();
+		boolean ret = UserInterface.getUI().prompt();
+		renderer.remove(t1);
 		return ret;
 	}
 
-	public int showSavedGames( File[ ] saveFiles )
-	{
-		appFrame.drawImage( assets.IMAGE_SAVED );
-		if ( saveFiles == null || saveFiles.length == 0 )
-		{
-			appFrame.print( 3, 6, "No adventurers available", Color.WHITE );
-			appFrame.print( 4, 8, "[Space to Cancel]", Color.WHITE );
-			appFrame.refresh( );
-			appFrame.waitKey( CharKey.SPACE );
+	public int showSavedGames( File[ ] saveFiles ) {
+		renderer.drawImage(assets.IMAGE_SAVED);
+		if (saveFiles == null || saveFiles.length == 0) {
+			renderer.print(3, 6, "No adventurers available", Color.WHITE);
+			renderer.print(4, 8, "[Space to Cancel]", Color.WHITE);
+			renderer.refresh();
+			renderer.waitKey(CharKey.SPACE);
 			return -1;
 		}
 
-		appFrame.print( 3, 6, "Pick an adventurer", Color.WHITE );
-		for ( int i = 0; i < saveFiles.length; i++ )
-		{
-			String saveFileName = saveFiles[ i ].getName( );
-			appFrame.print( 5, 7 + i,
-					(char) ( CharKey.a + i + 1 ) + " - "
-							+ saveFileName.substring( 0, saveFileName.indexOf( ".sav" ) ),
-					assets.COLOR_BOLD );
+		renderer.print(3, 6, "Pick an adventurer", Color.WHITE);
+		for (int i = 0; i < saveFiles.length; i++) {
+			String saveFileName = saveFiles[i].getName();
+			renderer.print(5, 7 + i,
+					(char) (CharKey.a + i + 1) + " - "
+							+ saveFileName.substring(0, saveFileName.indexOf(".sav")),
+					assets.COLOR_BOLD);
 		}
-		appFrame.print( 3, 9 + saveFiles.length, "[Space to Cancel]", Color.WHITE );
-		appFrame.refresh( );
-		CharKey x = appFrame.inkey( );
-		while ( ( x.code < CharKey.a || x.code > CharKey.a + saveFiles.length - 1 )
-				&& x.code != CharKey.SPACE )
-		{
-			x = appFrame.inkey( );
+		renderer.print(3, 9 + saveFiles.length, "[Space to Cancel]", Color.WHITE);
+		renderer.refresh();
+		CharKey x = renderer.inkey();
+		while ((x.code < CharKey.a || x.code > CharKey.a + saveFiles.length - 1)
+				&& x.code != CharKey.SPACE) {
+			x = renderer.inkey();
 		}
-		if ( x.code == CharKey.SPACE )
+		if (x.code == CharKey.SPACE)
 			return -1;
 		else
 			return x.code - CharKey.a;
 	}
 
-	public void showScreen( Object pScreen )
-	{
-		appFrame.saveBuffer( );
+	public void showScreen( Object pScreen ) {
+		renderer.saveBuffer();
 		String screenText = (String) pScreen;
-		showTextBox( screenText, 430, 70, 340, 375 );
+		showTextBox(screenText, 430, 70, 340, 375);
 		// si.waitKey(CharKey.SPACE);
-		appFrame.restore( );
+		renderer.restore();
 	}
 
 	public void showTextBox(	String text, int consoleX, int consoleY, int consoleW,
-								int consoleH )
-	{
-		addornedTextArea.setBounds( consoleX, consoleY, consoleW, consoleH );
-		addornedTextArea.setText( text );
-		addornedTextArea.setVisible( true );
-		appFrame.waitKey( CharKey.SPACE );
-		addornedTextArea.setVisible( false );
+								int consoleH ) {
+		addornedTextArea.setBounds(consoleX, consoleY, consoleW, consoleH);
+		addornedTextArea.setText(text);
+		addornedTextArea.setVisible(true);
+		renderer.waitKey(CharKey.SPACE);
+		addornedTextArea.setVisible(false);
 	}
 
 	public void showTextBox(	String text, int consoleX, int consoleY, int consoleW,
-								int consoleH, Font f )
-	{
-		addornedTextArea.setBounds( consoleX, consoleY, consoleW, consoleH );
-		addornedTextArea.setText( text );
-		addornedTextArea.setFont( f );
-		addornedTextArea.setVisible( true );
-		appFrame.waitKey( CharKey.SPACE );
-		addornedTextArea.setVisible( false );
+								int consoleH, Font f ) {
+		addornedTextArea.setBounds(consoleX, consoleY, consoleW, consoleH);
+		addornedTextArea.setText(text);
+		addornedTextArea.setFont(f);
+		addornedTextArea.setVisible(true);
+		renderer.waitKey(CharKey.SPACE);
+		addornedTextArea.setVisible(false);
 	}
 
 	// private Color TRANSPARENT_BLUE = new Color(100,100,100,200);
@@ -495,9 +467,9 @@ public class GraphicsDisplay extends Display
 		addornedTextArea.setText( text );
 		addornedTextArea.setVisible( true );
 		CharKey x = new CharKey( CharKey.NONE );
-		while ( x.code != CharKey.Y && x.code != CharKey.y && x.code != CharKey.N
-				&& x.code != CharKey.n )
-			x = appFrame.inkey( );
+		while (x.code != CharKey.Y && x.code != CharKey.y && x.code != CharKey.N
+				&& x.code != CharKey.n)
+			x = renderer.inkey();
 		boolean ret = ( x.code == CharKey.Y || x.code == CharKey.y );
 		addornedTextArea.setVisible( false );
 		return ret;
@@ -510,8 +482,7 @@ public class GraphicsDisplay extends Display
 		showTextBox( baseMessage, 40, 60, 300, 200 );
 	}
 
-	public int showTitleScreen( )
-	{
+	public int showTitleScreen( ) {
 		int middlePoint = Asset.SCREEN_WIDTH / 2;
 		int pickerXCoordinate = (Asset.SCREEN_WIDTH / 2)
 				- (assets.IMAGE_PICKER.getWidth() / 2);
@@ -520,45 +491,45 @@ public class GraphicsDisplay extends Display
 		((GFXUserInterface) UserInterface.getUI()).persistantMessageBox
 				.setVisible(false);
 
-		appFrame.setFontToPanel(assets.FONT_TEXT);
-		appFrame.drawImage(assets.IMAGE_TITLE);
+		renderer.setFontToPanel(assets.FONT_TEXT);
+		renderer.drawImage(assets.IMAGE_TITLE);
 
-		appFrame.printAtPixelCentered(middlePoint, (int) (530 * Asset.SCREEN_SCALE),
+		renderer.printAtPixelCentered(middlePoint, (int) (530 * Asset.SCREEN_SCALE),
 				"'CastleVania' is a trademark of Konami Corporation.",
 				Asset.COLOR_BOLD);
-		appFrame.printAtPixelCentered(middlePoint, (int) (555 * Asset.SCREEN_SCALE), "CastlevaniaRL v"
+		renderer.printAtPixelCentered(middlePoint, (int) (555 * Asset.SCREEN_SCALE), "CastlevaniaRL v"
 						+ Game.getVersion() + ", Developed by Santiago Zapata 2005-2010",
 				Color.WHITE);
-		appFrame.printAtPixelCentered(middlePoint, (int) (570 * Asset.SCREEN_SCALE),
+		renderer.printAtPixelCentered(middlePoint, (int) (570 * Asset.SCREEN_SCALE),
 				"Artwork by Christopher Barrett, 2006-2007", Color.WHITE);
-		appFrame.printAtPixelCentered(middlePoint, (int) (585 * Asset.SCREEN_SCALE),
+		renderer.printAtPixelCentered(middlePoint, (int) (585 * Asset.SCREEN_SCALE),
 				"Midi Tracks by Jorge E. Fuentes, JiLost, Nicholas and Tom Kim",
 				Color.WHITE);
 
 		CharKey x = new CharKey(CharKey.NONE);
 		int choice = 0;
-		appFrame.saveBuffer();
+		renderer.saveBuffer();
 
 		while (true) {
-			appFrame.restore();
+			renderer.restore();
 
-			appFrame.drawImage(pickerXCoordinate, (int) ((356 + choice * 20) * Asset.SCREEN_SCALE),
+			renderer.drawImage(pickerXCoordinate, (int) ((356 + choice * 20) * Asset.SCREEN_SCALE),
 					assets.IMAGE_PICKER);
-			appFrame.printAtPixelCentered(middlePoint, (int) (368 * Asset.SCREEN_SCALE), "a. New Game",
+			renderer.printAtPixelCentered(middlePoint, (int) (368 * Asset.SCREEN_SCALE), "a. New Game",
 					Color.WHITE);
-			appFrame.printAtPixelCentered(middlePoint, (int) (388 * Asset.SCREEN_SCALE),
+			renderer.printAtPixelCentered(middlePoint, (int) (388 * Asset.SCREEN_SCALE),
 					"b. Load Character", Color.WHITE);
-			appFrame.printAtPixelCentered(middlePoint, (int) (408 * Asset.SCREEN_SCALE),
+			renderer.printAtPixelCentered(middlePoint, (int) (408 * Asset.SCREEN_SCALE),
 					"c. View Prologue", Color.WHITE);
-			appFrame.printAtPixelCentered(middlePoint, (int) (428 * Asset.SCREEN_SCALE), "d. Training",
+			renderer.printAtPixelCentered(middlePoint, (int) (428 * Asset.SCREEN_SCALE), "d. Training",
 					Color.WHITE);
-			appFrame.printAtPixelCentered(middlePoint, (int) (448 * Asset.SCREEN_SCALE),
+			renderer.printAtPixelCentered(middlePoint, (int) (448 * Asset.SCREEN_SCALE),
 					"e. Prelude Arena", Color.WHITE);
-			appFrame.printAtPixelCentered(middlePoint, (int) (468 * Asset.SCREEN_SCALE),
+			renderer.printAtPixelCentered(middlePoint, (int) (468 * Asset.SCREEN_SCALE),
 					"f. Show HiScores", Color.WHITE);
-			appFrame.printAtPixelCentered(middlePoint, (int) (488 * Asset.SCREEN_SCALE), "g. Quit",
+			renderer.printAtPixelCentered(middlePoint, (int) (488 * Asset.SCREEN_SCALE), "g. Quit",
 					Color.WHITE);
-			appFrame.refresh();
+			renderer.refresh();
 			while (x.code != CharKey.A && x.code != CharKey.a && x.code != CharKey.B
 					&& x.code != CharKey.b && x.code != CharKey.C && x.code != CharKey.c
 					&& x.code != CharKey.D && x.code != CharKey.d && x.code != CharKey.E
@@ -566,9 +537,8 @@ public class GraphicsDisplay extends Display
 					&& x.code != CharKey.F && x.code != CharKey.f
 					&& x.code != CharKey.UARROW && x.code != CharKey.DARROW
 					&& x.code != CharKey.SPACE && x.code != CharKey.ENTER)
-				x = appFrame.inkey();
-			switch ( x.code )
-			{
+				x = renderer.inkey();
+			switch (x.code) {
 			case CharKey.A:
 			case CharKey.a:
 				return 0;
@@ -655,15 +625,12 @@ public class GraphicsDisplay extends Display
 
 	private int readAlphaToNumber( int numbers )
 	{
-		while ( true )
-		{
-			CharKey key = appFrame.inkey( );
-			if ( key.code >= CharKey.A && key.code <= CharKey.A + numbers - 1 )
-			{
+		while ( true ) {
+			CharKey key = renderer.inkey();
+			if (key.code >= CharKey.A && key.code <= CharKey.A + numbers - 1) {
 				return key.code - CharKey.A;
 			}
-			if ( key.code >= CharKey.a && key.code <= CharKey.a + numbers - 1 )
-			{
+			if (key.code >= CharKey.a && key.code <= CharKey.a + numbers - 1) {
 				return key.code - CharKey.a;
 			}
 		}

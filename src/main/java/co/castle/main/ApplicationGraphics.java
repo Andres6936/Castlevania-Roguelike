@@ -50,24 +50,24 @@ public final class ApplicationGraphics extends JFrame {
 	// Construct
 
 	/**
-	 * Loader the file of properties for the parameters of user interface and
-	 * path resources of application.
-	 * <p>
-	 * Post-condition: The configuration user interface has been initialized.
-	 *
-	 * @implNote We make the constructor private to prevent the use of 'new'.
-	 */
-	private ApplicationGraphics() {
-		Properties configurationUI = new Properties();
-		try {
-			configurationUI.load(FileLoader.getInputStream("properties/configurationUI.properties"));
-			mouseEnable = configurationUI.getProperty("useMouse").equals("true");
-			var fontName = configurationUI.getProperty("FNT_TEXT");
-			var fontSize = configurationUI.getProperty("FNT_TEXT_SIZE");
-			font = Font.createFont(Font.TRUETYPE_FONT, FileLoader.getInputStream(fontName)).deriveFont(Font.PLAIN, Integer.parseInt(fontSize));
-		} catch (IOException e) {
-			System.out.println("Error loading configuration for user interface.\n");
-			System.exit(-1);
+     * Loader the file of properties for the parameters of user interface and
+     * path resources of application.
+     * <p>
+     * Post-condition: The configuration user interface has been initialized.
+     *
+     * @implNote We make the constructor private to prevent the use of 'new'.
+     */
+    public ApplicationGraphics() {
+        Properties configurationUI = new Properties();
+        try {
+            configurationUI.load(FileLoader.getInputStream("properties/configurationUI.properties"));
+            mouseEnable = configurationUI.getProperty("useMouse").equals("true");
+            var fontName = configurationUI.getProperty("FNT_TEXT");
+            var fontSize = configurationUI.getProperty("FNT_TEXT_SIZE");
+            font = Font.createFont(Font.TRUETYPE_FONT, FileLoader.getInputStream(fontName)).deriveFont(Font.PLAIN, Integer.parseInt(fontSize));
+        } catch (IOException e) {
+            System.out.println("Error loading configuration for user interface.\n");
+            System.exit(-1);
 		} catch (FontFormatException e) {
 			System.out.println("Error loading the font" );
 		}
