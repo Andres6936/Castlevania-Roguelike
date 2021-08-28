@@ -542,31 +542,31 @@ public class GraphicsDisplay extends Display
 		while (true) {
 			appFrame.restore();
 
-			appFrame.drawImage( pickerXCoordinate, (int) ( ( 356 + choice * 20 ) * assets.SCREEN_SCALE ),
-					assets.IMAGE_PICKER );
-			appFrame.printAtPixelCentered( middlePoint, (int) ( 368 * assets.SCREEN_SCALE ), "a. New Game",
-					Color.WHITE );
-			appFrame.printAtPixelCentered( middlePoint, (int) ( 388 * assets.SCREEN_SCALE ),
-					"b. Load Character", Color.WHITE );
-			appFrame.printAtPixelCentered( middlePoint, (int) ( 408 * assets.SCREEN_SCALE ),
-					"c. View Prologue", Color.WHITE );
-			appFrame.printAtPixelCentered( middlePoint, (int) ( 428 * assets.SCREEN_SCALE ), "d. Training",
-					Color.WHITE );
-			appFrame.printAtPixelCentered( middlePoint, (int) ( 448 * assets.SCREEN_SCALE ),
-					"e. Prelude Arena", Color.WHITE );
-			appFrame.printAtPixelCentered( middlePoint, (int) ( 468 * assets.SCREEN_SCALE ),
-					"f. Show HiScores", Color.WHITE );
-			appFrame.printAtPixelCentered( middlePoint, (int) ( 488 * assets.SCREEN_SCALE ), "g. Quit",
-					Color.WHITE );
-			appFrame.refresh( );
-			while ( x.code != CharKey.A && x.code != CharKey.a && x.code != CharKey.B
+			appFrame.drawImage(pickerXCoordinate, (int) ((356 + choice * 20) * Asset.SCREEN_SCALE),
+					assets.IMAGE_PICKER);
+			appFrame.printAtPixelCentered(middlePoint, (int) (368 * Asset.SCREEN_SCALE), "a. New Game",
+					Color.WHITE);
+			appFrame.printAtPixelCentered(middlePoint, (int) (388 * Asset.SCREEN_SCALE),
+					"b. Load Character", Color.WHITE);
+			appFrame.printAtPixelCentered(middlePoint, (int) (408 * Asset.SCREEN_SCALE),
+					"c. View Prologue", Color.WHITE);
+			appFrame.printAtPixelCentered(middlePoint, (int) (428 * Asset.SCREEN_SCALE), "d. Training",
+					Color.WHITE);
+			appFrame.printAtPixelCentered(middlePoint, (int) (448 * Asset.SCREEN_SCALE),
+					"e. Prelude Arena", Color.WHITE);
+			appFrame.printAtPixelCentered(middlePoint, (int) (468 * Asset.SCREEN_SCALE),
+					"f. Show HiScores", Color.WHITE);
+			appFrame.printAtPixelCentered(middlePoint, (int) (488 * Asset.SCREEN_SCALE), "g. Quit",
+					Color.WHITE);
+			appFrame.refresh();
+			while (x.code != CharKey.A && x.code != CharKey.a && x.code != CharKey.B
 					&& x.code != CharKey.b && x.code != CharKey.C && x.code != CharKey.c
 					&& x.code != CharKey.D && x.code != CharKey.d && x.code != CharKey.E
 					&& x.code != CharKey.e && x.code != CharKey.G && x.code != CharKey.g
 					&& x.code != CharKey.F && x.code != CharKey.f
 					&& x.code != CharKey.UARROW && x.code != CharKey.DARROW
-					&& x.code != CharKey.SPACE && x.code != CharKey.ENTER )
-				x = appFrame.inkey( );
+					&& x.code != CharKey.SPACE && x.code != CharKey.ENTER)
+				x = appFrame.inkey();
 			switch ( x.code )
 			{
 			case CharKey.A:
