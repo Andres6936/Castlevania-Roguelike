@@ -7,6 +7,10 @@ import co.castle.game.Game;
 import co.castle.system.FileLoader;
 import co.castle.ui.Appearance;
 import co.castle.ui.AppearanceFactory;
+import co.castle.ui.Display;
+import co.castle.ui.UserInterface;
+import co.castle.ui.graphicsUI.GFXUserInterface;
+import co.castle.ui.graphicsUI.GraphicsDisplay;
 import co.castle.ui.graphicsUI.Panel;
 import sz.csi.CharKey;
 import sz.util.ImageUtils;
@@ -102,6 +106,10 @@ public final class ApplicationGraphics extends JFrame {
 		for (Appearance definition : new GFXAppearances(assets).getAppearances()) {
 			AppearanceFactory.getAppearanceFactory().addDefinition(definition);
 		}
+
+		System.out.println("Initializing Swing GFX User Interface");
+		UserInterface.setSingleton(new GFXUserInterface());
+		Display.thus = new GraphicsDisplay();
 	}
 
 	// Method Static

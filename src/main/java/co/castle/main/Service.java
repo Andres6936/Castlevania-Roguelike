@@ -88,10 +88,6 @@ public final class Service extends MusicManager {
 		System.out.println("Initializing Swing GFX System Interface");
 		ApplicationGraphics appFrame = ApplicationGraphics.getInstance();
 
-		System.out.println("Initializing Swing GFX User Interface");
-		UserInterface.setSingleton(new GFXUserInterface());
-
-		Display.thus = new GraphicsDisplay();
 		PlayerGenerator.thus = new GFXPlayerGenerator(appFrame);
 
 		EffectFactory.setSingleton(new GFXEffectFactory());
