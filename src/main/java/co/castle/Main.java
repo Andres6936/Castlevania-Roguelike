@@ -56,21 +56,21 @@ public final class Main
 	}
 
     public static void main( String[] args ) {
-//		var sceneManager = new SceneManager();
-//		while (sceneManager.isRunning()) {
-//			sceneManager.process();
-//			sceneManager.update();
-//			sceneManager.draw();
-//		}
-
-		app.start();
-		System.out.println("Launching game");
-
-		try {
-			title();
-		} catch (Exception e) {
-			System.out.println("Unrecoverable Exception, Game cann't start.\n");
+		var sceneManager = new SceneManager();
+		while (sceneManager.isRunning()) {
+			sceneManager.process();
+			sceneManager.update();
+			sceneManager.draw();
 		}
+
+//		app.start();
+//		System.out.println("Launching game");
+//
+//		try {
+//			title();
+//		} catch (Exception e) {
+//			System.out.println("Unrecoverable Exception, Game cann't start.\n");
+//		}
 	}
 
     private static void setMonsterRecord( Hashtable< ?, ? > monsterRecord )
