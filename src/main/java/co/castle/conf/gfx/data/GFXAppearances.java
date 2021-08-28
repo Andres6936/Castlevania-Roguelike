@@ -3,7 +3,6 @@ package co.castle.conf.gfx.data;
 import java.awt.image.BufferedImage;
 
 import co.castle.game.Game;
-import co.castle.main.ApplicationGraphics;
 import co.castle.ui.Appearance;
 import co.castle.ui.graphicsUI.GFXAppearance;
 import sz.util.ImageUtils;
@@ -17,19 +16,20 @@ public class GFXAppearances {
 	private final int WIDTH_NORMAL;
 
 	// Get instance of Asset
-	protected Asset configuration = ApplicationGraphics.assets;
+	protected Asset configuration;
 
-	public GFXAppearances() {
+	public GFXAppearances(Asset configuration) {
+		this.configuration = configuration;
 		WIDTH_BIG = configuration.BIG_TILE_WIDTH;
 		WIDTH_HALF = configuration.HALF_TILE_WIDTH;
 		CELL_HEIGHT = configuration.CELL_HEIGHT;
 		WIDTH_NORMAL = configuration.NORMAL_TILE_WIDTH;
 
-		SetAppearances( );
+		SetAppearances();
 	}
 
-    private GFXAppearance createAppearance( String ID, BufferedImage bigImage, int xpos,
-                                            int ypos )
+	private GFXAppearance createAppearance(String ID, BufferedImage bigImage, int xpos,
+										   int ypos)
 	{
 		xpos--;
 		ypos--;

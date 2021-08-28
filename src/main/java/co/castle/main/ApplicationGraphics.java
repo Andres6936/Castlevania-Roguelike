@@ -1,9 +1,12 @@
 package co.castle.main;
 
 import co.castle.conf.gfx.data.Asset;
+import co.castle.conf.gfx.data.GFXAppearances;
 import co.castle.event.Keyboard;
 import co.castle.game.Game;
 import co.castle.system.FileLoader;
+import co.castle.ui.Appearance;
+import co.castle.ui.AppearanceFactory;
 import co.castle.ui.graphicsUI.Panel;
 import sz.csi.CharKey;
 import sz.util.ImageUtils;
@@ -94,6 +97,11 @@ public final class ApplicationGraphics extends JFrame {
 		setFocusable(true);
 
 		panelGame.init();
+
+		System.out.println("Initializing Graphics Appearances");
+		for (Appearance definition : new GFXAppearances(assets).getAppearances()) {
+			AppearanceFactory.getAppearanceFactory().addDefinition(definition);
+		}
 	}
 
 	// Method Static
