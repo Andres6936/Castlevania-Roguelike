@@ -9,10 +9,14 @@ import sz.csi.CharKey;
 import java.awt.*;
 
 public class MenuScene implements IScene {
+
+    private int choice = 0;
+    private int middlePoint = 0;
+    private int pickerXCoordinate = 0;
+
     public MenuScene() {
-        int middlePoint = Asset.SCREEN_WIDTH / 2;
-        int pickerXCoordinate = (Asset.SCREEN_WIDTH / 2)
-                - (assets.IMAGE_PICKER.getWidth() / 2);
+        middlePoint = Asset.SCREEN_WIDTH / 2;
+        pickerXCoordinate = (Asset.SCREEN_WIDTH / 2) - (assets.IMAGE_PICKER.getWidth() / 2);
 
         ((GFXUserInterface) UserInterface.getUI()).messageBox.setVisible(false);
         ((GFXUserInterface) UserInterface.getUI()).persistantMessageBox
@@ -61,46 +65,44 @@ public class MenuScene implements IScene {
 
     @Override
     public void update() {
+    }
+
+    @Override
+    public TypeScene process() {
         CharKey x = new CharKey(CharKey.NONE);
         x = renderer.inkey();
         switch (x.code) {
             case CharKey.A:
             case CharKey.a:
-                return 0;
+                return TypeScene.NEW_GAME;
             case CharKey.B:
             case CharKey.b:
-                return 1;
+                return TypeScene.LOAD_GAME;
             case CharKey.C:
             case CharKey.c:
-                return 2;
+                return TypeScene.PROLOGUE;
             case CharKey.D:
             case CharKey.d:
-                return 3;
+                return TypeScene.TRAINING;
             case CharKey.E:
             case CharKey.e:
-                return 4;
+                return TypeScene.ARENA;
             case CharKey.F:
             case CharKey.f:
-                return 5;
+                return TypeScene.NONE;
             case CharKey.G:
             case CharKey.g:
-                return 6;
+                return TypeScene.QUIT;
             case CharKey.UARROW:
                 if (choice > 0)
                     choice--;
-                break;
+                return TypeScene.NONE;
             case CharKey.DARROW:
                 if (choice < 6)
                     choice++;
-                break;
-            case CharKey.SPACE:
-            case CharKey.ENTER:
-                return choice;
+                return TypeScene.NONE;
         }
-    }
 
-    @Override
-    public TypeScene process() {
-        return null;
+        return TypeScene.NONE;
     }
 }
