@@ -2,6 +2,7 @@ package co.castle.main;
 
 import co.castle.conf.gfx.data.Asset;
 import co.castle.conf.gfx.data.GFXAppearances;
+import co.castle.conf.gfx.data.GFXEffects;
 import co.castle.event.Keyboard;
 import co.castle.game.Game;
 import co.castle.system.FileLoader;
@@ -9,9 +10,11 @@ import co.castle.ui.Appearance;
 import co.castle.ui.AppearanceFactory;
 import co.castle.ui.Display;
 import co.castle.ui.UserInterface;
+import co.castle.ui.effects.EffectFactory;
 import co.castle.ui.graphicsUI.GFXUserInterface;
 import co.castle.ui.graphicsUI.GraphicsDisplay;
 import co.castle.ui.graphicsUI.Panel;
+import co.castle.ui.graphicsUI.effects.GFXEffectFactory;
 import sz.csi.CharKey;
 import sz.util.ImageUtils;
 import sz.util.Position;
@@ -109,7 +112,10 @@ public final class ApplicationGraphics extends JFrame {
 
 		System.out.println("Initializing Swing GFX User Interface");
 		UserInterface.setSingleton(new GFXUserInterface());
+		EffectFactory.setSingleton(new GFXEffectFactory());
 		Display.thus = new GraphicsDisplay();
+		((GFXEffectFactory) EffectFactory.getSingleton())
+				.setEffects(new GFXEffects().getEffects());
 	}
 
 	// Method Static

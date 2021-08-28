@@ -90,10 +90,7 @@ public final class Service extends MusicManager {
 
 		PlayerGenerator.thus = new GFXPlayerGenerator(appFrame);
 
-		EffectFactory.setSingleton(new GFXEffectFactory());
 
-		((GFXEffectFactory) EffectFactory.getSingleton())
-				.setEffects(new GFXEffects().getEffects());
 		ui = UserInterface.getUI();
 		initializeUI(appFrame);
 
