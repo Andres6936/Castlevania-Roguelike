@@ -512,36 +512,35 @@ public class GraphicsDisplay extends Display
 
 	public int showTitleScreen( )
 	{
-		int middlePoint = assets.SCREEN_WIDTH / 2;
-		int pickerXCoordinate = ( assets.SCREEN_WIDTH / 2 )
-				- ( assets.IMAGE_PICKER.getWidth( ) / 2 );
+		int middlePoint = Asset.SCREEN_WIDTH / 2;
+		int pickerXCoordinate = (Asset.SCREEN_WIDTH / 2)
+				- (assets.IMAGE_PICKER.getWidth() / 2);
 
-		( (GFXUserInterface) UserInterface.getUI( ) ).messageBox.setVisible( false );
-		( (GFXUserInterface) UserInterface.getUI( ) ).persistantMessageBox
-				.setVisible( false );
+		((GFXUserInterface) UserInterface.getUI()).messageBox.setVisible(false);
+		((GFXUserInterface) UserInterface.getUI()).persistantMessageBox
+				.setVisible(false);
 
-		appFrame.setFontToPanel( assets.FONT_TEXT );
-		appFrame.drawImage( assets.IMAGE_TITLE );
+		appFrame.setFontToPanel(assets.FONT_TEXT);
+		appFrame.drawImage(assets.IMAGE_TITLE);
 
-		appFrame.printAtPixelCentered( middlePoint, (int) ( 530 * assets.SCREEN_SCALE ),
+		appFrame.printAtPixelCentered(middlePoint, (int) (530 * Asset.SCREEN_SCALE),
 				"'CastleVania' is a trademark of Konami Corporation.",
-				assets.COLOR_BOLD );
-		appFrame.printAtPixelCentered( middlePoint, (int) ( 555 * assets.SCREEN_SCALE ), "CastlevaniaRL v"
-				+ Game.getVersion( ) + ", Developed by Santiago Zapata 2005-2010",
-				Color.WHITE );
-		appFrame.printAtPixelCentered( middlePoint, (int) ( 570 * assets.SCREEN_SCALE ),
-				"Artwork by Christopher Barrett, 2006-2007", Color.WHITE );
-		appFrame.printAtPixelCentered( middlePoint, (int) ( 585 * assets.SCREEN_SCALE ),
+				Asset.COLOR_BOLD);
+		appFrame.printAtPixelCentered(middlePoint, (int) (555 * Asset.SCREEN_SCALE), "CastlevaniaRL v"
+						+ Game.getVersion() + ", Developed by Santiago Zapata 2005-2010",
+				Color.WHITE);
+		appFrame.printAtPixelCentered(middlePoint, (int) (570 * Asset.SCREEN_SCALE),
+				"Artwork by Christopher Barrett, 2006-2007", Color.WHITE);
+		appFrame.printAtPixelCentered(middlePoint, (int) (585 * Asset.SCREEN_SCALE),
 				"Midi Tracks by Jorge E. Fuentes, JiLost, Nicholas and Tom Kim",
-				Color.WHITE );
+				Color.WHITE);
 
-		CharKey x = new CharKey( CharKey.NONE );
+		CharKey x = new CharKey(CharKey.NONE);
 		int choice = 0;
-		appFrame.saveBuffer( );
+		appFrame.saveBuffer();
 
-		while ( true )
-		{
-			appFrame.restore( );
+		while (true) {
+			appFrame.restore();
 
 			appFrame.drawImage( pickerXCoordinate, (int) ( ( 356 + choice * 20 ) * assets.SCREEN_SCALE ),
 					assets.IMAGE_PICKER );
