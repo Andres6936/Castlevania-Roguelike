@@ -76,8 +76,7 @@ public class DemonDraculaAI extends MonsterAI
 					if (element.getRange() >= playerDistance
 							&& Util.chance(element.getFrequency())) {
 						// Perform the attack
-						Action ret = ActionFactory.getActionFactory()
-								.getAction(element.getAttackId());
+						Action ret = actionFactory.getAction(element.getAttackId());
 						if (element.getChargeCounter() > 0) {
 							if (chargeCounter == 0) {
 								chargeCounter = element.getChargeCounter();

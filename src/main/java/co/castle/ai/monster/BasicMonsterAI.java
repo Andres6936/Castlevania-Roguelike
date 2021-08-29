@@ -239,17 +239,13 @@ public class BasicMonsterAI extends MonsterAI
 								.getLevel().getPlayer()
 								.getStandingHeight())) )
 						{
-							Action ret = ActionFactory.getActionFactory( )
-									.getAction( element.getAttackId( ) );
+							Action ret = actionFactory.getAction(element.getAttackId());
 							// If attacks needs charge, ensure I have charge, else try
 							// another attack
-							if ( element.getChargeCounter( ) > 0 )
-							{
-								if ( chargeCounter > 0 ) {
+							if (element.getChargeCounter() > 0) {
+								if (chargeCounter > 0) {
 									continue;
-								}
-								else
-								{
+								} else {
 									// Prepare to charge again, but try to execute the
 									// attack
 									chargeCounter = element.getChargeCounter( );

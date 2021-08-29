@@ -147,8 +147,7 @@ public class WanderToPlayerAI extends MonsterAI
 						RangedAttack ra = rangedAttacks.elementAt(i);
 						if (distanceToPlayer <= ra.getRange())
 							if (Util.chance(ra.getFrequency())) {
-								Action ret = ActionFactory.getActionFactory()
-										.getAction(ra.getAttackId());
+								Action ret = actionFactory.getAction(ra.getAttackId());
 								ret.setDirection(directionToPlayer);
 								return ret;
 							}

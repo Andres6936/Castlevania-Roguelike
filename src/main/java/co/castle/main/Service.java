@@ -86,7 +86,6 @@ public final class Service {
 		initializeUI(appFrame);
 
 		System.out.println("Initializing Action Objects");
-		initializeActions();
 		for (ActionSelector definition : getSelectorDefinitions()) {
 			SelectorFactory.getSelectorFactory().addDefinition(definition);
 		}
@@ -120,16 +119,6 @@ public final class Service {
 		((GFXUserInterface) ui).init((ApplicationGraphics) si, userCommands, userActions);
 		uiSelector = new GFXUISelector();
 		((GFXUISelector) uiSelector).init(userActions, (GFXUserInterface) ui, keyBindings);
-	}
-
-	private static void initializeActions( )
-	{
-		ActionFactory af = ActionFactory.getActionFactory( );
-		Action[ ] definitions = new Action[ ]
-		{	new Dash( ), new MonsterWalk( ), new Swim( ), new MonsterCharge( ), new MonsterMissile( ),
-			new SummonMonster( ), new MummyStrangle( ), new MummyTeleport( ), new Teleport( ),
-			new MandragoraScream( ) };
-        for ( Action definition : definitions ) af.addDefinition( definition );
 	}
 
 	private static ActionSelector[ ] getSelectorDefinitions( )

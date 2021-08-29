@@ -42,8 +42,7 @@ public class StationaryAI extends MonsterAI
 					if (element.getRange() >= playerDistance
 							&& Util.chance(element.getFrequency())) {
 						// Perform the attack
-						Action ret = ActionFactory.getActionFactory()
-								.getAction(element.getAttackId());
+						Action ret = actionFactory.getAction(element.getAttackId());
 						ret.setDirection(directionToPlayer);
 						return ret;
 					}

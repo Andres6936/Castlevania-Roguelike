@@ -2,11 +2,27 @@ package co.castle.action;
 
 import java.util.Hashtable;
 
+import co.castle.action.monster.*;
+import co.castle.action.monster.boss.MummyStrangle;
+import co.castle.action.monster.boss.MummyTeleport;
+import co.castle.action.monster.boss.Teleport;
 import sz.util.Debug;
 
 public class ActionFactory {
     private final Hashtable<String, Action> definitions = new Hashtable<>(20);
     private final static ActionFactory singleton = new ActionFactory();
+
+    public ActionFactory() {
+        Action[] definitions = new Action[]
+                {
+                        new Dash(), new MonsterWalk(), new Swim(), new MonsterCharge(), new MonsterMissile(),
+                        new SummonMonster(), new MummyStrangle(), new MummyTeleport(), new Teleport(),
+                        new MandragoraScream()
+                };
+        for (Action definition : definitions) {
+            addDefinition(definition);
+        }
+    }
 
     public static ActionFactory getActionFactory() {
         return singleton;

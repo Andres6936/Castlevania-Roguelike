@@ -3,23 +3,21 @@ package co.castle.ai.monster;
 import java.util.Vector;
 
 import co.castle.action.Action;
+import co.castle.action.ActionFactory;
 import co.castle.actor.Actor;
 import co.castle.ai.ActionSelector;
 import sz.util.Debug;
 
-public abstract class MonsterAI implements ActionSelector, Cloneable
-{
-	protected Vector <RangedAttack> rangedAttacks;
+public abstract class MonsterAI implements ActionSelector, Cloneable {
+	protected Vector<RangedAttack> rangedAttacks;
 
-	public ActionSelector derive( )
-	{
-		try
-		{
-			return (ActionSelector) clone( );
-		}
-		catch ( Exception e )
-		{
-			Debug.byebye( "Failed to clone MonsterAI " + getID( ) );
+	protected final static ActionFactory actionFactory = new ActionFactory();
+
+	public ActionSelector derive() {
+		try {
+			return (ActionSelector) clone();
+		} catch (Exception e) {
+			Debug.byebye("Failed to clone MonsterAI " + getID());
 			return null;
 		}
 	}
