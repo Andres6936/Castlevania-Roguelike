@@ -4,18 +4,15 @@ import java.util.Hashtable;
 
 import sz.util.Debug;
 
-public class AppearanceFactory
-{
-	private Hashtable <String, Appearance> definitions;
-	private static AppearanceFactory singleton = new AppearanceFactory( );
+public class AppearanceFactory {
+	private final Hashtable<String, Appearance> definitions;
+	private static final AppearanceFactory singleton = new AppearanceFactory();
 
-	public AppearanceFactory( )
-	{
-		definitions = new Hashtable <String, Appearance>( 40 );
+	public AppearanceFactory() {
+		definitions = new Hashtable<>(40);
 	}
 
-	public static AppearanceFactory getAppearanceFactory( )
-	{
+	public static AppearanceFactory getAppearanceFactory() {
 		return singleton;
 	}
 
@@ -24,10 +21,9 @@ public class AppearanceFactory
 		definitions.put( definition.getID( ), definition );
 	}
 
-	public Appearance getAppearance( String id )
-	{
-		Appearance ret = (Appearance) definitions.get( id );
-		Debug.doAssert( ret != null, "Couldnt find the appearance " + id );
+	public Appearance getAppearance( String id ) {
+		Appearance ret = definitions.get(id);
+		Debug.doAssert(ret != null, "Couldnt find the appearance " + id);
 		return ret;
 	}
 
