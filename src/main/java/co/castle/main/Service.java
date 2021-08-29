@@ -37,6 +37,7 @@ import co.castle.ui.*;
 import co.castle.ui.graphicsUI.GFXPlayerGenerator;
 import co.castle.ui.graphicsUI.GFXUISelector;
 import co.castle.ui.graphicsUI.GFXUserInterface;
+import co.castle.ui.graphicsUI.GraphicsDisplay;
 import sz.midi.STMidiPlayer;
 
 import javax.sound.midi.MidiSystem;
@@ -84,6 +85,7 @@ public final class Service extends MusicManager {
 		ApplicationGraphics appFrame = ApplicationGraphics.getInstance();
 
 		PlayerGenerator.thus = new GFXPlayerGenerator(appFrame);
+		Display.thus = new GraphicsDisplay();
 
 
 		ui = UserInterface.getUI();

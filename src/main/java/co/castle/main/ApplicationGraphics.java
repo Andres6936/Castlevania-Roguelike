@@ -113,7 +113,6 @@ public final class ApplicationGraphics extends JFrame {
 		System.out.println("Initializing Swing GFX User Interface");
 		UserInterface.setSingleton(new GFXUserInterface());
 		EffectFactory.setSingleton(new GFXEffectFactory());
-		Display.thus = new GraphicsDisplay();
 		((GFXEffectFactory) EffectFactory.getSingleton())
 				.setEffects(new GFXEffects().getEffects());
 	}
