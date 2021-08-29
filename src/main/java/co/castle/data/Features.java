@@ -4,12 +4,12 @@ import co.castle.feature.Feature;
 import co.castle.player.Player;
 import co.castle.ui.AppearanceFactory;
 
-public class Features
-{
+public class Features {
 
-	public static Feature[ ] getFeatureDefinitions( AppearanceFactory apf )
-	{
-		Feature[ ] ret = new Feature[ 42 ];
+	public static Feature[] getFeatureDefinitions() {
+		AppearanceFactory apf = AppearanceFactory.getAppearanceFactory();
+
+		Feature[] ret = new Feature[42];
 		ret[0] = new Feature("CANDLE", apf.getAppearance("CANDLE"), 0, "Candlestick",
 				0, 3);
 		ret[38] = new Feature("COFFIN", apf.getAppearance("COFFIN"), 2, "Coffin", 0,

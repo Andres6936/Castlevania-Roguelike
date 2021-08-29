@@ -4,20 +4,19 @@ import co.castle.ai.SelectorFactory;
 import co.castle.feature.SmartFeature;
 import co.castle.ui.AppearanceFactory;
 
-public class SmartFeatures
-{
-	public static SmartFeature[ ] getSmartFeatures( SelectorFactory sf )
-	{
-		AppearanceFactory apf = AppearanceFactory.getAppearanceFactory( );
-		SmartFeature[ ] ret = new SmartFeature[ 6 ];
-		ret[ 0 ] = new SmartFeature( "CROSS", "Holy cross",
-				apf.getAppearance( "CROSS" ) );
-		ret[ 1 ] = new SmartFeature( "BURNING_FLAME", "Burning Flame",
-				apf.getAppearance( "FLAME" ) );
-		ret[ 2 ] = new SmartFeature( "GARLIC", "Garlic", apf.getAppearance( "GARLIC" ) );
-		ret[ 3 ] = new SmartFeature( "BIBUTI", "Bibuti Powder",
-				apf.getAppearance( "BIBUTI" ) );
-		ret[ 4 ] = new SmartFeature( "FLAME", "Magic Flame",
+public class SmartFeatures {
+	public static SmartFeature[] getSmartFeatures() {
+		SelectorFactory sf = SelectorFactory.getSelectorFactory();
+		AppearanceFactory apf = AppearanceFactory.getAppearanceFactory();
+		SmartFeature[] ret = new SmartFeature[6];
+		ret[0] = new SmartFeature("CROSS", "Holy cross",
+				apf.getAppearance("CROSS"));
+		ret[1] = new SmartFeature("BURNING_FLAME", "Burning Flame",
+				apf.getAppearance("FLAME"));
+		ret[2] = new SmartFeature("GARLIC", "Garlic", apf.getAppearance("GARLIC"));
+		ret[3] = new SmartFeature("BIBUTI", "Bibuti Powder",
+				apf.getAppearance("BIBUTI"));
+		ret[4] = new SmartFeature("FLAME", "Magic Flame",
 				apf.getAppearance( "FLAME" ) );
 		ret[ 5 ] = new SmartFeature( "BLAST_CRYSTAL", "Blast Crystal",
 				apf.getAppearance( "BLAST_CRYSTAL" ) );

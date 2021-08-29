@@ -116,13 +116,10 @@ public final class Service {
 
 	private static void initializeFeatures( )
 	{
-		FeatureFactory.getFactory( )
-				.init( Features.getFeatureDefinitions( AppearanceFactory.getAppearanceFactory( ) ) );
+		FeatureFactory.getFactory().init(Features.getFeatureDefinitions());
 	}
 
-	private static void initializeSmartFeatures( )
-	{
-		SmartFeatureFactory.getFactory( )
-				.init( SmartFeatures.getSmartFeatures( SelectorFactory.getSelectorFactory( ) ) );
+	private static void initializeSmartFeatures( ) {
+		SmartFeatureFactory.getFactory().init(SmartFeatures.getSmartFeatures());
 	}
 }
