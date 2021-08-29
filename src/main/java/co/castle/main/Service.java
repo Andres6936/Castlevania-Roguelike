@@ -15,8 +15,6 @@ import co.castle.ai.npc.PriestAI;
 import co.castle.ai.npc.VillagerAI;
 import co.castle.ai.player.WildMorphAI;
 import co.castle.conf.KeyBindings;
-import co.castle.conf.gfx.data.GFXAppearances;
-import co.castle.conf.gfx.data.GFXEffects;
 import co.castle.data.*;
 import co.castle.feature.CountDown;
 import co.castle.feature.FeatureFactory;
@@ -34,20 +32,14 @@ import co.castle.npc.NPCFactory;
 import co.castle.player.Player;
 import co.castle.system.FileLoader;
 import co.castle.ui.*;
-import co.castle.ui.effects.EffectFactory;
 import co.castle.ui.graphicsUI.GFXPlayerGenerator;
 import co.castle.ui.graphicsUI.GFXUISelector;
 import co.castle.ui.graphicsUI.GFXUserInterface;
-import co.castle.ui.graphicsUI.GraphicsDisplay;
-import co.castle.ui.graphicsUI.effects.GFXEffectFactory;
-import sz.csi.CharKey;
 import sz.midi.STMidiPlayer;
 
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.MidiUnavailableException;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.util.Properties;
 
 /**
@@ -213,28 +205,6 @@ public final class Service extends MusicManager {
 		uiSelector = new GFXUISelector();
 		((GFXUISelector) uiSelector).init(userActions, walkAction, target, attack,
 				(GFXUserInterface) ui, keyBindings);
-	}
-
-	private static String readKeyString( Properties config, String keyName )
-	{
-		return readKey( config, keyName ) + "";
-	}
-
-	private static int readKey( Properties config, String keyName )
-	{
-		String fieldName = config.getProperty( keyName ).trim( );
-		if ( fieldName == null )
-			throw new RuntimeException( "Invalid key.cfg file, property not found: " + keyName );
-		try
-		{
-			Field field = CharKey.class.getField( fieldName );
-			return field.getInt( CharKey.class );
-		}
-        catch ( SecurityException | NoSuchFieldException | IllegalArgumentException | IllegalAccessException e )
-		{
-			e.printStackTrace( );
-			throw new RuntimeException( "Error reading field : " + fieldName );
-		}
 	}
 
 	private static int i( String s )
