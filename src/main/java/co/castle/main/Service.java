@@ -100,8 +100,7 @@ public final class Service {
 
 	private static void initializeCells( )
 	{
-		MapCellFactory.getMapCellFactory( )
-				.init( Cells.getCellDefinitions( AppearanceFactory.getAppearanceFactory( ) ) );
+		MapCellFactory.getMapCellFactory().init(Cells.getCellDefinitions());
 	}
 
 	private static void initializeItems( )

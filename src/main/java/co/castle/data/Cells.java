@@ -3,20 +3,19 @@ package co.castle.data;
 import co.castle.level.Cell;
 import co.castle.ui.AppearanceFactory;
 
-public class Cells
-{
-	public static Cell[ ] getCellDefinitions( AppearanceFactory apf )
-	{
+public class Cells {
+	public static Cell[] getCellDefinitions() {
+		AppearanceFactory apf = AppearanceFactory.getAppearanceFactory();
 
-		Cell[ ] ret = new Cell[ 179 ];
+		Cell[] ret = new Cell[179];
 
-		ret[ 149 ] = new Cell( "AIR", "nothing", "Nothing",
-				apf.getAppearance( "NOTHING" ) );
-		ret[ 149 ].setEthereal( true );
+		ret[149] = new Cell("AIR", "nothing", "Nothing",
+				apf.getAppearance("NOTHING"));
+		ret[149].setEthereal(true);
 
-		ret[ 153 ] = new Cell( "DINING_CHAIR", "chair", "Dining chair",
-				apf.getAppearance( "DINING_CHAIR" ), true, false );
-		ret[ 154 ] = new Cell( "DINING_TABLE", "table", "Dining table",
+		ret[153] = new Cell("DINING_CHAIR", "chair", "Dining chair",
+				apf.getAppearance("DINING_CHAIR"), true, false);
+		ret[154] = new Cell("DINING_TABLE", "table", "Dining table",
 				apf.getAppearance( "DINING_TABLE" ), true, false );
 		ret[ 155 ] = new Cell( "MARBLE_STAIRSUP", "stairs", "Stairs",
 				apf.getAppearance( "MARBLE_STAIRSUP" ) );
