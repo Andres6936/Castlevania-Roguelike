@@ -14,6 +14,7 @@ import co.castle.ai.monster.WanderToPlayerAI;
 import co.castle.ai.npc.PriestAI;
 import co.castle.ai.npc.VillagerAI;
 import co.castle.ai.player.WildMorphAI;
+import co.castle.conf.KeyBindings;
 import co.castle.conf.gfx.data.GFXAppearances;
 import co.castle.conf.gfx.data.GFXEffects;
 import co.castle.data.*;
@@ -157,116 +158,56 @@ public final class Service extends MusicManager {
 		Action attack = new Attack();
 		Action reload = new Reload();
 		Action target = new TargetPS();
-		Action switchWeapons = new SwitchWeapons( );
-		Action get = new Get( );
-		Action drop = new Drop( );
-		Action dive = new Dive( );
+		Action switchWeapons = new SwitchWeapons();
+		Action get = new Get();
+		Action drop = new Drop();
+		Action dive = new Dive();
 
-        UserAction[] userActions;
-        UserCommand[] userCommands;
-        Properties keyBindings;
-		try {
-			Properties keyConfig = new Properties();
-			keyConfig.load(FileLoader.getInputStream("keys.cfg"));
+		UserAction[] userActions;
+		UserCommand[] userCommands;
+		Properties keyBindings = new KeyBindings();
 
-			keyBindings = new Properties();
-			keyBindings.put("WEAPON_KEY", readKeyString(keyConfig, "weapon"));
-			keyBindings.put("DONOTHING1_KEY", readKeyString(keyConfig, "doNothing"));
-			keyBindings.put("DONOTHING2_KEY", readKeyString(keyConfig, "doNothing2"));
-			keyBindings.put("UP1_KEY", readKeyString(keyConfig, "up"));
-			keyBindings.put("UP2_KEY", readKeyString(keyConfig, "up2"));
-			keyBindings.put("LEFT1_KEY", readKeyString(keyConfig, "left"));
-			keyBindings.put("LEFT2_KEY", readKeyString(keyConfig, "left2"));
-			keyBindings.put("RIGHT1_KEY", readKeyString(keyConfig, "right"));
-			keyBindings.put( "RIGHT2_KEY", readKeyString( keyConfig, "right2" ) );
-			keyBindings.put( "DOWN1_KEY", readKeyString( keyConfig, "down" ) );
-			keyBindings.put( "DOWN2_KEY", readKeyString( keyConfig, "down2" ) );
-			keyBindings.put( "UPRIGHT1_KEY", readKeyString( keyConfig, "upRight" ) );
-			keyBindings.put( "UPRIGHT2_KEY", readKeyString( keyConfig, "upRight2" ) );
-			keyBindings.put( "UPLEFT1_KEY", readKeyString( keyConfig, "upLeft" ) );
-			keyBindings.put( "UPLEFT2_KEY", readKeyString( keyConfig, "upLeft2" ) );
-			keyBindings.put( "DOWNLEFT1_KEY", readKeyString( keyConfig, "downLeft" ) );
-			keyBindings.put( "DOWNLEFT2_KEY", readKeyString( keyConfig, "downLeft2" ) );
-			keyBindings.put( "DOWNRIGHT1_KEY", readKeyString( keyConfig, "downRight" ) );
-			keyBindings.put( "DOWNRIGHT2_KEY", readKeyString( keyConfig, "downRight2" ) );
-			keyBindings.put( "SELF1_KEY", readKeyString( keyConfig, "self" ) );
-			keyBindings.put( "SELF2_KEY", readKeyString( keyConfig, "self2" ) );
-			keyBindings.put( "ATTACK1_KEY", readKeyString( keyConfig, "attack1" ) );
-			keyBindings.put( "ATTACK2_KEY", readKeyString( keyConfig, "attack2" ) );
-			keyBindings.put( "JUMP_KEY", readKeyString( keyConfig, "jump" ) );
-			keyBindings.put( "THROW_KEY", readKeyString( keyConfig, "throw" ) );
-			keyBindings.put( "EQUIP_KEY", readKeyString( keyConfig, "equip" ) );
-			keyBindings.put( "UNEQUIP_KEY", readKeyString( keyConfig, "unequip" ) );
-			keyBindings.put( "RELOAD_KEY", readKeyString( keyConfig, "reload" ) );
-			keyBindings.put( "USE_KEY", readKeyString( keyConfig, "use" ) );
-			keyBindings.put( "GET_KEY", readKeyString( keyConfig, "get" ) );
-			keyBindings.put( "GET2_KEY", readKeyString( keyConfig, "get2" ) );
-			keyBindings.put( "DROP_KEY", readKeyString( keyConfig, "drop" ) );
-			keyBindings.put( "DIVE_KEY", readKeyString( keyConfig, "dive" ) );
-			keyBindings.put( "TARGET_KEY", readKeyString( keyConfig, "target" ) );
-			keyBindings.put( "SWITCH_WEAPONS_KEY", readKeyString( keyConfig, "switchWeapons" ) );
-			keyBindings.put( "QUIT_KEY", readKeyString( keyConfig, "PROMPTQUIT" ) );
-			keyBindings.put( "HELP1_KEY", readKeyString( keyConfig, "HELP1" ) );
-			keyBindings.put( "HELP2_KEY", readKeyString( keyConfig, "HELP2" ) );
-			keyBindings.put( "LOOK_KEY", readKeyString( keyConfig, "LOOK" ) );
-			keyBindings.put( "PROMPT_SAVE_KEY", readKeyString( keyConfig, "PROMPTSAVE" ) );
-			keyBindings.put( "SHOW_SKILLS_KEY", readKeyString( keyConfig, "SHOWSKILLS" ) );
-			keyBindings.put( "SHOW_INVENTORY_KEY", readKeyString( keyConfig, "SHOWINVEN" ) );
-			keyBindings.put( "SHOW_STATS_KEY", readKeyString( keyConfig, "SHOWSTATS" ) );
-			keyBindings.put( "CHARDUMP_KEY", readKeyString( keyConfig, "CHARDUMP" ) );
-			keyBindings.put( "SHOW_MESSAGE_HISTORY_KEY", readKeyString( keyConfig, "SHOWMESSAGEHISTORY" ) );
-			keyBindings.put( "SHOW_MAP_KEY", readKeyString( keyConfig, "SHOWMAP" ) );
-			keyBindings.put( "EXAMINE_LEVEL_MAP_KEY", readKeyString( keyConfig, "EXAMINELEVELMAP" ) );
-			keyBindings.put( "SWITCH_MUSIC_KEY", readKeyString( keyConfig, "SWITCHMUSIC" ) );
+		Display.thus.setKeyBindings(keyBindings);
 
-			Display.thus.setKeyBindings( keyBindings );
+		userActions = new UserAction[]
+				{
+						new UserAction(attack, i(keyBindings.getProperty("ATTACK1_KEY"))),
+						new UserAction(attack, i(keyBindings.getProperty("ATTACK2_KEY"))),
+						new UserAction(jump, i(keyBindings.getProperty("JUMP_KEY"))),
+						new UserAction(thrown, i(keyBindings.getProperty("THROW_KEY"))),
+						new UserAction(equip, i(keyBindings.getProperty("EQUIP_KEY"))),
+						new UserAction(unequip, i(keyBindings.getProperty("UNEQUIP_KEY"))),
+						new UserAction(reload, i(keyBindings.getProperty("RELOAD_KEY"))),
+						new UserAction(use, i(keyBindings.getProperty("USE_KEY"))),
+						new UserAction(get, i(keyBindings.getProperty("GET_KEY"))),
+						new UserAction(drop, i(keyBindings.getProperty("DROP_KEY"))),
+						new UserAction(dive, i(keyBindings.getProperty("DIVE_KEY"))),
+						new UserAction(target, i(keyBindings.getProperty("TARGET_KEY"))),
+						new UserAction(switchWeapons, i(keyBindings.getProperty("SWITCH_WEAPONS_KEY"))),
+						new UserAction(get, i(keyBindings.getProperty("GET2_KEY"))),};
 
-			userActions = new UserAction[ ]
-			{	new UserAction( attack, i( keyBindings.getProperty( "ATTACK1_KEY" ) ) ),
-				new UserAction( attack, i( keyBindings.getProperty( "ATTACK2_KEY" ) ) ),
-				new UserAction( jump, i( keyBindings.getProperty( "JUMP_KEY" ) ) ),
-				new UserAction( thrown, i( keyBindings.getProperty( "THROW_KEY" ) ) ),
-				new UserAction( equip, i( keyBindings.getProperty( "EQUIP_KEY" ) ) ),
-				new UserAction( unequip, i( keyBindings.getProperty( "UNEQUIP_KEY" ) ) ),
-				new UserAction( reload, i( keyBindings.getProperty( "RELOAD_KEY" ) ) ),
-				new UserAction( use, i( keyBindings.getProperty( "USE_KEY" ) ) ),
-				new UserAction( get, i( keyBindings.getProperty( "GET_KEY" ) ) ),
-				new UserAction( drop, i( keyBindings.getProperty( "DROP_KEY" ) ) ),
-				new UserAction( dive, i( keyBindings.getProperty( "DIVE_KEY" ) ) ),
-				new UserAction( target, i( keyBindings.getProperty( "TARGET_KEY" ) ) ),
-				new UserAction( switchWeapons, i( keyBindings.getProperty( "SWITCH_WEAPONS_KEY" ) ) ),
-				new UserAction( get, i( keyBindings.getProperty( "GET2_KEY" ) ) ), };
-
-			userCommands = new UserCommand[ ]
-			{	new UserCommand( CommandListener.PROMPTQUIT, i( keyBindings.getProperty( "QUIT_KEY" ) ) ),
-				new UserCommand( CommandListener.HELP, i( keyBindings.getProperty( "HELP1_KEY" ) ) ),
-				new UserCommand( CommandListener.LOOK, i( keyBindings.getProperty( "LOOK_KEY" ) ) ),
-				new UserCommand( CommandListener.PROMPTSAVE,
-						i( keyBindings.getProperty( "PROMPT_SAVE_KEY" ) ) ),
-				new UserCommand( CommandListener.SHOWSKILLS,
-						i( keyBindings.getProperty( "SHOW_SKILLS_KEY" ) ) ),
-				new UserCommand( CommandListener.HELP, i( keyBindings.getProperty( "HELP2_KEY" ) ) ),
-				new UserCommand( CommandListener.SHOWINVEN,
-						i( keyBindings.getProperty( "SHOW_INVENTORY_KEY" ) ) ),
-				new UserCommand( CommandListener.SHOWSTATS,
-						i( keyBindings.getProperty( "SHOW_STATS_KEY" ) ) ),
-				new UserCommand( CommandListener.CHARDUMP, i( keyBindings.getProperty( "CHARDUMP_KEY" ) ) ),
-				new UserCommand( CommandListener.SHOWMESSAGEHISTORY,
-						i( keyBindings.getProperty( "SHOW_MESSAGE_HISTORY_KEY" ) ) ),
-				new UserCommand( CommandListener.SHOWMAP, i( keyBindings.getProperty( "SHOW_MAP_KEY" ) ) ),
-				new UserCommand( CommandListener.EXAMINELEVELMAP,
-						i( keyBindings.getProperty( "EXAMINE_LEVEL_MAP_KEY" ) ) ),
-				new UserCommand( CommandListener.SWITCHMUSIC,
-						i( keyBindings.getProperty( "SWITCH_MUSIC_KEY" ) ) ), };
-
-		}
-		catch ( FileNotFoundException e ) {
-			e.printStackTrace();
-			throw new RuntimeException("keys.cfg config file not found");
-		} catch (IOException e) {
-			e.printStackTrace();
-			throw new RuntimeException("Problem reading keys.cfg config file");
-		}
+		userCommands = new UserCommand[]
+				{
+						new UserCommand(CommandListener.PROMPTQUIT, i(keyBindings.getProperty("QUIT_KEY"))),
+						new UserCommand(CommandListener.HELP, i(keyBindings.getProperty("HELP1_KEY"))),
+						new UserCommand(CommandListener.LOOK, i(keyBindings.getProperty("LOOK_KEY"))),
+						new UserCommand(CommandListener.PROMPTSAVE,
+								i(keyBindings.getProperty("PROMPT_SAVE_KEY"))),
+						new UserCommand(CommandListener.SHOWSKILLS,
+								i(keyBindings.getProperty("SHOW_SKILLS_KEY"))),
+						new UserCommand(CommandListener.HELP, i(keyBindings.getProperty("HELP2_KEY"))),
+						new UserCommand(CommandListener.SHOWINVEN,
+								i(keyBindings.getProperty("SHOW_INVENTORY_KEY"))),
+						new UserCommand(CommandListener.SHOWSTATS,
+								i(keyBindings.getProperty("SHOW_STATS_KEY"))),
+						new UserCommand(CommandListener.CHARDUMP, i(keyBindings.getProperty("CHARDUMP_KEY"))),
+						new UserCommand(CommandListener.SHOWMESSAGEHISTORY,
+								i(keyBindings.getProperty("SHOW_MESSAGE_HISTORY_KEY"))),
+						new UserCommand(CommandListener.SHOWMAP, i(keyBindings.getProperty("SHOW_MAP_KEY"))),
+						new UserCommand(CommandListener.EXAMINELEVELMAP,
+								i(keyBindings.getProperty("EXAMINE_LEVEL_MAP_KEY"))),
+						new UserCommand(CommandListener.SWITCHMUSIC,
+								i(keyBindings.getProperty("SWITCH_MUSIC_KEY"))),};
 
 		((GFXUserInterface) ui).init((ApplicationGraphics) si, userCommands, target);
 		uiSelector = new GFXUISelector();
