@@ -1,9 +1,11 @@
 package co.castle.game;
 
+import java.io.IOException;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Properties;
 
+import co.castle.system.FileLoader;
 import sz.midi.STMidiPlayer;
 import sz.mp3.JLayerMP3Player;
 
@@ -40,6 +42,27 @@ public class MusicManager {
 	 * Current path or name of file playing.
 	 */
 	private static String playing = "__nuthin";
+
+	// Static Block
+
+	static {
+		// Load the file of configuration, this properties file have the path
+		// to tracks of app.
+		final Properties configurationFile = new Properties();
+
+		try (var in = FileLoader.getInputStream("properties/configuration.properties")) {
+			configurationFile.load(in);
+		} catch (IOException exception) {
+			System.err.println("Configuration file not found or error while loading the file.\n");
+			exception.printStackTrace();
+		}
+		if (configurationFile.getProperty("enableSound", "false").equals("true")) {
+			System.out.println("Initializing Music Manager");
+			addTracks(configurationFile);
+			SFXManager.setEnabled(configurationFile.getProperty("enableSFX") != null
+					&& configurationFile.getProperty("enableSFX").equals("true"));
+		}
+	}
 
 	// Construct
 

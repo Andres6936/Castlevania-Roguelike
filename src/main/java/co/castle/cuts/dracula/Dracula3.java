@@ -2,6 +2,7 @@ package co.castle.cuts.dracula;
 
 import co.castle.cuts.Unleasher;
 import co.castle.game.Game;
+import co.castle.game.MusicManager;
 import co.castle.level.Level;
 import co.castle.main.Service;
 import co.castle.monster.Monster;
@@ -15,9 +16,9 @@ public class Dracula3 extends Unleasher
 		Monster dracula = level.getMonsterByID("DEMON_DRACULA");
 		if (dracula != null)
 			return;
-		STMidiPlayer.stopMusic();
+		MusicManager.stopMusic();
 		Display.thus.showChat("DRACULA3", game);
-		STMidiPlayer.playKey("VICTORY");
+		MusicManager.playKey("VICTORY");
 		game.wonGame();
 		enabled = false;
 	}

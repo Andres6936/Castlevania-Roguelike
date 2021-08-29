@@ -11,7 +11,7 @@ import co.castle.game.MusicManager;
 import co.castle.game.SFXManager;
 import co.castle.system.FileLoader;
 
-public class STMidiPlayer extends MusicManager implements Runnable {
+public class STMidiPlayer implements Runnable {
 	public static final int INS_STOP = 0;
 	public static final int INS_LOAD = 1;
 	public static final int INS_DIE = 2;
@@ -48,11 +48,6 @@ public class STMidiPlayer extends MusicManager implements Runnable {
 			} catch (MidiUnavailableException mue) {
 				System.err.println("Midi Device Unavailable");
 			}
-			System.out.println("Initializing Music Manager");
-			addTracks(configurationFile);
-
-			SFXManager.setEnabled(configurationFile.getProperty("enableSFX") != null
-					&& configurationFile.getProperty("enableSFX").equals("true"));
 		}
 	}
 

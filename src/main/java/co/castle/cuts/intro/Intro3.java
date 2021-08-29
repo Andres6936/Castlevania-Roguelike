@@ -2,6 +2,7 @@ package co.castle.cuts.intro;
 
 import co.castle.cuts.Unleasher;
 import co.castle.game.Game;
+import co.castle.game.MusicManager;
 import co.castle.level.Level;
 import co.castle.main.Service;
 import co.castle.monster.Monster;
@@ -42,7 +43,7 @@ public class Intro3 extends Unleasher
 					i--;
 				}
 			}
-			STMidiPlayer.playKey("WRECKAGE");
+			MusicManager.playKey("WRECKAGE");
 			level.setMusicKeyMorning("WRECKAGE");
 			if (level.getNPCByID("MELDUCK") != null)
 				level.getNPCByID("MELDUCK").setTalkMessage(

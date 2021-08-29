@@ -7,10 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.Hashtable;
 
-import co.castle.game.CRLException;
-import co.castle.game.Game;
-import co.castle.game.GameFiles;
-import co.castle.game.MonsterRecord;
+import co.castle.game.*;
 import co.castle.main.Service;
 import co.castle.scene.SceneManager;
 import co.castle.system.FileLoader;
@@ -160,7 +157,7 @@ public final class Main
 	}
 
 	private static void title( ) {
-		STMidiPlayer.playKey("TITLE");
+		MusicManager.playKey("TITLE");
 
 		int choice = Display.thus.showTitleScreen();
 

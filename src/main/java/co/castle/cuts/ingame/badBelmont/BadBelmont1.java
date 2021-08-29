@@ -2,6 +2,7 @@ package co.castle.cuts.ingame.badBelmont;
 
 import co.castle.cuts.Unleasher;
 import co.castle.game.Game;
+import co.castle.game.MusicManager;
 import co.castle.level.Level;
 import co.castle.main.Service;
 import co.castle.ui.Display;
@@ -25,10 +26,10 @@ public class BadBelmont1 extends Unleasher
 			level.getPlayer( ).addKeys( 1 );
 		}
 		else {
-			level.setMusicKeyMorning("BADBELMONT");
-			level.setMusicKeyNoon("BADBELMONT");
-			STMidiPlayer.playKey("BADBELMONT");
-		}
+            level.setMusicKeyMorning("BADBELMONT");
+            level.setMusicKeyNoon("BADBELMONT");
+            MusicManager.playKey("BADBELMONT");
+        }
 		enabled = false;
 	}
 

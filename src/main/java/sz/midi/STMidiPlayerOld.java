@@ -9,6 +9,7 @@ import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.Sequencer;
 
 import co.castle.game.Game;
+import co.castle.game.MusicManager;
 import co.castle.main.Service;
 import co.castle.system.FileLoader;
 
@@ -40,10 +41,9 @@ public class STMidiPlayerOld implements Runnable
 			sequencer = MidiSystem.getSequencer( );
 			sequencer.open( );
 		}
-		catch ( MidiUnavailableException mue )
-		{
+		catch ( MidiUnavailableException mue ) {
 			Game.addReport("Midi device unavailable");
-			STMidiPlayer.setEnabledMusicManager(false);
+			MusicManager.setEnabledMusicManager(false);
 			return;
 		}
 

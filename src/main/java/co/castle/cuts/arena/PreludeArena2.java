@@ -2,6 +2,7 @@ package co.castle.cuts.arena;
 
 import co.castle.cuts.Unleasher;
 import co.castle.game.Game;
+import co.castle.game.MusicManager;
 import co.castle.level.Level;
 import co.castle.levelgen.MonsterSpawnInfo;
 import co.castle.main.Service;
@@ -36,7 +37,7 @@ public class PreludeArena2 extends Unleasher
 				level.setLevelNumber(2);
 				level.setMusicKeyMorning("ARENA2");
 				level.setMusicKeyNoon("ARENA2");
-				STMidiPlayer.playKey("ARENA2");
+				MusicManager.playKey("ARENA2");
 				break;
 				case 2:
 					level.setInhabitants(new MonsterSpawnInfo[]
@@ -52,7 +53,7 @@ public class PreludeArena2 extends Unleasher
 					level.setLevelNumber(3);
 					level.setMusicKeyMorning("ARENA3");
 					level.setMusicKeyNoon("ARENA3");
-					STMidiPlayer.playKey("ARENA3");
+					MusicManager.playKey("ARENA3");
 					break;
 				case 3:
 					level.setInhabitants(doInhabitants(new String[]
@@ -60,7 +61,7 @@ public class PreludeArena2 extends Unleasher
 					level.setLevelNumber(4);
 					level.setMusicKeyMorning("ARENA4");
 					level.setMusicKeyNoon("ARENA4");
-					STMidiPlayer.playKey("ARENA4");
+					MusicManager.playKey("ARENA4");
 					break;
 				case 4:
 					level.setInhabitants(doInhabitants(new String[]
@@ -68,7 +69,7 @@ public class PreludeArena2 extends Unleasher
 					level.setLevelNumber(5);
 					level.setMusicKeyMorning("ARENA5");
 					level.setMusicKeyNoon("ARENA5");
-					STMidiPlayer.playKey("ARENA5");
+					MusicManager.playKey("ARENA5");
 					break;
 				case 5:
 					level.setInhabitants(doInhabitants(new String[]
@@ -76,7 +77,7 @@ public class PreludeArena2 extends Unleasher
 					level.setLevelNumber(6);
 					level.setMusicKeyMorning("ARENA6");
 					level.setMusicKeyNoon("ARENA6");
-					STMidiPlayer.playKey("ARENA6");
+					MusicManager.playKey("ARENA6");
 					break;
 				case 6:
 					level.setInhabitants(doInhabitants(new String[]
@@ -84,7 +85,7 @@ public class PreludeArena2 extends Unleasher
 					level.setLevelNumber(7);
 					level.setMusicKeyMorning("ARENA7");
 					level.setMusicKeyNoon("ARENA7");
-					STMidiPlayer.playKey("ARENA7");
+					MusicManager.playKey("ARENA7");
 					break;
 				case 7:
 					level.setInhabitants(doInhabitants(new String[]
@@ -92,7 +93,7 @@ public class PreludeArena2 extends Unleasher
 					level.setLevelNumber(8);
 					level.setMusicKeyMorning("ARENA8");
 					level.setMusicKeyNoon("ARENA8");
-					STMidiPlayer.playKey("ARENA8");
+					MusicManager.playKey("ARENA8");
 					break;
 				case 8:
 					level.addMessage(

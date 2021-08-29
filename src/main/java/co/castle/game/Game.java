@@ -301,10 +301,10 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 		turns = player.getGameSessionInfo( ).getTurns( );
 		syncUniqueRegister( );
 		if ( currentLevel.hasNoonMusic( ) && !currentLevel.isDay( ) ) {
-			STMidiPlayer.playKey(currentLevel.getMusicKeyNoon());
+			MusicManager.playKey(currentLevel.getMusicKeyNoon());
 		}
 		else {
-			STMidiPlayer.playKey(currentLevel.getMusicKeyMorning());
+			MusicManager.playKey(currentLevel.getMusicKeyMorning());
 		}
 		run( );
 	}
@@ -326,10 +326,10 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 		player.setLevel( level );
 		dispatcher = currentLevel.getDispatcher( );
 		if ( currentLevel.hasNoonMusic( ) && !currentLevel.isDay( ) ) {
-			STMidiPlayer.playKey(currentLevel.getMusicKeyNoon());
+			MusicManager.playKey(currentLevel.getMusicKeyNoon());
 		}
 		else {
-			STMidiPlayer.playKey(currentLevel.getMusicKeyMorning());
+			MusicManager.playKey(currentLevel.getMusicKeyMorning());
 		}
 
 		// STMusicManager.thus.playForLevel(levelNumber, levelPath[levelNumber],
@@ -412,9 +412,9 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 			if ( isDay )
 			{
 				if ( currentLevel.hasNoonMusic( ) ) {
-					STMidiPlayer.stopMusic();
+					MusicManager.stopMusic();
 					Display.thus.showTimeChange(!isDay, fog, rain, thunderstorm, false);
-					STMidiPlayer.playKey(currentLevel.getMusicKeyNoon());
+					MusicManager.playKey(currentLevel.getMusicKeyNoon());
 				}
 				else
 				{
@@ -425,10 +425,10 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 			{
 
 				if ( currentLevel.hasNoonMusic( ) ) {
-					STMidiPlayer.stopMusic();
+					MusicManager.stopMusic();
 					Display.thus.showTimeChange(!isDay, fog, rain, thunderstorm,
 							sunnyDay);
-					STMidiPlayer.playKey(currentLevel.getMusicKeyMorning());
+					MusicManager.playKey(currentLevel.getMusicKeyMorning());
 				}
 				else
 				{
@@ -673,10 +673,10 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 		}
 		dispatcher = currentLevel.getDispatcher( );
 		if ( currentLevel.hasNoonMusic( ) && !currentLevel.isDay( ) ) {
-			STMidiPlayer.playKey(currentLevel.getMusicKeyNoon());
+			MusicManager.playKey(currentLevel.getMusicKeyNoon());
 		}
 		else {
-			STMidiPlayer.playKey(currentLevel.getMusicKeyMorning());
+			MusicManager.playKey(currentLevel.getMusicKeyMorning());
 		}
 		if ( currentLevel.isRutinary( ) )
 		{
@@ -732,7 +732,7 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 	}
 
 	private void resumeScreen( ) {
-		STMidiPlayer.playKey("GAME_OVER");
+		MusicManager.playKey("GAME_OVER");
 		UserInterface.getUI().showMessageHistory();
 		if (Display.thus.showResumeScreen(player)) {
 			GameFiles.saveMemorialFile(player);

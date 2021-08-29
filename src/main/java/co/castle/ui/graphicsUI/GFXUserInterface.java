@@ -45,6 +45,7 @@ import co.castle.feature.Feature;
 import co.castle.feature.SmartFeature;
 import co.castle.game.Game;
 import co.castle.game.GameFiles;
+import co.castle.game.MusicManager;
 import co.castle.item.Item;
 import co.castle.item.ItemDefinition;
 import co.castle.item.Merchant;
@@ -1002,18 +1003,18 @@ public class GFXUserInterface extends UserInterface implements Runnable
 				Display.thus.showMap(level.getMapLocationKey(), level.getDescription());
 				break;
 			case CommandListener.SWITCHMUSIC:
-				boolean enabled = STMidiPlayer.isEnabled();
+				boolean enabled = MusicManager.isEnabled();
 				if (enabled) {
 					showMessage("Turn off music");
-					STMidiPlayer.stopMusic();
-					STMidiPlayer.setEnabledMusicManager(false);
+					MusicManager.stopMusic();
+					MusicManager.setEnabledMusicManager(false);
 				} else {
 					showMessage("Turn on music");
-					STMidiPlayer.setEnabledMusicManager(true);
+					MusicManager.setEnabledMusicManager(true);
 					if (!level.isDay() && level.hasNoonMusic())
-						STMidiPlayer.playKey(level.getMusicKeyNoon());
+						MusicManager.playKey(level.getMusicKeyNoon());
 					else
-						STMidiPlayer.playKey(level.getMusicKeyMorning());
+						MusicManager.playKey(level.getMusicKeyMorning());
 				}
 			break;
 		case CommandListener.EXAMINELEVELMAP:

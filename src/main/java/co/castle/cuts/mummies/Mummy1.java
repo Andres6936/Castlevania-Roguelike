@@ -5,6 +5,7 @@ import java.util.Hashtable;
 import co.castle.cuts.Unleasher;
 import co.castle.game.CRLException;
 import co.castle.game.Game;
+import co.castle.game.MusicManager;
 import co.castle.level.Level;
 import co.castle.levelgen.StaticGenerator;
 import co.castle.main.Service;
@@ -52,7 +53,7 @@ public class Mummy1 extends Unleasher
 			level.getPlayer().reduceKeys(1);
 			level.setMusicKeyMorning("");
 			level.setMusicKeyNoon("");
-			STMidiPlayer.stopMusic();
+			MusicManager.stopMusic();
 			try {
 				StaticGenerator.getGenerator().renderOverLevel(level, newMap, charMap,
 						new Position(0, 0));
