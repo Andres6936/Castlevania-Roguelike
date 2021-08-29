@@ -7,6 +7,7 @@ import java.util.Hashtable;
 
 import co.castle.game.*;
 import co.castle.main.Service;
+import co.castle.scene.SceneManager;
 import co.castle.system.FileLoader;
 import co.castle.ui.Display;
 
@@ -46,18 +47,18 @@ public final class Main
 	}
 
     public static void main( String[] args ) {
-//		var sceneManager = new SceneManager();
-//		while (sceneManager.isRunning()) {
-//			sceneManager.process();
-//			sceneManager.update();
-//			sceneManager.draw();
-//		}
-
-		try {
-			title();
-		} catch (Exception e) {
-			System.out.println("Unrecoverable Exception, Game cann't start.\n");
+		var sceneManager = new SceneManager();
+		while (sceneManager.isRunning()) {
+			sceneManager.update();
+			sceneManager.draw();
+			sceneManager.process();
 		}
+//
+//		try {
+//			title();
+//		} catch (Exception e) {
+//			System.out.println("Unrecoverable Exception, Game cann't start.\n");
+//		}
 	}
 
     private static void setMonsterRecord( Hashtable< ?, ? > monsterRecord )

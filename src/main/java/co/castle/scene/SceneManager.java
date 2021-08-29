@@ -1,5 +1,17 @@
 package co.castle.scene;
 
+import co.castle.conf.KeyBindings;
+import co.castle.conf.UserActions;
+import co.castle.conf.UserCommands;
+import co.castle.game.PlayerGenerator;
+import co.castle.ui.Display;
+import co.castle.ui.UISelector;
+import co.castle.ui.UserInterface;
+import co.castle.ui.graphicsUI.GFXPlayerGenerator;
+import co.castle.ui.graphicsUI.GFXUISelector;
+import co.castle.ui.graphicsUI.GFXUserInterface;
+import co.castle.ui.graphicsUI.GraphicsDisplay;
+
 public class SceneManager {
 
     /**
@@ -24,6 +36,20 @@ public class SceneManager {
     private IScene trainingScene;
 
     public SceneManager() {
+        PlayerGenerator.thus = new GFXPlayerGenerator(IScene.renderer);
+        Display.thus = new GraphicsDisplay();
+
+
+        UserInterface userInterface = UserInterface.getUI();
+        GFXUISelector uiSelector = new GFXUISelector();
+        KeyBindings keyBindings = new KeyBindings();
+        Display.setKeyBindings(keyBindings);
+        var userActions = new UserActions(keyBindings);
+        var userCommands = new UserCommands(keyBindings);
+
+        ((GFXUserInterface) userInterface).init(IScene.renderer, userCommands, userActions);
+        uiSelector.init(userActions, (GFXUserInterface) userInterface, keyBindings);
+
         menuScene = new MenuScene();
         // The first scene is the Menu.
         current = menuScene;
