@@ -42,7 +42,13 @@ public final class Service {
 
 		userInterface = UserInterface.getUI();
 		uiSelector = new GFXUISelector();
-		initializeUI(appFrame);
+		KeyBindings keyBindings = new KeyBindings();
+		Display.setKeyBindings(keyBindings);
+		var userActions = new UserActions(keyBindings);
+		var userCommands = new UserCommands(keyBindings);
+
+		((GFXUserInterface) userInterface).init((ApplicationGraphics) appFrame, userCommands, userActions);
+		((GFXUISelector) uiSelector).init(userActions, (GFXUserInterface) userInterface, keyBindings);
 	}
 
 	/**
@@ -50,16 +56,6 @@ public final class Service {
 	 */
 	public static Service getInstance() {
 		return instance == null ? instance = new Service() : instance;
-	}
-
-	private void initializeUI(Object si) {
-		KeyBindings keyBindings = new KeyBindings();
-		Display.setKeyBindings(keyBindings);
-		var userActions = new UserActions(keyBindings);
-		var userCommands = new UserCommands(keyBindings);
-
-		((GFXUserInterface) userInterface).init((ApplicationGraphics) si, userCommands, userActions);
-		((GFXUISelector) uiSelector).init(userActions, (GFXUserInterface) userInterface, keyBindings);
 	}
 
 }
