@@ -5,6 +5,7 @@ import java.util.Hashtable;
 
 import co.castle.action.Action;
 import co.castle.ai.ActionSelector;
+import co.castle.ai.SelectorFactory;
 import co.castle.game.SFXManager;
 import co.castle.level.Level;
 import co.castle.ui.Appearance;
@@ -15,6 +16,8 @@ import sz.util.PriorityEnqueable;
 public class Actor implements Cloneable, java.io.Serializable, PriorityEnqueable {
 	private boolean aWannaDie;
 	private final Hashtable<String, Boolean> hashFlags = new Hashtable<String, Boolean>();
+
+	protected static final SelectorFactory selectorFactory = SelectorFactory.getSelectorFactory();
 
 	private int hoverHeight;
 	private boolean isJumping;

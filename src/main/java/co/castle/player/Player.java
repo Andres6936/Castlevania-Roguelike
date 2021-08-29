@@ -2741,12 +2741,11 @@ public class Player extends Actor {
 
 		if ( Util.chance( loseMindChance ) )
 		{
-			level.addMessage( "You lose your mind!" );
-			setFlag( "KEEPMESSAGES", true );
-			originalSelector = getSelector( );
-			setCounter( "REGAIN_SHAPE", count );
-			setSelector( SelectorFactory.getSelectorFactory( )
-					.getSelector( "WILD_MORPH_AI" ) );
+			level.addMessage("You lose your mind!");
+			setFlag("KEEPMESSAGES", true);
+			originalSelector = getSelector();
+			setCounter("REGAIN_SHAPE", count);
+			setSelector(selectorFactory.getSelector("WILD_MORPH_AI"));
 		}
 
 		// Drop items

@@ -2,10 +2,22 @@ package co.castle.ai;
 
 import java.util.Hashtable;
 
+import co.castle.ai.monster.BasicMonsterAI;
+import co.castle.ai.monster.RangedAI;
+import co.castle.ai.monster.UnderwaterAI;
+import co.castle.ai.monster.WanderToPlayerAI;
+import co.castle.ai.npc.PriestAI;
+import co.castle.ai.npc.VillagerAI;
+import co.castle.ai.player.WildMorphAI;
+import co.castle.feature.CountDown;
+import co.castle.feature.ai.BlastCrystalAI;
+import co.castle.feature.ai.CrossAI;
+import co.castle.feature.ai.FlameAI;
+import co.castle.feature.ai.NullSelector;
 import sz.util.Debug;
 
 public class SelectorFactory {
-	private final Hashtable<String, ActionSelector> definitions;
+	private final Hashtable<String, ActionSelector> definitions = new Hashtable<>(40);
 	private final static SelectorFactory singleton = new SelectorFactory();
 
 	/*
@@ -14,7 +26,14 @@ public class SelectorFactory {
 	 */
 
 	public SelectorFactory() {
-		definitions = new Hashtable<>(40);
+		System.out.println("Initializing Action Objects");
+		var actionSelectors = new ActionSelector[]
+				{new WanderToPlayerAI(), new UnderwaterAI(), new RangedAI(), new FlameAI(), new CrossAI(),
+						new BlastCrystalAI(), new CountDown(), new VillagerAI(), new PriestAI(), new NullSelector(),
+						new BasicMonsterAI(), new WildMorphAI()};
+		for (ActionSelector actionSelector : actionSelectors) {
+			addDefinition(actionSelector);
+		}
 	}
 
 	public static SelectorFactory getSelectorFactory( )

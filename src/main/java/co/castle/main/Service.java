@@ -85,10 +85,6 @@ public final class Service {
 		ui = UserInterface.getUI();
 		initializeUI(appFrame);
 
-		System.out.println("Initializing Action Objects");
-		for (ActionSelector definition : getSelectorDefinitions()) {
-			SelectorFactory.getSelectorFactory().addDefinition(definition);
-		}
 		System.out.println("Loading Data");
 		initializeCells();
 		initializeItems();

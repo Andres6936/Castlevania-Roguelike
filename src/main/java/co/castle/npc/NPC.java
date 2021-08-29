@@ -30,10 +30,10 @@ public class NPC extends Monster
 	{
 		NPC_MONSTER_DEFINITION.setDescription( "Innocent Being" );
 		NPC_MONSTER_DEFINITION.setAppearance(
-				AppearanceFactory.getAppearanceFactory( ).getAppearance( "VOID" ) );
+				AppearanceFactory.getAppearanceFactory().getAppearance("VOID"));
 		NPC_MONSTER_DEFINITION.setDefaultSelector(
-				SelectorFactory.getSelectorFactory( ).getSelector( "NULL_SELECTOR" ) );
-		NPC_MONSTER_DEFINITION.setScore( -100 );
+				selectorFactory.getSelector("NULL_SELECTOR"));
+		NPC_MONSTER_DEFINITION.setScore(-100);
 		NPC_MONSTER_DEFINITION.setMaxHits( 2 );
 		NPC_MONSTER_DEFINITION.setAttack( 0 );
 		NPC_MONSTER_DEFINITION.setSightRange( 5 );
