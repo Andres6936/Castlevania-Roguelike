@@ -39,27 +39,23 @@ public class GraphicsDisplay extends Display
 	private Hashtable <String, Position> locationKeys;
 
 	// Get instance of ApplicationFrame
-	private ApplicationGraphics renderer = ApplicationGraphics.getInstance();
+	private static final ApplicationGraphics renderer = ApplicationGraphics.getInstance();
 
 	// Get instance of Asset
 	protected Asset assets = ApplicationGraphics.assets;
 
-	public static Font FNT_TEXT;
-
-	public static String IMG_FRAME;
-
 	{
-		locationKeys = new Hashtable <String, Position>( );
-		locationKeys.put( "TOWN", new Position( 130, 206 ) );
-		locationKeys.put( "FOREST", new Position( 201, 206 ) );
-		locationKeys.put( "BRIDGE", new Position( 273, 206 ) );
-		locationKeys.put( "ENTRANCE", new Position( 316, 206 ) );
-		locationKeys.put( "HALL", new Position( 348, 206 ) );
-		locationKeys.put( "LAB", new Position( 316, 171 ) );
-		locationKeys.put( "CHAPEL", new Position( 316, 139 ) );
-		locationKeys.put( "RUINS", new Position( 383, 172 ) );
-		locationKeys.put( "CAVES", new Position( 383, 261 ) );
-		locationKeys.put( "COURTYARD", new Position( 448, 232 ) );
+		locationKeys = new Hashtable<>();
+		locationKeys.put("TOWN", new Position(130, 206));
+		locationKeys.put("FOREST", new Position(201, 206));
+		locationKeys.put("BRIDGE", new Position(273, 206));
+		locationKeys.put("ENTRANCE", new Position(316, 206));
+		locationKeys.put("HALL", new Position(348, 206));
+		locationKeys.put("LAB", new Position(316, 171));
+		locationKeys.put("CHAPEL", new Position(316, 139));
+		locationKeys.put("RUINS", new Position(383, 172));
+		locationKeys.put("CAVES", new Position(383, 261));
+		locationKeys.put("COURTYARD", new Position(448, 232));
 		locationKeys.put( "VILLA", new Position( 448, 232 ) );
 		locationKeys.put( "DUNGEON", new Position( 512, 261 ) );
 		locationKeys.put( "STORAGE", new Position( 555, 206 ) );
@@ -68,8 +64,6 @@ public class GraphicsDisplay extends Display
 	}
 
 	public GraphicsDisplay( ) {
-		FNT_TEXT = renderer.getFont();
-
 		try {
 			// BufferedImage BORDERS = ImageUtils.createImage(IMG_BORDERS);
 			BufferedImage b1 = ImageUtils.crearImagen(assets.IMAGE_BORDERS, 34, 1, 32, 32);
@@ -99,28 +93,23 @@ public class GraphicsDisplay extends Display
 		renderer.addComponentToPanel(gfxChatBox);
 	}
 
-	public static JTextArea createTempArea( int xpos, int ypos, int w, int h )
-	{
-		JTextArea ret = new JTextArea( );
-		ret.setOpaque( false );
-		ret.setForeground( Color.WHITE );
-		ret.setVisible( true );
-		ret.setEditable( false );
-		ret.setFocusable( false );
-		ret.setBounds( xpos, ypos, w, h );
-		ret.setLineWrap( true );
-		ret.setWrapStyleWord( true );
-		ret.setFont( FNT_TEXT );
+	public static JTextArea createTempArea( int xpos, int ypos, int w, int h ) {
+		JTextArea ret = new JTextArea();
+		ret.setOpaque(false);
+		ret.setForeground(Color.WHITE);
+		ret.setVisible(true);
+		ret.setEditable(false);
+		ret.setFocusable(false);
+		ret.setBounds(xpos, ypos, w, h);
+		ret.setLineWrap(true);
+		ret.setWrapStyleWord(true);
+		ret.setFont(renderer.getFont());
 		return ret;
 	}
 
 	public void clearTextBox( )
 	{
 		addornedTextArea.setVisible( false );
-	}
-
-	public void init( ApplicationGraphics syst ) {
-		renderer = syst;
 	}
 
 	public void showChat( String chatID, Game game ) {
