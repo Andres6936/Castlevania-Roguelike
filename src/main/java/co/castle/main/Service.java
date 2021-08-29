@@ -57,7 +57,7 @@ public final class Service {
 
 	private void initializeUI(Object si) {
 		KeyBindings keyBindings = new KeyBindings();
-		Display.thus.setKeyBindings(keyBindings);
+		Display.setKeyBindings(keyBindings);
 		var userActions = new UserActions(keyBindings);
 		var userCommands = new UserCommands(keyBindings);
 
