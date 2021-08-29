@@ -61,10 +61,6 @@ public final class Service {
 
 		ui = UserInterface.getUI();
 		initializeUI(appFrame);
-
-		for (NPCDefinition definition : NPCs.getNPCDefinitions()) {
-			NPCFactory.getFactory().addDefinition(definition);
-		}
 	}
 
 	private void initializeUI(Object si) {
