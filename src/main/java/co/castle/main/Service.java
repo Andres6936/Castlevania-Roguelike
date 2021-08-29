@@ -65,7 +65,6 @@ public final class Service {
 		initializeUI(appFrame);
 
 		System.out.println("Loading Data");
-		MapCellFactory.getMapCellFactory().init(Cells.getCellDefinitions());
 		ItemFactory.getItemFactory().init(Items.getItemDefinitions());
 
 		try {

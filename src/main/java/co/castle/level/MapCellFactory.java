@@ -2,10 +2,11 @@ package co.castle.level;
 
 import java.util.Hashtable;
 
+import co.castle.data.Cells;
 import co.castle.game.CRLException;
 
 public class MapCellFactory {
-	private final Hashtable<String, Cell> definitions;
+	private final Hashtable<String, Cell> definitions = new Hashtable<>(40);
 	private static final MapCellFactory singleton = new MapCellFactory();
 
 	/*
@@ -14,7 +15,9 @@ public class MapCellFactory {
 	 */
 
 	public MapCellFactory() {
-		definitions = new Hashtable<>(40);
+		for (Cell def : Cells.getCellDefinitions()) {
+			definitions.put(def.getID(), def);
+		}
 	}
 
 	public static MapCellFactory getMapCellFactory( )
@@ -33,9 +36,4 @@ public class MapCellFactory {
 			return ret;
 		throw new CRLException("MapCellID " + id + " not found");
 	}
-
-	public void init( Cell[ ] defs ) {
-		for (Cell def : defs) definitions.put(def.getID(), def);
-	}
-
 }
