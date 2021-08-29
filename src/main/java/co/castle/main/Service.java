@@ -92,7 +92,9 @@ public final class Service extends MusicManager {
 
 		System.out.println("Initializing Action Objects");
 		initializeActions();
-		initializeSelectors();
+		for (ActionSelector definition : getSelectorDefinitions()) {
+			SelectorFactory.getSelectorFactory().addDefinition(definition);
+		}
 		System.out.println("Loading Data");
 		initializeCells();
 		initializeItems();
@@ -162,15 +164,6 @@ public final class Service extends MusicManager {
 			new SummonMonster( ), new MummyStrangle( ), new MummyTeleport( ), new Teleport( ),
 			new MandragoraScream( ) };
         for ( Action definition : definitions ) af.addDefinition( definition );
-	}
-
-	private static void initializeSelectors( )
-	{
-		ActionSelector[ ] definitions = getSelectorDefinitions( );
-        for ( ActionSelector definition : definitions )
-        {
-            SelectorFactory.getSelectorFactory( ).addDefinition( definition );
-		}
 	}
 
 	private static ActionSelector[ ] getSelectorDefinitions( )
