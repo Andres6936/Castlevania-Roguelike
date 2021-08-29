@@ -98,28 +98,24 @@ public final class Service {
 		((GFXUISelector) uiSelector).init(userActions, (GFXUserInterface) ui, keyBindings);
 	}
 
-	private static void initializeCells( )
-	{
+	private static void initializeCells() {
 		MapCellFactory.getMapCellFactory().init(Cells.getCellDefinitions());
 	}
 
-	private static void initializeItems( )
-	{
-		ItemFactory.getItemFactory( ).init( Items.getItemDefinitions( ) );
+	private static void initializeItems() {
+		ItemFactory.getItemFactory().init(Items.getItemDefinitions());
 	}
 
-	private static void initializeMonsters( ) throws CRLException
-	{
+	private static void initializeMonsters() throws CRLException {
 
 		MonsterFactory.getFactory().init(MonsterLoader.getMonsterDefinitions());
 	}
 
-	private static void initializeFeatures( )
-	{
+	private static void initializeFeatures() {
 		FeatureFactory.getFactory().init(Features.getFeatureDefinitions());
 	}
 
-	private static void initializeSmartFeatures( ) {
+	private static void initializeSmartFeatures() {
 		SmartFeatureFactory.getFactory().init(SmartFeatures.getSmartFeatures());
 	}
 }
