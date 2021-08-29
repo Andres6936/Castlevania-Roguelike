@@ -11,6 +11,7 @@ import co.castle.action.Action;
 import co.castle.actor.Actor;
 import co.castle.actor.Message;
 import co.castle.ai.ActionSelector;
+import co.castle.conf.UserActions;
 import co.castle.game.Cheat;
 import co.castle.main.ApplicationGraphics;
 import co.castle.monster.Monster;
@@ -88,21 +89,16 @@ public class GFXUISelector extends UISelector
 		return -1;
 	}
 
-	public ActionSelector derive( )
-	{
+	public ActionSelector derive() {
 		return null;
 	}
 
-	public String getID( )
-	{
+	public String getID() {
 		return "UI";
 	}
 
-	public void init(	UserAction[ ] gameActions,
-						Action advance, Action target,
-						Action attack, GFXUserInterface ui, Properties keyBindings )
-	{
-		super.init(gameActions, advance, target, attack, ui, keyBindings);
+	public void init(UserActions gameActions, GFXUserInterface ui, Properties keyBindings) {
+		super.init(gameActions, ui, keyBindings);
 
 		// NOTE: Asset can container the property, clear this function
 

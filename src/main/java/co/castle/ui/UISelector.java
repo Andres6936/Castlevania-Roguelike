@@ -5,14 +5,14 @@ import java.util.Properties;
 
 import co.castle.action.Action;
 import co.castle.ai.ActionSelector;
+import co.castle.conf.UserActions;
 import co.castle.level.Level;
 import co.castle.player.Player;
 import sz.csi.CharKey;
 import sz.util.Debug;
 import sz.util.Position;
 
-public abstract class UISelector implements ActionSelector
-{
+public abstract class UISelector implements ActionSelector {
 	public int DONOTHING1_KEY;
 
 	public int DONOTHING2_KEY;
@@ -20,7 +20,7 @@ public abstract class UISelector implements ActionSelector
 	protected Action advance;
 	protected Action attack;
 	protected Position defaultTarget;
-	protected Hashtable gameActions = new Hashtable( );
+	protected Hashtable<String, UserAction> gameActions = new Hashtable<>();
 	protected Level level;
 	protected Player player;
 	protected Action target;
@@ -77,40 +77,35 @@ public abstract class UISelector implements ActionSelector
 		level = player.getLevel( );
 	}
 
-	protected Action getRelatedAction( int keyCode )
-	{
-		Debug.enterMethod( this, "getRelatedAction", keyCode + "" );
-		UserAction ua = (UserAction) gameActions.get( keyCode + "" );
-		if ( ua == null )
-		{
-			Debug.exitMethod( "null" );
+	protected Action getRelatedAction( int keyCode ) {
+		Debug.enterMethod(this, "getRelatedAction", keyCode + "");
+		UserAction ua = gameActions.get(keyCode + "");
+		if (ua == null) {
+			Debug.exitMethod("null");
 			return null;
 		}
-		Action ret = ua.getAction( );
-		Debug.exitMethod( ret );
+		Action ret = ua.getAction();
+		Debug.exitMethod(ret);
 		return ret;
 	}
 
-	protected void init(	UserAction[ ] gameActions, Action advance, Action target,
-							Action attack, UserInterface ui, Properties keyBindings )
-	{
+	protected void init(UserActions gameActions, UserInterface ui, Properties keyBindings) {
 		this.ui = ui;
-		this.advance = advance;
-		this.target = target;
-		this.attack = attack;
-		for ( int i = 0; i < gameActions.length; i++ )
-		{
-			this.gameActions.put( gameActions[ i ].getKeyCode( ) + "", gameActions[ i ] );
+		this.advance = gameActions.getWalkAction();
+		this.target = gameActions.getTargetAction();
+		this.attack = gameActions.getAttackAction();
+		for (UserAction gameAction : gameActions) {
+			this.gameActions.put(gameAction.getKeyCode() + "", gameAction);
 		}
-		WEAPON_KEY = Integer.parseInt( keyBindings.getProperty( "WEAPON_KEY" ) );
-		DONOTHING1_KEY = Integer.parseInt( keyBindings.getProperty( "DONOTHING1_KEY" ) );
-		DONOTHING2_KEY = Integer.parseInt( keyBindings.getProperty( "DONOTHING2_KEY" ) );
-		UP1_KEY = Integer.parseInt( keyBindings.getProperty( "UP1_KEY" ) );
-		UP2_KEY = Integer.parseInt( keyBindings.getProperty( "UP2_KEY" ) );
-		LEFT1_KEY = Integer.parseInt( keyBindings.getProperty( "LEFT1_KEY" ) );
-		LEFT2_KEY = Integer.parseInt( keyBindings.getProperty( "LEFT2_KEY" ) );
-		RIGHT1_KEY = Integer.parseInt( keyBindings.getProperty( "RIGHT1_KEY" ) );
-		RIGHT2_KEY = Integer.parseInt( keyBindings.getProperty( "RIGHT2_KEY" ) );
+		WEAPON_KEY = Integer.parseInt(keyBindings.getProperty("WEAPON_KEY"));
+		DONOTHING1_KEY = Integer.parseInt(keyBindings.getProperty("DONOTHING1_KEY"));
+		DONOTHING2_KEY = Integer.parseInt(keyBindings.getProperty("DONOTHING2_KEY"));
+		UP1_KEY = Integer.parseInt(keyBindings.getProperty("UP1_KEY"));
+		UP2_KEY = Integer.parseInt(keyBindings.getProperty("UP2_KEY"));
+		LEFT1_KEY = Integer.parseInt(keyBindings.getProperty("LEFT1_KEY"));
+		LEFT2_KEY = Integer.parseInt(keyBindings.getProperty("LEFT2_KEY"));
+		RIGHT1_KEY = Integer.parseInt(keyBindings.getProperty("RIGHT1_KEY"));
+		RIGHT2_KEY = Integer.parseInt(keyBindings.getProperty("RIGHT2_KEY"));
 		DOWN1_KEY = Integer.parseInt( keyBindings.getProperty( "DOWN1_KEY" ) );
 		DOWN2_KEY = Integer.parseInt( keyBindings.getProperty( "DOWN2_KEY" ) );
 		UPRIGHT1_KEY = Integer.parseInt( keyBindings.getProperty( "UPRIGHT1_KEY" ) );

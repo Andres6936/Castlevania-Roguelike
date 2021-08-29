@@ -143,8 +143,6 @@ public final class Service extends MusicManager {
 	}
 
 	private void initializeUI(Object si) {
-		Action walkAction = new Walk();
-
 		KeyBindings keyBindings = new KeyBindings();
 		Display.thus.setKeyBindings(keyBindings);
 		var userActions = new UserActions(keyBindings);
@@ -152,7 +150,7 @@ public final class Service extends MusicManager {
 
 		((GFXUserInterface) ui).init((ApplicationGraphics) si, userCommands, userActions);
 		uiSelector = new GFXUISelector();
-		((GFXUISelector) uiSelector).init(userActions, walkAction, target, attack, (GFXUserInterface) ui, keyBindings);
+		((GFXUISelector) uiSelector).init(userActions, (GFXUserInterface) ui, keyBindings);
 	}
 
 	private static void initializeActions( )

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class UserActions extends ArrayList<UserAction> {
     private final Action get = new Get();
+    private final Action walk = new Walk();
     private final Action attack = new Attack();
     private final Action target = new TargetPS();
 
@@ -29,5 +30,13 @@ public class UserActions extends ArrayList<UserAction> {
 
     public Action getTargetAction() {
         return target;
+    }
+
+    public Action getWalkAction() {
+        return walk;
+    }
+
+    public Action getAttackAction() {
+        return attack;
     }
 }
