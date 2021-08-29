@@ -9,6 +9,7 @@ import co.castle.level.Level;
 import co.castle.levelgen.StaticGenerator;
 import co.castle.main.Service;
 import co.castle.ui.Display;
+import sz.midi.STMidiPlayer;
 import sz.util.Position;
 
 public class Mummy1 extends Unleasher
@@ -45,14 +46,13 @@ public class Mummy1 extends Unleasher
 	}
 	public void unleash( Level level, Game game )
 	{
-		if ( level.getBoss( ) == null )
-		{
+		if ( level.getBoss( ) == null ) {
 			Display.thus.showScreen(
 					"As you destroy the mummy of Akmodan, the whole room trembles, and a cold hurricaned wind covers all the place, shredding everything on sight. All of a sudden, the floor under you collapses.");
 			level.getPlayer().reduceKeys(1);
 			level.setMusicKeyMorning("");
 			level.setMusicKeyNoon("");
-			Service.stopMusic();
+			STMidiPlayer.stopMusic();
 			try {
 				StaticGenerator.getGenerator().renderOverLevel(level, newMap, charMap,
 						new Position(0, 0));

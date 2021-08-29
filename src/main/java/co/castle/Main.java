@@ -15,14 +15,11 @@ import co.castle.main.Service;
 import co.castle.scene.SceneManager;
 import co.castle.system.FileLoader;
 import co.castle.ui.Display;
+import sz.midi.STMidiPlayer;
 
 public final class Main
 {
 	private static Game currentGame;
-
-	private final static byte JCURSES_CONSOLE = 0;
-	private final static byte SWING_GFX = 1;
-	private final static byte SWING_CONSOLE = 2;
 
 	private static Hashtable <?, ?> monsterRecord;
 
@@ -162,9 +159,8 @@ public final class Main
 		title( );
 	}
 
-	private static void title( )
-	{
-		app.playKey("TITLE");
+	private static void title( ) {
+		STMidiPlayer.playKey("TITLE");
 
 		int choice = Display.thus.showTitleScreen();
 
@@ -174,7 +170,7 @@ public final class Main
 				break;
 			case 1:
 				loadGame();
-			break;
+				break;
 		case 2:
 			prologue( );
 			break;

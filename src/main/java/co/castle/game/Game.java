@@ -24,6 +24,7 @@ import co.castle.ui.Display;
 import co.castle.ui.UISelector;
 import co.castle.ui.UserInterface;
 import sz.fov.FOV;
+import sz.midi.STMidiPlayer;
 import sz.util.Debug;
 import sz.util.Util;
 
@@ -299,12 +300,11 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 		endGame = false;
 		turns = player.getGameSessionInfo( ).getTurns( );
 		syncUniqueRegister( );
-		if ( currentLevel.hasNoonMusic( ) && !currentLevel.isDay( ) )
-		{
-			Service.playKey(currentLevel.getMusicKeyNoon());
+		if ( currentLevel.hasNoonMusic( ) && !currentLevel.isDay( ) ) {
+			STMidiPlayer.playKey(currentLevel.getMusicKeyNoon());
 		}
 		else {
-			Service.playKey(currentLevel.getMusicKeyMorning());
+			STMidiPlayer.playKey(currentLevel.getMusicKeyMorning());
 		}
 		run( );
 	}
@@ -326,10 +326,10 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 		player.setLevel( level );
 		dispatcher = currentLevel.getDispatcher( );
 		if ( currentLevel.hasNoonMusic( ) && !currentLevel.isDay( ) ) {
-			Service.playKey(currentLevel.getMusicKeyNoon());
+			STMidiPlayer.playKey(currentLevel.getMusicKeyNoon());
 		}
 		else {
-			Service.playKey(currentLevel.getMusicKeyMorning());
+			STMidiPlayer.playKey(currentLevel.getMusicKeyMorning());
 		}
 
 		// STMusicManager.thus.playForLevel(levelNumber, levelPath[levelNumber],
@@ -412,9 +412,9 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 			if ( isDay )
 			{
 				if ( currentLevel.hasNoonMusic( ) ) {
-					Service.stopMusic();
+					STMidiPlayer.stopMusic();
 					Display.thus.showTimeChange(!isDay, fog, rain, thunderstorm, false);
-					Service.playKey(currentLevel.getMusicKeyNoon());
+					STMidiPlayer.playKey(currentLevel.getMusicKeyNoon());
 				}
 				else
 				{
@@ -425,10 +425,10 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 			{
 
 				if ( currentLevel.hasNoonMusic( ) ) {
-					Service.stopMusic();
+					STMidiPlayer.stopMusic();
 					Display.thus.showTimeChange(!isDay, fog, rain, thunderstorm,
 							sunnyDay);
-					Service.playKey(currentLevel.getMusicKeyMorning());
+					STMidiPlayer.playKey(currentLevel.getMusicKeyMorning());
 				}
 				else
 				{
@@ -673,10 +673,10 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 		}
 		dispatcher = currentLevel.getDispatcher( );
 		if ( currentLevel.hasNoonMusic( ) && !currentLevel.isDay( ) ) {
-			Service.playKey(currentLevel.getMusicKeyNoon());
+			STMidiPlayer.playKey(currentLevel.getMusicKeyNoon());
 		}
 		else {
-			Service.playKey(currentLevel.getMusicKeyMorning());
+			STMidiPlayer.playKey(currentLevel.getMusicKeyMorning());
 		}
 		if ( currentLevel.isRutinary( ) )
 		{
@@ -732,7 +732,7 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 	}
 
 	private void resumeScreen( ) {
-		Service.playKey("GAME_OVER");
+		STMidiPlayer.playKey("GAME_OVER");
 		UserInterface.getUI().showMessageHistory();
 		if (Display.thus.showResumeScreen(player)) {
 			GameFiles.saveMemorialFile(player);

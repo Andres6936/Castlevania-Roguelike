@@ -5,6 +5,7 @@ import co.castle.game.Game;
 import co.castle.level.Level;
 import co.castle.main.Service;
 import co.castle.ui.Display;
+import sz.midi.STMidiPlayer;
 
 public class BadBelmont1 extends Unleasher
 {
@@ -23,11 +24,10 @@ public class BadBelmont1 extends Unleasher
 					.addHistoricEvent( "saved Solieyu Belmont from certain doom" );
 			level.getPlayer( ).addKeys( 1 );
 		}
-		else
-		{
+		else {
 			level.setMusicKeyMorning("BADBELMONT");
 			level.setMusicKeyNoon("BADBELMONT");
-			Service.playKey("BADBELMONT");
+			STMidiPlayer.playKey("BADBELMONT");
 		}
 		enabled = false;
 	}

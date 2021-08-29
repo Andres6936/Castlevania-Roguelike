@@ -77,6 +77,7 @@ import sz.gadgets.AdditionalKeysSignal;
 import sz.gadgets.BorderedMenuBox;
 import sz.gadgets.MenuBox;
 import sz.gadgets.SimpleGFXMenuItem;
+import sz.midi.STMidiPlayer;
 import sz.util.Debug;
 import sz.util.ImageUtils;
 import sz.util.Line;
@@ -1001,18 +1002,18 @@ public class GFXUserInterface extends UserInterface implements Runnable
 				Display.thus.showMap(level.getMapLocationKey(), level.getDescription());
 				break;
 			case CommandListener.SWITCHMUSIC:
-				boolean enabled = Service.isEnabled();
+				boolean enabled = STMidiPlayer.isEnabled();
 				if (enabled) {
 					showMessage("Turn off music");
-					Service.stopMusic();
-					Service.setEnabledMusicManager(false);
+					STMidiPlayer.stopMusic();
+					STMidiPlayer.setEnabledMusicManager(false);
 				} else {
 					showMessage("Turn on music");
-					Service.setEnabledMusicManager(true);
+					STMidiPlayer.setEnabledMusicManager(true);
 					if (!level.isDay() && level.hasNoonMusic())
-						Service.playKey(level.getMusicKeyNoon());
+						STMidiPlayer.playKey(level.getMusicKeyNoon());
 					else
-						Service.playKey(level.getMusicKeyMorning());
+						STMidiPlayer.playKey(level.getMusicKeyMorning());
 				}
 			break;
 		case CommandListener.EXAMINELEVELMAP:

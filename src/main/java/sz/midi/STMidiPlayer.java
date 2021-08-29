@@ -2,18 +2,16 @@ package sz.midi;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Properties;
 
-import javax.sound.midi.InvalidMidiDataException;
-import javax.sound.midi.MidiChannel;
-import javax.sound.midi.MidiSystem;
-import javax.sound.midi.Sequencer;
-import javax.sound.midi.Synthesizer;
+import javax.sound.midi.*;
 
 import co.castle.game.Game;
+import co.castle.game.MusicManager;
+import co.castle.game.SFXManager;
 import co.castle.system.FileLoader;
 
-public class STMidiPlayer implements Runnable
-{
+public class STMidiPlayer extends MusicManager implements Runnable {
 	public static final int INS_STOP = 0;
 	public static final int INS_LOAD = 1;
 	public static final int INS_DIE = 2;
@@ -27,13 +25,42 @@ public class STMidiPlayer implements Runnable
 
 	private static boolean loop = true;
 
-	public static void setInstruction( int instruction )
-	{
+	static {
+		// Load the file of configuration, this properties file have the path
+		// to tracks of app.
+		final Properties configurationFile = new Properties();
+
+		try (var in = FileLoader.getInputStream("properties/configuration.properties")) {
+			configurationFile.load(in);
+		} catch (IOException exception) {
+			System.err.println("Configuration file not found or error while loading the file.\n");
+			exception.printStackTrace();
+		}
+
+		// NOTE: Move and Clear
+		if (configurationFile.getProperty("enableSound", "false").equals("true")) {
+			System.out.println("Initializing Midi Sequencer");
+			try {
+				STMidiPlayer.sequencer = MidiSystem.getSequencer();
+				// STMidiPlayer.setVolume(0.1d);
+				STMidiPlayer.sequencer.open();
+
+			} catch (MidiUnavailableException mue) {
+				System.err.println("Midi Device Unavailable");
+			}
+			System.out.println("Initializing Music Manager");
+			addTracks(configurationFile);
+
+			SFXManager.setEnabled(configurationFile.getProperty("enableSFX") != null
+					&& configurationFile.getProperty("enableSFX").equals("true"));
+		}
+	}
+
+	public static void setInstruction(int instruction) {
 		currentInstruction = instruction;
 	}
 
-	public static void setMidi( String pMidiFile )
-	{
+	public static void setMidi(String pMidiFile) {
 		currentMidiFile = pMidiFile;
 	}
 

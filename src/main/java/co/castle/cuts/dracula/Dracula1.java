@@ -8,6 +8,7 @@ import co.castle.main.Service;
 import co.castle.monster.Monster;
 import co.castle.ui.AppearanceFactory;
 import co.castle.ui.Display;
+import sz.midi.STMidiPlayer;
 import sz.util.Position;
 
 public class Dracula1 extends Unleasher
@@ -27,7 +28,7 @@ public class Dracula1 extends Unleasher
 		((DraculaAI) dracula.getSelector()).setOnBattle(true);
 		dracula.setVisible(true);
 		level.setMusicKeyMorning("DRACULA");
-		Service.playKey("DRACULA");
+		STMidiPlayer.playKey("DRACULA");
 		enabled = false;
 	}
 

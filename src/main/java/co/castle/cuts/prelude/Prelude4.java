@@ -6,19 +6,19 @@ import co.castle.game.Game;
 import co.castle.level.Level;
 import co.castle.main.Service;
 import co.castle.ui.Display;
+import sz.midi.STMidiPlayer;
 import sz.util.Position;
 
 public class Prelude4 extends Unleasher
 {
 
-	public void unleash( Level level, Game game )
-	{
+	public void unleash( Level level, Game game ) {
 		if (!level.getFlag("CHRIS_DEAD") || Position.distance(
 				level.getMonsterByID("PRELUDE_DRACULA").getPosition(),
 				game.getPlayer().getPosition()) > 5)
 			return;
 		Display.thus.showChat("PRELUDE_DRACULA2", game);
-		Service.playKey("CHRIS_DEAD");
+		STMidiPlayer.playKey("CHRIS_DEAD");
 		level.setMusicKeyMorning("CHRIS_DEAD");
 		((DraculaAI) level.getMonsterByID("PRELUDE_DRACULA").getSelector())
 				.setOnBattle(true);

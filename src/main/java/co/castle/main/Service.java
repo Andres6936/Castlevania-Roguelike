@@ -1,6 +1,7 @@
 package co.castle.main;
 
-import co.castle.action.*;
+import co.castle.action.Action;
+import co.castle.action.ActionFactory;
 import co.castle.action.monster.*;
 import co.castle.action.monster.boss.MummyStrangle;
 import co.castle.action.monster.boss.MummyTeleport;
@@ -25,35 +26,29 @@ import co.castle.feature.ai.BlastCrystalAI;
 import co.castle.feature.ai.CrossAI;
 import co.castle.feature.ai.FlameAI;
 import co.castle.feature.ai.NullSelector;
-import co.castle.game.*;
+import co.castle.game.CRLException;
+import co.castle.game.PlayerGenerator;
 import co.castle.item.ItemFactory;
 import co.castle.level.MapCellFactory;
 import co.castle.monster.MonsterFactory;
 import co.castle.npc.NPCDefinition;
 import co.castle.npc.NPCFactory;
 import co.castle.player.Player;
-import co.castle.system.FileLoader;
-import co.castle.ui.*;
+import co.castle.ui.AppearanceFactory;
+import co.castle.ui.Display;
+import co.castle.ui.UISelector;
+import co.castle.ui.UserInterface;
 import co.castle.ui.graphicsUI.GFXPlayerGenerator;
 import co.castle.ui.graphicsUI.GFXUISelector;
 import co.castle.ui.graphicsUI.GFXUserInterface;
 import co.castle.ui.graphicsUI.GraphicsDisplay;
-import sz.midi.STMidiPlayer;
-
-import javax.sound.midi.MidiSystem;
-import javax.sound.midi.MidiUnavailableException;
-import java.io.IOException;
-import java.util.Properties;
 
 /**
  * Roles: Play all application sound as effect and music background.
  *
  * @implNote With keyword final, we be prevent the inheritance of this class.
  */
-public final class Service extends MusicManager {
-	private final static byte JCURSES_CONSOLE = 0;
-	private final static byte SWING_GFX = 1;
-	private final static byte SWING_CONSOLE = 2;
+public final class Service {
 
 	/**
 	 * Class type Singleton, reference to only object
@@ -111,37 +106,6 @@ public final class Service extends MusicManager {
 		}
 		initializeFeatures();
 		initializeSmartFeatures();
-
-		// Load the file of configuration, this properties file have the path
-		// to tracks of app.
-		final Properties configurationFile = new Properties();
-
-		try (var in = FileLoader.getInputStream("properties/configuration.properties")) {
-			configurationFile.load(in);
-		} catch (IOException exception) {
-			System.err.println("Configuration file not found or error while loading the file.\n");
-			exception.printStackTrace();
-		}
-
-		// NOTE: Move and Clear
-		if (configurationFile.getProperty("enableSound", "false").equals("true")) {
-			System.out.println("Initializing Midi Sequencer");
-			try {
-				STMidiPlayer.sequencer = MidiSystem.getSequencer();
-				// STMidiPlayer.setVolume(0.1d);
-				STMidiPlayer.sequencer.open();
-
-			} catch (MidiUnavailableException mue) {
-				Game.addReport("Midi device unavailable");
-				System.out.println("Midi Device Unavailable");
-				return;
-			}
-			System.out.println("Initializing Music Manager");
-			addTracks(configurationFile);
-
-			SFXManager.setEnabled(configurationFile.getProperty("enableSFX") != null
-					&& configurationFile.getProperty("enableSFX").equals("true"));
-		}
 
 		Player.initializeWhips( "LEATHER_WHIP", "CHAIN_WHIP", "VKILLERW", "THORN_WHIP", "FLAME_WHIP",
 				"LIT_WHIP" );

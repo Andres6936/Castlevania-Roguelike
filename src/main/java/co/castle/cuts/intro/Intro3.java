@@ -7,6 +7,7 @@ import co.castle.main.Service;
 import co.castle.monster.Monster;
 import co.castle.monster.MonsterFactory;
 import co.castle.ui.UserInterface;
+import sz.midi.STMidiPlayer;
 import sz.util.Position;
 import sz.util.Util;
 
@@ -32,7 +33,7 @@ public class Intro3 extends Unleasher
 				if ( level.isWalkable( wargPosition ) )
 				{
 					String monsterId = "WHITE_SKELETON";
-					if ( i == 0 )
+					if (i == 0)
 						monsterId = "WARG";
 					Monster warg = MonsterFactory.getFactory().buildMonster(monsterId);
 					warg.setPosition(wargPosition);
@@ -41,7 +42,7 @@ public class Intro3 extends Unleasher
 					i--;
 				}
 			}
-			Service.playKey("WRECKAGE");
+			STMidiPlayer.playKey("WRECKAGE");
 			level.setMusicKeyMorning("WRECKAGE");
 			if (level.getNPCByID("MELDUCK") != null)
 				level.getNPCByID("MELDUCK").setTalkMessage(
