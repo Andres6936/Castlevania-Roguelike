@@ -106,7 +106,9 @@ public final class Service extends MusicManager {
 			e.printStackTrace();
 		}
 
-		initializeNPCs();
+		for (NPCDefinition definition : NPCs.getNPCDefinitions()) {
+			NPCFactory.getFactory().addDefinition(definition);
+		}
 		initializeFeatures();
 		initializeSmartFeatures();
 
@@ -190,16 +192,6 @@ public final class Service extends MusicManager {
 
 		MonsterFactory.getFactory( )
 				.init( MonsterLoader.getMonsterDefinitions( "data/monsters.ecsv", "data/monsters.exml" ) );
-	}
-
-	private static void initializeNPCs( )
-	{
-		NPCDefinition[ ] definitions = NPCs.getNPCDefinitions( );
-		NPCFactory npcf = NPCFactory.getFactory( );
-        for ( NPCDefinition definition : definitions )
-        {
-            npcf.addDefinition( definition );
-		}
 	}
 
 	private static void initializeFeatures( )
