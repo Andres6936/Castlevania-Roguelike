@@ -510,17 +510,20 @@ public class Player extends Actor {
 			{	new AdvDodge( ), new AdvDodge2( ), new AdvBirdsEgg( ), new AdvCatSoul( ),
 				new AdvDragonFire( ), new AdvInvokeBird( ), new AdvInvokeCat( ),
 				new AdvInvokeDragon( ), new AdvInvokeEagle( ), new AdvInvokeTiger( ),
-				new AdvInvokeTortoise( ), new AdvInvokeTurtle( ), new AdvManipulate( ),
-				new AdvTame( ), new AdvConfidence( ), new AdvSoulForge( ),
-				new AdvKindSoul( ) },
-			{	new AdvDodge( ), new AdvDodge2( ), new AdvBearMorph( ),
-				new AdvBeastMorph( ), new AdvClawAssault( ), new AdvCompleteControl( ),
-				new AdvDemonMorph( ), new AdvEnergyScythe( ), new AdvImpactBlow( ),
-				new AdvPowerBlow2( ), new AdvImpactBlow3( ), new AdvRegen( ),
-				new AdvSelfControl( ) },
-			{
+					new AdvInvokeTortoise(), new AdvInvokeTurtle(), new AdvManipulate(),
+					new AdvTame(), new AdvConfidence(), new AdvSoulForge(),
+					new AdvKindSoul()},
+				{new AdvDodge(), new AdvDodge2(), new AdvBearMorph(),
+						new AdvBeastMorph(), new AdvClawAssault(), new AdvCompleteControl(),
+						new AdvDemonMorph(), new AdvEnergyScythe(), new AdvImpactBlow(),
+						new AdvPowerBlow2(), new AdvImpactBlow3(), new AdvRegen(),
+						new AdvSelfControl()},
+				{
 
-			} };
+				}
+		};
+
+		initializeWhips("LEATHER_WHIP", "CHAIN_WHIP", "VKILLERW", "THORN_WHIP", "FLAME_WHIP", "LIT_WHIP");
 	}
 
 	public Player( )

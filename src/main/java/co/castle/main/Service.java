@@ -65,9 +65,6 @@ public final class Service {
 		for (NPCDefinition definition : NPCs.getNPCDefinitions()) {
 			NPCFactory.getFactory().addDefinition(definition);
 		}
-
-		Player.initializeWhips("LEATHER_WHIP", "CHAIN_WHIP", "VKILLERW", "THORN_WHIP", "FLAME_WHIP",
-				"LIT_WHIP");
 	}
 
 	private void initializeUI(Object si) {
