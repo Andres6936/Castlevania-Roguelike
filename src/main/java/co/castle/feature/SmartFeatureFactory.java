@@ -2,6 +2,7 @@ package co.castle.feature;
 
 import java.util.Hashtable;
 
+import co.castle.data.SmartFeatures;
 import sz.util.Debug;
 
 public class SmartFeatureFactory {
@@ -10,6 +11,7 @@ public class SmartFeatureFactory {
 
 	public SmartFeatureFactory() {
 		definitions = new Hashtable<>(40);
+		for (SmartFeature def : SmartFeatures.getSmartFeatures()) definitions.put(def.getID(), def);
 	}
 
 	public static SmartFeatureFactory getFactory() {

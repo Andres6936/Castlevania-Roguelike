@@ -65,8 +65,6 @@ public final class Service {
 		for (NPCDefinition definition : NPCs.getNPCDefinitions()) {
 			NPCFactory.getFactory().addDefinition(definition);
 		}
-		FeatureFactory.getFactory().init(Features.getFeatureDefinitions());
-		SmartFeatureFactory.getFactory().init(SmartFeatures.getSmartFeatures());
 
 		Player.initializeWhips("LEATHER_WHIP", "CHAIN_WHIP", "VKILLERW", "THORN_WHIP", "FLAME_WHIP",
 				"LIT_WHIP");

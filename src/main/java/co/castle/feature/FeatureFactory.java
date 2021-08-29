@@ -2,6 +2,7 @@ package co.castle.feature;
 
 import java.util.Hashtable;
 
+import co.castle.data.Features;
 import sz.util.Debug;
 
 public class FeatureFactory {
@@ -11,6 +12,7 @@ public class FeatureFactory {
 
 	public FeatureFactory() {
 		definitions = new Hashtable<>(40);
+		for (Feature def : Features.getFeatureDefinitions()) definitions.put(def.getID(), def);
 	}
 
 	public static FeatureFactory getFactory() {
@@ -33,7 +35,4 @@ public class FeatureFactory {
 			return "?";
 	}
 
-	public void init( Feature[ ] defs ) {
-		for (Feature def : defs) definitions.put(def.getID(), def);
-	}
 }
