@@ -4,24 +4,35 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Vector;
 
+import co.castle.data.MonsterLoader;
+import co.castle.game.CRLException;
 import co.castle.level.Level;
 import co.castle.levelgen.MonsterSpawnInfo;
 import co.castle.ui.AppearanceFactory;
 import sz.util.Debug;
 import sz.util.Util;
 
-public class MonsterFactory
-{
-	private Hashtable definitions;
+public class MonsterFactory {
+	private final Hashtable<String, MonsterDefinition> definitions = new Hashtable<>(40);
 
 	private int lastSpawnLocation;
-	private Vector vDefinitions = new Vector( 50 );
+	private final Vector<MonsterDefinition> vDefinitions = new Vector<>(50);
 
-	private final static MonsterFactory singleton = new MonsterFactory( );
+	private final static MonsterFactory singleton = new MonsterFactory();
 
-	public MonsterFactory( )
-	{
-		definitions = new Hashtable( 40 );
+	public MonsterFactory() {
+		try {
+			for (MonsterDefinition def : MonsterLoader.getMonsterDefinitions()) {
+				def.setAppearance(AppearanceFactory.getAppearanceFactory()
+						.getAppearance(def.getID()));
+				definitions.put(def.getID(), def);
+				vDefinitions.add(def);
+
+			}
+		} catch (CRLException e) {
+			System.err.println("Faild to load monster configuration.");
+			e.printStackTrace();
+		}
 	}
 
 	public static MonsterFactory getFactory( )
@@ -34,14 +45,12 @@ public class MonsterFactory
 	 * definitions.put(definition.getID(), definition); }
 	 */
 
-	public Monster buildMonster( String id )
-	{
-		return new Monster( (MonsterDefinition) definitions.get( id ) );
+	public Monster buildMonster( String id ) {
+		return new Monster(definitions.get(id));
 	}
 
-	public MonsterDefinition getDefinition( String id )
-	{
-		return (MonsterDefinition) definitions.get( id );
+	public MonsterDefinition getDefinition( String id ) {
+		return definitions.get(id);
 	}
 
 	public int getLastSpawnPosition( )
@@ -57,34 +66,19 @@ public class MonsterFactory
 		while ( true )
 		{
 			int rand = Util.rand( 0, spawnIDs.length - 1 );
-			if ( Util.chance( spawnIDs[ rand ].getFrequency( ) ) )
-			{
-				lastSpawnLocation = spawnIDs[ rand ].getSpawnLocation( );
-				return new Monster( (MonsterDefinition) definitions
-						.get( spawnIDs[ rand ].getMonsterID( ) ) );
+			if ( Util.chance( spawnIDs[ rand ].getFrequency( ) ) ) {
+				lastSpawnLocation = spawnIDs[rand].getSpawnLocation();
+				return new Monster(definitions
+						.get(spawnIDs[rand].getMonsterID()));
 			}
 		}
 	}
 
-	public void init( MonsterDefinition[ ] defs )
-	{
-		for ( int i = 0; i < defs.length; i++ )
-		{
-			defs[ i ].setAppearance( AppearanceFactory.getAppearanceFactory( )
-					.getAppearance( defs[ i ].getID( ) ) );
-			definitions.put( defs[ i ].getID( ), defs[ i ] );
-			vDefinitions.add( defs[ i ] );
-
-		}
-	}
-
-	public void printAppearances( )
-	{
-		Enumeration x = definitions.keys( );
-		while ( x.hasMoreElements( ) )
-		{
-			MonsterDefinition d = (MonsterDefinition) definitions.get( x.nextElement( ) );
-			Debug.say( "Monstero " + d.getDescription( ) + " app " + d.getAppearance( ) );
+	public void printAppearances( ) {
+		Enumeration<String> x = definitions.keys();
+		while (x.hasMoreElements()) {
+			MonsterDefinition d = definitions.get(x.nextElement());
+			Debug.say("Monstero " + d.getDescription() + " app " + d.getAppearance());
 		}
 	}
 }

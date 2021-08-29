@@ -64,13 +64,6 @@ public final class Service {
 		ui = UserInterface.getUI();
 		initializeUI(appFrame);
 
-		try {
-			MonsterFactory.getFactory().init(MonsterLoader.getMonsterDefinitions());
-		} catch (CRLException e) {
-			System.out.println("Faild to load monster configuration.");
-			e.printStackTrace();
-		}
-
 		for (NPCDefinition definition : NPCs.getNPCDefinitions()) {
 			NPCFactory.getFactory().addDefinition(definition);
 		}
