@@ -15,6 +15,8 @@ import co.castle.ai.npc.PriestAI;
 import co.castle.ai.npc.VillagerAI;
 import co.castle.ai.player.WildMorphAI;
 import co.castle.conf.KeyBindings;
+import co.castle.conf.UserActions;
+import co.castle.conf.UserCommands;
 import co.castle.data.*;
 import co.castle.feature.CountDown;
 import co.castle.feature.FeatureFactory;
@@ -142,64 +144,11 @@ public final class Service extends MusicManager {
 
 	private void initializeUI(Object si) {
 		Action walkAction = new Walk();
-		Action jump = new Jump();
-		Action thrown = new Throw();
-		Action use = new Use();
-		Action equip = new Equip();
-		Action unequip = new Unequip();
-		Action attack = new Attack();
-		Action reload = new Reload();
-		Action target = new TargetPS();
-		Action switchWeapons = new SwitchWeapons();
-		Action get = new Get();
-		Action drop = new Drop();
-		Action dive = new Dive();
 
-		UserAction[] userActions;
-		UserCommand[] userCommands;
 		KeyBindings keyBindings = new KeyBindings();
-
 		Display.thus.setKeyBindings(keyBindings);
-
-		userActions = new UserAction[]
-				{
-						new UserAction(attack, keyBindings.getIntProperty("ATTACK1_KEY")),
-						new UserAction(attack, keyBindings.getIntProperty("ATTACK2_KEY")),
-						new UserAction(jump, keyBindings.getIntProperty("JUMP_KEY")),
-						new UserAction(thrown, keyBindings.getIntProperty("THROW_KEY")),
-						new UserAction(equip, keyBindings.getIntProperty("EQUIP_KEY")),
-						new UserAction(unequip, keyBindings.getIntProperty("UNEQUIP_KEY")),
-						new UserAction(reload, keyBindings.getIntProperty("RELOAD_KEY")),
-						new UserAction(use, keyBindings.getIntProperty("USE_KEY")),
-						new UserAction(get, keyBindings.getIntProperty("GET_KEY")),
-						new UserAction(drop, keyBindings.getIntProperty("DROP_KEY")),
-						new UserAction(dive, keyBindings.getIntProperty("DIVE_KEY")),
-						new UserAction(target, keyBindings.getIntProperty("TARGET_KEY")),
-						new UserAction(switchWeapons, keyBindings.getIntProperty("SWITCH_WEAPONS_KEY")),
-						new UserAction(get, keyBindings.getIntProperty("GET2_KEY")),};
-
-		userCommands = new UserCommand[]
-				{
-						new UserCommand(CommandListener.PROMPTQUIT, keyBindings.getIntProperty("QUIT_KEY")),
-						new UserCommand(CommandListener.HELP, keyBindings.getIntProperty("HELP1_KEY")),
-						new UserCommand(CommandListener.LOOK, keyBindings.getIntProperty("LOOK_KEY")),
-						new UserCommand(CommandListener.PROMPTSAVE,
-								keyBindings.getIntProperty("PROMPT_SAVE_KEY")),
-						new UserCommand(CommandListener.SHOWSKILLS,
-								keyBindings.getIntProperty("SHOW_SKILLS_KEY")),
-						new UserCommand(CommandListener.HELP, keyBindings.getIntProperty("HELP2_KEY")),
-						new UserCommand(CommandListener.SHOWINVEN,
-								keyBindings.getIntProperty("SHOW_INVENTORY_KEY")),
-						new UserCommand(CommandListener.SHOWSTATS,
-								keyBindings.getIntProperty("SHOW_STATS_KEY")),
-						new UserCommand(CommandListener.CHARDUMP, keyBindings.getIntProperty("CHARDUMP_KEY")),
-						new UserCommand(CommandListener.SHOWMESSAGEHISTORY,
-								keyBindings.getIntProperty("SHOW_MESSAGE_HISTORY_KEY")),
-						new UserCommand(CommandListener.SHOWMAP, keyBindings.getIntProperty("SHOW_MAP_KEY")),
-						new UserCommand(CommandListener.EXAMINELEVELMAP,
-								keyBindings.getIntProperty("EXAMINE_LEVEL_MAP_KEY")),
-						new UserCommand(CommandListener.SWITCHMUSIC,
-								keyBindings.getIntProperty("SWITCH_MUSIC_KEY")),};
+		var userActions = new UserActions(keyBindings);
+		var userCommands = new UserCommands(keyBindings);
 
 		((GFXUserInterface) ui).init((ApplicationGraphics) si, userCommands, target);
 		uiSelector = new GFXUISelector();
