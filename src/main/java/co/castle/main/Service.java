@@ -1,6 +1,5 @@
 package co.castle.main;
 
-import co.castle.ai.SelectorFactory;
 import co.castle.conf.KeyBindings;
 import co.castle.conf.UserActions;
 import co.castle.conf.UserCommands;
@@ -15,7 +14,6 @@ import co.castle.monster.MonsterFactory;
 import co.castle.npc.NPCDefinition;
 import co.castle.npc.NPCFactory;
 import co.castle.player.Player;
-import co.castle.ui.AppearanceFactory;
 import co.castle.ui.Display;
 import co.castle.ui.UISelector;
 import co.castle.ui.UserInterface;
@@ -67,11 +65,11 @@ public final class Service {
 		initializeUI(appFrame);
 
 		System.out.println("Loading Data");
-		initializeCells();
-		initializeItems();
+		MapCellFactory.getMapCellFactory().init(Cells.getCellDefinitions());
+		ItemFactory.getItemFactory().init(Items.getItemDefinitions());
 
 		try {
-			initializeMonsters();
+			MonsterFactory.getFactory().init(MonsterLoader.getMonsterDefinitions());
 		} catch (CRLException e) {
 			System.out.println("Faild to load monster configuration.");
 			e.printStackTrace();
@@ -80,11 +78,11 @@ public final class Service {
 		for (NPCDefinition definition : NPCs.getNPCDefinitions()) {
 			NPCFactory.getFactory().addDefinition(definition);
 		}
-		initializeFeatures();
-		initializeSmartFeatures();
+		FeatureFactory.getFactory().init(Features.getFeatureDefinitions());
+		SmartFeatureFactory.getFactory().init(SmartFeatures.getSmartFeatures());
 
-		Player.initializeWhips( "LEATHER_WHIP", "CHAIN_WHIP", "VKILLERW", "THORN_WHIP", "FLAME_WHIP",
-				"LIT_WHIP" );
+		Player.initializeWhips("LEATHER_WHIP", "CHAIN_WHIP", "VKILLERW", "THORN_WHIP", "FLAME_WHIP",
+				"LIT_WHIP");
 	}
 
 	private void initializeUI(Object si) {
@@ -98,24 +96,4 @@ public final class Service {
 		((GFXUISelector) uiSelector).init(userActions, (GFXUserInterface) ui, keyBindings);
 	}
 
-	private static void initializeCells() {
-		MapCellFactory.getMapCellFactory().init(Cells.getCellDefinitions());
-	}
-
-	private static void initializeItems() {
-		ItemFactory.getItemFactory().init(Items.getItemDefinitions());
-	}
-
-	private static void initializeMonsters() throws CRLException {
-
-		MonsterFactory.getFactory().init(MonsterLoader.getMonsterDefinitions());
-	}
-
-	private static void initializeFeatures() {
-		FeatureFactory.getFactory().init(Features.getFeatureDefinitions());
-	}
-
-	private static void initializeSmartFeatures() {
-		SmartFeatureFactory.getFactory().init(SmartFeatures.getSmartFeatures());
-	}
 }
