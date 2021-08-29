@@ -157,59 +157,54 @@ public final class Service extends MusicManager {
 
 		UserAction[] userActions;
 		UserCommand[] userCommands;
-		Properties keyBindings = new KeyBindings();
+		KeyBindings keyBindings = new KeyBindings();
 
 		Display.thus.setKeyBindings(keyBindings);
 
 		userActions = new UserAction[]
 				{
-						new UserAction(attack, i(keyBindings.getProperty("ATTACK1_KEY"))),
-						new UserAction(attack, i(keyBindings.getProperty("ATTACK2_KEY"))),
-						new UserAction(jump, i(keyBindings.getProperty("JUMP_KEY"))),
-						new UserAction(thrown, i(keyBindings.getProperty("THROW_KEY"))),
-						new UserAction(equip, i(keyBindings.getProperty("EQUIP_KEY"))),
-						new UserAction(unequip, i(keyBindings.getProperty("UNEQUIP_KEY"))),
-						new UserAction(reload, i(keyBindings.getProperty("RELOAD_KEY"))),
-						new UserAction(use, i(keyBindings.getProperty("USE_KEY"))),
-						new UserAction(get, i(keyBindings.getProperty("GET_KEY"))),
-						new UserAction(drop, i(keyBindings.getProperty("DROP_KEY"))),
-						new UserAction(dive, i(keyBindings.getProperty("DIVE_KEY"))),
-						new UserAction(target, i(keyBindings.getProperty("TARGET_KEY"))),
-						new UserAction(switchWeapons, i(keyBindings.getProperty("SWITCH_WEAPONS_KEY"))),
-						new UserAction(get, i(keyBindings.getProperty("GET2_KEY"))),};
+						new UserAction(attack, keyBindings.getIntProperty("ATTACK1_KEY")),
+						new UserAction(attack, keyBindings.getIntProperty("ATTACK2_KEY")),
+						new UserAction(jump, keyBindings.getIntProperty("JUMP_KEY")),
+						new UserAction(thrown, keyBindings.getIntProperty("THROW_KEY")),
+						new UserAction(equip, keyBindings.getIntProperty("EQUIP_KEY")),
+						new UserAction(unequip, keyBindings.getIntProperty("UNEQUIP_KEY")),
+						new UserAction(reload, keyBindings.getIntProperty("RELOAD_KEY")),
+						new UserAction(use, keyBindings.getIntProperty("USE_KEY")),
+						new UserAction(get, keyBindings.getIntProperty("GET_KEY")),
+						new UserAction(drop, keyBindings.getIntProperty("DROP_KEY")),
+						new UserAction(dive, keyBindings.getIntProperty("DIVE_KEY")),
+						new UserAction(target, keyBindings.getIntProperty("TARGET_KEY")),
+						new UserAction(switchWeapons, keyBindings.getIntProperty("SWITCH_WEAPONS_KEY")),
+						new UserAction(get, keyBindings.getIntProperty("GET2_KEY")),};
 
 		userCommands = new UserCommand[]
 				{
-						new UserCommand(CommandListener.PROMPTQUIT, i(keyBindings.getProperty("QUIT_KEY"))),
-						new UserCommand(CommandListener.HELP, i(keyBindings.getProperty("HELP1_KEY"))),
-						new UserCommand(CommandListener.LOOK, i(keyBindings.getProperty("LOOK_KEY"))),
+						new UserCommand(CommandListener.PROMPTQUIT, keyBindings.getIntProperty("QUIT_KEY")),
+						new UserCommand(CommandListener.HELP, keyBindings.getIntProperty("HELP1_KEY")),
+						new UserCommand(CommandListener.LOOK, keyBindings.getIntProperty("LOOK_KEY")),
 						new UserCommand(CommandListener.PROMPTSAVE,
-								i(keyBindings.getProperty("PROMPT_SAVE_KEY"))),
+								keyBindings.getIntProperty("PROMPT_SAVE_KEY")),
 						new UserCommand(CommandListener.SHOWSKILLS,
-								i(keyBindings.getProperty("SHOW_SKILLS_KEY"))),
-						new UserCommand(CommandListener.HELP, i(keyBindings.getProperty("HELP2_KEY"))),
+								keyBindings.getIntProperty("SHOW_SKILLS_KEY")),
+						new UserCommand(CommandListener.HELP, keyBindings.getIntProperty("HELP2_KEY")),
 						new UserCommand(CommandListener.SHOWINVEN,
-								i(keyBindings.getProperty("SHOW_INVENTORY_KEY"))),
+								keyBindings.getIntProperty("SHOW_INVENTORY_KEY")),
 						new UserCommand(CommandListener.SHOWSTATS,
-								i(keyBindings.getProperty("SHOW_STATS_KEY"))),
-						new UserCommand(CommandListener.CHARDUMP, i(keyBindings.getProperty("CHARDUMP_KEY"))),
+								keyBindings.getIntProperty("SHOW_STATS_KEY")),
+						new UserCommand(CommandListener.CHARDUMP, keyBindings.getIntProperty("CHARDUMP_KEY")),
 						new UserCommand(CommandListener.SHOWMESSAGEHISTORY,
-								i(keyBindings.getProperty("SHOW_MESSAGE_HISTORY_KEY"))),
-						new UserCommand(CommandListener.SHOWMAP, i(keyBindings.getProperty("SHOW_MAP_KEY"))),
+								keyBindings.getIntProperty("SHOW_MESSAGE_HISTORY_KEY")),
+						new UserCommand(CommandListener.SHOWMAP, keyBindings.getIntProperty("SHOW_MAP_KEY")),
 						new UserCommand(CommandListener.EXAMINELEVELMAP,
-								i(keyBindings.getProperty("EXAMINE_LEVEL_MAP_KEY"))),
+								keyBindings.getIntProperty("EXAMINE_LEVEL_MAP_KEY")),
 						new UserCommand(CommandListener.SWITCHMUSIC,
-								i(keyBindings.getProperty("SWITCH_MUSIC_KEY"))),};
+								keyBindings.getIntProperty("SWITCH_MUSIC_KEY")),};
 
 		((GFXUserInterface) ui).init((ApplicationGraphics) si, userCommands, target);
 		uiSelector = new GFXUISelector();
 		((GFXUISelector) uiSelector).init(userActions, walkAction, target, attack,
 				(GFXUserInterface) ui, keyBindings);
-	}
-
-	private static int i( String s )
-	{
-		return Integer.parseInt( s );
 	}
 
 	private static void initializeActions( )

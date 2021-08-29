@@ -59,6 +59,10 @@ public class KeyBindings extends Properties {
         put("SWITCH_MUSIC_KEY", readKeyString(keyConfig, "SWITCHMUSIC"));
     }
 
+    public int getIntProperty(final String key) {
+        return Integer.parseInt(getProperty(key));
+    }
+
     private static String readKeyString(Properties config, String keyName) {
         return readKey(config, keyName) + "";
     }
