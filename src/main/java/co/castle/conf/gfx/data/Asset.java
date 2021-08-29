@@ -124,9 +124,12 @@ public final class Asset {
 
 	private static final Position playerLocationOnScreen;
 
+	/**
+	 * Define the file of configuration that content the constant of application.
+	 */
+	private static final Properties configuration = new Properties();
+
 	static {
-		// Define the file of configuration that content the constant of application.
-		var configuration = new Properties();
 		try {
 			// Load the file from the resource directory.
 			configuration.load(FileLoader.getInputStream("properties/configurationUI.properties"));
@@ -160,15 +163,15 @@ public final class Asset {
 	}
 
 	// We make the constructor private to prevent the use of 'new'
-	public Asset(final Properties configuration) {
+	public Asset() {
 		// Load images, parameters and fonts, block try/catch is necessary.
 		try {
 			IMAGE_TITLE = ImageUtils.createImage(configuration.getProperty("IMG_TITLE"));
 			IMAGE_PROLOGUE = ImageUtils.createImage(configuration.getProperty("IMG_PROLOGUE"));
-			IMAGE_RESUME = ImageUtils.createImage(configuration.getProperty( "IMG_RESUME" ) );
-			IMAGE_BACKGROUND = ImageUtils.createImage( configuration.getProperty( "IMG_BACKGROUND" ) );
-			IMAGE_ENDGAME = ImageUtils.createImage( configuration.getProperty( "IMG_ENDGAME" ) );
-			IMAGE_HISCORES = ImageUtils.createImage( configuration.getProperty( "IMG_HISCORES" ) );
+			IMAGE_RESUME = ImageUtils.createImage(configuration.getProperty("IMG_RESUME"));
+			IMAGE_BACKGROUND = ImageUtils.createImage(configuration.getProperty("IMG_BACKGROUND"));
+			IMAGE_ENDGAME = ImageUtils.createImage(configuration.getProperty("IMG_ENDGAME"));
+			IMAGE_HISCORES = ImageUtils.createImage(configuration.getProperty("IMG_HISCORES"));
 			IMAGE_LEVEL_UP = ImageUtils.createImage(configuration.getProperty("IMG_LEVEL_UP"));
 			IMAGE_SAVED = ImageUtils.createImage(configuration.getProperty("IMG_SAVED"));
 			IMAGE_MAP = ImageUtils.createImage(configuration.getProperty("IMG_MAP"));

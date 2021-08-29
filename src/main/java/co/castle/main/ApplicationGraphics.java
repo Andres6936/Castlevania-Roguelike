@@ -42,7 +42,10 @@ public final class ApplicationGraphics extends JFrame {
 
 	// Fields Static
 
-	public static Asset assets;
+	/**
+	 * Content the asset for application
+	 */
+	public final static Asset assets = new Asset();
 
 	// Fields
 
@@ -81,9 +84,6 @@ public final class ApplicationGraphics extends JFrame {
 		} catch (FontFormatException e) {
 			System.out.println("Error loading the font" );
 		}
-
-		// Content the asset for application
-		assets = new Asset(configurationUI);
 
 		Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
 		setBounds((size.width - Asset.SCREEN_WIDTH) / 2, (size.height - Asset.SCREEN_HEIGHT) / 2,
