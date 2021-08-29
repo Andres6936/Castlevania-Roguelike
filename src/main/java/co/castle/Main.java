@@ -19,7 +19,7 @@ public final class Main
 	/**
 	 * Provide functionality to the application, loading and starting modules
 	 */
-	private static final Service app = Service.getInstance();
+	private static final Service app = new Service();
 
 	public static void crash( String message, Throwable exception )
 	{

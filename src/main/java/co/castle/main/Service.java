@@ -18,18 +18,11 @@ import co.castle.ui.graphicsUI.GraphicsDisplay;
  * @implNote With keyword final, we be prevent the inheritance of this class.
  */
 public final class Service {
-
-	/**
-	 * Class type Singleton, reference to only object
-	 */
-	private static Service instance;
-
 	// NOTE: Change this defines and move, in resume: clear
 	public final UserInterface userInterface;
 	public final UISelector uiSelector;
 
-	// We make the constructor private to prevent the use of 'new'
-	private Service() {
+	public Service() {
 		System.out.println("CastlevaniaRL");
 		System.out.println("Slash ~ 2005-2010");
 		System.out.println("Reading Configuration");
@@ -50,12 +43,4 @@ public final class Service {
 		((GFXUserInterface) userInterface).init(appFrame, userCommands, userActions);
 		((GFXUISelector) uiSelector).init(userActions, (GFXUserInterface) userInterface, keyBindings);
 	}
-
-	/**
-	 * @return Instance of Service
-	 */
-	public static Service getInstance() {
-		return instance == null ? instance = new Service() : instance;
-	}
-
 }
