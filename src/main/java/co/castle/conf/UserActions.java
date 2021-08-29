@@ -26,4 +26,8 @@ public class UserActions extends ArrayList<UserAction> {
         add(new UserAction(new SwitchWeapons(), keyBindings.getIntProperty("SWITCH_WEAPONS_KEY")));
         add(new UserAction(get, keyBindings.getIntProperty("GET2_KEY")));
     }
+
+    public Action getTargetAction() {
+        return target;
+    }
 }

@@ -6,6 +6,7 @@ import java.util.Vector;
 import co.castle.action.Action;
 import co.castle.actor.Actor;
 import co.castle.actor.Message;
+import co.castle.conf.UserCommands;
 import co.castle.item.Merchant;
 import co.castle.level.Level;
 import co.castle.npc.NPC;
@@ -21,17 +22,17 @@ public abstract class UserInterface implements CommandListener
 {
 	private Vector <CommandListener> commandListeners = new Vector <CommandListener>( 5 );
 
-	private boolean[ ][ ] FOVMask;
+	private boolean[][] FOVMask;
 	private boolean gameOver;
 	protected Action actionSelectedByCommand;
 	protected boolean eraseOnArrival; // Erase the buffer upon the arrival of a new msg
 
 	// Components
 
-	protected Vector featuresOnSight = new Vector( );
+	protected Vector featuresOnSight = new Vector();
 
-	protected Hashtable gameCommands = new Hashtable( );
-	protected Vector itemsOnSight = new Vector( );
+	protected Hashtable<String, UserCommand> gameCommands = new Hashtable<>();
+	protected Vector itemsOnSight = new Vector();
 	protected String lastMessage;
 
 	protected Level level;
@@ -152,22 +153,19 @@ public abstract class UserInterface implements CommandListener
 	 */
 
 	// Getters
-	public Player getPlayer( )
-	{
+	public Player getPlayer() {
 		return player;
 	}
 
-	public void init( UserCommand[ ] gameCommands )
-	{
+	public void init(UserCommands gameCommands) {
 		// uiSelector = selector;
-		FOVMask = new boolean[ 80 ][ 25 ];
-		for ( int i = 0; i < gameCommands.length; i++ )
-			this.gameCommands.put( gameCommands[ i ].getKeyCode( ) + "",
-					gameCommands[ i ] );
-		addCommandListener( this );
+		FOVMask = new boolean[80][25];
+		for (UserCommand gameCommand : gameCommands)
+			this.gameCommands.put(gameCommand.getKeyCode() + "", gameCommand);
+		addCommandListener(this);
 	}
 
-	public abstract boolean isDisplaying( Actor who );
+	public abstract boolean isDisplaying(Actor who);
 
 	public boolean isOnFOVMask( int x, int y )
 	{
@@ -244,18 +242,16 @@ public abstract class UserInterface implements CommandListener
 	 */
 	public abstract void showSystemMessage( String x );
 
-	protected int getRelatedCommand( int keyCode )
-	{
-		Debug.enterMethod( this, "getRelatedCommand", keyCode + "" );
-		UserCommand uc = (UserCommand) gameCommands.get( keyCode + "" );
-		if ( uc == null )
-		{
-			Debug.exitMethod( CommandListener.NONE );
+	protected int getRelatedCommand( int keyCode ) {
+		Debug.enterMethod(this, "getRelatedCommand", keyCode + "");
+		UserCommand uc = gameCommands.get(keyCode + "");
+		if (uc == null) {
+			Debug.exitMethod(CommandListener.NONE);
 			return CommandListener.NONE;
 		}
 
-		int ret = uc.getCommand( );
-		Debug.exitMethod( ret + "" );
+		int ret = uc.getCommand();
+		Debug.exitMethod(ret + "");
 		return ret;
 	}
 

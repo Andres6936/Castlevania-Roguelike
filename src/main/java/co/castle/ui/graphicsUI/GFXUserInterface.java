@@ -38,6 +38,8 @@ import co.castle.action.Unequip;
 import co.castle.action.Use;
 import co.castle.actor.Actor;
 import co.castle.actor.Message;
+import co.castle.conf.UserActions;
+import co.castle.conf.UserCommands;
 import co.castle.conf.gfx.data.Asset;
 import co.castle.feature.Feature;
 import co.castle.feature.SmartFeature;
@@ -1150,32 +1152,29 @@ public class GFXUserInterface extends UserInterface implements Runnable
 	 * si.refresh(); } }
 	 */
 
-	public Vector getMessageBuffer( )
-	{
+	public Vector getMessageBuffer() {
 		// return new Vector(messageHistory.subList(0,21));
-		if ( messageHistory.size( ) > 20 )
-			return new Vector( messageHistory.subList( messageHistory.size( ) - 21,
-					messageHistory.size( ) ) );
+		if (messageHistory.size() > 20)
+			return new Vector(messageHistory.subList(messageHistory.size() - 21,
+					messageHistory.size()));
 		else
 			return messageHistory;
 	}
 
-	public void init(	ApplicationGraphics psi, UserCommand[ ] gameCommands,
-						Action target )
-	{
-		Debug.enterMethod( this, "init" );
-		super.init( gameCommands );
-		this.target = target;
-		initProperties( );
+	public void init(ApplicationGraphics psi, UserCommands gameCommands, UserActions userActions) {
+		Debug.enterMethod(this, "init");
+		super.init(gameCommands);
+		this.target = userActions.getTargetAction();
+		initProperties();
 		// GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().setDisplayMode(new
 		// DisplayMode(800,600,8, DisplayMode.REFRESH_RATE_UNKNOWN));
 
 		/*-- Assign values */
 		si = psi;
-		FOVMask = new boolean[ 80 ][ 25 ];
-		si.getGraphics2D( ).setColor( Color.BLACK );
-		si.getGraphics2D( ).fillRect( 0, 0, 800, 600 );
-		si.refresh( );
+		FOVMask = new boolean[80][25];
+		si.getGraphics2D().setColor(Color.BLACK);
+		si.getGraphics2D().fillRect(0, 0, 800, 600);
+		si.refresh();
 
 		/*-- Load Fonts */
 		try

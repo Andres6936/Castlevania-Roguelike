@@ -150,10 +150,9 @@ public final class Service extends MusicManager {
 		var userActions = new UserActions(keyBindings);
 		var userCommands = new UserCommands(keyBindings);
 
-		((GFXUserInterface) ui).init((ApplicationGraphics) si, userCommands, target);
+		((GFXUserInterface) ui).init((ApplicationGraphics) si, userCommands, userActions);
 		uiSelector = new GFXUISelector();
-		((GFXUISelector) uiSelector).init(userActions, walkAction, target, attack,
-				(GFXUserInterface) ui, keyBindings);
+		((GFXUISelector) uiSelector).init(userActions, walkAction, target, attack, (GFXUserInterface) ui, keyBindings);
 	}
 
 	private static void initializeActions( )
