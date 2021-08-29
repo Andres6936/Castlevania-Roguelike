@@ -24,23 +24,12 @@ public final class Service {
 	 */
 	private static Service instance;
 
+	// NOTE: Change this defines and move, in resume: clear
+	public final UserInterface userInterface;
+	public final UISelector uiSelector;
+
 	// We make the constructor private to prevent the use of 'new'
 	private Service() {
-		super();
-	}
-
-	/**
-	 * @return Instance of Service
-	 */
-	public static Service getInstance() {
-		return instance == null ? instance = new Service() : instance;
-	}
-
-	// NOTE: Change this defines and move, in resume: clear
-	public UserInterface ui;
-	public UISelector uiSelector;
-
-	public void start() {
 		System.out.println("CastlevaniaRL");
 		System.out.println("Slash ~ 2005-2010");
 		System.out.println("Reading Configuration");
@@ -51,8 +40,16 @@ public final class Service {
 		Display.thus = new GraphicsDisplay();
 
 
-		ui = UserInterface.getUI();
+		userInterface = UserInterface.getUI();
+		uiSelector = new GFXUISelector();
 		initializeUI(appFrame);
+	}
+
+	/**
+	 * @return Instance of Service
+	 */
+	public static Service getInstance() {
+		return instance == null ? instance = new Service() : instance;
 	}
 
 	private void initializeUI(Object si) {
@@ -61,9 +58,8 @@ public final class Service {
 		var userActions = new UserActions(keyBindings);
 		var userCommands = new UserCommands(keyBindings);
 
-		((GFXUserInterface) ui).init((ApplicationGraphics) si, userCommands, userActions);
-		uiSelector = new GFXUISelector();
-		((GFXUISelector) uiSelector).init(userActions, (GFXUserInterface) ui, keyBindings);
+		((GFXUserInterface) userInterface).init((ApplicationGraphics) si, userCommands, userActions);
+		((GFXUISelector) uiSelector).init(userActions, (GFXUserInterface) userInterface, keyBindings);
 	}
 
 }

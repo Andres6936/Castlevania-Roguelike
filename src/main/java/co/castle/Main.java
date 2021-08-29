@@ -1,18 +1,14 @@
 package co.castle;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.Hashtable;
 
 import co.castle.game.*;
 import co.castle.main.Service;
-import co.castle.scene.SceneManager;
 import co.castle.system.FileLoader;
 import co.castle.ui.Display;
-import sz.midi.STMidiPlayer;
 
 public final class Main
 {
@@ -57,9 +53,6 @@ public final class Main
 //			sceneManager.draw();
 //		}
 
-		app.start();
-		System.out.println("Launching game");
-
 		try {
 			title();
 		} catch (Exception e) {
@@ -74,17 +67,16 @@ public final class Main
 
 	private static void arena( )
 	{
-		if ( currentGame != null )
-		{
-			app.ui.removeCommandListener( currentGame );
+		if (currentGame != null) {
+			app.userInterface.removeCommandListener(currentGame);
 		}
-		currentGame = new Game( );
-		currentGame.setCanSave( false );
-		currentGame.setInterfaces( app.ui, app.uiSelector );
-		setMonsterRecord( GameFiles.getMonsterRecord( ) );
+		currentGame = new Game();
+		currentGame.setCanSave(false);
+		currentGame.setInterfaces(app.userInterface, app.uiSelector);
+		setMonsterRecord(GameFiles.getMonsterRecord());
 		// si.cls();
-		currentGame.arena( );
-		title( );
+		currentGame.arena();
+		title();
 	}
 
 	private static void loadGame( )
@@ -101,59 +93,50 @@ public final class Main
 					FileLoader.getFileInputStream(saves[index]));
 			currentGame = (Game) ois.readObject();
 			ois.close( );
-		}
-		catch ( IOException ioe )
-		{
+		} catch (IOException ioe) {
 
-			ioe.printStackTrace( );
+			ioe.printStackTrace();
+		} catch (ClassNotFoundException cnfe) {
+			crash("Invalid savefile or wrong version",
+					new CRLException("Invalid savefile or wrong version"));
 		}
-		catch ( ClassNotFoundException cnfe )
-		{
-			crash( "Invalid savefile or wrong version",
-					new CRLException( "Invalid savefile or wrong version" ) );
+		currentGame.setInterfaces(app.userInterface, app.uiSelector);
+		if (currentGame.getPlayer().getLevel() == null) {
+			crash("Player wasnt loaded", new Exception("Player wasnt loaded"));
 		}
-		currentGame.setInterfaces( app.ui, app.uiSelector );
-		if ( currentGame.getPlayer( ).getLevel( ) == null )
-		{
-			crash( "Player wasnt loaded", new Exception( "Player wasnt loaded" ) );
-		}
-		currentGame.setPlayer( currentGame.getPlayer( ) );
-		app.ui.setPlayer( currentGame.getPlayer( ) );
-		app.uiSelector.setPlayer( currentGame.getPlayer( ) );
-		setMonsterRecord( GameFiles.getMonsterRecord( ) );
-		currentGame.resume( );
+		currentGame.setPlayer(currentGame.getPlayer());
+		app.userInterface.setPlayer(currentGame.getPlayer());
+		app.uiSelector.setPlayer(currentGame.getPlayer());
+		setMonsterRecord(GameFiles.getMonsterRecord());
+		currentGame.resume();
 
-		title( );
+		title();
 	}
 
-	private static void newGame( )
-	{
-		if ( currentGame != null )
-		{
-			app.ui.removeCommandListener( currentGame );
+	private static void newGame( ) {
+		if (currentGame != null) {
+			app.userInterface.removeCommandListener(currentGame);
 		}
-		currentGame = new Game( );
-		currentGame.setCanSave( true );
-		currentGame.setInterfaces( app.ui, app.uiSelector );
-		setMonsterRecord( GameFiles.getMonsterRecord( ) );
-		currentGame.newGame( );
+		currentGame = new Game();
+		currentGame.setCanSave(true);
+		currentGame.setInterfaces(app.userInterface, app.uiSelector);
+		setMonsterRecord(GameFiles.getMonsterRecord());
+		currentGame.newGame();
 
-		title( );
+		title();
 	}
 
-	private static void prologue( )
-	{
-		if ( currentGame != null )
-		{
-			app.ui.removeCommandListener( currentGame );
+	private static void prologue( ) {
+		if (currentGame != null) {
+			app.userInterface.removeCommandListener(currentGame);
 		}
-		currentGame = new Game( );
-		currentGame.setCanSave( false );
-		currentGame.setInterfaces( app.ui, app.uiSelector );
+		currentGame = new Game();
+		currentGame.setCanSave(false);
+		currentGame.setInterfaces(app.userInterface, app.uiSelector);
 		// si.cls();
-		setMonsterRecord( GameFiles.getMonsterRecord( ) );
-		currentGame.prologue( );
-		title( );
+		setMonsterRecord(GameFiles.getMonsterRecord());
+		currentGame.prologue();
+		title();
 	}
 
 	private static void title( ) {
@@ -193,20 +176,18 @@ public final class Main
 
 	}
 
-	private static void training( )
-	{
-		if ( currentGame != null )
-		{
-			app.ui.removeCommandListener( currentGame );
+	private static void training( ) {
+		if (currentGame != null) {
+			app.userInterface.removeCommandListener(currentGame);
 		}
 
-		currentGame = new Game( );
-		currentGame.setCanSave( false );
-		currentGame.setInterfaces( app.ui, app.uiSelector );
+		currentGame = new Game();
+		currentGame.setCanSave(false);
+		currentGame.setInterfaces(app.userInterface, app.uiSelector);
 		// si.cls();
-		setMonsterRecord( GameFiles.getMonsterRecord( ) );
-		currentGame.training( );
-		title( );
+		setMonsterRecord(GameFiles.getMonsterRecord());
+		currentGame.training();
+		title();
 	}
 
 }
