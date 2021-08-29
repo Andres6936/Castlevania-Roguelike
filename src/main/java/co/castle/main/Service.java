@@ -81,7 +81,6 @@ public final class Service extends MusicManager {
 		System.out.println("Slash ~ 2005-2010");
 		System.out.println("Reading Configuration");
 
-		System.out.println("Initializing Swing GFX System Interface");
 		ApplicationGraphics appFrame = ApplicationGraphics.getInstance();
 
 		PlayerGenerator.thus = new GFXPlayerGenerator(appFrame);

@@ -105,6 +105,7 @@ public final class ApplicationGraphics extends JFrame {
 
 		panelGame.init();
 
+		System.out.println("Initializing Swing GFX System Interface");
 		System.out.println("Initializing Graphics Appearances");
 		for (Appearance definition : new GFXAppearances(assets).getAppearances()) {
 			AppearanceFactory.getAppearanceFactory().addDefinition(definition);
