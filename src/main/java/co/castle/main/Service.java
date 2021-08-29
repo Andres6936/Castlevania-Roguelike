@@ -117,14 +117,6 @@ public final class Service {
 		((GFXUISelector) uiSelector).init(userActions, (GFXUserInterface) ui, keyBindings);
 	}
 
-	private static ActionSelector[ ] getSelectorDefinitions( )
-	{
-        return new ActionSelector[]
-		{	new WanderToPlayerAI( ), new UnderwaterAI( ), new RangedAI( ), new FlameAI( ), new CrossAI( ),
-			new BlastCrystalAI( ), new CountDown( ), new VillagerAI( ), new PriestAI( ), new NullSelector( ),
-			new BasicMonsterAI( ), new WildMorphAI( ) };
-	}
-
 	private static void initializeCells( )
 	{
 		MapCellFactory.getMapCellFactory( )
