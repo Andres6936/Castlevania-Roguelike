@@ -80,22 +80,17 @@ public class MonsterLoader
 		}
 		finally
 		{
-			try
-			{
-				br.close( );
-			}
-			catch ( IOException ioe )
-			{
-				throw new CRLException( "Error while loading data from monster file" );
+			try {
+				br.close();
+			} catch (IOException ioe) {
+				throw new CRLException("Error while loading data from monster file");
 			}
 		}
 	}
 
-	public static MonsterDefinition[ ] getMonsterDefinitions(	String monsterDefFile,
-																String monsterXMLAIFile ) throws CRLException
-	{
+	public static MonsterDefinition[] getMonsterDefinitions() throws CRLException {
 		try {
-			MonsterDefinition[] monsters = getBaseMonsters(monsterDefFile);
+			MonsterDefinition[] monsters = getBaseMonsters("data/monsters.ecsv");
 			Hashtable<String, MonsterDefinition> hashMonsters = new Hashtable<>();
 			for (MonsterDefinition monster : monsters) {
 				hashMonsters.put(monster.getID(), monster);
@@ -107,7 +102,7 @@ public class MonsterLoader
 			// parser.setContentHandler(handler);
 			parser.setDocumentHandler(handler);
 			parser.parse(new InputSource(
-					encrypter.decrypt(FileLoader.getInputStream(monsterXMLAIFile))));
+					encrypter.decrypt(FileLoader.getInputStream("data/monsters.exml"))));
 			return monsters;
 
 			/*

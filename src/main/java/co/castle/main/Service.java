@@ -111,8 +111,7 @@ public final class Service {
 	private static void initializeMonsters( ) throws CRLException
 	{
 
-		MonsterFactory.getFactory( )
-				.init( MonsterLoader.getMonsterDefinitions( "data/monsters.ecsv", "data/monsters.exml" ) );
+		MonsterFactory.getFactory().init(MonsterLoader.getMonsterDefinitions());
 	}
 
 	private static void initializeFeatures( )
