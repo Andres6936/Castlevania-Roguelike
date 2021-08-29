@@ -3,6 +3,7 @@ package co.castle.item;
 import java.util.Hashtable;
 import java.util.Vector;
 
+import co.castle.data.Items;
 import co.castle.game.Game;
 import co.castle.level.Level;
 import co.castle.player.Player;
@@ -46,27 +47,26 @@ public class ItemFactory {
 		new Modifier( "STAR", "Star ", 5 ), };
 
 	public final static Modifier[ ] MOD_MATERIAL = new Modifier[ ]
-	{	new Modifier( "STEEL", "Steel ", 80 ), new Modifier( "WOODEN", "Wooden ", 5 ),
-		new Modifier( "IRON", "Iron ", 5 ), new Modifier( "SILVER", "Silver ", 2 ),
-		new Modifier( "OBSIDIAN", "Obsidian ", 2 ), };
+			{new Modifier("STEEL", "Steel ", 80), new Modifier("WOODEN", "Wooden ", 5),
+					new Modifier("IRON", "Iron ", 5), new Modifier("SILVER", "Silver ", 2),
+					new Modifier("OBSIDIAN", "Obsidian ", 2),};
 
-	public final static Modifier[ ] MOD_STRENGTH = new Modifier[ ]
-	{	new Modifier( "WEAKENED", "Weakened ", 20 ),
-		new Modifier( "REINFORCED", "Reinforced ", 20 ),
-		new Modifier( "ENHANCED", "Enhanced ", 15 ),
-		new Modifier( "DEADLY", "Deadly ", 10 ), };
+	public final static Modifier[] MOD_STRENGTH = new Modifier[]
+			{new Modifier("WEAKENED", "Weakened ", 20),
+					new Modifier("REINFORCED", "Reinforced ", 20),
+					new Modifier("ENHANCED", "Enhanced ", 15),
+					new Modifier("DEADLY", "Deadly ", 10),};
 
-	private static ItemFactory singleton = new ItemFactory( );
+	private static final ItemFactory singleton = new ItemFactory();
 
-	static
-	{
-		MOD_ARMOR_STRENGTH[ 0 ].setDefenseBonus( -1 );
-		MOD_ARMOR_STRENGTH[ 1 ].setDefenseBonus( 1 );
-		MOD_ARMOR_MAGIC[ 1 ].setDefenseBonus( 1 );
-		MOD_ARMOR_MATERIAL[ 0 ].setDefenseBonus( 0 );
-		MOD_ARMOR_MATERIAL[ 1 ].setDefenseBonus( 1 );
-		MOD_ARMOR_MATERIAL[ 2 ].setDefenseBonus( 2 );
-		MOD_ARMOR_MATERIAL[ 3 ].setDefenseBonus( 3 );
+	static {
+		MOD_ARMOR_STRENGTH[0].setDefenseBonus(-1);
+		MOD_ARMOR_STRENGTH[1].setDefenseBonus(1);
+		MOD_ARMOR_MAGIC[1].setDefenseBonus(1);
+		MOD_ARMOR_MATERIAL[0].setDefenseBonus(0);
+		MOD_ARMOR_MATERIAL[1].setDefenseBonus(1);
+		MOD_ARMOR_MATERIAL[2].setDefenseBonus(2);
+		MOD_ARMOR_MATERIAL[3].setDefenseBonus(3);
 
 		MOD_ARMOR_STRENGTH[ 1 ].setPriceModifier( 100 );
 		MOD_ARMOR_MAGIC[ 1 ].setPriceModifier( 150 );
@@ -111,25 +111,41 @@ public class ItemFactory {
 		MOD_MATERIAL[ 3 ].setPriceModifier( 1000 );
 		MOD_MATERIAL[ 4 ].setPriceModifier( 500 );
 
-		MOD_ADDITIONAL[ 0 ].setRangeBonus( 1 );
-		MOD_ADDITIONAL[ 1 ].setAtkBonus( 1 );
-		MOD_ADDITIONAL[ 2 ].setAtkBonus( 2 );
+		MOD_ADDITIONAL[0].setRangeBonus(1);
+		MOD_ADDITIONAL[1].setAtkBonus(1);
+		MOD_ADDITIONAL[2].setAtkBonus(2);
 
-		MOD_ADDITIONAL[ 0 ].setPriceModifier( 1500 );
-		MOD_ADDITIONAL[ 1 ].setPriceModifier( 1500 );
-		MOD_ADDITIONAL[ 2 ].setPriceModifier( 2000 );
+		MOD_ADDITIONAL[0].setPriceModifier(1500);
+		MOD_ADDITIONAL[1].setPriceModifier(1500);
+		MOD_ADDITIONAL[2].setPriceModifier(2000);
 
 	}
 
-	public static ItemFactory getItemFactory( )
-	{
+	private ItemFactory() {
+		for (ItemDefinition def : Items.getItemDefinitions()) {
+			definitions.put(def.getID(), def);
+			switch (def.getEquipCategory()) {
+				case 0:
+					generalItemsDefinitions.add(def);
+					break;
+				case 1:
+				case 4:
+					armorDefinitions.add(def);
+					break;
+				case 2:
+					weaponDefinitions.add(def);
+					break;
+			}
+		}
+	}
+
+	public static ItemFactory getItemFactory() {
 		return singleton;
 	}
 
-	public Item createArmor(	Modifier strength, Modifier magic, Modifier material,
-								String baseID, Modifier additional )
-	{
-		Item weapon = createItem( baseID );
+	public Item createArmor(Modifier strength, Modifier magic, Modifier material,
+							String baseID, Modifier additional) {
+		Item weapon = createItem(baseID);
 		if ( weapon != null )
 			weapon.addPreModifier( strength );
 		if ( magic != null )
@@ -327,27 +343,6 @@ public class ItemFactory {
 		if ( def == null )
 			Debug.doAssert( false, "Invalid Item ID " + ID );
 		return def;
-	}
-
-	public void init( ItemDefinition[ ] defs ) {
-		for (ItemDefinition def : defs) {
-			definitions.put(def.getID(), def);
-			switch (def.getEquipCategory()) {
-				case 0:
-					generalItemsDefinitions.add(def);
-					break;
-				case 1:
-					armorDefinitions.add(def);
-					break;
-				case 2:
-					weaponDefinitions.add(def);
-					break;
-				case 4:
-					armorDefinitions.add(def);
-					break;
-			}
-		}
-
 	}
 
 	public void setArmorModifiers( Item weapon, int levelNumber )

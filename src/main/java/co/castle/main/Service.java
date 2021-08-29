@@ -64,9 +64,6 @@ public final class Service {
 		ui = UserInterface.getUI();
 		initializeUI(appFrame);
 
-		System.out.println("Loading Data");
-		ItemFactory.getItemFactory().init(Items.getItemDefinitions());
-
 		try {
 			MonsterFactory.getFactory().init(MonsterLoader.getMonsterDefinitions());
 		} catch (CRLException e) {
