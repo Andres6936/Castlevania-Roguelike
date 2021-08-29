@@ -47,7 +47,7 @@ public final class Service {
 		var userActions = new UserActions(keyBindings);
 		var userCommands = new UserCommands(keyBindings);
 
-		((GFXUserInterface) userInterface).init((ApplicationGraphics) appFrame, userCommands, userActions);
+		((GFXUserInterface) userInterface).init(appFrame, userCommands, userActions);
 		((GFXUISelector) uiSelector).init(userActions, (GFXUserInterface) userInterface, keyBindings);
 	}
 
