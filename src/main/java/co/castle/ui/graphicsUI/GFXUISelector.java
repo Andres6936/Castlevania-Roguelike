@@ -19,6 +19,7 @@ import co.castle.npc.NPC;
 import co.castle.player.Player;
 import co.castle.ui.ActionCancelException;
 import co.castle.ui.UISelector;
+import co.castle.ui.UserInterface;
 import sz.csi.CharKey;
 import sz.util.Debug;
 import sz.util.Position;
@@ -37,16 +38,28 @@ public class GFXUISelector extends UISelector
 	private boolean useMouse = false;
 
 	int[ ] QDIRECTIONS = new int[ ]
-	{	Action.UPLEFT, Action.UP, Action.UPRIGHT, Action.LEFT, Action.SELF, Action.RIGHT,
-		Action.DOWNLEFT, Action.DOWN, Action.DOWNRIGHT };
+			{Action.UPLEFT, Action.UP, Action.UPRIGHT, Action.LEFT, Action.SELF, Action.RIGHT,
+					Action.DOWNLEFT, Action.DOWN, Action.DOWNRIGHT};
 
-	int x1 = (int) Math.round( ( 800.0 / 9.0 ) * 4.0 );
+	int x1 = (int) Math.round((800.0 / 9.0) * 4.0);
 
-	int x2 = (int) Math.round( ( 800.0 / 9.0 ) * 5.0 );
+	int x2 = (int) Math.round((800.0 / 9.0) * 5.0);
 
-	int y1 = (int) Math.round( ( 600.0 / 9.0 ) * 4.0 );
+	int y1 = (int) Math.round((600.0 / 9.0) * 4.0);
 
-	int y2 = (int) Math.round( ( 600.0 / 9.0 ) * 5.0 );
+	int y2 = (int) Math.round((600.0 / 9.0) * 5.0);
+
+	public GFXUISelector(UserActions gameActions, UserInterface ui, Properties keyBindings) {
+		super(gameActions, ui, keyBindings);
+		// NOTE: Asset can container the property, clear this function
+
+		// Get the valor of property and compare
+		if (appFrame.isMouseEnable()) {
+			appFrame.addMouseListener(this);
+			appFrame.addMouseMotionListener(this);
+			useMouse = true;
+		}
+	}
 
 	public ActionSelector derive() {
 		return null;
@@ -56,21 +69,7 @@ public class GFXUISelector extends UISelector
 		return "UI";
 	}
 
-	public void init(UserActions gameActions, GFXUserInterface ui, Properties keyBindings) {
-		super.init(gameActions, ui, keyBindings);
-
-		// NOTE: Asset can container the property, clear this function
-
-		// Get the valor of property and compare
-		if (appFrame.isMouseEnable()) {
-			appFrame.addMouseListener(this);
-			appFrame.addMouseMotionListener(this);
-			useMouse = true;
-		}
-
-	}
-
-	public void mouseClicked( MouseEvent e )
+	public void mouseClicked(MouseEvent e)
 	{
 		// TODO Auto-generated method stub
 

@@ -89,7 +89,7 @@ public abstract class UISelector implements ActionSelector {
 		return ret;
 	}
 
-	protected void init(UserActions gameActions, UserInterface ui, Properties keyBindings) {
+	public UISelector(UserActions gameActions, UserInterface ui, Properties keyBindings) {
 		this.ui = ui;
 		this.advance = gameActions.getWalkAction();
 		this.target = gameActions.getTargetAction();
@@ -119,5 +119,4 @@ public abstract class UISelector implements ActionSelector {
 		SELF1_KEY = Integer.parseInt( keyBindings.getProperty( "SELF1_KEY" ) );
 		SELF2_KEY = Integer.parseInt( keyBindings.getProperty( "SELF2_KEY" ) );
 	}
-
 }

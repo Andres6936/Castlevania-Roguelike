@@ -34,13 +34,12 @@ public final class Service {
 
 
 		userInterface = UserInterface.getUI();
-		uiSelector = new GFXUISelector();
 		KeyBindings keyBindings = new KeyBindings();
 		Display.setKeyBindings(keyBindings);
 		var userActions = new UserActions(keyBindings);
 		var userCommands = new UserCommands(keyBindings);
+		uiSelector = new GFXUISelector(userActions, userInterface, keyBindings);
 
 		((GFXUserInterface) userInterface).init(appFrame, userCommands, userActions);
-		((GFXUISelector) uiSelector).init(userActions, (GFXUserInterface) userInterface, keyBindings);
 	}
 }

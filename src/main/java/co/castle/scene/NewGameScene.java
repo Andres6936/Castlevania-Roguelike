@@ -7,15 +7,15 @@ import co.castle.player.Player;
 import co.castle.player.PlayerEventListener;
 import co.castle.ui.UISelector;
 import co.castle.ui.UserInterface;
-import co.castle.ui.graphicsUI.GFXUISelector;
 
 public class NewGameScene implements IScene {
 
     private Game currentGame;
-    private final UISelector selector = new GFXUISelector();
+    private final UISelector selector;
     private final UserInterface userInterface;
 
-    public NewGameScene() {
+    public NewGameScene(UISelector selector) {
+        this.selector = selector;
         userInterface = UserInterface.getUI();
         currentGame = new Game();
         currentGame.setCanSave(false);

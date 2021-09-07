@@ -35,20 +35,21 @@ public class SceneManager {
     private IScene prologueScene;
     private IScene trainingScene;
 
+    private final UISelector selector;
+
     public SceneManager() {
         PlayerGenerator.thus = new GFXPlayerGenerator(IScene.renderer);
         Display.thus = new GraphicsDisplay();
 
 
         UserInterface userInterface = UserInterface.getUI();
-        GFXUISelector uiSelector = new GFXUISelector();
         KeyBindings keyBindings = new KeyBindings();
         Display.setKeyBindings(keyBindings);
         var userActions = new UserActions(keyBindings);
         var userCommands = new UserCommands(keyBindings);
+        selector = new GFXUISelector(userActions, userInterface, keyBindings);
 
         ((GFXUserInterface) userInterface).init(IScene.renderer, userCommands, userActions);
-        uiSelector.init(userActions, (GFXUserInterface) userInterface, keyBindings);
 
         menuScene = new MenuScene();
         // The first scene is the Menu.
@@ -85,7 +86,7 @@ public class SceneManager {
             current = trainingScene;
         } else if (nextScene == TypeScene.NEW_GAME) {
             // Lazy Evaluation
-            if (newGameScene == null) newGameScene = new NewGameScene();
+            if (newGameScene == null) newGameScene = new NewGameScene(selector);
             current = newGameScene;
         } else if (nextScene == TypeScene.LOAD_GAME) {
             // Lazy Evaluation
