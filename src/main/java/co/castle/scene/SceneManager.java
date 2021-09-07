@@ -82,7 +82,7 @@ public class SceneManager {
             current = prologueScene;
         } else if (nextScene == TypeScene.TRAINING) {
             // Lazy Evaluation
-            if (trainingScene == null) trainingScene = new TrainingScene();
+            if (trainingScene == null) trainingScene = new TrainingScene(selector);
             current = trainingScene;
         } else if (nextScene == TypeScene.NEW_GAME) {
             // Lazy Evaluation
