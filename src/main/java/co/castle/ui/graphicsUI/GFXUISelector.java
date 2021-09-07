@@ -19,7 +19,6 @@ import co.castle.npc.NPC;
 import co.castle.player.Player;
 import co.castle.ui.ActionCancelException;
 import co.castle.ui.UISelector;
-import co.castle.ui.UserAction;
 import sz.csi.CharKey;
 import sz.util.Debug;
 import sz.util.Position;
@@ -31,13 +30,9 @@ public class GFXUISelector extends UISelector
 	private Position mousePosition;
 
 	// Get instance of ApplicationFrame
-	private ApplicationGraphics appFrame = ApplicationGraphics.getInstance( );
+	private final ApplicationGraphics appFrame = ApplicationGraphics.getInstance();
 
-	private Position tempCursorPosition = new Position( 0, 0 );
-
-	private Position tempCursorPositionScr = new Position( 0, 0 );
-
-	private Position tempRel = new Position( 0, 0 );
+	private final Position tempRel = new Position(0, 0);
 
 	private boolean useMouse = false;
 
@@ -52,42 +47,6 @@ public class GFXUISelector extends UISelector
 	int y1 = (int) Math.round( ( 600.0 / 9.0 ) * 4.0 );
 
 	int y2 = (int) Math.round( ( 600.0 / 9.0 ) * 5.0 );
-	public static int toIntDirection( Position what )
-	{
-		switch ( what.x( ) )
-		{
-		case 1:
-			switch ( what.y( ) )
-			{
-			case 1:
-				return Action.DOWNRIGHT;
-			case 0:
-				return Action.RIGHT;
-			case -1:
-				return Action.UPRIGHT;
-			}
-		case 0:
-			switch ( what.y( ) )
-			{
-			case 1:
-				return Action.DOWN;
-			case -1:
-				return Action.UP;
-			}
-		case -1:
-			switch ( what.y( ) )
-			{
-			case 1:
-				return Action.DOWNLEFT;
-			case 0:
-				return Action.LEFT;
-			case -1:
-				return Action.UPLEFT;
-			}
-		}
-
-		return -1;
-	}
 
 	public ActionSelector derive() {
 		return null;
@@ -479,32 +438,6 @@ public class GFXUISelector extends UISelector
 		tempRel.x = bigx - ui( ).PC_POS.x - 1;
 		tempRel.y = bigy - ui( ).PC_POS.y - 1;
 		mousePosition = Position.add( player.getPosition( ), tempRel );
-	}
-
-	private boolean updateCursorPosition( int x, int y )
-	{
-		int bigx = (int) Math.ceil( x / 32.0 );
-		int bigy = (int) Math.ceil( y / 32.0 );
-		tempRel.x = bigx - ui( ).PC_POS.x - 1;
-		tempRel.y = bigy - ui( ).PC_POS.y - 1;
-		if ( tempCursorPosition != null )
-		{
-			if ( tempCursorPosition.x == player.getPosition( ).x + bigx - ui( ).PC_POS.x
-					- 1
-					&& tempCursorPosition.y == player.getPosition( ).y + bigy
-							- ui( ).PC_POS.y - 1 )
-			{
-				return false;
-			}
-			tempCursorPosition.x = player.getPosition( ).x + bigx - ui( ).PC_POS.x - 1;
-			tempCursorPosition.y = player.getPosition( ).y + bigy - ui( ).PC_POS.y - 1;
-		}
-		if ( tempCursorPositionScr != null )
-		{
-			tempCursorPositionScr.x = tempRel.x;
-			tempCursorPositionScr.y = tempRel.y;
-		}
-		return true;
 	}
 
 }
