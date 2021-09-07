@@ -21,12 +21,14 @@ import java.util.Hashtable;
 
 public class NewGameScene implements IScene {
 
+    public final static int DAY_LENGTH = 500;
     private final UISelector selector;
     private final UserInterface userInterface;
     private final Hashtable<String, Level> storedLevels = new Hashtable<>();
     private final RepositoryLevelMetadata levelMetadata = new RepositoryLevelMetadata();
 
     private int timeSwitch;
+    private long turns;
     private boolean isDay = true;
     private Game currentGame;
     private Level currentLevel;
@@ -149,6 +151,8 @@ public class NewGameScene implements IScene {
             dispatcher.addActor(player);
         }
         userInterface.levelChange();
+        turns = 0;
+        timeSwitch = (int) (DAY_LENGTH / 2.0);
     }
 
     @Override
