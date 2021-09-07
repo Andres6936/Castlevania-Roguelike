@@ -20,7 +20,7 @@ public final class Main
 	/**
 	 * Provide functionality to the application, loading and starting modules
 	 */
-	private static final Service app = new Service();
+	private static Service app;
 
 	public static void crash( String message, Throwable exception )
 	{
@@ -46,13 +46,16 @@ public final class Main
 		return (MonsterRecord) monsterRecord.get( monsterID );
 	}
 
-    public static void main( String[] args ) {
+    public static void main( String[] args) {
 		var sceneManager = new SceneManager();
 		while (sceneManager.isRunning()) {
 			sceneManager.update();
 			sceneManager.draw();
 			sceneManager.process();
 		}
+
+		// Lazy evaluation of Service
+		app = new Service();
 //
 //		try {
 //			title();
