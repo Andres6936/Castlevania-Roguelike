@@ -576,41 +576,6 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 		Debug.exitMethod( );
 	}
 
-	private void processLevelData( String[ ][ ] order, int startLevelNumber ) {
-		Vector<String> levels = new Vector<>(5);
-		Vector<String> numbered = new Vector<>(5);
-		int levelCount = startLevelNumber;
-		for (String[] strings : order) {
-			int n = Util.rand(3, 6);
-			if (strings[1].contains("ONE"))
-				n = 1;
-			for (int j = 0; j < n; j++) {
-				levels.add(strings[0] + j);
-				if (!strings[1].contains("NONUMBER"))
-					numbered.add("yes");
-				else
-					numbered.add("no");
-			}
-		}
-
-		for ( int i = 0; i < levels.size( ); i++ ) {
-			LevelMetaData md = new LevelMetaData();
-			md.setLevelID(levels.get(i));
-			if (i > 0) {
-				md.addExits(levels.get(i - 1), "_BACK");
-			}
-			if (i < levels.size() - 1) {
-				md.addExits(levels.get(i + 1), "_NEXT");
-			}
-			if (numbered.get(i).equals("yes")) {
-				md.setLevelNumber( levelCount );
-				levelCount++;
-			}
-
-			levelMetadata.put( md.getLevelID( ), md );
-		}
-	}
-
 	private void resumeScreen( ) {
 		MusicManager.playKey("GAME_OVER");
 		UserInterface.getUI().showMessageHistory();
