@@ -78,7 +78,7 @@ public class SceneManager {
             current = arenaScene;
         } else if (nextScene == TypeScene.PROLOGUE) {
             // Lazy Evaluation
-            if (prologueScene == null) prologueScene = new PrologueScene();
+            if (prologueScene == null) prologueScene = new PrologueScene(selector);
             current = prologueScene;
         } else if (nextScene == TypeScene.TRAINING) {
             // Lazy Evaluation
