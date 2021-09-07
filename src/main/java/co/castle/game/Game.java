@@ -9,6 +9,7 @@ import co.castle.item.Item;
 import co.castle.item.Merchant;
 import co.castle.level.Dispatcher;
 import co.castle.level.Level;
+import co.castle.level.RepositoryLevelMetadata;
 import co.castle.levelgen.LevelMaster;
 import co.castle.levelgen.LevelMetaData;
 import co.castle.main.Service;
@@ -41,7 +42,7 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 	private boolean endGame;
 	private boolean isDay = true;
 
-	private final Hashtable<String, LevelMetaData> levelMetadata = new Hashtable<>();
+	private final RepositoryLevelMetadata levelMetadata = new RepositoryLevelMetadata();
 	// private String[] levelPath;
 
 	private Player player;
@@ -254,7 +255,6 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 		ui.addCommandListener( this );
 		ui.setGameOver( false );
 		player.setPlayerEventListener( this );
-		generateLevelPath( );
 		Display.thus.showIntro( player );
 
 		loadLevel( "CHARRIOT_W", 0 );
@@ -465,127 +465,7 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 		checkTimeSwitch( );
 	}
 
-	private void generateLevelPath( )
-	{
-		String[ ][ ] order = new String[ ][ ]
-		{
-			{ "TOWN", "ONE" },
-			{ "FOREST", "ONE" },
-			{ "CASTLE_BRIDGE", "ONE" },
-			{ "GARDEN", "ONE" },
-			{ "MAIN_HALLX", "ONE" },
-			{ "QUARTERS_FORK", "ONE,NONUMBER" }, // Quarters Branch /*5+*/ /*unnumbered*/
-			{ "MAIN_HALL", "" },
-			{ "MOAT", "ONE" },
-			{ "BAT_HALL", "ONE" },
-			{ "DEATH_HALL", "ONE,NONUMBER" }, /* unnumbered */
-			{ "TELEPAD1", "ONE,NONUMBER" }, /* unnumbered */
-			{ "LABX", "ONE" },
-			{ "VINDELITH_MEETING", "ONE,NONUMBER" },
-			{ "LAB", "" },
-			{ "MEDUSA_LAIR", "ONE, NONUMBER" }, /* unnumbered */
-			{ "CHAPEL", "ONE" },
-			{ "TELEPAD2", "ONE, NONUMBER" }, /* unnumbered */
-			{ "RUINSX", "ONE" },
-			{ "RUINSY", "ONE" },
-			{ "CLARA_MEETING", "ONE, NONUMBER" }, /* unnumbered */
-			{ "RUINS", "" },
-			{ "MUMMIES_LAIR", "ONE, NONUMBER" }, /* unnumbered */
-			{ "CAVESX", "ONE" },
-			{ "CAVE_FORK", "ONE, NONUMBER" }, // Warehouse branch /*24+*/ /*unnumbered*/
-			{ "CAVES", "" },
-			{ "DRAGON_KING_LAIR", "ONE, NONUMBER" }, /* unnumbered */
-			{ "TELEPAD3", "ONE, NONUMBER" }, /* unnumbered */
-			{ "COURTYARD", "ONE" },
-			{ "DUNGEONX", "ONE" },
-			{ "DUNGEONY", "ONE" },
-			{ "BADBELMONT", "ONE, NONUMBER" }, /* unnumbered */
-			{ "DUNGEON", "" },
-			{ "FRANK_LAIR", "ONE, NONUMBER" }, /* unnumbered */
-			{ "TELEPAD4", "ONE, NONUMBER" }, /* unnumbered */
-			/* {"FINAL_BRIDGE", "*"}, */
-			{ "CLOCK_BASE", "" },
-			{ "TOWER", "ONE" },
-			{ "TOWER_TOP", "ONE" }, /* unnumbered */
-			{ "KEEP", "ONE" },
-			{ "VOID", "ONE" } };
-		processLevelData( order, 0 );
 
-		// Warehouse Branch
-		order = new String[ ][ ]
-		{
-			{ "WAREHOUSEX", "ONE, NONUMBER" }, /* Starts in 6 */
-			{ "DEEP_FORK", "ONE, NONUMBER" }, /* 6+ */
-			{ "WAREHOUSE", "" },
-			{ "TELEPADX1", "ONE, NONUMBER" },
-			{ "CATACOMBS", "" },
-			{ "LEGION_LAIR", "ONE, NONUMBER" },
-			{ "TELEPADX2", "ONE, NONUMBER" },
-			{ "PRIZE_CATACOMBS", "ONE, NONUMBER" }, };
-		processLevelData( order, 8 );
-
-		// Underground reservoir branch
-		order = new String[ ][ ]
-		{
-			{ "RESERVOIR", "" }, /* Start in 7 */
-			{ "RESERVOIR", "" },
-			{ "WATER_DRAGON_LAIR", "ONE, NONUMBER" },
-			{ "SPECIAL_RESERVOIR_TELEPAD", "ONE, NONUMBER" },
-			{ "PRIZE_RESERVOIR", "ONE, NONUMBER" }, };
-
-		processLevelData( order, 10 );
-
-		// Quarters Branch
-		order = new String[ ][ ]
-		{
-			{ "INNER_QUARTERS", "" },
-			{ "INNER_QUARTERS", "" },
-			{ "INNER_QUARTERS", "" },
-			{ "TELEPADZ1", "ONE, NONUMBER" },
-			{ "QUARTERS_PRIZE", "ONE, NONUMBER" }, };
-
-		processLevelData( order, 7 );
-
-		// Sewers Branch
-		order = new String[ ][ ]
-		{
-			{ "SPECIAL_SEWERS_ENTRANCE", "ONE, NONUMBER" },
-			{ "SEWERS", "NONUMBER" },
-			{ "SEWERSY", "NONUMBER" },
-			{ "SEWERSZ", "NONUMBER" },
-			{ "DEEP_SEWERS", "ONE, NONUMBER" },
-			{ "PRIZE_SEWERS", "ONE, NONUMBER" }, };
-		processLevelData( order, 1 );
-
-		// End of Branches
-		LevelMetaData md = new LevelMetaData( );
-		md.setLevelID( "CHARRIOT_W" );
-		md.addExits( "FOREST0", "_NEXT" );
-		levelMetadata.put( "CHARRIOT_W", md );
-
-		md = new LevelMetaData( );
-		md.setLevelID( "DINING_HALL" );
-		levelMetadata.put( "DINING_HALL", md );
-
-		md = new LevelMetaData( );
-		md.setLevelID( "TRAINING" );
-		levelMetadata.put( "TRAINING", md );
-
-		md = new LevelMetaData( );
-		md.setLevelID( "PROLOGUE_KEEP" );
-		levelMetadata.put( "PROLOGUE_KEEP", md );
-
-		md = new LevelMetaData();
-		md.setLevelID("PRELUDE_ARENA");
-		levelMetadata.put("PRELUDE_ARENA", md);
-
-		md = new LevelMetaData();
-		md.setLevelID("VILLA");
-		levelMetadata.put("VILLA", md);
-
-		// levelPath = (String[]) levels.toArray(new String[levels.size()]);
-		storedLevels = new Hashtable<>();
-	}
 	private void loadLevel( String levelID )
 	{
 		loadLevel( levelID, -1 );
