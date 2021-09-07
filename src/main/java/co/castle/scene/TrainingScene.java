@@ -155,7 +155,7 @@ public class TrainingScene implements IScene {
         }
         userInterface.levelChange();
         turns = 0;
-        timeSwitch = (int) (DAY_LENGTH / 2.0);
+        timeSwitch = DAY_LENGTH;
 
         player.setFOV(new FOV());
         player.getLevel().addMessage("Greetings " + player.getName()
