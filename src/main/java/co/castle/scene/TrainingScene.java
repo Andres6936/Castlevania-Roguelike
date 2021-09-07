@@ -154,8 +154,6 @@ public class TrainingScene implements IScene {
             dispatcher.addActor(player);
         }
         userInterface.levelChange();
-
-        currentLevel.setIsDay(false);
         turns = 0;
         timeSwitch = (int) (DAY_LENGTH / 2.0);
 
