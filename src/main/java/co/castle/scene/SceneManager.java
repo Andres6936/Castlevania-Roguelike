@@ -74,7 +74,7 @@ public class SceneManager {
             current = menuScene;
         } else if (nextScene == TypeScene.ARENA) {
             // Lazy Evaluation
-            if (arenaScene == null) arenaScene = new ArenaScene();
+            if (arenaScene == null) arenaScene = new ArenaScene(selector);
             current = arenaScene;
         } else if (nextScene == TypeScene.PROLOGUE) {
             // Lazy Evaluation
