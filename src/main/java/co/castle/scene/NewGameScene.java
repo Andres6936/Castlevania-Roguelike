@@ -38,16 +38,12 @@ public class NewGameScene implements IScene {
     private int timeSwitch;
     private long turns;
     private boolean isDay = true;
-    private Game currentGame;
     private Level currentLevel;
     private Dispatcher dispatcher;
 
     public NewGameScene(UISelector selector) {
         this.selector = selector;
         userInterface = UserInterface.getUI();
-        currentGame = new Game();
-        currentGame.setCanSave(false);
-        currentGame.setInterfaces(userInterface, selector);
         player = PlayerGenerator.thus.generatePlayer();
         player.setGameSessionInfo(new GameSessionInfo());
         player.setSelector(selector);
