@@ -17,7 +17,7 @@ import java.awt.*;
 public class NewGameScene extends GenericScene implements IScene {
 
     public NewGameScene(UISelector selector) {
-        super(selector);
+        super(selector, null);
 
         renderer.drawImage(renderer.assets.IMAGE_PROLOGUE);
         renderer.setFontToPanel(renderer.assets.FONT_TITLE);

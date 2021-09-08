@@ -31,10 +31,10 @@ public class GenericScene {
     protected Level currentLevel;
     protected Dispatcher dispatcher;
 
-    protected GenericScene(UISelector selector) {
+    protected GenericScene(UISelector selector, String serial) {
         this.selector = selector;
         userInterface = UserInterface.getUI();
-        player = PlayerGenerator.thus.generatePlayer();
+        player = serial == null ? PlayerGenerator.thus.generatePlayer() : PlayerGenerator.thus.createSpecialPlayer(serial);
         player.setGameSessionInfo(new GameSessionInfo());
         player.setSelector(selector);
         player.setPlayerEventListener(new PlayerEventListener() {
