@@ -314,13 +314,13 @@ public class GraphicsDisplay extends Display
 		t1.setText(who.getLongDescription());
 		renderer.addComponentToPanel(t1);
 		renderer.setFontToPanel(assets.FONT_TEXT);
-		MonsterRecord record = Main.getMonsterRecordFor(who.getID());
+//		MonsterRecord record = Main.getMonsterRecordFor(who.getID());
 		long baseKilled = 0;
 		long baseKillers = 0;
-		if (record != null) {
-			baseKilled = record.getKilled();
-			baseKillers = record.getKillers();
-		}
+//		if (record != null) {
+//			baseKilled = record.getKilled();
+//			baseKillers = record.getKillers();
+//		}
 		renderer.print(2, 17, "You have killed "
 				+ (baseKilled + player.getGameSessionInfo().getDeathCountFor(who))
 				+ " " + who.getDescription() + "s", Color.WHITE);

@@ -447,13 +447,13 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 	{
 		if ( !player.isDoNotRecordScore( ) )
 		{
-			GameFiles.updateGraveyard( Main.getMonsterRecord( ),
-					player.getGameSessionInfo( ) );
-			GameFiles.saveHiScore( player,
-					player.getFlag( "ARENA_FIGHTER" ) ? "arena.tbl" : "hiscore.tbl" );
-			resumeScreen( );
-			Display.thus.showHiscores( GameFiles.loadScores(
-					player.getFlag( "ARENA_FIGHTER" ) ? "arena.tbl" : "hiscore.tbl" ) );
+//			GameFiles.updateGraveyard( Main.getMonsterRecord( ),
+//					player.getGameSessionInfo( ) );
+			GameFiles.saveHiScore(player,
+					player.getFlag("ARENA_FIGHTER") ? "arena.tbl" : "hiscore.tbl");
+			resumeScreen();
+			Display.thus.showHiscores(GameFiles.loadScores(
+					player.getFlag("ARENA_FIGHTER") ? "arena.tbl" : "hiscore.tbl"));
 		}
 		GameFiles.permadeath( player );
 		exitGame( );
