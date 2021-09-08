@@ -18,28 +18,20 @@ import javax.imageio.ImageIO;
 
 public class ImageUtils
 {
-	public static BufferedImage crearImagen(BufferedImage tempImage, int x, int y,
-											int width, int height) {
+	public static BufferedImage crearImagen(BufferedImage tempImage, int x, int y, int width, int height) {
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		GraphicsConfiguration gc = ge.getDefaultScreenDevice()
-				.getDefaultConfiguration();
-
+		GraphicsConfiguration gc = ge.getDefaultScreenDevice().getDefaultConfiguration();
 		int transparency = tempImage.getColorModel().getTransparency();
-
 		BufferedImage ret = gc.createCompatibleImage(width, height, transparency);
 		Graphics2D retGC = ret.createGraphics();
-
-		retGC.drawImage(tempImage, 0, 0, width, height, x, y, x + width, y + height,
-				null );
-		retGC.dispose( );
+		retGC.drawImage(tempImage, 0, 0, width, height, x, y, x + width, y + height, null);
+		retGC.dispose();
 		return ret;
 	}
 
-	public static BufferedImage crearImagen(	String filename, int x, int y, int width,
-												int height ) throws Exception
-	{
-		BufferedImage tempImage = createImage( filename );
-		return crearImagen( tempImage, x, y, width, height );
+	public static BufferedImage crearImagen(String filename, int x, int y, int width, int height) throws Exception {
+		BufferedImage tempImage = createImage(filename);
+		return crearImagen(tempImage, x, y, width, height);
 	}
 
 	public static BufferedImage createImage( String filename ) throws Exception {
@@ -50,27 +42,22 @@ public class ImageUtils
 	{
 		AffineTransform tx = AffineTransform.getScaleInstance( 1, -1 );
 		tx.translate( 0, -image.getHeight( null ) );
-		AffineTransformOp op = new AffineTransformOp( tx,
-				AffineTransformOp.TYPE_NEAREST_NEIGHBOR );
+		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
 		return op.filter( image, null );
 	}
 
-	public static BufferedImage rotate( BufferedImage bufferedImage, double radians )
-	{
-		AffineTransform tx = new AffineTransform( );
-		tx.rotate( radians, bufferedImage.getWidth( ) / 2,
-				bufferedImage.getHeight( ) / 2 );
-		AffineTransformOp op = new AffineTransformOp( tx,
-				AffineTransformOp.TYPE_BILINEAR );
-		return op.filter( bufferedImage, null );
+	public static BufferedImage rotate( BufferedImage bufferedImage, double radians ) {
+		AffineTransform tx = new AffineTransform();
+		tx.rotate(radians, bufferedImage.getWidth() / 2, bufferedImage.getHeight() / 2);
+		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
+		return op.filter(bufferedImage, null);
 	}
 
 	public static BufferedImage vFlip( BufferedImage image )
 	{
 		AffineTransform tx = AffineTransform.getScaleInstance( -1, 1 );
 		tx.translate( -image.getWidth( null ), 0 );
-		AffineTransformOp op = new AffineTransformOp( tx,
-				AffineTransformOp.TYPE_NEAREST_NEIGHBOR );
+		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
 		return op.filter( image, null );
 	}
 }
