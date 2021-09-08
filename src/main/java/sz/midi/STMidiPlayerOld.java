@@ -1,6 +1,5 @@
 package sz.midi;
 
-import co.castle.game.Game;
 import co.castle.game.MusicManager;
 import co.castle.system.FileLoader;
 
@@ -40,7 +39,7 @@ public class STMidiPlayerOld implements Runnable
 			sequencer.open( );
 		}
 		catch ( MidiUnavailableException mue ) {
-			Game.addReport("Midi device unavailable");
+			System.err.println("Midi device unavailable");
 			MusicManager.setEnabledMusicManager(false);
 			return;
 		}
@@ -64,7 +63,7 @@ public class STMidiPlayerOld implements Runnable
 			}
 			File midiFile = FileLoader.getResourceFile(currentMidiFile);
 			if (!midiFile.exists() || midiFile.isDirectory() || !midiFile.canRead()) {
-				Game.addReport("Invalid Midi file: " + currentMidiFile);
+				System.err.println("Invalid Midi file: " + currentMidiFile);
 				try {
 					this.wait();
 				} catch (InterruptedException ie) {
@@ -102,12 +101,12 @@ public class STMidiPlayerOld implements Runnable
 				}
 				catch ( InvalidMidiDataException imde )
 				{
-					Game.addReport( "Invalid Midi data for " + currentMidiFile );
+					System.err.println("Invalid Midi data for " + currentMidiFile);
 				}
 				catch ( IOException ioe )
 				{
-					Game.addReport( "I/O Error for " + currentMidiFile );
-					ioe.printStackTrace( );
+					System.err.println("I/O Error for " + currentMidiFile);
+					ioe.printStackTrace();
 				}
 			}
 		}

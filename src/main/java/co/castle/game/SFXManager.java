@@ -26,7 +26,7 @@ public class SFXManager
 		}
 		catch ( IllegalThreadStateException itse )
 		{
-			Game.addReport( "Illegal Thread State for " + fileName );
+			System.err.println("Illegal Thread State for " + fileName);
 		}
 	}
 

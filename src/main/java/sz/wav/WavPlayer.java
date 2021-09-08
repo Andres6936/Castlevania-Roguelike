@@ -1,15 +1,8 @@
 package sz.wav;
 
-import java.io.File;
-
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.DataLine;
-import javax.sound.sampled.SourceDataLine;
-
-import co.castle.game.Game;
 import co.castle.system.FileLoader;
+
+import javax.sound.sampled.*;
 
 public class WavPlayer implements Runnable
 {
@@ -51,7 +44,7 @@ public class WavPlayer implements Runnable
 		}
 		catch ( Exception e )
 		{
-			Game.addReport( "Error playing... " + e.toString( ) );
+			System.err.println("Error playing... " + e.toString());
 		}
 	}
 

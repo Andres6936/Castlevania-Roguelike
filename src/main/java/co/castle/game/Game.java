@@ -7,7 +7,6 @@ import co.castle.level.Dispatcher;
 import co.castle.level.Level;
 import co.castle.level.RepositoryLevelMetadata;
 import co.castle.levelgen.LevelMaster;
-import co.castle.levelgen.LevelMetaData;
 import co.castle.monster.VMonster;
 import co.castle.npc.Hostage;
 import co.castle.npc.NPC;
@@ -53,13 +52,7 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 
 	public final static int DAY_LENGTH = 500;
 
-	private static final Vector<String> reports = new Vector<>(20);
-
 	private static Vector<String> uniqueRegister = new Vector<>();
-
-	public static void addReport(String report) {
-		reports.add(report);
-	}
 
 	public static void crash(String message) {
 		System.out.println("CastlevaniaRL " + Game.getVersion() + ": Error");

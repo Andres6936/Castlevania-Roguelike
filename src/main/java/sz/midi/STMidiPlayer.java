@@ -1,15 +1,11 @@
 package sz.midi;
 
+import co.castle.system.FileLoader;
+
+import javax.sound.midi.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
-
-import javax.sound.midi.*;
-
-import co.castle.game.Game;
-import co.castle.game.MusicManager;
-import co.castle.game.SFXManager;
-import co.castle.system.FileLoader;
 
 public class STMidiPlayer implements Runnable {
 	public static final int INS_STOP = 0;
@@ -89,7 +85,7 @@ public class STMidiPlayer implements Runnable {
 			if (currentInstruction == INS_LOAD) {
 				if (!midiFile.exists() || midiFile.isDirectory()
 						|| !midiFile.canRead()) {
-					Game.addReport("Invalid Midi file: " + currentMidiFile);
+					System.err.println("Invalid Midi file: " + currentMidiFile);
 					try {
 						this.wait();
 					} catch (InterruptedException ie) {
@@ -101,7 +97,7 @@ public class STMidiPlayer implements Runnable {
 			if (currentInstruction == INS_LOAD_ONCE) {
 				if (!midiFile.exists() || midiFile.isDirectory()
 						|| !midiFile.canRead()) {
-					Game.addReport("Invalid Midi file: " + currentMidiFile);
+					System.err.println("Invalid Midi file: " + currentMidiFile);
 					try {
 						this.wait();
 					} catch (InterruptedException ie) {
@@ -138,9 +134,9 @@ public class STMidiPlayer implements Runnable {
 						}
 					}
 				} catch (InvalidMidiDataException imde) {
-					Game.addReport("Invalid Midi data for " + currentMidiFile);
+					System.err.println("Invalid Midi data for " + currentMidiFile);
 				} catch (IOException ioe) {
-					Game.addReport("I/O Error for " + currentMidiFile);
+					System.err.println("I/O Error for " + currentMidiFile);
 					ioe.printStackTrace();
 				}
 			}
