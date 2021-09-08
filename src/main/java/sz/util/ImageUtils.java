@@ -36,28 +36,6 @@ public class ImageUtils
 		return ret;
 	}
 
-	public static Image crearImagen( String filename, Component tracker ) throws Exception
-	{
-		if ( !FileUtil.fileExists( filename ) )
-		{
-			Exception e = new Exception( "Archivo Inexistente " + filename );
-			Debug.exitExceptionally( e );
-			throw e;
-		}
-		Image image = Toolkit.getDefaultToolkit( ).getImage( filename );
-		MediaTracker mediaTracker = new MediaTracker( tracker );
-		mediaTracker.addImage( image, 0 );
-		try
-		{
-			mediaTracker.waitForID( 0 );
-		}
-		catch ( InterruptedException ex )
-		{
-			System.out.println( ex.getMessage( ) );
-		}
-		return image;
-	}
-
 	public static BufferedImage crearImagen(	String filename, int x, int y, int width,
 												int height ) throws Exception
 	{
