@@ -49,9 +49,9 @@ public final class ApplicationGraphics extends JFrame {
 
 	// Fields
 
-	private Keyboard keyboard;
+	private final Keyboard keyboard;
 
-	private Panel panelGame;
+	private final Panel panelGame;
 
 	/**
 	 * Class type Singleton, reference to only object
