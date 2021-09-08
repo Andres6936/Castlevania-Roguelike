@@ -1,9 +1,5 @@
 package co.castle.game;
 
-import java.util.Hashtable;
-import java.util.Vector;
-
-import co.castle.Main;
 import co.castle.actor.Actor;
 import co.castle.item.Item;
 import co.castle.item.Merchant;
@@ -12,7 +8,6 @@ import co.castle.level.Level;
 import co.castle.level.RepositoryLevelMetadata;
 import co.castle.levelgen.LevelMaster;
 import co.castle.levelgen.LevelMetaData;
-import co.castle.main.Service;
 import co.castle.monster.VMonster;
 import co.castle.npc.Hostage;
 import co.castle.npc.NPC;
@@ -25,9 +20,11 @@ import co.castle.ui.Display;
 import co.castle.ui.UISelector;
 import co.castle.ui.UserInterface;
 import sz.fov.FOV;
-import sz.midi.STMidiPlayer;
 import sz.util.Debug;
 import sz.util.Util;
+
+import java.util.Hashtable;
+import java.util.Vector;
 
 public class Game implements CommandListener, PlayerEventListener, java.io.Serializable {
 	private boolean canSave;

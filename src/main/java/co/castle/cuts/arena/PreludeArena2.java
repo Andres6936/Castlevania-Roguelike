@@ -5,8 +5,6 @@ import co.castle.game.Game;
 import co.castle.game.MusicManager;
 import co.castle.level.Level;
 import co.castle.levelgen.MonsterSpawnInfo;
-import co.castle.main.Service;
-import sz.midi.STMidiPlayer;
 
 public class PreludeArena2 extends Unleasher
 {

@@ -4,8 +4,6 @@ import co.castle.cuts.Unleasher;
 import co.castle.game.Game;
 import co.castle.game.MusicManager;
 import co.castle.level.Level;
-import co.castle.main.Service;
-import sz.midi.STMidiPlayer;
 
 public class PreludeSound extends Unleasher
 {

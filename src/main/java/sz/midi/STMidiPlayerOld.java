@@ -1,17 +1,15 @@
 package sz.midi;
 
-import java.io.File;
-import java.io.IOException;
+import co.castle.game.Game;
+import co.castle.game.MusicManager;
+import co.castle.system.FileLoader;
 
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.Sequencer;
-
-import co.castle.game.Game;
-import co.castle.game.MusicManager;
-import co.castle.main.Service;
-import co.castle.system.FileLoader;
+import java.io.File;
+import java.io.IOException;
 
 public class STMidiPlayerOld implements Runnable
 {

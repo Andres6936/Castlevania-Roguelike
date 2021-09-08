@@ -5,9 +5,7 @@ import co.castle.cuts.Unleasher;
 import co.castle.game.Game;
 import co.castle.game.MusicManager;
 import co.castle.level.Level;
-import co.castle.main.Service;
 import co.castle.ui.Display;
-import sz.midi.STMidiPlayer;
 import sz.util.Position;
 
 public class Prelude4 extends Unleasher
