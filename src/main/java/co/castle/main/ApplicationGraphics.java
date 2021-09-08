@@ -135,17 +135,13 @@ public final class ApplicationGraphics extends JFrame {
 
 	// Method Synchronized
 
-	public synchronized KeyCode inkey() {
+	public synchronized KeyCode getKeyPressed() {
 		keyboard.informKey(Thread.currentThread());
 		try {
 			this.wait();
 		} catch (InterruptedException ignored) {
 		}
 		return new KeyCode(keyboard.getInkeyBuffer());
-	}
-
-	public KeyCode getKeyPressed() {
-		return new KeyCode();
 	}
 
 	// Method
@@ -257,7 +253,7 @@ public final class ApplicationGraphics extends JFrame {
 			printAtPixel( xpos, ypos, ret + "_", textColor );
 			refresh( );
 			while (read.code == KeyCode.NONE)
-				read = inkey();
+				read = getKeyPressed();
 			if (read.code == KeyCode.ENTER)
 				break;
 			if (read.code == KeyCode.BACKSPACE) {
@@ -383,6 +379,6 @@ public final class ApplicationGraphics extends JFrame {
 	{
 		KeyCode x = new KeyCode(KeyCode.NONE);
 		while ( x.code != keyCode )
-			x = inkey( );
+			x = getKeyPressed();
 	}
 }

@@ -48,7 +48,7 @@ public class GFXPlayerGenerator extends PlayerGenerator {
 		KeyCode x = new KeyCode(KeyCode.NONE);
 		while (x.code != KeyCode.M && x.code != KeyCode.m && x.code != KeyCode.F
 				&& x.code != KeyCode.f)
-			x = si.inkey();
+			x = si.getKeyPressed();
 		int sex = 0;
 		if (x.code == KeyCode.M || x.code == KeyCode.m)
 			sex = Player.MALE;
@@ -108,7 +108,7 @@ public class GFXPlayerGenerator extends PlayerGenerator {
 			si.refresh();
 			while (x.code != KeyCode.UARROW && x.code != KeyCode.DARROW
 					&& x.code != KeyCode.SPACE && x.code != KeyCode.ENTER)
-				x = si.inkey();
+				x = si.getKeyPressed();
 			if (x.code == KeyCode.UARROW) {
 				if (choice > 0) {
 					choice--;

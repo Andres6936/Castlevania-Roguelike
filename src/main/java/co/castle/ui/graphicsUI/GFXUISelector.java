@@ -160,7 +160,7 @@ public class GFXUISelector extends UISelector
 		{
 			if ( ui( ).gameOver( ) )
 				return null;
-			input = appFrame.inkey( );
+			input = appFrame.getKeyPressed();
 			if (input.code == KeyCode.NONE && !useMouse)
 				continue;
 			ret = ( (GFXUserInterface) getUI( ) ).selectCommand( input );

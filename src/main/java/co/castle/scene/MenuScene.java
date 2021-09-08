@@ -70,7 +70,7 @@ public class MenuScene implements IScene {
 
     @Override
     public TypeScene process() {
-        KeyCode x = renderer.inkey();
+        KeyCode x = renderer.getKeyPressed();
 
         switch (x.code) {
             case KeyCode.A:

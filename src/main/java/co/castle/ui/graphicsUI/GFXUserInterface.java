@@ -1082,7 +1082,7 @@ public class GFXUserInterface extends UserInterface implements Runnable
             KeyCode x = new KeyCode(KeyCode.NONE);
             while (x.code != KeyCode.SPACE && x.code != KeyCode.m
                     && x.code != KeyCode.ESC && !x.isArrow())
-                x = si.inkey();
+                x = si.getKeyPressed();
             if (x.code == KeyCode.SPACE || x.code == KeyCode.ESC) {
                 si.restore();
                 break;
@@ -1485,7 +1485,7 @@ public class GFXUserInterface extends UserInterface implements Runnable
         KeyCode x = new KeyCode(KeyCode.NONE);
         while (x.code != KeyCode.Y && x.code != KeyCode.y && x.code != KeyCode.N
                 && x.code != KeyCode.n)
-            x = si.inkey();
+			x = si.getKeyPressed();
         return (x.code == KeyCode.Y || x.code == KeyCode.y);
     }
 
@@ -1987,7 +1987,7 @@ public class GFXUserInterface extends UserInterface implements Runnable
 	public void waitKey( ) {
         KeyCode x = new KeyCode(KeyCode.NONE);
         while (x.code == KeyCode.NONE)
-            x = si.inkey();
+			x = si.getKeyPressed();
     }
 
 	private void drawLevel( )
@@ -2635,7 +2635,7 @@ public class GFXUserInterface extends UserInterface implements Runnable
 
         KeyCode x = new KeyCode(KeyCode.NONE);
         while (x.code == KeyCode.NONE)
-            x = si.inkey();
+			x = si.getKeyPressed();
         if (x.isArrow()) {
             int ret = GFXUISelector.toIntDirection(x);
             Debug.exitMethod(ret);
@@ -2868,7 +2868,7 @@ public class GFXUserInterface extends UserInterface implements Runnable
             KeyCode x = new KeyCode(KeyCode.NONE);
             while (x.code != KeyCode.SPACE && x.code != KeyCode.ESC
                     && x.code != fireKeyCode && !x.isArrow())
-                x = si.inkey();
+				x = si.getKeyPressed();
             if (x.code == KeyCode.ESC) {
                 si.restore();
                 si.refresh();

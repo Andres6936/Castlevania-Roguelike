@@ -395,10 +395,10 @@ public class GraphicsDisplay extends Display
 		}
 		renderer.print(3, 9 + saveFiles.length, "[Space to Cancel]", Color.WHITE);
 		renderer.refresh();
-		KeyCode x = renderer.inkey();
+		KeyCode x = renderer.getKeyPressed();
 		while ((x.code < KeyCode.a || x.code > KeyCode.a + saveFiles.length - 1)
 				&& x.code != KeyCode.SPACE) {
-			x = renderer.inkey();
+			x = renderer.getKeyPressed();
 		}
 		if (x.code == KeyCode.SPACE)
 			return -1;
@@ -457,7 +457,7 @@ public class GraphicsDisplay extends Display
 		KeyCode x = new KeyCode(KeyCode.NONE);
 		while (x.code != KeyCode.Y && x.code != KeyCode.y && x.code != KeyCode.N
 				&& x.code != KeyCode.n)
-			x = renderer.inkey();
+			x = renderer.getKeyPressed();
 		boolean ret = (x.code == KeyCode.Y || x.code == KeyCode.y);
 		addornedTextArea.setVisible(false);
 		return ret;
@@ -525,7 +525,7 @@ public class GraphicsDisplay extends Display
 					&& x.code != KeyCode.F && x.code != KeyCode.f
 					&& x.code != KeyCode.UARROW && x.code != KeyCode.DARROW
 					&& x.code != KeyCode.SPACE && x.code != KeyCode.ENTER)
-				x = renderer.inkey();
+				x = renderer.getKeyPressed();
 			switch (x.code) {
 				case KeyCode.A:
 				case KeyCode.a:
@@ -614,7 +614,7 @@ public class GraphicsDisplay extends Display
 	private int readAlphaToNumber( int numbers )
 	{
 		while ( true ) {
-			KeyCode key = renderer.inkey();
+			KeyCode key = renderer.getKeyPressed();
 			if (key.code >= KeyCode.A && key.code <= KeyCode.A + numbers - 1) {
 				return key.code - KeyCode.A;
 			}

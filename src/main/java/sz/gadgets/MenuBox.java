@@ -128,7 +128,7 @@ public class MenuBox
 					&& (key.code < KeyCode.A || key.code > KeyCode.A + pageElements - 1)
 					&& (key.code < KeyCode.a
 					|| key.code > KeyCode.a + pageElements - 1))
-				key = si.inkey();
+				key = si.getKeyPressed();
 			if (key.code == KeyCode.SPACE)
 				return null;
 			if (key.code == KeyCode.UARROW || key.code == KeyCode.N8)
@@ -153,7 +153,7 @@ public class MenuBox
 		draw();
 		KeyCode key = new KeyCode(KeyCode.NONE);
 		while (key.code != KeyCode.SPACE && !isOneOf(key.code, keys))
-			key = si.inkey();
+			key = si.getKeyPressed();
 		if (key.code == KeyCode.SPACE)
 			return null;
 		if (isOneOf(key.code, keys))
@@ -170,7 +170,7 @@ public class MenuBox
 		while (key.code != KeyCode.SPACE
 				&& (key.code < KeyCode.A || key.code > KeyCode.A + pageElements - 1)
 				&& (key.code < KeyCode.a || key.code > KeyCode.a + pageElements - 1))
-			key = si.inkey();
+			key = si.getKeyPressed();
 		if (key.code == KeyCode.SPACE)
 			return null;
 		if (key.code >= KeyCode.A && key.code <= KeyCode.A + shownItems.size() - 1)
