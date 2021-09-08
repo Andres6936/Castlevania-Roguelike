@@ -1,27 +1,15 @@
 package co.castle.scene;
 
-import co.castle.actor.Actor;
 import co.castle.game.CRLException;
 import co.castle.game.MusicManager;
-import co.castle.game.PlayerGenerator;
 import co.castle.item.Item;
-import co.castle.level.Dispatcher;
 import co.castle.level.Level;
-import co.castle.level.RepositoryLevelMetadata;
 import co.castle.levelgen.LevelMaster;
 import co.castle.levelgen.LevelMetaData;
 import co.castle.npc.Hostage;
-import co.castle.player.Consts;
-import co.castle.player.GameSessionInfo;
-import co.castle.player.Player;
-import co.castle.player.PlayerEventListener;
 import co.castle.ui.Display;
 import co.castle.ui.UISelector;
-import co.castle.ui.UserInterface;
 import sz.fov.FOV;
-import sz.util.Util;
-
-import java.util.Hashtable;
 
 public class ArenaScene extends GenericScene implements IScene {
 
