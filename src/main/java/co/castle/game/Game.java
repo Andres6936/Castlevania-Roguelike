@@ -245,30 +245,6 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 		player.setGame( this );
 	}
 
-	public void training( )
-	{
-		player = PlayerGenerator.thus.createSpecialPlayer( "SOLIEYU_KID" );
-		player.setGame( this );
-		player.setGameSessionInfo( new GameSessionInfo( ) );
-		player.setSelector( uiSelector );
-		player.setDoNotRecordScore( true );
-		ui.setPlayer( player );
-		uiSelector.setPlayer( player );
-		ui.addCommandListener( this );
-		ui.setGameOver( false );
-		player.setPlayerEventListener( this );
-		// generatePrologueLevelPath();
-		// Display.thus.showIntro(player);
-		LevelMetaData md = new LevelMetaData( );
-		md.setLevelID( "TRAINING" );
-		levelMetadata.put( "TRAINING", md );
-
-		loadLevel( "TRAINING" );
-		turns = 0;
-		timeSwitch = DAY_LENGTH;
-		run( );
-	}
-
 	public void wonGame( )
 	{
 		Display.thus.showEndgame( player );
