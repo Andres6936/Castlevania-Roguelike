@@ -90,7 +90,7 @@ public class MenuScene implements IScene {
                 return TypeScene.ARENA;
             case CharKey.F:
             case CharKey.f:
-                return TypeScene.NONE;
+                return TypeScene.HIGH_SCORE;
             case CharKey.G:
             case CharKey.g:
                 return TypeScene.QUIT;

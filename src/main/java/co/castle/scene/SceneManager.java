@@ -34,6 +34,7 @@ public class SceneManager {
     private IScene loadGameScene;
     private IScene prologueScene;
     private IScene trainingScene;
+    private IScene highScoreScene;
 
     private final UISelector selector;
 
@@ -92,6 +93,10 @@ public class SceneManager {
             // Lazy Evaluation
             if (loadGameScene == null) loadGameScene = new LoadGameScene();
             current = loadGameScene;
+        } else if (nextScene == TypeScene.HIGH_SCORE) {
+            // Lazy Evaluation
+            if (highScoreScene == null) highScoreScene = new HighScoreScene();
+            current = highScoreScene;
         }
     }
 

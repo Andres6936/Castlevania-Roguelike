@@ -9,4 +9,5 @@ public enum TypeScene {
     TRAINING,
     NEW_GAME,
     LOAD_GAME,
+    HIGH_SCORE,
 }

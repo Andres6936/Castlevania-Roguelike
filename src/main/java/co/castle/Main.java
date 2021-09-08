@@ -165,6 +165,7 @@ public final class Main
 			arena( );
 			break;
 		case 5:
+			// HighScoreScene
 			Display.thus.showHiscores( GameFiles.loadScores( "hiscore.tbl" ) );
 			Display.thus.showHiscores( GameFiles.loadScores( "arena.tbl" ) );
 			title( );
