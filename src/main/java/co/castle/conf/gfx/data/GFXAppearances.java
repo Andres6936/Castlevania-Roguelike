@@ -20,10 +20,10 @@ public class GFXAppearances {
 
 	public GFXAppearances(Asset configuration) {
 		this.configuration = configuration;
-		WIDTH_BIG = configuration.BIG_TILE_WIDTH;
-		WIDTH_HALF = configuration.HALF_TILE_WIDTH;
-		CELL_HEIGHT = configuration.CELL_HEIGHT;
-		WIDTH_NORMAL = configuration.NORMAL_TILE_WIDTH;
+		WIDTH_BIG = Asset.BIG_TILE_WIDTH;
+		WIDTH_HALF = Asset.HALF_TILE_WIDTH;
+		CELL_HEIGHT = Asset.CELL_HEIGHT;
+		WIDTH_NORMAL = Asset.NORMAL_TILE_WIDTH;
 
 		SetAppearances();
 	}
