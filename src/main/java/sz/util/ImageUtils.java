@@ -18,19 +18,18 @@ import javax.imageio.ImageIO;
 
 public class ImageUtils
 {
-	public static BufferedImage crearImagen(	BufferedImage tempImage, int x, int y,
-												int width, int height ) throws Exception
-	{
-		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment( );
-		GraphicsConfiguration gc = ge.getDefaultScreenDevice( )
-				.getDefaultConfiguration( );
+	public static BufferedImage crearImagen(BufferedImage tempImage, int x, int y,
+											int width, int height) {
+		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		GraphicsConfiguration gc = ge.getDefaultScreenDevice()
+				.getDefaultConfiguration();
 
-		int transparency = tempImage.getColorModel( ).getTransparency( );
+		int transparency = tempImage.getColorModel().getTransparency();
 
-		BufferedImage ret = gc.createCompatibleImage( width, height, transparency );
-		Graphics2D retGC = ret.createGraphics( );
+		BufferedImage ret = gc.createCompatibleImage(width, height, transparency);
+		Graphics2D retGC = ret.createGraphics();
 
-		retGC.drawImage( tempImage, 0, 0, width, height, x, y, x + width, y + height,
+		retGC.drawImage(tempImage, 0, 0, width, height, x, y, x + width, y + height,
 				null );
 		retGC.dispose( );
 		return ret;
