@@ -440,48 +440,4 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 		}
 	}
 
-	private void run( )
-	{
-		Debug.enterMethod( this, "run" );
-		player.setFOV( new FOV( ) );
-		player.getLevel( ).addMessage( "Greetings " + player.getName( )
-				+ ", welcome to the game... Press '?' for Help" );
-		ui.refresh( );
-		checkTimeSwitch( );
-		while ( !endGame )
-		{
-			Debug.enterMethod( this, "run.innerLoop " + turns );
-			Actor actor = dispatcher.getNextActor( );
-			if ( actor == player )
-			{
-				player.darken( );
-				player.see( );
-				if ( !player.justJumped( ) )
-					ui.refresh( );
-				player.getGameSessionInfo( ).increaseTurns( );
-				player.checkDeath( );
-				player.getLevel( ).checkUnleashers( this );
-
-			}
-			if ( endGame )
-				break;
-			actor.act( );
-			if ( endGame )
-				break;
-			actor.getLevel( ).getDispatcher( ).returnActor( actor );
-
-			if ( actor == player )
-			{
-				if ( currentLevel != null )
-					currentLevel.updateLevelStatus( );
-				// ui.refresh();
-				turns++;
-				// player.addScore(1);
-				checkTimeSwitch( );
-			}
-			Debug.exitMethod( );
-		}
-		Debug.exitMethod( );
-	}
-
 }
