@@ -20,7 +20,7 @@ import co.castle.player.Player;
 import co.castle.ui.ActionCancelException;
 import co.castle.ui.UISelector;
 import co.castle.ui.UserInterface;
-import sz.csi.CharKey;
+import sz.csi.KeyCode;
 import sz.util.Debug;
 import sz.util.Position;
 
@@ -154,14 +154,14 @@ public class GFXUISelector extends UISelector
 	public Action selectAction( Actor who )
 	{
 		Debug.enterMethod( this, "selectAction", who );
-		CharKey input = null;
+		KeyCode input = null;
 		Action ret = null;
 		while ( ret == null )
 		{
 			if ( ui( ).gameOver( ) )
 				return null;
 			input = appFrame.inkey( );
-			if ( input.code == CharKey.NONE && !useMouse )
+			if (input.code == KeyCode.NONE && !useMouse)
 				continue;
 			ret = ( (GFXUserInterface) getUI( ) ).selectCommand( input );
 			if ( ret != null )

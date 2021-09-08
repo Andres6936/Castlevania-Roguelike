@@ -7,7 +7,7 @@ import co.castle.item.Item;
 import co.castle.player.Player;
 import co.castle.ui.UserInterface;
 import co.castle.ui.effects.Effect;
-import sz.csi.CharKey;
+import sz.csi.KeyCode;
 import sz.util.OutParameter;
 import sz.util.Position;
 
@@ -139,17 +139,16 @@ public abstract class Action implements java.io.Serializable
 		}
 	}
 
-	public static int toIntDirection( CharKey ck )
-	{
-		if ( ck.isUpArrow( ) )
-			return Action.UP;
-		else if ( ck.isLeftArrow( ) )
-			return Action.LEFT;
-		else if ( ck.isRightArrow( ) )
-			return Action.RIGHT;
-		else if ( ck.isDownArrow( ) )
-			return Action.DOWN;
-		else if ( ck.isUpRightArrow( ) )
+    public static int toIntDirection(KeyCode ck) {
+        if (ck.isUpArrow())
+            return Action.UP;
+        else if (ck.isLeftArrow())
+            return Action.LEFT;
+        else if (ck.isRightArrow())
+            return Action.RIGHT;
+        else if (ck.isDownArrow())
+            return Action.DOWN;
+        else if (ck.isUpRightArrow())
 			return Action.UPRIGHT;
 		else if ( ck.isUpLeftArrow( ) )
 			return Action.UPLEFT;

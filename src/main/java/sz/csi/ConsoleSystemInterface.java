@@ -21,11 +21,11 @@ public interface ConsoleSystemInterface
 	public void flash( int color );
 
 	/**
-	 * Waits until a key is pressed and returns it
-	 * 
-	 * @return The key that was pressed
-	 */
-	public CharKey inkey( );
+     * Waits until a key is pressed and returns it
+     *
+     * @return The key that was pressed
+     */
+    public KeyCode inkey();
 
 	/**
 	 * Reads a string from the keyboard

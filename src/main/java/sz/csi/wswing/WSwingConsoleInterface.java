@@ -10,9 +10,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 import co.castle.system.FileLoader;
-import sz.csi.CharKey;
+import sz.csi.KeyCode;
 import sz.csi.ConsoleSystemInterface;
-import sz.util.FileUtil;
 import sz.util.Position;
 
 public class WSwingConsoleInterface
@@ -166,17 +165,13 @@ public class WSwingConsoleInterface
 		return -1;
 	}
 
-	public synchronized CharKey inkey( )
-	{
-		aStrokeInformer.informKey( Thread.currentThread( ) );
-		try
-		{
-			this.wait( );
-		}
-		catch ( InterruptedException ie )
-		{
-		}
-		CharKey ret = new CharKey( aStrokeInformer.getInkeyBuffer( ) );
+    public synchronized KeyCode inkey() {
+        aStrokeInformer.informKey(Thread.currentThread());
+        try {
+            this.wait();
+        } catch (InterruptedException ie) {
+        }
+        KeyCode ret = new KeyCode(aStrokeInformer.getInkeyBuffer());
 		return ret;
 	}
 
@@ -187,30 +182,27 @@ public class WSwingConsoleInterface
 
 	public String input( int l )
 	{
-		String ret = "";
-		CharKey read = new CharKey( CharKey.NONE );
+        String ret = "";
+        KeyCode read = new KeyCode(KeyCode.NONE);
 		while ( true )
 		{
-			while ( read.code == CharKey.NONE )
-				read = inkey( );
-			if ( read.isMetaKey( ) )
-			{
-				read.code = CharKey.NONE;
-				continue;
-			}
-			if ( read.code == CharKey.ENTER )
-				return ret;
-			if ( read.code == CharKey.BACKSPACE )
-			{
-				if ( ret.equals( "" ) )
-				{
-					read.code = CharKey.NONE;
-					continue;
-				}
-				if ( ret.length( ) > 1 )
-					ret = ret.substring( 0, ret.length( ) - 1 );
-				else
-					ret = "";
+            while (read.code == KeyCode.NONE)
+                read = inkey();
+            if (read.isMetaKey()) {
+                read.code = KeyCode.NONE;
+                continue;
+            }
+            if (read.code == KeyCode.ENTER)
+                return ret;
+            if (read.code == KeyCode.BACKSPACE) {
+                if (ret.equals("")) {
+                    read.code = KeyCode.NONE;
+                    continue;
+                }
+                if (ret.length() > 1)
+                    ret = ret.substring(0, ret.length() - 1);
+                else
+                    ret = "";
 				caretPosition.x--;
 				print( caretPosition.x, caretPosition.y, " " );
 
@@ -219,7 +211,7 @@ public class WSwingConsoleInterface
 			{
 				if ( ret.length( ) >= l )
 				{
-					read.code = CharKey.NONE;
+                    read.code = KeyCode.NONE;
 					continue;
 				}
 				String nuevo = read.toString( );
@@ -227,8 +219,8 @@ public class WSwingConsoleInterface
 				ret += nuevo;
 				caretPosition.x++;
 			}
-			refresh( );
-			read.code = CharKey.NONE;
+            refresh();
+            read.code = KeyCode.NONE;
 
 		}
 		// return ret;
@@ -365,7 +357,7 @@ public class WSwingConsoleInterface
 
 	public void waitKey( int keyCode )
 	{
-		CharKey x = new CharKey( CharKey.NONE );
+        KeyCode x = new KeyCode(KeyCode.NONE);
 		while ( x.code != keyCode )
 			x = inkey( );
 	}

@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 import java.util.Vector;
 
 import co.castle.main.ApplicationGraphics;
-import sz.csi.CharKey;
+import sz.csi.KeyCode;
 import sz.util.Util;
 
 public class BorderedMenuBox
@@ -137,70 +137,68 @@ public class BorderedMenuBox
 	public Object getSelection( )
 	{
 		int pageElements = itemsPerPage;
-		while ( true )
-		{
+		while ( true ) {
 
-			draw( );
-			Vector shownItems = Util.page( items, pageElements, currentPage );
-			CharKey key = new CharKey( CharKey.NONE );
-			while ( key.code != CharKey.SPACE && key.code != CharKey.UARROW
-					&& key.code != CharKey.DARROW && key.code != CharKey.N8
-					&& key.code != CharKey.N2
-					&& ( key.code < CharKey.A || key.code > CharKey.A + pageElements - 1 )
-					&& ( key.code < CharKey.a
-							|| key.code > CharKey.a + pageElements - 1 ) )
-				key = si.inkey( );
-			if ( key.code == CharKey.SPACE )
+			draw();
+			Vector shownItems = Util.page(items, pageElements, currentPage);
+			KeyCode key = new KeyCode(KeyCode.NONE);
+			while (key.code != KeyCode.SPACE && key.code != KeyCode.UARROW
+					&& key.code != KeyCode.DARROW && key.code != KeyCode.N8
+					&& key.code != KeyCode.N2
+					&& (key.code < KeyCode.A || key.code > KeyCode.A + pageElements - 1)
+					&& (key.code < KeyCode.a
+					|| key.code > KeyCode.a + pageElements - 1))
+				key = si.inkey();
+			if (key.code == KeyCode.SPACE)
 				return null;
-			if ( key.code == CharKey.UARROW || key.code == CharKey.N8 )
-				if ( currentPage > 0 )
+			if (key.code == KeyCode.UARROW || key.code == KeyCode.N8)
+				if (currentPage > 0)
 					currentPage--;
-			if ( key.code == CharKey.DARROW || key.code == CharKey.N2 )
-				if ( currentPage < pages - 1 )
+			if (key.code == KeyCode.DARROW || key.code == KeyCode.N2)
+				if (currentPage < pages - 1)
 					currentPage++;
 
-			if ( key.code >= CharKey.A && key.code <= CharKey.A + shownItems.size( ) - 1 )
-				return shownItems.elementAt( key.code - CharKey.A );
-			else if ( key.code >= CharKey.a
-					&& key.code <= CharKey.a + shownItems.size( ) - 1 )
-				return shownItems.elementAt( key.code - CharKey.a );
-			si.restore( );
+			if (key.code >= KeyCode.A && key.code <= KeyCode.A + shownItems.size() - 1)
+				return shownItems.elementAt(key.code - KeyCode.A);
+			else if (key.code >= KeyCode.a
+					&& key.code <= KeyCode.a + shownItems.size() - 1)
+				return shownItems.elementAt(key.code - KeyCode.a);
+			si.restore();
 
 		}
 	}
 	public Object getSelectionAKS( int[ ] keys ) throws AdditionalKeysSignal
 	{
 		int pageElements = itemsPerPage;
-		while ( true )
-		{
+		while ( true ) {
 
-			draw( );
-			Vector shownItems = Util.page( items, pageElements, currentPage );
-			CharKey key = new CharKey( CharKey.NONE );
-			while ( key.code != CharKey.SPACE && key.code != CharKey.UARROW
-					&& key.code != CharKey.DARROW && key.code != CharKey.N8
-					&& key.code != CharKey.N2
-					&& ( key.code < CharKey.A || key.code > CharKey.A + pageElements - 1 )
-					&& ( key.code < CharKey.a || key.code > CharKey.a + pageElements - 1 )
-					&& !isOneOf( key.code, keys ) )
-				key = si.inkey( );
-			if ( key.code == CharKey.SPACE )
+			draw();
+			Vector shownItems = Util.page(items, pageElements, currentPage);
+			KeyCode key = new KeyCode(KeyCode.NONE);
+			while (key.code != KeyCode.SPACE && key.code != KeyCode.UARROW
+					&& key.code != KeyCode.DARROW && key.code != KeyCode.N8
+					&& key.code != KeyCode.N2
+					&& (key.code < KeyCode.A || key.code > KeyCode.A + pageElements - 1)
+					&& (key.code < KeyCode.a || key.code > KeyCode.a + pageElements - 1)
+					&& !isOneOf(key.code, keys))
+				key = si.inkey();
+			if (key.code == KeyCode.SPACE)
 				return null;
-			if ( key.code == CharKey.UARROW || key.code == CharKey.N8 )
-				if ( currentPage > 0 )
+			if (key.code == KeyCode.UARROW || key.code == KeyCode.N8)
+				if (currentPage > 0)
 					currentPage--;
-			if ( key.code == CharKey.DARROW || key.code == CharKey.N2 )
-				if ( currentPage < pages - 1 )
+			if (key.code == KeyCode.DARROW || key.code == KeyCode.N2)
+				if (currentPage < pages - 1)
 					currentPage++;
 
-			if ( key.code >= CharKey.A && key.code <= CharKey.A + shownItems.size( ) - 1 )
-				return shownItems.elementAt( key.code - CharKey.A );
-			else if ( key.code >= CharKey.a
-					&& key.code <= CharKey.a + shownItems.size( ) - 1 )
-				return shownItems.elementAt( key.code - CharKey.a );
-			if ( isOneOf( key.code, keys ) )
-				throw new AdditionalKeysSignal( key.code );
-			si.restore( );
+			if (key.code >= KeyCode.A && key.code <= KeyCode.A + shownItems.size() - 1)
+				return shownItems.elementAt(key.code - KeyCode.A);
+			else if (key.code >= KeyCode.a
+					&& key.code <= KeyCode.a + shownItems.size() - 1)
+				return shownItems.elementAt(key.code - KeyCode.a);
+			if (isOneOf(key.code, keys))
+				throw new AdditionalKeysSignal(key.code);
+			si.restore();
 
 		}
 	}

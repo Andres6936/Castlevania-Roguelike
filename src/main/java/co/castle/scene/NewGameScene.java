@@ -2,7 +2,6 @@ package co.castle.scene;
 
 import co.castle.actor.Actor;
 import co.castle.game.CRLException;
-import co.castle.game.Game;
 import co.castle.game.MusicManager;
 import co.castle.game.PlayerGenerator;
 import co.castle.item.Item;
@@ -18,7 +17,7 @@ import co.castle.player.PlayerEventListener;
 import co.castle.ui.Display;
 import co.castle.ui.UISelector;
 import co.castle.ui.UserInterface;
-import sz.csi.CharKey;
+import sz.csi.KeyCode;
 import sz.fov.FOV;
 import sz.util.Util;
 
@@ -89,7 +88,7 @@ public class NewGameScene implements IScene {
         renderer.addComponentToPanel(t1);
         renderer.printAtPixel(156, 490, "[Space] to continue", renderer.assets.COLOR_BOLD);
         renderer.refresh();
-        renderer.waitKey(CharKey.SPACE);
+        renderer.waitKey(KeyCode.SPACE);
         renderer.remove(t1);
 
         String levelID = "CHARRIOT_W";

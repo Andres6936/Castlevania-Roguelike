@@ -1,6 +1,6 @@
 package sz.csi.textcomponents;
 
-import sz.csi.CharKey;
+import sz.csi.KeyCode;
 import sz.csi.ConsoleSystemInterface;
 
 /**
@@ -81,12 +81,11 @@ public class TextInformBox extends TextComponent
 		addText( text );
 	}
 
-	private void morePrompt( )
-	{
-		draw( );
-		si.refresh( );
-		CharKey ck = new CharKey( CharKey.NONE );
-		while ( ck.code != CharKey.SPACE )
-			ck = si.inkey( );
-	}
+	private void morePrompt( ) {
+        draw();
+        si.refresh();
+        KeyCode ck = new KeyCode(KeyCode.NONE);
+        while (ck.code != KeyCode.SPACE)
+            ck = si.inkey();
+    }
 }

@@ -2,7 +2,7 @@ package sz.csi.textcomponents;
 
 import java.util.Vector;
 
-import sz.csi.CharKey;
+import sz.csi.KeyCode;
 import sz.csi.ConsoleSystemInterface;
 import sz.util.Util;
 
@@ -81,22 +81,21 @@ public class MenuBox extends TextComponent
 
 	public Object getNullifiedSelection( int[ ] keys ) throws co.castle.ui.consoleUI.AdditionalKeysSignal
 	{
-		while ( true )
-		{
-			clearBox( );
-			draw( false );
-			CharKey key = new CharKey( CharKey.NONE );
-			while ( key.code != CharKey.SPACE && key.code != CharKey.UARROW
-					&& key.code != CharKey.DARROW && !isOneOf( key.code, keys ) )
-				key = si.inkey( );
-			if ( key.code == CharKey.SPACE )
-				return null;
-			if ( key.code == CharKey.UARROW )
-				if ( currentPage > 0 )
-					currentPage--;
-			if ( key.code == CharKey.DARROW )
-				if ( currentPage < pages - 1 )
-					currentPage++;
+		while ( true ) {
+            clearBox();
+            draw(false);
+            KeyCode key = new KeyCode(KeyCode.NONE);
+            while (key.code != KeyCode.SPACE && key.code != KeyCode.UARROW
+                    && key.code != KeyCode.DARROW && !isOneOf(key.code, keys))
+                key = si.inkey();
+            if (key.code == KeyCode.SPACE)
+                return null;
+            if (key.code == KeyCode.UARROW)
+                if (currentPage > 0)
+                    currentPage--;
+            if (key.code == KeyCode.DARROW)
+                if (currentPage < pages - 1)
+                    currentPage++;
 
 			if ( isOneOf( key.code, keys ) )
 				throw new co.castle.ui.consoleUI.AdditionalKeysSignal( key.code );
@@ -107,69 +106,67 @@ public class MenuBox extends TextComponent
 	public Object getSelection( )
 	{
 		int pageElements = inHeight - promptSize;
-		while ( true )
-		{
-			clearBox( );
-			draw( );
-			Vector shownItems = Util.page( items, pageElements, currentPage );
-			CharKey key = new CharKey( CharKey.NONE );
-			while ( key.code != CharKey.SPACE && key.code != CharKey.UARROW
-					&& key.code != CharKey.DARROW
-					&& ( key.code < CharKey.A || key.code > CharKey.A + pageElements - 1 )
-					&& ( key.code < CharKey.a
-							|| key.code > CharKey.a + pageElements - 1 ) )
-				key = si.inkey( );
-			if ( key.code == CharKey.SPACE )
-				return null;
-			if ( key.code == CharKey.UARROW )
-				if ( currentPage > 0 )
-					currentPage--;
-			if ( key.code == CharKey.DARROW )
-				if ( currentPage < pages - 1 )
-					currentPage++;
+		while ( true ) {
+            clearBox();
+            draw();
+            Vector shownItems = Util.page(items, pageElements, currentPage);
+            KeyCode key = new KeyCode(KeyCode.NONE);
+            while (key.code != KeyCode.SPACE && key.code != KeyCode.UARROW
+                    && key.code != KeyCode.DARROW
+                    && (key.code < KeyCode.A || key.code > KeyCode.A + pageElements - 1)
+                    && (key.code < KeyCode.a
+                    || key.code > KeyCode.a + pageElements - 1))
+                key = si.inkey();
+            if (key.code == KeyCode.SPACE)
+                return null;
+            if (key.code == KeyCode.UARROW)
+                if (currentPage > 0)
+                    currentPage--;
+            if (key.code == KeyCode.DARROW)
+                if (currentPage < pages - 1)
+                    currentPage++;
 
-			if ( key.code >= CharKey.A && key.code <= CharKey.A + shownItems.size( ) - 1 )
-				return shownItems.elementAt( key.code - CharKey.A );
-			else if ( key.code >= CharKey.a
-					&& key.code <= CharKey.a + shownItems.size( ) - 1 )
-				return shownItems.elementAt( key.code - CharKey.a );
+            if (key.code >= KeyCode.A && key.code <= KeyCode.A + shownItems.size() - 1)
+                return shownItems.elementAt(key.code - KeyCode.A);
+            else if (key.code >= KeyCode.a
+                    && key.code <= KeyCode.a + shownItems.size() - 1)
+                return shownItems.elementAt(key.code - KeyCode.a);
 
-		}
+        }
 	}
 
 	public Object getSelectionAKS( int[ ] keys ) throws co.castle.ui.consoleUI.AdditionalKeysSignal
 	{
 		int pageElements = inHeight - promptSize;
-		while ( true )
-		{
-			clearBox( );
-			draw( );
-			Vector shownItems = Util.page( items, pageElements, currentPage );
-			CharKey key = new CharKey( CharKey.NONE );
-			while ( key.code != CharKey.SPACE && key.code != CharKey.UARROW
-					&& key.code != CharKey.DARROW
-					&& ( key.code < CharKey.A || key.code > CharKey.A + pageElements - 1 )
-					&& ( key.code < CharKey.a || key.code > CharKey.a + pageElements - 1 )
-					&& !isOneOf( key.code, keys ) )
-				key = si.inkey( );
-			if ( key.code == CharKey.SPACE )
-				return null;
-			if ( key.code == CharKey.UARROW )
-				if ( currentPage > 0 )
-					currentPage--;
-			if ( key.code == CharKey.DARROW )
-				if ( currentPage < pages - 1 )
-					currentPage++;
+		while ( true ) {
+            clearBox();
+            draw();
+            Vector shownItems = Util.page(items, pageElements, currentPage);
+            KeyCode key = new KeyCode(KeyCode.NONE);
+            while (key.code != KeyCode.SPACE && key.code != KeyCode.UARROW
+                    && key.code != KeyCode.DARROW
+                    && (key.code < KeyCode.A || key.code > KeyCode.A + pageElements - 1)
+                    && (key.code < KeyCode.a || key.code > KeyCode.a + pageElements - 1)
+                    && !isOneOf(key.code, keys))
+                key = si.inkey();
+            if (key.code == KeyCode.SPACE)
+                return null;
+            if (key.code == KeyCode.UARROW)
+                if (currentPage > 0)
+                    currentPage--;
+            if (key.code == KeyCode.DARROW)
+                if (currentPage < pages - 1)
+                    currentPage++;
 
-			if ( key.code >= CharKey.A && key.code <= CharKey.A + shownItems.size( ) - 1 )
-				return shownItems.elementAt( key.code - CharKey.A );
-			else if ( key.code >= CharKey.a
-					&& key.code <= CharKey.a + shownItems.size( ) - 1 )
-				return shownItems.elementAt( key.code - CharKey.a );
-			if ( isOneOf( key.code, keys ) )
-				throw new co.castle.ui.consoleUI.AdditionalKeysSignal( key.code );
+            if (key.code >= KeyCode.A && key.code <= KeyCode.A + shownItems.size() - 1)
+                return shownItems.elementAt(key.code - KeyCode.A);
+            else if (key.code >= KeyCode.a
+                    && key.code <= KeyCode.a + shownItems.size() - 1)
+                return shownItems.elementAt(key.code - KeyCode.a);
+            if (isOneOf(key.code, keys))
+                throw new co.castle.ui.consoleUI.AdditionalKeysSignal(key.code);
 
-		}
+        }
 	}
 
 	public void setBorder( boolean val )

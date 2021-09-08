@@ -15,8 +15,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Vector;
 
@@ -52,7 +50,6 @@ import co.castle.item.Merchant;
 import co.castle.level.Cell;
 import co.castle.level.Level;
 import co.castle.main.ApplicationGraphics;
-import co.castle.main.Service;
 import co.castle.monster.Monster;
 import co.castle.monster.VMonster;
 import co.castle.npc.Hostage;
@@ -68,17 +65,15 @@ import co.castle.ui.ActionCancelException;
 import co.castle.ui.AppearanceFactory;
 import co.castle.ui.CommandListener;
 import co.castle.ui.Display;
-import co.castle.ui.UserCommand;
 import co.castle.ui.UserInterface;
 import co.castle.ui.effects.Effect;
 import co.castle.ui.graphicsUI.components.GFXButton;
 import co.castle.ui.graphicsUI.effects.GFXEffect;
-import sz.csi.CharKey;
+import sz.csi.KeyCode;
 import sz.gadgets.AdditionalKeysSignal;
 import sz.gadgets.BorderedMenuBox;
 import sz.gadgets.MenuBox;
 import sz.gadgets.SimpleGFXMenuItem;
-import sz.midi.STMidiPlayer;
 import sz.util.Debug;
 import sz.util.ImageUtils;
 import sz.util.Line;
@@ -138,63 +133,63 @@ public class GFXUserInterface extends UserInterface implements Runnable
 			g.setFont( configuration.FONT_TEXT );
 
 			print( g, 3, 3,
-					"(" + CharKey.getString(
-							Display.getKeyBindings( ).getProperty( "WEAPON_KEY" ) ) + ")",
+                    "(" + KeyCode.getString(
+                            Display.getKeyBindings().getProperty("WEAPON_KEY")) + ")",
 					configuration.COLOR_BOLD );
 			print( g, 3, 4,
-					"(" + CharKey.getString(
-							Display.getKeyBindings( ).getProperty( "ATTACK1_KEY" ) )
-							+ ")",
+                    "(" + KeyCode.getString(
+                            Display.getKeyBindings().getProperty("ATTACK1_KEY"))
+                            + ")",
 					configuration.COLOR_BOLD );
 			print( g, 3, 5,
-					"(" + CharKey.getString(
-							Display.getKeyBindings( ).getProperty( "DROP_KEY" ) ) + ")",
+                    "(" + KeyCode.getString(
+                            Display.getKeyBindings().getProperty("DROP_KEY")) + ")",
 					configuration.COLOR_BOLD );
 			print( g, 3, 6,
-					"(" + CharKey.getString(
-							Display.getKeyBindings( ).getProperty( "EQUIP_KEY" ) ) + ")",
+                    "(" + KeyCode.getString(
+                            Display.getKeyBindings().getProperty("EQUIP_KEY")) + ")",
 					configuration.COLOR_BOLD );
 			print( g, 3, 7,
-					"(" + CharKey.getString(
-							Display.getKeyBindings( ).getProperty( "TARGET_KEY" ) ) + ")",
+                    "(" + KeyCode.getString(
+                            Display.getKeyBindings().getProperty("TARGET_KEY")) + ")",
 					configuration.COLOR_BOLD );
 			print( g, 3, 8,
-					"(" + CharKey.getString(
-							Display.getKeyBindings( ).getProperty( "GET_KEY" ) ) + ")",
+                    "(" + KeyCode.getString(
+                            Display.getKeyBindings().getProperty("GET_KEY")) + ")",
 					configuration.COLOR_BOLD );
 			print( g, 3, 9,
-					"(" + CharKey.getString(
-							Display.getKeyBindings( ).getProperty( "JUMP_KEY" ) ) + ")",
+                    "(" + KeyCode.getString(
+                            Display.getKeyBindings().getProperty("JUMP_KEY")) + ")",
 					configuration.COLOR_BOLD );
 			print( g, 3, 10,
-					"(" + CharKey.getString(
-							Display.getKeyBindings( ).getProperty( "DIVE_KEY" ) ) + ")",
+                    "(" + KeyCode.getString(
+                            Display.getKeyBindings().getProperty("DIVE_KEY")) + ")",
 					configuration.COLOR_BOLD );
 			print( g, 3, 11,
-					"(" + CharKey.getString(
-							Display.getKeyBindings( ).getProperty( "RELOAD_KEY" ) ) + ")",
+                    "(" + KeyCode.getString(
+                            Display.getKeyBindings().getProperty("RELOAD_KEY")) + ")",
 					configuration.COLOR_BOLD );
 			print( g, 3, 12,
-					"(" + CharKey.getString(
-							Display.getKeyBindings( ).getProperty( "SHOW_SKILLS_KEY" ) )
-							+ ")",
+                    "(" + KeyCode.getString(
+                            Display.getKeyBindings().getProperty("SHOW_SKILLS_KEY"))
+                            + ")",
 					configuration.COLOR_BOLD );
 			print( g, 3, 13,
-					"(" + CharKey.getString(
-							Display.getKeyBindings( ).getProperty( "THROW_KEY" ) ) + ")",
+                    "(" + KeyCode.getString(
+                            Display.getKeyBindings().getProperty("THROW_KEY")) + ")",
 					configuration.COLOR_BOLD );
 			print( g, 3, 14,
-					"(" + CharKey.getString(
-							Display.getKeyBindings( ).getProperty( "USE_KEY" ) ) + ")",
+                    "(" + KeyCode.getString(
+                            Display.getKeyBindings().getProperty("USE_KEY")) + ")",
 					configuration.COLOR_BOLD );
 			print( g, 3, 15,
-					"(" + CharKey.getString(
-							Display.getKeyBindings( ).getProperty( "UNEQUIP_KEY" ) )
-							+ ")",
+                    "(" + KeyCode.getString(
+                            Display.getKeyBindings().getProperty("UNEQUIP_KEY"))
+                            + ")",
 					configuration.COLOR_BOLD );
 			print( g, 3, 16,
-					"(" + CharKey.getString( Display.getKeyBindings( )
-							.getProperty( "SWITCH_WEAPONS_KEY" ) ) + ")",
+                    "(" + KeyCode.getString(Display.getKeyBindings()
+                            .getProperty("SWITCH_WEAPONS_KEY")) + ")",
 					configuration.COLOR_BOLD );
 
 			print( g, 6, 3, "Action: Uses a mystic weapon or aims weapon", Color.WHITE );
@@ -214,44 +209,44 @@ public class GFXUserInterface extends UserInterface implements Runnable
 					Color.WHITE );
 
 			print( g, 41, 3,
-					"(" + CharKey.getString(
-							Display.getKeyBindings( ).getProperty( "SHOW_STATS_KEY" ) )
-							+ ")",
+                    "(" + KeyCode.getString(
+                            Display.getKeyBindings().getProperty("SHOW_STATS_KEY"))
+                            + ")",
 					configuration.COLOR_BOLD );
 			print( g, 41, 4,
-					"(" + CharKey.getString( Display.getKeyBindings( )
-							.getProperty( "SHOW_INVENTORY_KEY" ) ) + ")",
+                    "(" + KeyCode.getString(Display.getKeyBindings()
+                            .getProperty("SHOW_INVENTORY_KEY")) + ")",
 					configuration.COLOR_BOLD );
 			print( g, 41, 5,
-					"(" + CharKey.getString(
-							Display.getKeyBindings( ).getProperty( "LOOK_KEY" ) ) + ")",
+                    "(" + KeyCode.getString(
+                            Display.getKeyBindings().getProperty("LOOK_KEY")) + ")",
 					configuration.COLOR_BOLD );
 			print( g, 41, 6,
-					"(" + CharKey.getString( Display.getKeyBindings( )
-							.getProperty( "SHOW_MESSAGE_HISTORY_KEY" ) ) + ")",
+                    "(" + KeyCode.getString(Display.getKeyBindings()
+                            .getProperty("SHOW_MESSAGE_HISTORY_KEY")) + ")",
 					configuration.COLOR_BOLD );
 			print( g, 41, 7,
-					"(" + CharKey.getString(
-							Display.getKeyBindings( ).getProperty( "SHOW_MAP_KEY" ) )
-							+ ")",
+                    "(" + KeyCode.getString(
+                            Display.getKeyBindings().getProperty("SHOW_MAP_KEY"))
+                            + ")",
 					configuration.COLOR_BOLD );
 			print( g, 41, 8,
-					"(" + CharKey.getString( Display.getKeyBindings( )
-							.getProperty( "EXAMINE_LEVEL_MAP_KEY" ) ) + ")",
+                    "(" + KeyCode.getString(Display.getKeyBindings()
+                            .getProperty("EXAMINE_LEVEL_MAP_KEY")) + ")",
 					configuration.COLOR_BOLD );
 			print( g, 41, 9,
-					"(" + CharKey.getString(
-							Display.getKeyBindings( ).getProperty( "QUIT_KEY" ) ) + ")",
+                    "(" + KeyCode.getString(
+                            Display.getKeyBindings().getProperty("QUIT_KEY")) + ")",
 					configuration.COLOR_BOLD );
 			print( g, 41, 10,
-					"(" + CharKey.getString(
-							Display.getKeyBindings( ).getProperty( "PROMPT_SAVE_KEY" ) )
-							+ ")",
+                    "(" + KeyCode.getString(
+                            Display.getKeyBindings().getProperty("PROMPT_SAVE_KEY"))
+                            + ")",
 					configuration.COLOR_BOLD );
 			print( g, 41, 11,
-					"(" + CharKey.getString(
-							Display.getKeyBindings( ).getProperty( "SWITCH_MUSIC_KEY" ) )
-							+ ")",
+                    "(" + KeyCode.getString(
+                            Display.getKeyBindings().getProperty("SWITCH_MUSIC_KEY"))
+                            + ")",
 					configuration.COLOR_BOLD );
 
 			print( g, 44, 3, "Character info: Shows your skills and attributes",
@@ -815,9 +810,9 @@ public class GFXUserInterface extends UserInterface implements Runnable
 
 	public AddornedBorderTextArea persistantMessageBox;
 	public Position VP_START = new Position( 0, 0 ), VP_END = new Position( 5, 5 ),
-			PC_POS = new Position( 3, 3 );
-	private int[ ] additionalKeys = new int[ ]
-	{ CharKey.N1, CharKey.N2, CharKey.N3, CharKey.N4, };
+            PC_POS = new Position(3, 3);
+    private int[] additionalKeys = new int[]
+            {KeyCode.N1, KeyCode.N2, KeyCode.N3, KeyCode.N4,};
 
 	private Color COLOR_LAST_MESSAGE = Color.WHITE, COLOR_OLD_MESSAGE = Color.GRAY;
 	private int dimMsg = 0;
@@ -851,10 +846,10 @@ public class GFXUserInterface extends UserInterface implements Runnable
 
 			IMG_ICON;
 
-	private HelpBox helpBox;
-	private int[ ] itemUsageKeys = new int[ ]
-	{ CharKey.u, CharKey.e, CharKey.d, CharKey.t, };
-	private Monster lockedMonster;
+    private HelpBox helpBox;
+    private int[] itemUsageKeys = new int[]
+            {KeyCode.u, KeyCode.e, KeyCode.d, KeyCode.t,};
+    private Monster lockedMonster;
 	private Color MAP_NOSOLID = new Color( 86, 77, 65, 150 );
 
 	private Color MAP_NOSOLID_LOS = new Color( 98, 96, 85, 150 );
@@ -1074,37 +1069,32 @@ public class GFXUserInterface extends UserInterface implements Runnable
 								+ " ['m' for extended info]";
 						lookedMonster = (Monster) actor;
 					}
-					else
-					{
-						looked += ", " + actor.getDescription( );
-					}
-				}
-			}
-			messageBox.setText( looked );
-			si.drawImage( ( PC_POS.x + offset.x ) * STANDARD_WIDTH - 2,
-					( ( PC_POS.y + offset.y ) * STANDARD_WIDTH - 2 ) - 4 * cellHeight,
-					TILE_SCAN );
-			si.refresh( );
-			CharKey x = new CharKey( CharKey.NONE );
-			while ( x.code != CharKey.SPACE && x.code != CharKey.m
-					&& x.code != CharKey.ESC && !x.isArrow( ) )
-				x = si.inkey( );
-			if ( x.code == CharKey.SPACE || x.code == CharKey.ESC )
-			{
-				si.restore( );
-				break;
-			}
-			if ( x.code == CharKey.m )
-			{
-				if ( lookedMonster != null )
-					Display.thus.showMonsterScreen( lookedMonster, player );
-			}
-			else
-			{
-				offset.add( Action
-						.directionToVariation( GFXUISelector.toIntDirection( x ) ) );
+					else {
+                        looked += ", " + actor.getDescription();
+                    }
+                }
+            }
+            messageBox.setText(looked);
+            si.drawImage((PC_POS.x + offset.x) * STANDARD_WIDTH - 2,
+                    ((PC_POS.y + offset.y) * STANDARD_WIDTH - 2) - 4 * cellHeight,
+                    TILE_SCAN);
+            si.refresh();
+            KeyCode x = new KeyCode(KeyCode.NONE);
+            while (x.code != KeyCode.SPACE && x.code != KeyCode.m
+                    && x.code != KeyCode.ESC && !x.isArrow())
+                x = si.inkey();
+            if (x.code == KeyCode.SPACE || x.code == KeyCode.ESC) {
+                si.restore();
+                break;
+            }
+            if (x.code == KeyCode.m) {
+                if (lookedMonster != null)
+                    Display.thus.showMonsterScreen(lookedMonster, player);
+            } else {
+                offset.add(Action
+                        .directionToVariation(GFXUISelector.toIntDirection(x)));
 
-				if ( offset.x >= xrange )
+                if (offset.x >= xrange)
 					offset.x = xrange;
 				if ( offset.x <= -xrange )
 					offset.x = -xrange;
@@ -1414,8 +1404,8 @@ public class GFXUserInterface extends UserInterface implements Runnable
 
 		showMessage( "You gained a level!, [Press Space to continue]" );
 
-		si.waitKey( CharKey.SPACE );
-		enterScreen( );
+        si.waitKey(KeyCode.SPACE);
+        enterScreen();
 		if ( player.deservesAdvancement( player.getPlayerLevel( ) ) )
 		{
 			Vector advancements = player.getAvailableAdvancements( );
@@ -1456,9 +1446,9 @@ public class GFXUserInterface extends UserInterface implements Runnable
 		{
 			messageBox.setText(
 					"Go away, and let the world flood in darkness... [Press Space to continue]" );
-			si.refresh( );
-			si.waitKey( CharKey.SPACE );
-			enterScreen( );
+            si.refresh();
+            si.waitKey(KeyCode.SPACE);
+            enterScreen();
 			// si.refresh();
 			player.getGameSessionInfo( ).setDeathCause( GameSessionInfo.QUIT );
 			informPlayerCommand( CommandListener.QUIT );
@@ -1481,24 +1471,23 @@ public class GFXUserInterface extends UserInterface implements Runnable
 		{
 			messageBox.setText(
 					"Saving... I will await your return.. [Press Space to continue]" );
-			si.refresh( );
-			si.waitKey( CharKey.SPACE );
-			enterScreen( );
+            si.refresh();
+            si.waitKey(KeyCode.SPACE);
+            enterScreen();
 			informPlayerCommand( CommandListener.SAVE );
 		}
 		messageBox.clear( );
 		si.refresh( );
 	}
 
-	public boolean prompt( )
-	{
+	public boolean prompt( ) {
 
-		CharKey x = new CharKey( CharKey.NONE );
-		while ( x.code != CharKey.Y && x.code != CharKey.y && x.code != CharKey.N
-				&& x.code != CharKey.n )
-			x = si.inkey( );
-		return ( x.code == CharKey.Y || x.code == CharKey.y );
-	}
+        KeyCode x = new KeyCode(KeyCode.NONE);
+        while (x.code != KeyCode.Y && x.code != KeyCode.y && x.code != KeyCode.N
+                && x.code != KeyCode.n)
+            x = si.inkey();
+        return (x.code == KeyCode.Y || x.code == KeyCode.y);
+    }
 
 	public boolean promptChat( NPC who )
 	{
@@ -1539,16 +1528,15 @@ public class GFXUserInterface extends UserInterface implements Runnable
 	{
 	}
 
-	public Action selectCommand( CharKey input )
-	{
-		Debug.enterMethod( this, "selectCommand", input );
-		int com = getRelatedCommand( input.code );
-		informPlayerCommand( com );
-		Action ret = actionSelectedByCommand;
-		actionSelectedByCommand = null;
-		Debug.exitMethod( ret );
-		return ret;
-	}
+    public Action selectCommand(KeyCode input) {
+        Debug.enterMethod(this, "selectCommand", input);
+        int com = getRelatedCommand(input.code);
+        informPlayerCommand(com);
+        Action ret = actionSelectedByCommand;
+        actionSelectedByCommand = null;
+        Debug.exitMethod(ret);
+        return ret;
+    }
 
 	public void setFlipFacing( boolean val )
 	{
@@ -1579,9 +1567,9 @@ public class GFXUserInterface extends UserInterface implements Runnable
 		if ( a.needsPosition( ) )
 		{
 			if ( a == target )
-				a.setPosition( pickPosition( a.getPromptPosition( ), CharKey.f ) );
+                a.setPosition(pickPosition(a.getPromptPosition(), KeyCode.f));
 			else
-				a.setPosition( pickPosition( a.getPromptPosition( ), CharKey.SPACE ) );
+                a.setPosition(pickPosition(a.getPromptPosition(), KeyCode.SPACE));
 		}
 		if ( a.needsEquipedItem( ) )
 			a.setEquipedItem( pickEquipedItem( a.getPromptEquipedItem( ) ) );
@@ -1602,8 +1590,8 @@ public class GFXUserInterface extends UserInterface implements Runnable
 
 	public void showImportantMessage( String x )
 	{
-		showMessage( x );
-		si.waitKey( CharKey.SPACE );
+        showMessage(x);
+        si.waitKey(KeyCode.SPACE);
 	}
 
 	public Action showInventory( ) throws ActionCancelException
@@ -1681,7 +1669,7 @@ public class GFXUserInterface extends UserInterface implements Runnable
 			{
 				switch ( aks.getKeyCode( ) )
 				{
-				case CharKey.N1:
+                    case KeyCode.N1:
 					// Unequip Weapon
 					if ( player.getWeapon( ) != null )
 					{
@@ -1695,7 +1683,7 @@ public class GFXUserInterface extends UserInterface implements Runnable
 					{
 						continue;
 					}
-				case CharKey.N2:
+                    case KeyCode.N2:
 					// Unequip Secondary Weapon
 					if ( player.getSecondaryWeapon( ) != null )
 					{
@@ -1709,7 +1697,7 @@ public class GFXUserInterface extends UserInterface implements Runnable
 					{
 						continue;
 					}
-				case CharKey.N3:
+                    case KeyCode.N3:
 					// Unequip Armor
 					if ( player.getArmor( ) != null )
 					{
@@ -1723,7 +1711,7 @@ public class GFXUserInterface extends UserInterface implements Runnable
 					{
 						continue;
 					}
-				case CharKey.N4:
+                    case KeyCode.N4:
 					// Unequip Shield
 					if ( player.getShield( ) != null )
 					{
@@ -1759,16 +1747,16 @@ public class GFXUserInterface extends UserInterface implements Runnable
 			{
 				switch ( aks.getKeyCode( ) )
 				{
-				case CharKey.u:
+                    case KeyCode.u:
 					choice = (SimpleGFXMenuItem) vecItemUsageChoices.elementAt( 0 );
 					break;
-				case CharKey.e:
+                    case KeyCode.e:
 					choice = (SimpleGFXMenuItem) vecItemUsageChoices.elementAt( 1 );
 					break;
-				case CharKey.t:
+                    case KeyCode.t:
 					choice = (SimpleGFXMenuItem) vecItemUsageChoices.elementAt( 2 );
 					break;
-				case CharKey.d:
+                    case KeyCode.d:
 					choice = (SimpleGFXMenuItem) vecItemUsageChoices.elementAt( 3 );
 					break;
 				}
@@ -1799,8 +1787,8 @@ public class GFXUserInterface extends UserInterface implements Runnable
 					Throw throwx = new Throw( );
 					throwx.setPerformer( player );
 					throwx.setItem( selected );
-					exitInventory( itemDescription );
-					throwx.setPosition( pickPosition( "Throw where?", CharKey.SPACE ) );
+                    exitInventory(itemDescription);
+                    throwx.setPosition(pickPosition("Throw where?", KeyCode.SPACE));
 					return throwx;
 				case 5: // Cancel
 
@@ -1852,9 +1840,9 @@ public class GFXUserInterface extends UserInterface implements Runnable
 		}
 
 		si.print( 55, 24, "[ Space to Continue ]", Color.WHITE );
-		si.refresh( );
-		si.waitKey( CharKey.SPACE );
-		si.restore( );
+        si.refresh();
+        si.waitKey(KeyCode.SPACE);
+        si.restore();
 		si.refresh( );
 		leaveScreen( );
 	}
@@ -1933,9 +1921,9 @@ public class GFXUserInterface extends UserInterface implements Runnable
 				+ player.getShieldCoverageChance( ) + "%", Color.WHITE );
 
 		si.print( 1, 23, "[ Press Space to continue ]", Color.WHITE );
-		si.refresh( );
-		si.waitKey( CharKey.SPACE );
-		si.restore( );
+        si.refresh();
+        si.waitKey(KeyCode.SPACE);
+        si.restore();
 		si.refresh( );
 		leaveScreen( );
 	}
@@ -1992,16 +1980,15 @@ public class GFXUserInterface extends UserInterface implements Runnable
 		messageBox.setForeground( COLOR_LAST_MESSAGE );
 		messageBox.setText( x );
 		// si.refresh();
-		si.waitKey( CharKey.SPACE );
+        si.waitKey(KeyCode.SPACE);
 	}
 
 	// IO Utility
-	public void waitKey( )
-	{
-		CharKey x = new CharKey( CharKey.NONE );
-		while ( x.code == CharKey.NONE )
-			x = si.inkey( );
-	}
+	public void waitKey( ) {
+        KeyCode x = new KeyCode(KeyCode.NONE);
+        while (x.code == KeyCode.NONE)
+            x = si.inkey();
+    }
 
 	private void drawLevel( )
 	{
@@ -2555,8 +2542,8 @@ public class GFXUserInterface extends UserInterface implements Runnable
 			}
 		si.refresh( );
 
-		si.waitKey( CharKey.SPACE );
-		messageBox.setVisible( true );
+        si.waitKey(KeyCode.SPACE);
+        messageBox.setVisible(true);
 		si.restore( );
 		si.refresh( );
 
@@ -2638,27 +2625,23 @@ public class GFXUserInterface extends UserInterface implements Runnable
 		messageBox.setVisible( true );
 	}
 
-	private int pickDirection( String prompt ) throws ActionCancelException
-	{
-		Debug.enterMethod( this, "pickDirection" );
-		// refresh();
-		leaveScreen( );
-		messageBox.setText( prompt );
-		// si.refresh();
-		// refresh();
+	private int pickDirection( String prompt ) throws ActionCancelException {
+        Debug.enterMethod(this, "pickDirection");
+        // refresh();
+        leaveScreen();
+        messageBox.setText(prompt);
+        // si.refresh();
+        // refresh();
 
-		CharKey x = new CharKey( CharKey.NONE );
-		while ( x.code == CharKey.NONE )
-			x = si.inkey( );
-		if ( x.isArrow( ) )
-		{
-			int ret = GFXUISelector.toIntDirection( x );
-			Debug.exitMethod( ret );
-			return ret;
-		}
-		else
-		{
-			ActionCancelException ret = new ActionCancelException( );
+        KeyCode x = new KeyCode(KeyCode.NONE);
+        while (x.code == KeyCode.NONE)
+            x = si.inkey();
+        if (x.isArrow()) {
+            int ret = GFXUISelector.toIntDirection(x);
+            Debug.exitMethod(ret);
+            return ret;
+        } else {
+            ActionCancelException ret = new ActionCancelException();
 			Debug.exitExceptionally( ret );
 			si.refresh( );
 			throw ret;
@@ -2872,33 +2855,31 @@ public class GFXUserInterface extends UserInterface implements Runnable
 				if ( item != null )
 					looked += ", " + item.getDescription( );
 			}
-			messageBox.setText( prompt + " " + looked );
-			// si.print(PC_POS.x + offset.x, PC_POS.y + offset.y, '_',
-			// ConsoleSystemInterface.RED);
-			drawStepsTo( PC_POS.x + offset.x, ( PC_POS.y + offset.y ), TILE_LINE_STEPS,
-					cellHeight );
+            messageBox.setText(prompt + " " + looked);
+            // si.print(PC_POS.x + offset.x, PC_POS.y + offset.y, '_',
+            // ConsoleSystemInterface.RED);
+            drawStepsTo(PC_POS.x + offset.x, (PC_POS.y + offset.y), TILE_LINE_STEPS,
+                    cellHeight);
 
-			si.drawImage( ( PC_POS.x + offset.x ) * STANDARD_WIDTH - 2,
-					( ( PC_POS.y + offset.y ) * STANDARD_WIDTH - 2 ) - 4 * cellHeight,
-					TILE_LINE_AIM );
-			si.refresh( );
-			CharKey x = new CharKey( CharKey.NONE );
-			while ( x.code != CharKey.SPACE && x.code != CharKey.ESC
-					&& x.code != fireKeyCode && !x.isArrow( ) )
-				x = si.inkey( );
-			if ( x.code == CharKey.ESC )
-			{
-				si.restore( );
-				si.refresh( );
-				throw new ActionCancelException( );
-			}
-			if ( x.code == CharKey.SPACE || x.code == fireKeyCode )
-			{
-				si.restore( );
-				if ( level.getMonsterAt( browser ) != null )
-					lockedMonster = level.getMonsterAt( browser );
-				return browser;
-			}
+            si.drawImage((PC_POS.x + offset.x) * STANDARD_WIDTH - 2,
+                    ((PC_POS.y + offset.y) * STANDARD_WIDTH - 2) - 4 * cellHeight,
+                    TILE_LINE_AIM);
+            si.refresh();
+            KeyCode x = new KeyCode(KeyCode.NONE);
+            while (x.code != KeyCode.SPACE && x.code != KeyCode.ESC
+                    && x.code != fireKeyCode && !x.isArrow())
+                x = si.inkey();
+            if (x.code == KeyCode.ESC) {
+                si.restore();
+                si.refresh();
+                throw new ActionCancelException();
+            }
+            if (x.code == KeyCode.SPACE || x.code == fireKeyCode) {
+                si.restore();
+                if (level.getMonsterAt(browser) != null)
+                    lockedMonster = level.getMonsterAt(browser);
+                return browser;
+            }
 			offset.add(
 					Action.directionToVariation( GFXUISelector.toIntDirection( x ) ) );
 

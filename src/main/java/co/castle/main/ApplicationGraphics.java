@@ -8,14 +8,12 @@ import co.castle.game.Game;
 import co.castle.system.FileLoader;
 import co.castle.ui.Appearance;
 import co.castle.ui.AppearanceFactory;
-import co.castle.ui.Display;
 import co.castle.ui.UserInterface;
 import co.castle.ui.effects.EffectFactory;
 import co.castle.ui.graphicsUI.GFXUserInterface;
-import co.castle.ui.graphicsUI.GraphicsDisplay;
 import co.castle.ui.graphicsUI.Panel;
 import co.castle.ui.graphicsUI.effects.GFXEffectFactory;
-import sz.csi.CharKey;
+import sz.csi.KeyCode;
 import sz.util.ImageUtils;
 import sz.util.Position;
 
@@ -137,24 +135,27 @@ public final class ApplicationGraphics extends JFrame {
 
 	// Method Synchronized
 
-	public synchronized CharKey inkey() {
+	public synchronized KeyCode inkey() {
 		keyboard.informKey(Thread.currentThread());
 		try {
 			this.wait();
 		} catch (InterruptedException ignored) {
 		}
-		return new CharKey(keyboard.getInkeyBuffer());
+		return new KeyCode(keyboard.getInkeyBuffer());
+	}
+
+	public KeyCode getKeyPressed() {
+		return new KeyCode();
 	}
 
 	// Method
 
-	public void addComponentToPanel( Component c )
-	{
-		panelGame.add( c );
-		panelGame.validate( );
+	public void addComponentToPanel(Component c) {
+		panelGame.add(c);
+		panelGame.validate();
 	}
 
-	public void cls( )
+	public void cls()
 	{
 		panelGame.cls( );
 	}
@@ -247,29 +248,28 @@ public final class ApplicationGraphics extends JFrame {
 
 	public String input( int xpos, int ypos, Color textColor, int maxLength )
 	{
-        StringBuilder ret = new StringBuilder( );
-		CharKey read = new CharKey( CharKey.NONE );
+		StringBuilder ret = new StringBuilder();
+		KeyCode read = new KeyCode(KeyCode.NONE);
 		saveBuffer( );
 		while ( true )
 		{
 			restore( );
 			printAtPixel( xpos, ypos, ret + "_", textColor );
 			refresh( );
-			while ( read.code == CharKey.NONE )
-				read = inkey( );
-			if ( read.code == CharKey.ENTER )
+			while (read.code == KeyCode.NONE)
+				read = inkey();
+			if (read.code == KeyCode.ENTER)
 				break;
-			if ( read.code == CharKey.BACKSPACE )
-			{
-                if ( ret.toString( ).equals( "" ) )
-				{
-					read.code = CharKey.NONE;
+			if (read.code == KeyCode.BACKSPACE) {
+				if (ret.toString().equals("")) {
+					read.code = KeyCode.NONE;
 					continue;
 				}
-                if ( ret.length( ) > 1 )
-                { ret = new StringBuilder( ret.substring( 0, ret.length( ) - 1 ) ); }
-                else
-                { ret = new StringBuilder( ); }
+				if (ret.length() > 1) {
+					ret = new StringBuilder(ret.substring(0, ret.length() - 1));
+				} else {
+					ret = new StringBuilder();
+				}
 				caretPosition.x--;
 				// print(caretPosition.x, caretPosition.y, " ");
 			}
@@ -277,12 +277,12 @@ public final class ApplicationGraphics extends JFrame {
 			{
 				if ( ret.length( ) >= 50 )
 				{
-					read.code = CharKey.NONE;
+					read.code = KeyCode.NONE;
 					continue;
 				}
 				if ( !read.isAlphaNumeric( ) )
 				{
-					read.code = CharKey.NONE;
+					read.code = KeyCode.NONE;
 					continue;
 				}
 
@@ -291,7 +291,7 @@ public final class ApplicationGraphics extends JFrame {
                 ret.append( nuevo );
 				caretPosition.x++;
 			}
-			read.code = CharKey.NONE;
+			read.code = KeyCode.NONE;
 		}
         return ret.toString( );
 	}
@@ -381,7 +381,7 @@ public final class ApplicationGraphics extends JFrame {
 
 	public void waitKey( int keyCode )
 	{
-		CharKey x = new CharKey( CharKey.NONE );
+		KeyCode x = new KeyCode(KeyCode.NONE);
 		while ( x.code != keyCode )
 			x = inkey( );
 	}

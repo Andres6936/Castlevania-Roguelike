@@ -5,7 +5,7 @@ import co.castle.game.Game;
 import co.castle.main.ApplicationGraphics;
 import co.castle.ui.UserInterface;
 import co.castle.ui.graphicsUI.GFXUserInterface;
-import sz.csi.CharKey;
+import sz.csi.KeyCode;
 
 import java.awt.*;
 
@@ -70,35 +70,35 @@ public class MenuScene implements IScene {
 
     @Override
     public TypeScene process() {
-        CharKey x = new CharKey(CharKey.NONE);
+        KeyCode x = new KeyCode(KeyCode.NONE);
         x = renderer.inkey();
         switch (x.code) {
-            case CharKey.A:
-            case CharKey.a:
+            case KeyCode.A:
+            case KeyCode.a:
                 return TypeScene.NEW_GAME;
-            case CharKey.B:
-            case CharKey.b:
+            case KeyCode.B:
+            case KeyCode.b:
                 return TypeScene.LOAD_GAME;
-            case CharKey.C:
-            case CharKey.c:
+            case KeyCode.C:
+            case KeyCode.c:
                 return TypeScene.PROLOGUE;
-            case CharKey.D:
-            case CharKey.d:
+            case KeyCode.D:
+            case KeyCode.d:
                 return TypeScene.TRAINING;
-            case CharKey.E:
-            case CharKey.e:
+            case KeyCode.E:
+            case KeyCode.e:
                 return TypeScene.ARENA;
-            case CharKey.F:
-            case CharKey.f:
+            case KeyCode.F:
+            case KeyCode.f:
                 return TypeScene.HIGH_SCORE;
-            case CharKey.G:
-            case CharKey.g:
+            case KeyCode.G:
+            case KeyCode.g:
                 return TypeScene.QUIT;
-            case CharKey.UARROW:
+            case KeyCode.UARROW:
                 if (choice > 0)
                     choice--;
                 return TypeScene.NONE;
-            case CharKey.DARROW:
+            case KeyCode.DARROW:
                 if (choice < 6)
                     choice++;
                 return TypeScene.NONE;

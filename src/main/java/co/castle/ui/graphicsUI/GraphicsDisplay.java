@@ -25,7 +25,7 @@ import co.castle.player.advancements.Advancement;
 import co.castle.ui.Display;
 import co.castle.ui.UserInterface;
 import co.castle.ui.graphicsUI.components.GFXChatBox;
-import sz.csi.CharKey;
+import sz.csi.KeyCode;
 import sz.util.ImageUtils;
 import sz.util.Position;
 import sz.util.ScriptUtil;
@@ -134,7 +134,7 @@ public class GraphicsDisplay extends Display
 					ScriptUtil.replace(marks, replacements,
 							chat.getConversation(i)));
 			gfxChatBox.setVisible(true);
-			renderer.waitKey(CharKey.SPACE);
+			renderer.waitKey(KeyCode.SPACE);
 		}
 		gfxChatBox.setVisible(false);
 		renderer.restore();
@@ -171,7 +171,7 @@ public class GraphicsDisplay extends Display
 		renderer.setFontToPanel(assets.FONT_TEXT);
 		renderer.print(2, 20, "[Press Space]", Color.WHITE);
 		renderer.refresh();
-		renderer.waitKey(CharKey.SPACE);
+		renderer.waitKey(KeyCode.SPACE);
 		renderer.remove(t1);
 
 	}
@@ -221,7 +221,7 @@ public class GraphicsDisplay extends Display
 		}
 		renderer.print(7 + leftMargin, 20, "[space] to continue", assets.COLOR_BOLD);
 		renderer.refresh();
-		renderer.waitKey(CharKey.SPACE);
+		renderer.waitKey(KeyCode.SPACE);
 	}
 
 	public void showHostageRescue( Hostage h )
@@ -259,7 +259,7 @@ public class GraphicsDisplay extends Display
 		renderer.addComponentToPanel(t1);
 		renderer.printAtPixel(156, 490, "[Space] to continue", assets.COLOR_BOLD);
 		renderer.refresh();
-		renderer.waitKey(CharKey.SPACE);
+		renderer.waitKey(KeyCode.SPACE);
 		renderer.remove(t1);
 	}
 
@@ -297,7 +297,7 @@ public class GraphicsDisplay extends Display
 				renderer.drawImage(location.x + 53, location.y + 53, assets.IMAGE_MAPMARKER);
 		}
 		renderer.refresh();
-		renderer.waitKey(CharKey.SPACE);
+		renderer.waitKey(KeyCode.SPACE);
 		renderer.restore();
 		renderer.refresh();
 	}
@@ -333,7 +333,7 @@ public class GraphicsDisplay extends Display
 		}
 		renderer.print(2, 20, "[Press Space]", Color.WHITE);
 		renderer.refresh();
-		renderer.waitKey(CharKey.SPACE);
+		renderer.waitKey(KeyCode.SPACE);
 		((GFXUserInterface) UserInterface.getUI()).messageBox.setVisible(true);
 		t1.setVisible(false);
 		renderer.remove(t1);
@@ -381,7 +381,7 @@ public class GraphicsDisplay extends Display
 			renderer.print(3, 6, "No adventurers available", Color.WHITE);
 			renderer.print(4, 8, "[Space to Cancel]", Color.WHITE);
 			renderer.refresh();
-			renderer.waitKey(CharKey.SPACE);
+			renderer.waitKey(KeyCode.SPACE);
 			return -1;
 		}
 
@@ -389,21 +389,21 @@ public class GraphicsDisplay extends Display
 		for (int i = 0; i < saveFiles.length; i++) {
 			String saveFileName = saveFiles[i].getName();
 			renderer.print(5, 7 + i,
-					(char) (CharKey.a + i + 1) + " - "
+					(char) (KeyCode.a + i + 1) + " - "
 							+ saveFileName.substring(0, saveFileName.indexOf(".sav")),
 					assets.COLOR_BOLD);
 		}
 		renderer.print(3, 9 + saveFiles.length, "[Space to Cancel]", Color.WHITE);
 		renderer.refresh();
-		CharKey x = renderer.inkey();
-		while ((x.code < CharKey.a || x.code > CharKey.a + saveFiles.length - 1)
-				&& x.code != CharKey.SPACE) {
+		KeyCode x = renderer.inkey();
+		while ((x.code < KeyCode.a || x.code > KeyCode.a + saveFiles.length - 1)
+				&& x.code != KeyCode.SPACE) {
 			x = renderer.inkey();
 		}
-		if (x.code == CharKey.SPACE)
+		if (x.code == KeyCode.SPACE)
 			return -1;
 		else
-			return x.code - CharKey.a;
+			return x.code - KeyCode.a;
 	}
 
 	public void showScreen( Object pScreen ) {
@@ -419,7 +419,7 @@ public class GraphicsDisplay extends Display
 		addornedTextArea.setBounds(consoleX, consoleY, consoleW, consoleH);
 		addornedTextArea.setText(text);
 		addornedTextArea.setVisible(true);
-		renderer.waitKey(CharKey.SPACE);
+		renderer.waitKey(KeyCode.SPACE);
 		addornedTextArea.setVisible(false);
 	}
 
@@ -429,7 +429,7 @@ public class GraphicsDisplay extends Display
 		addornedTextArea.setText(text);
 		addornedTextArea.setFont(f);
 		addornedTextArea.setVisible(true);
-		renderer.waitKey(CharKey.SPACE);
+		renderer.waitKey(KeyCode.SPACE);
 		addornedTextArea.setVisible(false);
 	}
 
@@ -450,17 +450,16 @@ public class GraphicsDisplay extends Display
 	}
 
 	public boolean showTextBoxPrompt(	String text, int consoleX, int consoleY,
-										int consoleW, int consoleH )
-	{
-		addornedTextArea.setBounds( consoleX, consoleY, consoleW, consoleH );
-		addornedTextArea.setText( text );
-		addornedTextArea.setVisible( true );
-		CharKey x = new CharKey( CharKey.NONE );
-		while (x.code != CharKey.Y && x.code != CharKey.y && x.code != CharKey.N
-				&& x.code != CharKey.n)
+										int consoleW, int consoleH ) {
+		addornedTextArea.setBounds(consoleX, consoleY, consoleW, consoleH);
+		addornedTextArea.setText(text);
+		addornedTextArea.setVisible(true);
+		KeyCode x = new KeyCode(KeyCode.NONE);
+		while (x.code != KeyCode.Y && x.code != KeyCode.y && x.code != KeyCode.N
+				&& x.code != KeyCode.n)
 			x = renderer.inkey();
-		boolean ret = ( x.code == CharKey.Y || x.code == CharKey.y );
-		addornedTextArea.setVisible( false );
+		boolean ret = (x.code == KeyCode.Y || x.code == KeyCode.y);
+		addornedTextArea.setVisible(false);
 		return ret;
 	}
 	public void showTimeChange(	boolean day, boolean fog, boolean rain,
@@ -495,7 +494,7 @@ public class GraphicsDisplay extends Display
 				"Midi Tracks by Jorge E. Fuentes, JiLost, Nicholas and Tom Kim",
 				Color.WHITE);
 
-		CharKey x = new CharKey(CharKey.NONE);
+		KeyCode x = new KeyCode(KeyCode.NONE);
 		int choice = 0;
 		renderer.saveBuffer();
 
@@ -519,49 +518,49 @@ public class GraphicsDisplay extends Display
 			renderer.printAtPixelCentered(middlePoint, (int) (488 * Asset.SCREEN_SCALE), "g. Quit",
 					Color.WHITE);
 			renderer.refresh();
-			while (x.code != CharKey.A && x.code != CharKey.a && x.code != CharKey.B
-					&& x.code != CharKey.b && x.code != CharKey.C && x.code != CharKey.c
-					&& x.code != CharKey.D && x.code != CharKey.d && x.code != CharKey.E
-					&& x.code != CharKey.e && x.code != CharKey.G && x.code != CharKey.g
-					&& x.code != CharKey.F && x.code != CharKey.f
-					&& x.code != CharKey.UARROW && x.code != CharKey.DARROW
-					&& x.code != CharKey.SPACE && x.code != CharKey.ENTER)
+			while (x.code != KeyCode.A && x.code != KeyCode.a && x.code != KeyCode.B
+					&& x.code != KeyCode.b && x.code != KeyCode.C && x.code != KeyCode.c
+					&& x.code != KeyCode.D && x.code != KeyCode.d && x.code != KeyCode.E
+					&& x.code != KeyCode.e && x.code != KeyCode.G && x.code != KeyCode.g
+					&& x.code != KeyCode.F && x.code != KeyCode.f
+					&& x.code != KeyCode.UARROW && x.code != KeyCode.DARROW
+					&& x.code != KeyCode.SPACE && x.code != KeyCode.ENTER)
 				x = renderer.inkey();
 			switch (x.code) {
-			case CharKey.A:
-			case CharKey.a:
-				return 0;
-			case CharKey.B:
-			case CharKey.b:
-				return 1;
-			case CharKey.C:
-			case CharKey.c:
-				return 2;
-			case CharKey.D:
-			case CharKey.d:
-				return 3;
-			case CharKey.E:
-			case CharKey.e:
-				return 4;
-			case CharKey.F:
-			case CharKey.f:
-				return 5;
-			case CharKey.G:
-			case CharKey.g:
-				return 6;
-			case CharKey.UARROW:
-				if ( choice > 0 )
-					choice--;
-				break;
-			case CharKey.DARROW:
-				if ( choice < 6 )
-					choice++;
-				break;
-			case CharKey.SPACE:
-			case CharKey.ENTER:
-				return choice;
+				case KeyCode.A:
+				case KeyCode.a:
+					return 0;
+				case KeyCode.B:
+				case KeyCode.b:
+					return 1;
+				case KeyCode.C:
+				case KeyCode.c:
+					return 2;
+				case KeyCode.D:
+				case KeyCode.d:
+					return 3;
+				case KeyCode.E:
+				case KeyCode.e:
+					return 4;
+				case KeyCode.F:
+				case KeyCode.f:
+					return 5;
+				case KeyCode.G:
+				case KeyCode.g:
+					return 6;
+				case KeyCode.UARROW:
+					if (choice > 0)
+						choice--;
+					break;
+				case KeyCode.DARROW:
+					if (choice < 6)
+						choice++;
+					break;
+				case KeyCode.SPACE:
+				case KeyCode.ENTER:
+					return choice;
 			}
-			x.code = CharKey.NONE;
+			x.code = KeyCode.NONE;
 		}
 	}
 
@@ -615,12 +614,12 @@ public class GraphicsDisplay extends Display
 	private int readAlphaToNumber( int numbers )
 	{
 		while ( true ) {
-			CharKey key = renderer.inkey();
-			if (key.code >= CharKey.A && key.code <= CharKey.A + numbers - 1) {
-				return key.code - CharKey.A;
+			KeyCode key = renderer.inkey();
+			if (key.code >= KeyCode.A && key.code <= KeyCode.A + numbers - 1) {
+				return key.code - KeyCode.A;
 			}
-			if (key.code >= CharKey.a && key.code <= CharKey.a + numbers - 1) {
-				return key.code - CharKey.a;
+			if (key.code >= KeyCode.a && key.code <= KeyCode.a + numbers - 1) {
+				return key.code - KeyCode.a;
 			}
 		}
 	}

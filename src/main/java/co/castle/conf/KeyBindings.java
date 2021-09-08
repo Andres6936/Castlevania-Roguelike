@@ -1,6 +1,6 @@
 package co.castle.conf;
 
-import sz.csi.CharKey;
+import sz.csi.KeyCode;
 
 import java.lang.reflect.Field;
 import java.util.Properties;
@@ -72,8 +72,8 @@ public class KeyBindings extends Properties {
         if (fieldName == null)
             throw new RuntimeException("Invalid key.cfg file, property not found: " + keyName);
         try {
-            Field field = CharKey.class.getField(fieldName);
-            return field.getInt(CharKey.class);
+            Field field = KeyCode.class.getField(fieldName);
+            return field.getInt(KeyCode.class);
         } catch (SecurityException | NoSuchFieldException | IllegalArgumentException | IllegalAccessException e) {
             e.printStackTrace();
             throw new RuntimeException("Error reading field : " + fieldName);

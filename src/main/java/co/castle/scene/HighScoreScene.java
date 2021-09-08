@@ -2,7 +2,7 @@ package co.castle.scene;
 
 import co.castle.game.GameFiles;
 import co.castle.player.HiScore;
-import sz.csi.CharKey;
+import sz.csi.KeyCode;
 
 import java.awt.*;
 
@@ -48,7 +48,7 @@ public class HighScoreScene implements IScene {
         }
         renderer.print(7 + leftMargin, 20, "[space] to continue", renderer.assets.COLOR_BOLD);
         renderer.refresh();
-        renderer.waitKey(CharKey.SPACE);
+        renderer.waitKey(KeyCode.SPACE);
     }
 
     @Override

@@ -8,7 +8,7 @@ import co.castle.ai.ActionSelector;
 import co.castle.conf.UserActions;
 import co.castle.level.Level;
 import co.castle.player.Player;
-import sz.csi.CharKey;
+import sz.csi.KeyCode;
 import sz.util.Debug;
 import sz.util.Position;
 
@@ -31,17 +31,16 @@ public abstract class UISelector implements ActionSelector {
 
 	public static int WEAPON_KEY;
 
-	public static int toIntDirection( CharKey ck )
-	{
-		if ( isKey( ck, UP1_KEY, UP2_KEY ) )
-			return Action.UP;
-		else if ( isKey( ck, LEFT1_KEY, LEFT2_KEY ) )
-			return Action.LEFT;
-		else if ( isKey( ck, RIGHT1_KEY, RIGHT2_KEY ) )
-			return Action.RIGHT;
-		else if ( isKey( ck, DOWN1_KEY, DOWN2_KEY ) )
-			return Action.DOWN;
-		else if ( isKey( ck, UPRIGHT1_KEY, UPRIGHT2_KEY ) )
+    public static int toIntDirection(KeyCode ck) {
+        if (isKey(ck, UP1_KEY, UP2_KEY))
+            return Action.UP;
+        else if (isKey(ck, LEFT1_KEY, LEFT2_KEY))
+            return Action.LEFT;
+        else if (isKey(ck, RIGHT1_KEY, RIGHT2_KEY))
+            return Action.RIGHT;
+        else if (isKey(ck, DOWN1_KEY, DOWN2_KEY))
+            return Action.DOWN;
+        else if (isKey(ck, UPRIGHT1_KEY, UPRIGHT2_KEY))
 			return Action.UPRIGHT;
 		else if ( isKey( ck, UPLEFT1_KEY, UPLEFT2_KEY ) )
 			return Action.UPLEFT;
@@ -54,10 +53,9 @@ public abstract class UISelector implements ActionSelector {
 		return -1;
 	}
 
-	private static boolean isKey( CharKey ck, int key1, int key2 )
-	{
-		return ck.code == key1 || ck.code == key2;
-	}
+    private static boolean isKey(KeyCode ck, int key1, int key2) {
+        return ck.code == key1 || ck.code == key2;
+    }
 
 	public UserInterface getUI( )
 	{
@@ -66,10 +64,9 @@ public abstract class UISelector implements ActionSelector {
 		return ui;
 	}
 
-	public boolean isArrow( CharKey input )
-	{
-		return toIntDirection( input ) != -1;
-	}
+    public boolean isArrow(KeyCode input) {
+        return toIntDirection(input) != -1;
+    }
 
 	public void setPlayer( Player p )
 	{

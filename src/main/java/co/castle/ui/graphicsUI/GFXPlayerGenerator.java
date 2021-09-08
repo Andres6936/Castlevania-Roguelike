@@ -9,7 +9,7 @@ import co.castle.game.PlayerGenerator;
 import co.castle.main.ApplicationGraphics;
 import co.castle.player.Player;
 import co.castle.ui.AppearanceFactory;
-import sz.csi.CharKey;
+import sz.csi.KeyCode;
 
 public class GFXPlayerGenerator extends PlayerGenerator {
 
@@ -35,8 +35,7 @@ public class GFXPlayerGenerator extends PlayerGenerator {
 		si.addComponentToPanel( txtClassDescription );
 	}
 
-	public Player generatePlayer( )
-	{
+	public Player generatePlayer( ) {
 		si.drawImage(configuration.IMAGE_BACKGROUND);
 		si.printAtPixel(69, 86, "CHOOSE YOUR DESTINY", Asset.COLOR_BOLD);
 		si.getGraphics2D().setColor(Color.DARK_GRAY);
@@ -46,12 +45,12 @@ public class GFXPlayerGenerator extends PlayerGenerator {
 		String name = si.input(143, 118, Asset.COLOR_BOLD, 10);
 		si.printAtPixel(69, 133, "Sex: [m/f]", Color.WHITE);
 		si.refresh();
-		CharKey x = new CharKey(CharKey.NONE);
-		while (x.code != CharKey.M && x.code != CharKey.m && x.code != CharKey.F
-				&& x.code != CharKey.f)
+		KeyCode x = new KeyCode(KeyCode.NONE);
+		while (x.code != KeyCode.M && x.code != KeyCode.m && x.code != KeyCode.F
+				&& x.code != KeyCode.f)
 			x = si.inkey();
 		int sex = 0;
-		if (x.code == CharKey.M || x.code == CharKey.m)
+		if (x.code == KeyCode.M || x.code == KeyCode.m)
 			sex = Player.MALE;
 		else
 			sex = Player.FEMALE;
@@ -85,7 +84,7 @@ public class GFXPlayerGenerator extends PlayerGenerator {
 		si.printAtPixel(350, 420, "Sight       ", Asset.COLOR_BOLD);
 		si.printAtPixel(350, 440, "Wealth      ", Asset.COLOR_BOLD);
 		txtClassDescription.setVisible(true);
-		x = new CharKey(CharKey.NONE);
+		x = new KeyCode(KeyCode.NONE);
 		int choice = 0;
 		si.saveBuffer();
 		while (true) {
@@ -102,32 +101,26 @@ public class GFXPlayerGenerator extends PlayerGenerator {
 			si.printAtPixel(440, 320, CLASS_STATS[choice][3] + "%", Color.WHITE);
 			si.printAtPixel(440, 340, CLASS_STATS[choice][4], Color.WHITE);
 			si.printAtPixel(440, 360, CLASS_STATS[choice][5], Color.WHITE);
-			si.printAtPixel( 440, 380, CLASS_STATS[ choice ][ 6 ], Color.WHITE );
-			si.printAtPixel( 440, 400, CLASS_STATS[ choice ][ 7 ], Color.WHITE );
-			si.printAtPixel( 440, 420, CLASS_STATS[ choice ][ 8 ], Color.WHITE );
-			si.printAtPixel( 440, 440, CLASS_STATS[ choice ][ 9 ], Color.WHITE );
-			si.refresh( );
-			while ( x.code != CharKey.UARROW && x.code != CharKey.DARROW
-					&& x.code != CharKey.SPACE && x.code != CharKey.ENTER )
-				x = si.inkey( );
-			if ( x.code == CharKey.UARROW )
-			{
-				if ( choice > 0 )
-				{
+			si.printAtPixel(440, 380, CLASS_STATS[choice][6], Color.WHITE);
+			si.printAtPixel(440, 400, CLASS_STATS[choice][7], Color.WHITE);
+			si.printAtPixel(440, 420, CLASS_STATS[choice][8], Color.WHITE);
+			si.printAtPixel(440, 440, CLASS_STATS[choice][9], Color.WHITE);
+			si.refresh();
+			while (x.code != KeyCode.UARROW && x.code != KeyCode.DARROW
+					&& x.code != KeyCode.SPACE && x.code != KeyCode.ENTER)
+				x = si.inkey();
+			if (x.code == KeyCode.UARROW) {
+				if (choice > 0) {
 					choice--;
 				}
-			}
-			else if ( x.code == CharKey.DARROW )
-			{
-				if ( choice < 5 )
-				{
+			} else if (x.code == KeyCode.DARROW) {
+				if (choice < 5) {
 					choice++;
 				}
-			}
-			else
+			} else
 				break;
 
-			x.code = CharKey.NONE;
+			x.code = KeyCode.NONE;
 		}
 		// si.remove(txtClassDescription);
 		txtClassDescription.setVisible( false );

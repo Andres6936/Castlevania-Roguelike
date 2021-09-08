@@ -3,7 +3,7 @@ package sz.csi.jcurses;
 import jcurses.system.CharColor;
 import jcurses.system.InputChar;
 import jcurses.system.Toolkit;
-import sz.csi.CharKey;
+import sz.csi.KeyCode;
 import sz.csi.ConsoleSystemInterface;
 import sz.util.Position;
 
@@ -87,46 +87,44 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface
 				colors[ x ][ y ] = ConsoleSystemInterface.BLACK;
 			}
 	}
-	public void flash( int color )
-	{
-		/*
-		 * Toolkit.clearScreen(new CharColor(getJCurseColor(color).getForeground(),
-		 * getJCurseColor(color).getForeground())); try { Thread.sleep(10); } catch
-		 * (InterruptedException ie){ } Toolkit.clearScreen(BLACK);
-		 */
-		// Toolkit.changeColors(new Rectangle(Toolkit.UL_CORNER, Toolkit.LR_CORNER), new
-		// CharColor(getJCurseColor(color).getForeground(), CharColor.BLACK));
-	}
-	public CharKey inkey( )
-	{
-		InputChar c = Toolkit.readCharacter( );
-		return new CharKey( ASCtoCharKeyCode( c.getCode( ) ) );
-	}
-	public String input( )
-	{
-		return input( 999 );
-	}
+
+    public void flash(int color) {
+        /*
+         * Toolkit.clearScreen(new CharColor(getJCurseColor(color).getForeground(),
+         * getJCurseColor(color).getForeground())); try { Thread.sleep(10); } catch
+         * (InterruptedException ie){ } Toolkit.clearScreen(BLACK);
+         */
+        // Toolkit.changeColors(new Rectangle(Toolkit.UL_CORNER, Toolkit.LR_CORNER), new
+        // CharColor(getJCurseColor(color).getForeground(), CharColor.BLACK));
+    }
+
+    public KeyCode inkey() {
+        InputChar c = Toolkit.readCharacter();
+        return new KeyCode(ASCtoCharKeyCode(c.getCode()));
+    }
+
+    public String input() {
+        return input(999);
+    }
 	public String input( int l )
 	{
-		String ret = "";
-		CharKey read = new CharKey( CharKey.NONE );
+        String ret = "";
+        KeyCode read = new KeyCode(KeyCode.NONE);
 		while ( true )
 		{
-			while ( read.code == CharKey.NONE )
-				read = inkey( );
-			if ( read.code == CharKey.ENTER )
-				break;
-			if ( read.code == CharKey.BACKSPACE )
-			{
-				if ( ret.equals( "" ) )
-				{
-					read.code = CharKey.NONE;
-					continue;
-				}
-				if ( ret.length( ) > 1 )
-					ret = ret.substring( 0, ret.length( ) - 1 );
-				else
-					ret = "";
+            while (read.code == KeyCode.NONE)
+                read = inkey();
+            if (read.code == KeyCode.ENTER)
+                break;
+            if (read.code == KeyCode.BACKSPACE) {
+                if (ret.equals("")) {
+                    read.code = KeyCode.NONE;
+                    continue;
+                }
+                if (ret.length() > 1)
+                    ret = ret.substring(0, ret.length() - 1);
+                else
+                    ret = "";
 				caretPosition.x--;
 				print( caretPosition.x, caretPosition.y, " " );
 
@@ -135,12 +133,12 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface
 			{
 				if ( ret.length( ) >= l )
 				{
-					read.code = CharKey.NONE;
+                    read.code = KeyCode.NONE;
 					continue;
 				}
 				if ( !read.isAlphaNumeric( ) )
 				{
-					read.code = CharKey.NONE;
+                    read.code = KeyCode.NONE;
 					continue;
 				}
 
@@ -149,8 +147,8 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface
 				ret += nuevo;
 				caretPosition.x++;
 			}
-			refresh( );
-			read.code = CharKey.NONE;
+            refresh();
+            read.code = KeyCode.NONE;
 
 		}
 		return ret;
@@ -256,7 +254,7 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface
 
 	public void waitKey( int keyCode )
 	{
-		CharKey x = new CharKey( CharKey.NONE );
+        KeyCode x = new KeyCode(KeyCode.NONE);
 		while ( x.code != keyCode )
 			x = inkey( );
 	}
@@ -264,81 +262,81 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface
 	private int ASCtoCharKeyCode( int code )
 	{
 		if ( code >= 65 && code <= 90 )
-			return code - ( 65 - CharKey.A );
+            return code - (65 - KeyCode.A);
 		else if ( code >= 97 && code <= 122 )
-			return code - ( 97 - CharKey.a );
+            return code - (97 - KeyCode.a);
 
 		switch ( code )
 		{
 
 		case 32:
-			return CharKey.SPACE;
+            return KeyCode.SPACE;
 		case 63:
-			return CharKey.QUESTION;
+            return KeyCode.QUESTION;
 		case 44:
-			return CharKey.COMMA;
+            return KeyCode.COMMA;
 		case 46:
-			return CharKey.DOT;
+            return KeyCode.DOT;
 		case 48:
-			return CharKey.N0;
+            return KeyCode.N0;
 		case 49:
-			return CharKey.N1;
+            return KeyCode.N1;
 		case 50:
-			return CharKey.N2;
+            return KeyCode.N2;
 		case 51:
-			return CharKey.N3;
+            return KeyCode.N3;
 		case 52:
-			return CharKey.N4;
+            return KeyCode.N4;
 		case 53:
-			return CharKey.N5;
+            return KeyCode.N5;
 		case 54:
-			return CharKey.N6;
+            return KeyCode.N6;
 		case 55:
-			return CharKey.N7;
+            return KeyCode.N7;
 		case 56:
-			return CharKey.N8;
+            return KeyCode.N8;
 		case 57:
-			return CharKey.N9;
+            return KeyCode.N9;
 		case 10:
-			return CharKey.ENTER;
+            return KeyCode.ENTER;
 		case 27:
-			return CharKey.ESC;
+            return KeyCode.ESC;
 		}
 
 		if ( code == KEY_F1 )
-			return CharKey.F1;
+            return KeyCode.F1;
 		else if ( code == InputChar.KEY_F2 )
-			return CharKey.F2;
+            return KeyCode.F2;
 		else if ( code == InputChar.KEY_F3 )
-			return CharKey.F3;
+            return KeyCode.F3;
 		else if ( code == InputChar.KEY_F4 )
-			return CharKey.F4;
+            return KeyCode.F4;
 		else if ( code == InputChar.KEY_F5 )
-			return CharKey.F5;
+            return KeyCode.F5;
 		else if ( code == InputChar.KEY_F6 )
-			return CharKey.F6;
+            return KeyCode.F6;
 		else if ( code == InputChar.KEY_F7 )
-			return CharKey.F7;
+            return KeyCode.F7;
 		else if ( code == InputChar.KEY_F8 )
-			return CharKey.F8;
+            return KeyCode.F8;
 		else if ( code == InputChar.KEY_F9 )
-			return CharKey.F9;
+            return KeyCode.F9;
 		else if ( code == InputChar.KEY_F10 )
-			return CharKey.F10;
+            return KeyCode.F10;
 		else if ( code == InputChar.KEY_F11 )
-			return CharKey.F11;
+            return KeyCode.F11;
 		else if ( code == InputChar.KEY_F12 )
-			return CharKey.F12;
+            return KeyCode.F12;
 		else if ( code == KEY_BACKSPACE )
-			return CharKey.BACKSPACE;
+            return KeyCode.BACKSPACE;
 		else if ( code == KEY_UP )
-			return CharKey.UARROW;
+            return KeyCode.UARROW;
 		else if ( code == KEY_DOWN )
-			return CharKey.DARROW;
+            return KeyCode.DARROW;
 		else if ( code == KEY_LEFT )
-			return CharKey.LARROW;
+            return KeyCode.LARROW;
 		else if ( code == KEY_RIGHT )
-			return CharKey.RARROW;
+            return KeyCode.RARROW;
 		return -1;
 	}
 

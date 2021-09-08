@@ -3,7 +3,7 @@ package sz.csi.wswing;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import sz.csi.CharKey;
+import sz.csi.KeyCode;
 
 public class StrokeInformer implements KeyListener, java.io.Serializable
 {
@@ -50,73 +50,73 @@ public class StrokeInformer implements KeyListener, java.io.Serializable
 		int code = x.getKeyCode( );
 		if ( x.isControlDown( ) )
 		{
-			return CharKey.CTRL;
+            return KeyCode.CTRL;
 		}
 		if ( code >= KeyEvent.VK_A && code <= KeyEvent.VK_Z )
 		{
 			if ( x.getKeyChar( ) >= 'a' )
 			{
-				int diff = KeyEvent.VK_A - CharKey.a;
+                int diff = KeyEvent.VK_A - KeyCode.a;
 				return code - diff;
 			}
 			else
 			{
-				int diff = KeyEvent.VK_A - CharKey.A;
+                int diff = KeyEvent.VK_A - KeyCode.A;
 				return code - diff;
 			}
 		}
 
 		if ( x.getKeyChar( ) == '?' )
-			return CharKey.QUESTION;
+            return KeyCode.QUESTION;
 
 		switch ( x.getKeyCode( ) )
 		{
 		case KeyEvent.VK_SPACE:
-			return CharKey.SPACE;
+            return KeyCode.SPACE;
 
 		case KeyEvent.VK_COMMA:
-			return CharKey.COMMA;
+            return KeyCode.COMMA;
 		case KeyEvent.VK_PERIOD:
 		case KeyEvent.VK_DECIMAL:
-			return CharKey.DOT;
+            return KeyCode.DOT;
 		case KeyEvent.VK_NUMPAD0:
-			return CharKey.N0;
+            return KeyCode.N0;
 		case KeyEvent.VK_NUMPAD1:
-			return CharKey.N1;
+            return KeyCode.N1;
 		case KeyEvent.VK_NUMPAD2:
-			return CharKey.N2;
+            return KeyCode.N2;
 		case KeyEvent.VK_NUMPAD3:
-			return CharKey.N3;
+            return KeyCode.N3;
 		case KeyEvent.VK_NUMPAD4:
-			return CharKey.N4;
+            return KeyCode.N4;
 		case KeyEvent.VK_NUMPAD5:
-			return CharKey.N5;
+            return KeyCode.N5;
 		case KeyEvent.VK_NUMPAD6:
-			return CharKey.N6;
+            return KeyCode.N6;
 		case KeyEvent.VK_NUMPAD7:
-			return CharKey.N7;
+            return KeyCode.N7;
 		case KeyEvent.VK_NUMPAD8:
-			return CharKey.N8;
+            return KeyCode.N8;
 		case KeyEvent.VK_NUMPAD9:
-			return CharKey.N9;
+            return KeyCode.N9;
 		case KeyEvent.VK_F1:
-			return CharKey.F1;
+            return KeyCode.F1;
 		case KeyEvent.VK_ENTER:
-			return CharKey.ENTER;
+            return KeyCode.ENTER;
 		case KeyEvent.VK_BACK_SPACE:
-			return CharKey.BACKSPACE;
+            return KeyCode.BACKSPACE;
 		case KeyEvent.VK_ESCAPE:
-			return CharKey.ESC;
+            return KeyCode.ESC;
 		case KeyEvent.VK_UP:
-			return CharKey.UARROW;
+            return KeyCode.UARROW;
 		case KeyEvent.VK_DOWN:
-			return CharKey.DARROW;
+            return KeyCode.DARROW;
 		case KeyEvent.VK_LEFT:
-			return CharKey.LARROW;
+            return KeyCode.LARROW;
 		case KeyEvent.VK_RIGHT:
-			return CharKey.RARROW;
+            return KeyCode.RARROW;
 
 		}
-		return CharKey.NONE;
+        return KeyCode.NONE;
 	}
 }
