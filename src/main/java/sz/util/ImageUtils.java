@@ -19,14 +19,14 @@ import javax.imageio.ImageIO;
 public class ImageUtils
 {
 	public static BufferedImage crearImagen(BufferedImage tempImage, int x, int y, int width, int height) {
-		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		GraphicsConfiguration gc = ge.getDefaultScreenDevice().getDefaultConfiguration();
+		var graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		var defaultConfiguration = graphicsEnvironment.getDefaultScreenDevice().getDefaultConfiguration();
 		int transparency = tempImage.getColorModel().getTransparency();
-		BufferedImage ret = gc.createCompatibleImage(width, height, transparency);
-		Graphics2D retGC = ret.createGraphics();
-		retGC.drawImage(tempImage, 0, 0, width, height, x, y, x + width, y + height, null);
-		retGC.dispose();
-		return ret;
+		BufferedImage compatibleImage = defaultConfiguration.createCompatibleImage(width, height, transparency);
+		Graphics2D graphics = compatibleImage.createGraphics();
+		graphics.drawImage(tempImage, 0, 0, width, height, x, y, x + width, y + height, null);
+		graphics.dispose();
+		return compatibleImage;
 	}
 
 	public static BufferedImage crearImagen(String filename, int x, int y, int width, int height) throws Exception {
