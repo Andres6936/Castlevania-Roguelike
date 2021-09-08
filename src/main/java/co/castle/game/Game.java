@@ -50,7 +50,6 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 	// Configuration
 	private transient UserInterface ui;
 	private transient UISelector uiSelector;
-	private Vector<String> uniqueRegisterObjectCopy = new Vector<>();
 
 	public final static int DAY_LENGTH = 500;
 
@@ -78,10 +77,6 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 		System.exit(-1);
 	}
 
-	public static Vector<String> getReports() {
-		return reports;
-	}
-
 	public static String getVersion() {
 		return "0.73";
 	}
@@ -94,29 +89,6 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 	public static boolean wasUniqueGenerated( String itemID )
 	{
 		return uniqueRegister.contains( itemID );
-	}
-
-	public void arena( )
-	{
-		player = PlayerGenerator.thus.createSpecialPlayer( "SONIA" );
-		player.setGame( this );
-		player.setGameSessionInfo( new GameSessionInfo( ) );
-		player.setSelector( uiSelector );
-		player.setDoNotRecordScore( false );
-		ui.setPlayer( player );
-		uiSelector.setPlayer( player );
-		ui.addCommandListener( this );
-		ui.setGameOver( false );
-		player.setPlayerEventListener( this );
-
-		LevelMetaData md = new LevelMetaData( );
-		md.setLevelID( "PRELUDE_ARENA" );
-		levelMetadata.put( "PRELUDE_ARENA", md );
-
-		loadLevel( "PRELUDE_ARENA" );
-		turns = 0;
-		timeSwitch = (int) ( DAY_LENGTH / 3.0 );
-		run( );
 	}
 
 	public boolean canSave( )
@@ -155,7 +127,6 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 
 	public void freezeUniqueRegister( )
 	{
-		uniqueRegisterObjectCopy = uniqueRegister;
 	}
 
 	public Player getPlayer( )
@@ -241,82 +212,6 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 		Debug.exitMethod( );
 	}
 
-	public void newGame( )
-	{
-		player = PlayerGenerator.thus.generatePlayer( );
-		player.setGame( this );
-		player.setGameSessionInfo( new GameSessionInfo( ) );
-		player.setSelector( uiSelector );
-		ui.setPlayer( player );
-		uiSelector.setPlayer( player );
-		ui.addCommandListener( this );
-		ui.setGameOver( false );
-		player.setPlayerEventListener( this );
-		Display.thus.showIntro( player );
-
-		loadLevel( "CHARRIOT_W", 0 );
-		// loadLevel("DRAGON_KING_LAIR", 15);
-		turns = 0;
-		timeSwitch = (int) ( DAY_LENGTH / 2.0 );
-		run( );
-	}
-
-	public void prologue( )
-	{
-		player = PlayerGenerator.thus.createSpecialPlayer( "CHRIS" );
-		player.setGame( this );
-		player.setGameSessionInfo( new GameSessionInfo( ) );
-		player.setSelector( uiSelector );
-		player.setDoNotRecordScore( true );
-		ui.setPlayer( player );
-		uiSelector.setPlayer( player );
-		ui.addCommandListener( this );
-		ui.setGameOver( false );
-		player.setPlayerEventListener( this );
-
-		LevelMetaData md = new LevelMetaData( );
-		md.setLevelID( "PROLOGUE_KEEP" );
-		levelMetadata.put( "PROLOGUE_KEEP", md );
-
-		loadLevel( "PROLOGUE_KEEP" );
-		currentLevel.setIsDay( false );
-		turns = 0;
-		timeSwitch = DAY_LENGTH;
-		run( );
-	}
-
-	public void resume( )
-	{
-		player.setSelector( uiSelector );
-		ui.setPlayer( player );
-		uiSelector.setPlayer( player );
-		ui.addCommandListener( this );
-		ui.setGameOver( false );
-		player.getLevel( ).addActor( player );
-		player.setPlayerEventListener( this );
-		endGame = false;
-		turns = player.getGameSessionInfo( ).getTurns( );
-		syncUniqueRegister( );
-		if ( currentLevel.hasNoonMusic( ) && !currentLevel.isDay( ) ) {
-			MusicManager.playKey(currentLevel.getMusicKeyNoon());
-		}
-		else {
-			MusicManager.playKey(currentLevel.getMusicKeyMorning());
-		}
-		run( );
-	}
-
-	public void setCanSave( boolean vl )
-	{
-		canSave = vl;
-	}
-
-	public void setInterfaces( UserInterface pui, UISelector ps )
-	{
-		ui = pui;
-		uiSelector = ps;
-	}
-
 	public void setLevel( Level level )
 	{
 		currentLevel = level;
@@ -348,11 +243,6 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 		uiSelector.setPlayer( player );
 		player.setPlayerEventListener( this );
 		player.setGame( this );
-	}
-
-	public void syncUniqueRegister( )
-	{
-		uniqueRegister = uniqueRegisterObjectCopy;
 	}
 
 	public void training( )
