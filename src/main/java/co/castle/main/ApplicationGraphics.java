@@ -105,7 +105,7 @@ public final class ApplicationGraphics extends JFrame {
 
 		System.out.println("Initializing Swing GFX System Interface");
 		System.out.println("Initializing Graphics Appearances");
-		for (Appearance definition : new GFXAppearances(assets).getAppearances()) {
+		for (Appearance definition : new GFXAppearances(assets)) {
 			AppearanceFactory.getAppearanceFactory().addDefinition(definition);
 		}
 
