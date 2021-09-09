@@ -37,6 +37,6 @@ public class TrainingScene extends GenericScene implements IScene {
 
     @Override
     public TypeScene process() {
-        return null;
+        return super.process();
     }
 }

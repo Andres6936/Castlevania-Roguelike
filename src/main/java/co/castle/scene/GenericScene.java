@@ -229,4 +229,9 @@ public class GenericScene {
             checkTimeSwitch();
         }
     }
+
+    protected TypeScene process() {
+        if (processQuit) return TypeScene.QUIT;
+        return TypeScene.NONE;
+    }
 }
