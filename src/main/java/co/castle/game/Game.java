@@ -53,15 +53,6 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 
 	private static Vector<String> uniqueRegister = new Vector<>();
 
-	public static void crash(String message, Throwable exception) {
-		System.out.println("CastlevaniaRL " + Game.getVersion() + ": Error");
-		System.out.println();
-		System.out.println("Unrecoverable error: " + message);
-		System.out.println(exception.getMessage());
-		exception.printStackTrace();
-		System.exit(-1);
-	}
-
 	public static String getVersion() {
 		return "0.73";
 	}
