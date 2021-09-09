@@ -8,8 +8,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 
-public class ImageUtils
-{
+public final class ImageUtils {
 	public static BufferedImage createImage(BufferedImage tempImage, int x, int y, int width, int height) {
 		var graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		var defaultConfiguration = graphicsEnvironment.getDefaultScreenDevice().getDefaultConfiguration();
