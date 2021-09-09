@@ -2,19 +2,11 @@ package sz.util;
 
 import co.castle.system.FileLoader;
 
-import java.awt.Component;
-import java.awt.Graphics2D;
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsEnvironment;
-import java.awt.Image;
-import java.awt.MediaTracker;
-import java.awt.Toolkit;
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
-import java.io.File;
-
-import javax.imageio.ImageIO;
 
 public class ImageUtils
 {
@@ -30,8 +22,7 @@ public class ImageUtils
 	}
 
 	public static BufferedImage crearImagen(String filename, int x, int y, int width, int height) throws Exception {
-		BufferedImage tempImage = createImage(filename);
-		return crearImagen(tempImage, x, y, width, height);
+		return crearImagen(ImageIO.read(FileLoader.getInputStream(filename)), x, y, width, height);
 	}
 
 	public static BufferedImage createImage( String filename ) throws Exception {
