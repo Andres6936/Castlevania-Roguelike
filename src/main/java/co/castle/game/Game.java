@@ -1,6 +1,5 @@
 package co.castle.game;
 
-import co.castle.actor.Actor;
 import co.castle.item.Item;
 import co.castle.item.Merchant;
 import co.castle.level.Dispatcher;
@@ -53,13 +52,6 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 	public final static int DAY_LENGTH = 500;
 
 	private static Vector<String> uniqueRegister = new Vector<>();
-
-	public static void crash(String message) {
-		System.out.println("CastlevaniaRL " + Game.getVersion() + ": Error");
-		System.out.println();
-		System.out.println("Unrecoverable error: " + message);
-		System.exit(-1);
-	}
 
 	public static void crash(String message, Throwable exception) {
 		System.out.println("CastlevaniaRL " + Game.getVersion() + ": Error");
