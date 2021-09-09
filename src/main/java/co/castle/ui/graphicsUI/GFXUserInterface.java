@@ -1141,13 +1141,8 @@ public class GFXUserInterface extends UserInterface implements Runnable
 							FileLoader.getInputStream("res/v5easter.ttf"))
 					.deriveFont( Font.PLAIN, 15 );
 		}
-		catch ( FontFormatException ffe )
-		{
-			Game.crash( "Error loading the font", ffe );
-		}
-		catch ( IOException ioe )
-		{
-			Game.crash( "Error loading the font", ioe );
+		catch (FontFormatException | IOException ffe) {
+			System.err.println("Error loading the font");
 		}
 
 		/*-- Load UI Images */

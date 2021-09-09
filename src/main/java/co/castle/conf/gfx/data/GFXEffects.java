@@ -1,7 +1,6 @@
 package co.castle.conf.gfx.data;
 
 import co.castle.action.monster.MandragoraScream;
-import co.castle.game.Game;
 import co.castle.main.ApplicationGraphics;
 import co.castle.ui.graphicsUI.effects.*;
 import sz.util.ImageUtils;
@@ -37,7 +36,7 @@ public class GFXEffects {
 		}
 		catch ( Exception e )
 		{
-			Game.crash( "Error loading the effects file", e );
+			System.err.println("Error loading the effects file");
 		}
 		try
 		{
@@ -221,7 +220,7 @@ public class GFXEffects {
 		}
 		catch ( Exception e )
 		{
-			Game.crash( "Error loading the effects", e );
+			System.err.println("Error loading the effects");
 		}
 
 		SFX_BIBLE_STEPS.add( new Position( 1, 0 ) );
@@ -303,7 +302,7 @@ public class GFXEffects {
 		}
 		catch ( Exception e )
 		{
-			Game.crash( "Error loading the animated effects", e );
+			System.err.println("Error loading the animated effects");
 			return null;
 		}
 	}
@@ -320,7 +319,7 @@ public class GFXEffects {
 			}
 			catch ( Exception e )
 			{
-				Game.crash( "Error loading effect", e );
+				System.err.println("Error loading effect");
 			}
 		}
 		return ret;
@@ -358,7 +357,7 @@ public class GFXEffects {
 			}
 			catch ( Exception e )
 			{
-				Game.crash( "Error loading effect", e );
+				System.err.println("Error loading effect");
 			}
 		}
 		return ret;
@@ -374,7 +373,7 @@ public class GFXEffects {
 		}
 		catch ( Exception e )
 		{
-			Game.crash( "Error loading effect", e );
+			System.err.println("Error loading effect");
 		}
 		return null;
 	}
@@ -390,7 +389,7 @@ public class GFXEffects {
 			}
 			catch ( Exception e )
 			{
-				Game.crash( "Error loading effect", e );
+				System.err.println("Error loading effect");
 			}
 		}
 		return ret;
@@ -408,7 +407,7 @@ public class GFXEffects {
 		}
 		catch ( Exception e )
 		{
-			Game.crash( "Error loading effect", e );
+			System.err.println("Error loading effect");
 		}
 		return null;
 	}
@@ -431,7 +430,7 @@ public class GFXEffects {
 		}
 		catch ( Exception e )
 		{
-			Game.crash( "Error loading the effects", e );
+			System.err.println("Error loading the effects");
 		}
 
 		ret[ 3 ][ 0 ] = ImageUtils.vFlip( ret[ 4 ][ 0 ] );

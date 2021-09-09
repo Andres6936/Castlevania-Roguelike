@@ -1,11 +1,8 @@
 package co.castle.levelgen;
 
-import java.util.Hashtable;
-
 import co.castle.feature.Feature;
 import co.castle.feature.FeatureFactory;
 import co.castle.game.CRLException;
-import co.castle.game.Game;
 import co.castle.item.Item;
 import co.castle.item.ItemFactory;
 import co.castle.level.Cell;
@@ -20,14 +17,15 @@ import sz.util.Debug;
 import sz.util.Position;
 import sz.util.Util;
 
-public class StaticGenerator
-{
+import java.util.Hashtable;
+
+public class StaticGenerator {
 	private Hashtable charMap;
-	private String[ ][ ] inhabitants;
+	private String[][] inhabitants;
 	// private Position startPosition, endPosition;
 	private Hashtable inhabitantsMap;
-	private String[ ][ ] level;
-	private static StaticGenerator singleton = new StaticGenerator( );
+	private String[][] level;
+	private static StaticGenerator singleton = new StaticGenerator();
 
 	public static StaticGenerator getGenerator( )
 	{
@@ -55,10 +53,9 @@ public class StaticGenerator
 					String iconic = (String) charMap
 							.get( level[ z ][ y ].charAt( x ) + "" );
 					if ( iconic == null )
-						Game.crash(
-								"mapchar " + level[ z ][ y ].charAt( x )
-										+ " not found on the level charMap",
-								new Exception( ) );
+						System.err.println(
+								"mapchar " + level[z][y].charAt(x)
+										+ " not found on the level charMap");
 					String[ ] cmds = iconic.split( " " );
 					if ( !cmds[ 0 ].equals( "NOTHING" ) )
 						cmap[ z ][ x ][ y ] = MapCellFactory.getMapCellFactory( )
@@ -223,10 +220,9 @@ public class StaticGenerator
 				}
 				String iconic = (String) table.get( map[ y ].charAt( x ) + "" );
 				if ( iconic == null )
-					Game.crash(
-							"renderOverLevel: " + map[ y ].charAt( x )
-									+ " not found on the level charMap",
-							new Exception( ) );
+					System.err.println(
+							"renderOverLevel: " + map[y].charAt(x)
+									+ " not found on the level charMap");
 				String[ ] cmds = iconic.split( " " );
 				if ( !cmds[ 0 ].equals( "NOTHING" ) )
 					cmap[ where.z ][ where.x + x ][ where.y + y ] = MapCellFactory

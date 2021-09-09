@@ -4,7 +4,6 @@ import co.castle.conf.gfx.data.Asset;
 import co.castle.conf.gfx.data.GFXAppearances;
 import co.castle.conf.gfx.data.GFXEffects;
 import co.castle.event.Keyboard;
-import co.castle.game.Game;
 import co.castle.system.FileLoader;
 import co.castle.ui.Appearance;
 import co.castle.ui.AppearanceFactory;
@@ -178,7 +177,7 @@ public final class ApplicationGraphics extends JFrame {
 			}
 			catch ( Exception e )
 			{
-				Game.crash( "Exception trying to create image " + filename, e );
+				System.err.println("Exception trying to create image " + filename);
 			}
             assert im != null;
 			images.put( filename, im );
@@ -198,7 +197,7 @@ public final class ApplicationGraphics extends JFrame {
 			}
 			catch ( Exception e )
 			{
-				Game.crash( "Exception trying to create image " + filename, e );
+				System.err.println("Exception trying to create image " + filename);
 			}
             assert im != null;
 			images.put( filename, im );

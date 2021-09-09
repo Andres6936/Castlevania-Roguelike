@@ -361,7 +361,7 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 			}
 			catch ( CRLException crle )
 			{
-				crash( "Error while creating level " + levelID, crle );
+				System.err.println("Error while creating level " + levelID);
 			}
 		}
 		// currentLevel.setLevelNumber(targetLevelNumber);

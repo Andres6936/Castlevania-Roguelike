@@ -1,6 +1,5 @@
 package co.castle.conf.gfx.data;
 
-import co.castle.game.Game;
 import co.castle.ui.graphicsUI.GFXChat;
 import sz.util.ImageUtils;
 
@@ -298,7 +297,7 @@ public final class GFXCuts {
 	{
 		GFXChat ret = (GFXChat) hashCuts.get( ID );
 		if ( ret == null )
-			Game.crash( "Couldnt find GFXChat " + ID, new Exception( ) );
+			System.err.println("Couldnt find GFXChat " + ID);
 		return ret;
 	}
 

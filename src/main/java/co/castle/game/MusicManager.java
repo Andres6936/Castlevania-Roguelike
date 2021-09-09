@@ -1,13 +1,13 @@
 package co.castle.game;
 
+import co.castle.system.FileLoader;
+import sz.midi.STMidiPlayer;
+import sz.mp3.JLayerMP3Player;
+
 import java.io.IOException;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Properties;
-
-import co.castle.system.FileLoader;
-import sz.midi.STMidiPlayer;
-import sz.mp3.JLayerMP3Player;
 
 /**
  * Role: Play tracks of format mp3 and waw.
@@ -165,7 +165,7 @@ public class MusicManager {
 			}
 
 		} catch (Exception e) {
-			Game.crash("Error trying to play " + fileName, e);
+			System.err.println("Error trying to play " + fileName);
 		}
 	}
 

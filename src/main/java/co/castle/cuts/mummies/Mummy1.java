@@ -55,7 +55,7 @@ public class Mummy1 extends Unleasher {
 				StaticGenerator.getGenerator().renderOverLevel(level, newMap, charMap,
 						new Position(0, 0));
 			} catch (CRLException crle) {
-				Game.crash("Error on Mummy1 unleasher", crle);
+				System.err.println("Error on Mummy1 unleasher");
 			}
 			enabled = false;
 		}

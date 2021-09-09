@@ -1,9 +1,9 @@
 package co.castle.game;
 
-import java.util.Hashtable;
-
 import sz.midi.MidisLoader;
 import sz.mp3.JLayerMP3Player;
+
+import java.util.Hashtable;
 
 public class STMusicManagerOld {
 	// private Thread currentMidiThread;
@@ -63,7 +63,7 @@ public class STMusicManagerOld {
 		}
 		catch ( Exception e )
 		{
-			Game.crash( "Error trying to play " + fileName, e );
+			System.err.println("Error trying to play " + fileName);
 		}
 	}
 

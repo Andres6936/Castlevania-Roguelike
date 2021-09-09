@@ -80,7 +80,7 @@ public class GraphicsDisplay extends Display {
 			gfxChatBox.setBounds(50, 20, 700, 220);
 			gfxChatBox.setVisible(false);
 		} catch (Exception e) {
-			Game.crash("Error loading UI data", e);
+			System.err.println("Error loading UI data");
 		}
 
 		renderer.addComponentToPanel(addornedTextArea);

@@ -1,6 +1,5 @@
 package co.castle.conf.gfx.data;
 
-import co.castle.game.Game;
 import co.castle.ui.Appearance;
 import co.castle.ui.graphicsUI.GFXAppearance;
 import sz.util.ImageUtils;
@@ -38,7 +37,8 @@ public class GFXAppearances extends ArrayList<Appearance> {
                     ypos * WIDTH_NORMAL, WIDTH_NORMAL, WIDTH_NORMAL);
             return new GFXAppearance(ID, img, 0, 0);
         } catch (Exception e) {
-            Game.crash("Error loading image ", e);
+            System.err.println("Error loading image ");
+            e.printStackTrace();
         }
         return null;
     }
@@ -53,7 +53,7 @@ public class GFXAppearances extends ArrayList<Appearance> {
                     height);
             return new GFXAppearance(ID, img, superw, superh);
         } catch (Exception e) {
-            Game.crash("Error loading image ", e);
+            System.err.println("Error loading image ");
         }
         return null;
     }
@@ -66,7 +66,7 @@ public class GFXAppearances extends ArrayList<Appearance> {
                     ypos * WIDTH_BIG, WIDTH_BIG, WIDTH_BIG);
             return new GFXAppearance(ID, img, WIDTH_HALF / 2, WIDTH_HALF);
         } catch (Exception e) {
-            Game.crash("Error loading image ", e);
+            System.err.println("Error loading image ");
         }
         return null;
     }
@@ -80,7 +80,7 @@ public class GFXAppearances extends ArrayList<Appearance> {
                     ypos * WIDTH_HALF, WIDTH_HALF, WIDTH_HALF);
             return new GFXAppearance(ID, img, -8, 0);
         } catch (Exception e) {
-            Game.crash("Error loading image ", e);
+            System.err.println("Error loading image ");
         }
         return null;
     }
@@ -105,7 +105,7 @@ public class GFXAppearances extends ArrayList<Appearance> {
             return new GFXAppearance(ID, img, darkimg, niteimg, darkniteimg,
                     0, 0);
         } catch (Exception e) {
-            Game.crash("Error loading terrain image ", e);
+            System.err.println("Error loading terrain image ");
         }
         return null;
     }
@@ -131,7 +131,7 @@ public class GFXAppearances extends ArrayList<Appearance> {
             return new GFXAppearance(ID, img, darkimg, niteimg, darkniteimg,
                     xoff, yoff);
         } catch (Exception e) {
-            Game.crash("Error loading terrain image ", e);
+            System.err.println("Error loading terrain image ");
         }
         return null;
     }
@@ -144,7 +144,7 @@ public class GFXAppearances extends ArrayList<Appearance> {
             return new GFXAppearance(ID, img, (width - WIDTH_NORMAL) / 2,
                     height - WIDTH_NORMAL);
         } catch (Exception e) {
-            Game.crash("Error loading image ", e);
+            System.err.println("Error loading image ");
         }
         return null;
     }
@@ -157,7 +157,7 @@ public class GFXAppearances extends ArrayList<Appearance> {
             return new GFXAppearance(ID, img, (width - WIDTH_NORMAL) / 2,
                     height - WIDTH_NORMAL + yoff);
         } catch (Exception e) {
-            Game.crash("Error loading image ", e);
+            System.err.println("Error loading image ");
         }
         return null;
     }

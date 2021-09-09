@@ -80,7 +80,7 @@ public class GameFiles
 		}
 		catch ( IOException ioe )
 		{
-			Game.crash( "Invalid or corrupt hiscore table", ioe );
+			System.err.println("Invalid or corrupt hiscore table");
 		}
 		return null;
 	}
@@ -270,7 +270,7 @@ public class GameFiles
 		}
 		catch ( IOException ioe )
 		{
-			Game.crash( "Error writing the chardump", ioe );
+			System.err.println("Error writing the chardump");
 		}
 	}
 
@@ -298,7 +298,7 @@ public class GameFiles
 		}
 		catch ( IOException ioe )
 		{
-			Game.crash( "Error saving the game", ioe );
+			System.err.println("Error saving the game");
 		}
 
 	}
@@ -363,8 +363,8 @@ public class GameFiles
 		}
 		catch ( IOException ioe )
 		{
-			ioe.printStackTrace( System.out );
-			Game.crash( "Invalid or corrupt hiscore table", ioe );
+			ioe.printStackTrace(System.out);
+			System.err.println("Invalid or corrupt hiscore table");
 		}
 	}
 
@@ -545,7 +545,7 @@ public class GameFiles
 		}
 		catch ( IOException ioe )
 		{
-			Game.crash( "Error writing the memorial file", ioe );
+			System.err.println("Error writing the memorial file");
 		}
 
 	}
@@ -605,8 +605,8 @@ public class GameFiles
 		}
 		catch ( IOException ioe )
 		{
-			ioe.printStackTrace( System.out );
-			Game.crash( "Invalid or corrupt graveyard", ioe );
+			ioe.printStackTrace(System.out);
+			System.err.println("Invalid or corrupt graveyard");
 		}
 
 	}
