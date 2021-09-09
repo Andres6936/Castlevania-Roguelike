@@ -28,25 +28,24 @@ public final class ImageUtils {
 		return ImageIO.read(FileLoader.getInputStream(filename));
 	}
 
-	public static BufferedImage hFlip(BufferedImage image) {
-		AffineTransform tx = AffineTransform.getScaleInstance(1, -1);
-		tx.translate(0, -image.getHeight(null));
-		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
-		return op.filter( image, null );
-	}
-
-	public static BufferedImage rotate( BufferedImage bufferedImage, double radians ) {
+	public static BufferedImage rotate(BufferedImage bufferedImage, double radians) {
 		AffineTransform tx = new AffineTransform();
 		tx.rotate(radians, bufferedImage.getWidth() / 2, bufferedImage.getHeight() / 2);
 		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
 		return op.filter(bufferedImage, null);
 	}
 
-	public static BufferedImage vFlip( BufferedImage image )
-	{
-		AffineTransform tx = AffineTransform.getScaleInstance( -1, 1 );
-		tx.translate( -image.getWidth( null ), 0 );
+	public static BufferedImage hFlip(BufferedImage image) {
+		AffineTransform tx = AffineTransform.getScaleInstance(1, -1);
+		tx.translate(0, -image.getHeight(null));
 		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
-		return op.filter( image, null );
+		return op.filter(image, null);
+	}
+
+	public static BufferedImage vFlip(BufferedImage image) {
+		AffineTransform tx = AffineTransform.getScaleInstance(-1, 1);
+		tx.translate(-image.getWidth(null), 0);
+		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
+		return op.filter(image, null);
 	}
 }
