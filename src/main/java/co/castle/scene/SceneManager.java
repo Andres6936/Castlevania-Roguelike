@@ -30,16 +30,47 @@ public class SceneManager {
      */
     private final IScene menuScene;
 
+    /**
+     * Predefined characters is used.
+     */
     private IScene arenaScene;
+
+    /**
+     * The user choice the characters to use.
+     */
     private IScene newGameScene;
+
+    /**
+     * Predefined characters is used.
+     */
     private IScene loadGameScene;
+
+    /**
+     * Predefined characters is used.
+     */
     private IScene prologueScene;
+
+    /**
+     * Predefined characters is used.
+     */
     private IScene trainingScene;
+
+    /**
+     * Predefined characters is used.
+     */
     private IScene highScoreScene;
 
+    /**
+     * Selector interface
+     */
     private final UISelector selector;
 
-    private final static ApplicationGraphics renderer = new ApplicationGraphics();
+    /**
+     * The backend renderer to use for the application, for default Swing.
+     * Note, the use of memory static is avoided, only once instance of
+     * this class is allowed.
+     */
+    private final ApplicationGraphics renderer = new ApplicationGraphics();
 
     public SceneManager() {
         PlayerGenerator.thus = new GFXPlayerGenerator(renderer);
