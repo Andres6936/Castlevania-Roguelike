@@ -185,10 +185,10 @@ public final class Asset {
 			BufferedImage IMAGE_GADGETS = PropertyFilters.getImage(configuration.getProperty("IMG_GADGETS"),
 					configuration.getProperty("IMG_GADGETS_BOUNDS"));
 
-			IMAGE_AIM_LINE_TILE = ImageUtils.crearImagen(IMAGE_GADGETS, 0, 0, GADGET_SIZE, GADGET_SIZE);
-			IMAGE_STEPS_TILE = ImageUtils.crearImagen(IMAGE_GADGETS, GADGET_SIZE * 2, 0, GADGET_SIZE,
+			IMAGE_AIM_LINE_TILE = ImageUtils.createImage(IMAGE_GADGETS, 0, 0, GADGET_SIZE, GADGET_SIZE);
+			IMAGE_STEPS_TILE = ImageUtils.createImage(IMAGE_GADGETS, GADGET_SIZE * 2, 0, GADGET_SIZE,
 					GADGET_SIZE);
-			IMAGE_SCAN_TILE = ImageUtils.crearImagen(IMAGE_GADGETS, GADGET_SIZE, 0, GADGET_SIZE,
+			IMAGE_SCAN_TILE = ImageUtils.createImage(IMAGE_GADGETS, GADGET_SIZE, 0, GADGET_SIZE,
 					GADGET_SIZE);
 
 			IMAGE_CHARACTERS = ImageUtils.createImage(configuration.getProperty("TILES_CHARACTERS"));

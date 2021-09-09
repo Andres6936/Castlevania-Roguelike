@@ -2,13 +2,8 @@ package sz.util;
 
 import co.castle.system.FileLoader;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.FontFormatException;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -44,7 +39,7 @@ public class PropertyFilters
 											String bounds ) throws Exception
 	{
 		Rectangle r = getRectangle( bounds );
-		return ImageUtils.crearImagen( fileName, r.x, r.y, r.width, r.height );
+		return ImageUtils.createImage(fileName, r.x, r.y, r.width, r.height);
 	}
 
 	public static Position getPosition( String coord )

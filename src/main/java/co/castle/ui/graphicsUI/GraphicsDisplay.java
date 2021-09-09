@@ -1,20 +1,8 @@
 package co.castle.ui.graphicsUI;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.util.Hashtable;
-import java.util.Vector;
-
-import javax.swing.JTextArea;
-
-import co.castle.Main;
 import co.castle.conf.gfx.data.Asset;
 import co.castle.conf.gfx.data.GFXCuts;
 import co.castle.game.Game;
-import co.castle.game.MonsterRecord;
 import co.castle.main.ApplicationGraphics;
 import co.castle.monster.Monster;
 import co.castle.npc.Hostage;
@@ -30,13 +18,19 @@ import sz.util.ImageUtils;
 import sz.util.Position;
 import sz.util.ScriptUtil;
 
-public class GraphicsDisplay extends Display
-{
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.util.Hashtable;
+import java.util.Vector;
+
+public class GraphicsDisplay extends Display {
 	private AddornedBorderTextArea addornedTextArea;
 
 	private GFXChatBox gfxChatBox;
 
-	private Hashtable <String, Position> locationKeys;
+	private Hashtable<String, Position> locationKeys;
 
 	// Get instance of ApplicationFrame
 	private static final ApplicationGraphics renderer = ApplicationGraphics.getInstance();
@@ -66,19 +60,19 @@ public class GraphicsDisplay extends Display
 	public GraphicsDisplay( ) {
 		try {
 			// BufferedImage BORDERS = ImageUtils.createImage(IMG_BORDERS);
-			BufferedImage b1 = ImageUtils.crearImagen(assets.IMAGE_BORDERS, 34, 1, 32, 32);
-			BufferedImage b2 = ImageUtils.crearImagen(assets.IMAGE_BORDERS, 1, 1, 32, 32);
-			BufferedImage b3 = ImageUtils.crearImagen(assets.IMAGE_BORDERS, 100, 1, 32, 32);
-			BufferedImage b4 = ImageUtils.crearImagen(assets.IMAGE_BORDERS, 67, 1, 32, 32);
+			BufferedImage b1 = ImageUtils.createImage(assets.IMAGE_BORDERS, 34, 1, 32, 32);
+			BufferedImage b2 = ImageUtils.createImage(assets.IMAGE_BORDERS, 1, 1, 32, 32);
+			BufferedImage b3 = ImageUtils.createImage(assets.IMAGE_BORDERS, 100, 1, 32, 32);
+			BufferedImage b4 = ImageUtils.createImage(assets.IMAGE_BORDERS, 67, 1, 32, 32);
 
 			addornedTextArea = new AddornedBorderTextArea(b1, b2, b3, b4,
 					new Color(187, 161, 80), new Color(92, 78, 36), 32, 32);
-			addornedTextArea.setVisible( false );
-			addornedTextArea.setEnabled( false );
-			addornedTextArea.setForeground( Color.WHITE );
-			addornedTextArea.setBackground( Color.BLACK );
-			addornedTextArea.setFont( assets.FONT_TEXT );
-			addornedTextArea.setOpaque( false );
+			addornedTextArea.setVisible(false);
+			addornedTextArea.setEnabled(false);
+			addornedTextArea.setForeground(Color.WHITE);
+			addornedTextArea.setBackground(Color.BLACK);
+			addornedTextArea.setFont(assets.FONT_TEXT);
+			addornedTextArea.setOpaque(false);
 
 			gfxChatBox = new GFXChatBox( b1, b2, b3, b4, new Color( 187, 161, 80 ),
 					new Color(92, 78, 36), 32, 32);

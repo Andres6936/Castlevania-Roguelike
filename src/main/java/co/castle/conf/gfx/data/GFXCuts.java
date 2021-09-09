@@ -1,16 +1,15 @@
 package co.castle.conf.gfx.data;
 
-import java.awt.image.BufferedImage;
-import java.util.Hashtable;
-
 import co.castle.game.Game;
 import co.castle.ui.graphicsUI.GFXChat;
 import sz.util.ImageUtils;
 
+import java.awt.image.BufferedImage;
+import java.util.Hashtable;
+
 // With keyword final, we be prevent the inheritance of this class
 // This class is type Singleton
-public final class GFXCuts
-{
+public final class GFXCuts {
 	public BufferedImage PRT_M1;
 	public BufferedImage PRT_M2;
 	public BufferedImage PRT_M3;
@@ -42,34 +41,33 @@ public final class GFXCuts
 	// We make the constructor private to prevent the use of 'new'
 	private GFXCuts( )
 	{
-		try
-		{
-			BufferedImage sheetPortraits = ImageUtils.createImage( "gfx/crl_portraits2x.gif" );
+		try {
+			BufferedImage sheetPortraits = ImageUtils.createImage("gfx/crl_portraits2x.gif");
 
-			PRT_DRACULA = ImageUtils.crearImagen( sheetPortraits, 8, 205, 84, 86 );
-			PRT_DEATH = ImageUtils.crearImagen( sheetPortraits, 98, 205, 84, 86 );
-			PRT_SOLIEYU = ImageUtils.crearImagen( sheetPortraits, 188, 205, 84, 86 );
-			PRT_SOLIEYU_D = ImageUtils.crearImagen( sheetPortraits, 278, 204, 84, 86 );
-			PRT_CHRIS = ImageUtils.crearImagen( sheetPortraits, 368, 205, 84, 86 );
-			PRT_VINDELITH = ImageUtils.crearImagen( sheetPortraits, 458, 204, 84, 86 );
+			PRT_DRACULA = ImageUtils.createImage(sheetPortraits, 8, 205, 84, 86);
+			PRT_DEATH = ImageUtils.createImage(sheetPortraits, 98, 205, 84, 86);
+			PRT_SOLIEYU = ImageUtils.createImage(sheetPortraits, 188, 205, 84, 86);
+			PRT_SOLIEYU_D = ImageUtils.createImage(sheetPortraits, 278, 204, 84, 86);
+			PRT_CHRIS = ImageUtils.createImage(sheetPortraits, 368, 205, 84, 86);
+			PRT_VINDELITH = ImageUtils.createImage(sheetPortraits, 458, 204, 84, 86);
 
-			PRT_CLAW = ImageUtils.crearImagen( sheetPortraits, 8, 303, 84, 86 );
-			PRT_CLARA = ImageUtils.crearImagen( sheetPortraits, 98, 303, 84, 86 );
-			PRT_MELDUCK = ImageUtils.crearImagen( sheetPortraits, 188, 303, 84, 86 );
-			PRT_MAIDEN = ImageUtils.crearImagen( sheetPortraits, 278, 303, 84, 86 );
+			PRT_CLAW = ImageUtils.createImage(sheetPortraits, 8, 303, 84, 86);
+			PRT_CLARA = ImageUtils.createImage(sheetPortraits, 98, 303, 84, 86);
+			PRT_MELDUCK = ImageUtils.createImage(sheetPortraits, 188, 303, 84, 86);
+			PRT_MAIDEN = ImageUtils.createImage(sheetPortraits, 278, 303, 84, 86);
 
-			PRT_M1 = ImageUtils.crearImagen( sheetPortraits, 8, 10, 84, 86 );
-			PRT_M2 = ImageUtils.crearImagen( sheetPortraits, 98, 10, 84, 86 );
-			PRT_M3 = ImageUtils.crearImagen( sheetPortraits, 188, 10, 84, 86 );
-			PRT_M4 = ImageUtils.crearImagen( sheetPortraits, 278, 10, 84, 86 );
-			PRT_M5 = ImageUtils.crearImagen( sheetPortraits, 368, 10, 84, 86 );
-			PRT_M6 = ImageUtils.crearImagen( sheetPortraits, 458, 10, 84, 86 );
-			PRT_F1 = ImageUtils.crearImagen( sheetPortraits, 8, 107, 84, 86 );
-			PRT_F2 = ImageUtils.crearImagen( sheetPortraits, 98, 107, 84, 86 );
-			PRT_F3 = ImageUtils.crearImagen( sheetPortraits, 188, 107, 84, 86 );
-			PRT_F4 = ImageUtils.crearImagen( sheetPortraits, 278, 107, 84, 86 );
-			PRT_F5 = ImageUtils.crearImagen( sheetPortraits, 368, 107, 84, 86 );
-			PRT_F6 = ImageUtils.crearImagen( sheetPortraits, 458, 107, 84, 86 );
+			PRT_M1 = ImageUtils.createImage(sheetPortraits, 8, 10, 84, 86);
+			PRT_M2 = ImageUtils.createImage(sheetPortraits, 98, 10, 84, 86);
+			PRT_M3 = ImageUtils.createImage(sheetPortraits, 188, 10, 84, 86);
+			PRT_M4 = ImageUtils.createImage(sheetPortraits, 278, 10, 84, 86);
+			PRT_M5 = ImageUtils.createImage(sheetPortraits, 368, 10, 84, 86);
+			PRT_M6 = ImageUtils.createImage(sheetPortraits, 458, 10, 84, 86);
+			PRT_F1 = ImageUtils.createImage(sheetPortraits, 8, 107, 84, 86);
+			PRT_F2 = ImageUtils.createImage(sheetPortraits, 98, 107, 84, 86);
+			PRT_F3 = ImageUtils.createImage(sheetPortraits, 188, 107, 84, 86);
+			PRT_F4 = ImageUtils.createImage(sheetPortraits, 278, 107, 84, 86);
+			PRT_F5 = ImageUtils.createImage(sheetPortraits, 368, 107, 84, 86);
+			PRT_F6 = ImageUtils.createImage(sheetPortraits, 458, 107, 84, 86);
 		}
 		catch ( Exception e )
 		{

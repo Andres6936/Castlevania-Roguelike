@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
 
 public class ImageUtils
 {
-	public static BufferedImage crearImagen(BufferedImage tempImage, int x, int y, int width, int height) {
+	public static BufferedImage createImage(BufferedImage tempImage, int x, int y, int width, int height) {
 		var graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		var defaultConfiguration = graphicsEnvironment.getDefaultScreenDevice().getDefaultConfiguration();
 		int transparency = tempImage.getColorModel().getTransparency();
@@ -21,18 +21,17 @@ public class ImageUtils
 		return compatibleImage;
 	}
 
-	public static BufferedImage crearImagen(String filename, int x, int y, int width, int height) throws Exception {
-		return crearImagen(ImageIO.read(FileLoader.getInputStream(filename)), x, y, width, height);
+	public static BufferedImage createImage(String filename, int x, int y, int width, int height) throws Exception {
+		return createImage(ImageIO.read(FileLoader.getInputStream(filename)), x, y, width, height);
 	}
 
-	public static BufferedImage createImage( String filename ) throws Exception {
+	public static BufferedImage createImage(String filename) throws Exception {
 		return ImageIO.read(FileLoader.getInputStream(filename));
 	}
 
-	public static BufferedImage hFlip( BufferedImage image )
-	{
-		AffineTransform tx = AffineTransform.getScaleInstance( 1, -1 );
-		tx.translate( 0, -image.getHeight( null ) );
+	public static BufferedImage hFlip(BufferedImage image) {
+		AffineTransform tx = AffineTransform.getScaleInstance(1, -1);
+		tx.translate(0, -image.getHeight(null));
 		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
 		return op.filter( image, null );
 	}

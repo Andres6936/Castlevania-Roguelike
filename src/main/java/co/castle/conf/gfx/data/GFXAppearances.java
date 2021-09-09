@@ -1,11 +1,11 @@
 package co.castle.conf.gfx.data;
 
-import java.awt.image.BufferedImage;
-
 import co.castle.game.Game;
 import co.castle.ui.Appearance;
 import co.castle.ui.graphicsUI.GFXAppearance;
 import sz.util.ImageUtils;
+
+import java.awt.image.BufferedImage;
 
 public class GFXAppearances {
     private final int CELL_HEIGHT;
@@ -34,7 +34,7 @@ public class GFXAppearances {
         ypos--;
 
         try {
-            BufferedImage img = ImageUtils.crearImagen(bigImage, xpos * WIDTH_NORMAL,
+            BufferedImage img = ImageUtils.createImage(bigImage, xpos * WIDTH_NORMAL,
                     ypos * WIDTH_NORMAL, WIDTH_NORMAL, WIDTH_NORMAL);
             return new GFXAppearance(ID, img, 0, 0);
         } catch (Exception e) {
@@ -49,7 +49,7 @@ public class GFXAppearances {
         xpos--;
         ypos--;
         try {
-            BufferedImage img = ImageUtils.crearImagen(bigImage, xpos, ypos, width,
+            BufferedImage img = ImageUtils.createImage(bigImage, xpos, ypos, width,
                     height);
             return new GFXAppearance(ID, img, superw, superh);
         } catch (Exception e) {
@@ -63,7 +63,7 @@ public class GFXAppearances {
         xpos--;
         ypos--;
         try {
-            BufferedImage img = ImageUtils.crearImagen(bigImage, xpos * WIDTH_BIG,
+            BufferedImage img = ImageUtils.createImage(bigImage, xpos * WIDTH_BIG,
                     ypos * WIDTH_BIG, WIDTH_BIG, WIDTH_BIG);
             return new GFXAppearance(ID, img, WIDTH_HALF / 2, WIDTH_HALF);
         } catch (Exception e) {
@@ -77,7 +77,7 @@ public class GFXAppearances {
         xpos--;
         ypos--;
         try {
-            BufferedImage img = ImageUtils.crearImagen(bigImage, xpos * WIDTH_HALF,
+            BufferedImage img = ImageUtils.createImage(bigImage, xpos * WIDTH_HALF,
                     ypos * WIDTH_HALF, WIDTH_HALF, WIDTH_HALF);
             return new GFXAppearance(ID, img, -8, 0);
         } catch (Exception e) {
@@ -95,13 +95,13 @@ public class GFXAppearances {
         BufferedImage bigDarkNiteImage = configuration.IMAGE_DARK_NIGHT_TERRAIN;
 
         try {
-            BufferedImage img = ImageUtils.crearImagen(bigImage, xpos * WIDTH_NORMAL,
+            BufferedImage img = ImageUtils.createImage(bigImage, xpos * WIDTH_NORMAL,
                     ypos * CELL_HEIGHT, WIDTH_NORMAL, CELL_HEIGHT);
-            BufferedImage darkimg = ImageUtils.crearImagen(bigDarkImage,
+            BufferedImage darkimg = ImageUtils.createImage(bigDarkImage,
                     xpos * WIDTH_NORMAL, ypos * CELL_HEIGHT, WIDTH_NORMAL, CELL_HEIGHT);
-            BufferedImage niteimg = ImageUtils.crearImagen(bigNiteImage,
+            BufferedImage niteimg = ImageUtils.createImage(bigNiteImage,
                     xpos * WIDTH_NORMAL, ypos * CELL_HEIGHT, WIDTH_NORMAL, CELL_HEIGHT);
-            BufferedImage darkniteimg = ImageUtils.crearImagen(bigDarkNiteImage,
+            BufferedImage darkniteimg = ImageUtils.createImage(bigDarkNiteImage,
                     xpos * WIDTH_NORMAL, ypos * CELL_HEIGHT, WIDTH_NORMAL, CELL_HEIGHT);
             return new GFXAppearance(ID, img, darkimg, niteimg, darkniteimg,
                     0, 0);
@@ -121,13 +121,13 @@ public class GFXAppearances {
         BufferedImage bigDarkNiteImage = configuration.IMAGE_DARK_NIGHT_TERRAIN;
 
         try {
-            BufferedImage img = ImageUtils.crearImagen(bigImage, xpos * WIDTH_NORMAL,
+            BufferedImage img = ImageUtils.createImage(bigImage, xpos * WIDTH_NORMAL,
                     ypos * CELL_HEIGHT, WIDTH_NORMAL, CELL_HEIGHT);
-            BufferedImage darkimg = ImageUtils.crearImagen(bigDarkImage,
+            BufferedImage darkimg = ImageUtils.createImage(bigDarkImage,
                     xpos * WIDTH_NORMAL, ypos * CELL_HEIGHT, WIDTH_NORMAL, CELL_HEIGHT);
-            BufferedImage niteimg = ImageUtils.crearImagen(bigNiteImage,
+            BufferedImage niteimg = ImageUtils.createImage(bigNiteImage,
                     xpos * WIDTH_NORMAL, ypos * CELL_HEIGHT, WIDTH_NORMAL, CELL_HEIGHT);
-            BufferedImage darkniteimg = ImageUtils.crearImagen(bigDarkNiteImage,
+            BufferedImage darkniteimg = ImageUtils.createImage(bigDarkNiteImage,
                     xpos * WIDTH_NORMAL, ypos * CELL_HEIGHT, WIDTH_NORMAL, CELL_HEIGHT);
             return new GFXAppearance(ID, img, darkimg, niteimg, darkniteimg,
                     xoff, yoff);
@@ -140,7 +140,7 @@ public class GFXAppearances {
     private GFXAppearance createXAppearance(String ID, BufferedImage bigImage, int xpos,
                                             int ypos, int width, int height) {
         try {
-            BufferedImage img = ImageUtils.crearImagen(bigImage, xpos, ypos, width,
+            BufferedImage img = ImageUtils.createImage(bigImage, xpos, ypos, width,
                     height);
             return new GFXAppearance(ID, img, (width - WIDTH_NORMAL) / 2,
                     height - WIDTH_NORMAL);
@@ -153,7 +153,7 @@ public class GFXAppearances {
     private GFXAppearance createXAppearance(String ID, BufferedImage bigImage, int xpos,
                                             int ypos, int width, int height, int yoff) {
         try {
-            BufferedImage img = ImageUtils.crearImagen(bigImage, xpos, ypos, width,
+            BufferedImage img = ImageUtils.createImage(bigImage, xpos, ypos, width,
                     height);
             return new GFXAppearance(ID, img, (width - WIDTH_NORMAL) / 2,
                     height - WIDTH_NORMAL + yoff);

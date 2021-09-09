@@ -1,25 +1,15 @@
 package co.castle.conf.gfx.data;
 
-import java.awt.Color;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.util.Vector;
-
 import co.castle.action.monster.MandragoraScream;
 import co.castle.game.Game;
 import co.castle.main.ApplicationGraphics;
-import co.castle.ui.graphicsUI.effects.GFXAnimatedEffect;
-import co.castle.ui.graphicsUI.effects.GFXAnimatedMeleeEffect;
-import co.castle.ui.graphicsUI.effects.GFXAnimatedMissileEffect;
-import co.castle.ui.graphicsUI.effects.GFXBeamEffect;
-import co.castle.ui.graphicsUI.effects.GFXCircleBlastEffect;
-import co.castle.ui.graphicsUI.effects.GFXDirectionalMissileEffect;
-import co.castle.ui.graphicsUI.effects.GFXEffect;
-import co.castle.ui.graphicsUI.effects.GFXFlashEffect;
-import co.castle.ui.graphicsUI.effects.GFXSequentialEffect;
-import co.castle.ui.graphicsUI.effects.GFXSplashEffect;
+import co.castle.ui.graphicsUI.effects.*;
 import sz.util.ImageUtils;
 import sz.util.Position;
+
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.util.Vector;
 
 public class GFXEffects {
 	private BufferedImage[][] CURVED_FRAMES;
@@ -52,27 +42,27 @@ public class GFXEffects {
 		try
 		{
 			CURVED_FRAMES = new BufferedImage[ 8 ][ 5 ];
-			CURVED_FRAMES[ 4 ][ 0 ] = ImageUtils.crearImagen( IMG_CURVEDSLASHES, 0, 72,
-					29, 12 );
-			CURVED_FRAMES[ 4 ][ 1 ] = ImageUtils.crearImagen( IMG_CURVEDSLASHES, 0, 57,
-					55, 15 );
-			CURVED_FRAMES[ 4 ][ 2 ] = ImageUtils.crearImagen( IMG_CURVEDSLASHES, 0, 41,
-					85, 16 );
-			CURVED_FRAMES[ 4 ][ 3 ] = ImageUtils.crearImagen( IMG_CURVEDSLASHES, 0, 22,
-					117, 19 );
-			CURVED_FRAMES[ 4 ][ 4 ] = ImageUtils.crearImagen( IMG_CURVEDSLASHES, 0, 0,
-					147, 22 );
+			CURVED_FRAMES[4][0] = ImageUtils.createImage(IMG_CURVEDSLASHES, 0, 72,
+					29, 12);
+			CURVED_FRAMES[4][1] = ImageUtils.createImage(IMG_CURVEDSLASHES, 0, 57,
+					55, 15);
+			CURVED_FRAMES[4][2] = ImageUtils.createImage(IMG_CURVEDSLASHES, 0, 41,
+					85, 16);
+			CURVED_FRAMES[4][3] = ImageUtils.createImage(IMG_CURVEDSLASHES, 0, 22,
+					117, 19);
+			CURVED_FRAMES[4][4] = ImageUtils.createImage(IMG_CURVEDSLASHES, 0, 0,
+					147, 22);
 
-			CURVED_FRAMES[ 2 ][ 0 ] = ImageUtils.crearImagen( IMG_CURVEDSLASHES, 0, 495,
-					27, 30 );
-			CURVED_FRAMES[ 2 ][ 1 ] = ImageUtils.crearImagen( IMG_CURVEDSLASHES, 0, 435,
-					52, 60 );
-			CURVED_FRAMES[ 2 ][ 2 ] = ImageUtils.crearImagen( IMG_CURVEDSLASHES, 0, 352,
-					78, 83 );
-			CURVED_FRAMES[ 2 ][ 3 ] = ImageUtils.crearImagen( IMG_CURVEDSLASHES, 0, 230,
-					112, 121 );
-			CURVED_FRAMES[ 2 ][ 4 ] = ImageUtils.crearImagen( IMG_CURVEDSLASHES, 0, 84,
-					143, 145 );
+			CURVED_FRAMES[2][0] = ImageUtils.createImage(IMG_CURVEDSLASHES, 0, 495,
+					27, 30);
+			CURVED_FRAMES[2][1] = ImageUtils.createImage(IMG_CURVEDSLASHES, 0, 435,
+					52, 60);
+			CURVED_FRAMES[2][2] = ImageUtils.createImage(IMG_CURVEDSLASHES, 0, 352,
+					78, 83);
+			CURVED_FRAMES[2][3] = ImageUtils.createImage(IMG_CURVEDSLASHES, 0, 230,
+					112, 121);
+			CURVED_FRAMES[2][4] = ImageUtils.createImage(IMG_CURVEDSLASHES, 0, 84,
+					143, 145);
 
 			CURVED_FRAMES[ 3 ][ 0 ] = ImageUtils.vFlip( CURVED_FRAMES[ 4 ][ 0 ] );
 			CURVED_FRAMES[ 3 ][ 1 ] = ImageUtils.vFlip( CURVED_FRAMES[ 4 ][ 1 ] );
@@ -165,27 +155,27 @@ public class GFXEffects {
 			CURVED_VARS[ 7 ][ 4 ] = new Position( 32, 32 );
 
 			STR_FRAMES = new BufferedImage[ 8 ][ 5 ];
-			STR_FRAMES[ 4 ][ 0 ] = ImageUtils.crearImagen( IMG_STRSLASHES, 0, 72, 29,
-					12 );
-			STR_FRAMES[ 4 ][ 1 ] = ImageUtils.crearImagen( IMG_STRSLASHES, 0, 57, 55,
-					15 );
-			STR_FRAMES[ 4 ][ 2 ] = ImageUtils.crearImagen( IMG_STRSLASHES, 0, 41, 85,
-					16 );
-			STR_FRAMES[ 4 ][ 3 ] = ImageUtils.crearImagen( IMG_STRSLASHES, 0, 22, 117,
-					19 );
-			STR_FRAMES[ 4 ][ 4 ] = ImageUtils.crearImagen( IMG_STRSLASHES, 0, 0, 147,
-					22 );
+			STR_FRAMES[4][0] = ImageUtils.createImage(IMG_STRSLASHES, 0, 72, 29,
+					12);
+			STR_FRAMES[4][1] = ImageUtils.createImage(IMG_STRSLASHES, 0, 57, 55,
+					15);
+			STR_FRAMES[4][2] = ImageUtils.createImage(IMG_STRSLASHES, 0, 41, 85,
+					16);
+			STR_FRAMES[4][3] = ImageUtils.createImage(IMG_STRSLASHES, 0, 22, 117,
+					19);
+			STR_FRAMES[4][4] = ImageUtils.createImage(IMG_STRSLASHES, 0, 0, 147,
+					22);
 
-			STR_FRAMES[ 2 ][ 0 ] = ImageUtils.crearImagen( IMG_STRSLASHES, 0, 495, 27,
-					30 );
-			STR_FRAMES[ 2 ][ 1 ] = ImageUtils.crearImagen( IMG_STRSLASHES, 0, 435, 52,
-					60 );
-			STR_FRAMES[ 2 ][ 2 ] = ImageUtils.crearImagen( IMG_STRSLASHES, 0, 352, 78,
-					83 );
-			STR_FRAMES[ 2 ][ 3 ] = ImageUtils.crearImagen( IMG_STRSLASHES, 0, 230, 112,
-					121 );
-			STR_FRAMES[ 2 ][ 4 ] = ImageUtils.crearImagen( IMG_STRSLASHES, 0, 84, 143,
-					145 );
+			STR_FRAMES[2][0] = ImageUtils.createImage(IMG_STRSLASHES, 0, 495, 27,
+					30);
+			STR_FRAMES[2][1] = ImageUtils.createImage(IMG_STRSLASHES, 0, 435, 52,
+					60);
+			STR_FRAMES[2][2] = ImageUtils.createImage(IMG_STRSLASHES, 0, 352, 78,
+					83);
+			STR_FRAMES[2][3] = ImageUtils.createImage(IMG_STRSLASHES, 0, 230, 112,
+					121);
+			STR_FRAMES[2][4] = ImageUtils.createImage(IMG_STRSLASHES, 0, 84, 143,
+					145);
 
 			STR_FRAMES[ 3 ][ 0 ] = ImageUtils.vFlip( STR_FRAMES[ 4 ][ 0 ] );
 			STR_FRAMES[ 3 ][ 1 ] = ImageUtils.vFlip( STR_FRAMES[ 4 ][ 1 ] );
@@ -325,8 +315,8 @@ public class GFXEffects {
 		{
 			try
 			{
-				ret[ x ] = ImageUtils.crearImagen( IMG_EFFECTS, ( xpos + x ) * 32,
-						ypos * 32, 32, 32 );
+				ret[x] = ImageUtils.createImage(IMG_EFFECTS, (xpos + x) * 32,
+						ypos * 32, 32, 32);
 			}
 			catch ( Exception e )
 			{
@@ -364,7 +354,7 @@ public class GFXEffects {
 		{
 			try
 			{
-				ret[ x ] = ImageUtils.crearImagen( IMG_SLASHES, x * 16, 0, 16, 16 );
+				ret[x] = ImageUtils.createImage(IMG_SLASHES, x * 16, 0, 16, 16);
 			}
 			catch ( Exception e )
 			{
@@ -378,9 +368,9 @@ public class GFXEffects {
 	{
 		try {
 			return new BufferedImage[]
-					{ImageUtils.crearImagen(IMG_EFFECTS, 0, 485, 40, 59),
-							ImageUtils.crearImagen(IMG_EFFECTS, 44, 485, 40, 59),
-							ImageUtils.crearImagen(IMG_EFFECTS, 88, 485, 40, 59)};
+					{ImageUtils.createImage(IMG_EFFECTS, 0, 485, 40, 59),
+							ImageUtils.createImage(IMG_EFFECTS, 44, 485, 40, 59),
+							ImageUtils.createImage(IMG_EFFECTS, 88, 485, 40, 59)};
 		}
 		catch ( Exception e )
 		{
@@ -396,7 +386,7 @@ public class GFXEffects {
 		{
 			try
 			{
-				ret[ x ] = ImageUtils.crearImagen( file, xpos * 32, ypos * 32, 32, 32 );
+				ret[x] = ImageUtils.createImage(file, xpos * 32, ypos * 32, 32, 32);
 			}
 			catch ( Exception e )
 			{
@@ -410,10 +400,10 @@ public class GFXEffects {
 	{
 		try
 		{
-			BufferedImage[ ] ret = new BufferedImage[ ]
-			{	ImageUtils.crearImagen( IMG_EFFECTS, 129, 485, 40, 59 ),
-				ImageUtils.crearImagen( IMG_EFFECTS, 172, 485, 40, 59 ),
-				ImageUtils.crearImagen( IMG_EFFECTS, 215, 485, 40, 59 ) };
+			BufferedImage[] ret = new BufferedImage[]
+					{ImageUtils.createImage(IMG_EFFECTS, 129, 485, 40, 59),
+							ImageUtils.createImage(IMG_EFFECTS, 172, 485, 40, 59),
+							ImageUtils.createImage(IMG_EFFECTS, 215, 485, 40, 59)};
 			return ret;
 		}
 		catch ( Exception e )
@@ -426,19 +416,18 @@ public class GFXEffects {
 	private BufferedImage[ ][ ] readSlashes( BufferedImage source )
 	{
 		BufferedImage[ ][ ] ret = new BufferedImage[ 8 ][ 5 ];
-		try
-		{
-			ret[ 4 ][ 0 ] = ImageUtils.crearImagen( source, 0, 72, 29, 12 );
-			ret[ 4 ][ 1 ] = ImageUtils.crearImagen( source, 0, 57, 55, 15 );
-			ret[ 4 ][ 2 ] = ImageUtils.crearImagen( source, 0, 41, 85, 16 );
-			ret[ 4 ][ 3 ] = ImageUtils.crearImagen( source, 0, 22, 117, 19 );
-			ret[ 4 ][ 4 ] = ImageUtils.crearImagen( source, 0, 0, 147, 22 );
+		try {
+			ret[4][0] = ImageUtils.createImage(source, 0, 72, 29, 12);
+			ret[4][1] = ImageUtils.createImage(source, 0, 57, 55, 15);
+			ret[4][2] = ImageUtils.createImage(source, 0, 41, 85, 16);
+			ret[4][3] = ImageUtils.createImage(source, 0, 22, 117, 19);
+			ret[4][4] = ImageUtils.createImage(source, 0, 0, 147, 22);
 
-			ret[ 2 ][ 0 ] = ImageUtils.crearImagen( source, 0, 495, 27, 30 );
-			ret[ 2 ][ 1 ] = ImageUtils.crearImagen( source, 0, 435, 52, 60 );
-			ret[ 2 ][ 2 ] = ImageUtils.crearImagen( source, 0, 352, 78, 83 );
-			ret[ 2 ][ 3 ] = ImageUtils.crearImagen( source, 0, 230, 112, 121 );
-			ret[ 2 ][ 4 ] = ImageUtils.crearImagen( source, 0, 84, 143, 145 );
+			ret[2][0] = ImageUtils.createImage(source, 0, 495, 27, 30);
+			ret[2][1] = ImageUtils.createImage(source, 0, 435, 52, 60);
+			ret[2][2] = ImageUtils.createImage(source, 0, 352, 78, 83);
+			ret[2][3] = ImageUtils.createImage(source, 0, 230, 112, 121);
+			ret[2][4] = ImageUtils.createImage(source, 0, 84, 143, 145);
 		}
 		catch ( Exception e )
 		{
