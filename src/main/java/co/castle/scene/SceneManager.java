@@ -40,7 +40,7 @@ public class SceneManager {
 
     public SceneManager() {
         PlayerGenerator.thus = new GFXPlayerGenerator(IScene.renderer);
-        Display.thus = new GraphicsDisplay();
+        Display.thus = new GraphicsDisplay(IScene.renderer);
 
 
         UserInterface userInterface = UserInterface.getUI();

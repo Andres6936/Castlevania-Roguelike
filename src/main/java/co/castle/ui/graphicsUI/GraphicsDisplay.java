@@ -33,7 +33,7 @@ public class GraphicsDisplay extends Display {
 	private Hashtable<String, Position> locationKeys;
 
 	// Get instance of ApplicationFrame
-	private static final ApplicationGraphics renderer = ApplicationGraphics.getInstance();
+	private final ApplicationGraphics renderer;
 
 	// Get instance of Asset
 	protected Asset assets = ApplicationGraphics.assets;
@@ -50,14 +50,15 @@ public class GraphicsDisplay extends Display {
 		locationKeys.put("RUINS", new Position(383, 172));
 		locationKeys.put("CAVES", new Position(383, 261));
 		locationKeys.put("COURTYARD", new Position(448, 232));
-		locationKeys.put( "VILLA", new Position( 448, 232 ) );
-		locationKeys.put( "DUNGEON", new Position( 512, 261 ) );
-		locationKeys.put( "STORAGE", new Position( 555, 206 ) );
-		locationKeys.put( "CLOCKTOWER", new Position( 555, 119 ) );
-		locationKeys.put( "KEEP", new Position( 462, 69 ) );
+		locationKeys.put("VILLA", new Position(448, 232));
+		locationKeys.put("DUNGEON", new Position(512, 261));
+		locationKeys.put("STORAGE", new Position(555, 206));
+		locationKeys.put("CLOCKTOWER", new Position(555, 119));
+		locationKeys.put("KEEP", new Position(462, 69));
 	}
 
-	public GraphicsDisplay( ) {
+	public GraphicsDisplay(ApplicationGraphics applicationGraphics) {
+		renderer = applicationGraphics;
 		try {
 			// BufferedImage BORDERS = ImageUtils.createImage(IMG_BORDERS);
 			BufferedImage b1 = ImageUtils.createImage(assets.IMAGE_BORDERS, 34, 1, 32, 32);
