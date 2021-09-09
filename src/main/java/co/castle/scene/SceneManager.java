@@ -72,6 +72,11 @@ public class SceneManager {
      */
     private final ApplicationGraphics renderer = new ApplicationGraphics();
 
+    /**
+     * Precondition: The renderer backend has been initialized.
+     * Post-condition: The first scene is MenuScene, the current variable to
+     * point to variable that stored the reference of MenuScene.
+     */
     public SceneManager() {
         PlayerGenerator.thus = new GFXPlayerGenerator(renderer);
         Display.thus = new GraphicsDisplay(renderer);
