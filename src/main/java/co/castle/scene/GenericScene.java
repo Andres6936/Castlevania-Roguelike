@@ -126,6 +126,7 @@ public class GenericScene {
         userInterface.addCommandListener(commandCommand -> {
             if (commandCommand == CommandListener.QUIT) {
                 // The user want to exit app.
+                finishGame();
                 processQuit = true;
             }
         });

@@ -1,14 +1,11 @@
 package co.castle.game;
 
 import co.castle.item.Item;
-import co.castle.item.Merchant;
 import co.castle.level.Dispatcher;
 import co.castle.level.Level;
 import co.castle.level.RepositoryLevelMetadata;
 import co.castle.levelgen.LevelMaster;
-import co.castle.monster.VMonster;
 import co.castle.npc.Hostage;
-import co.castle.npc.NPC;
 import co.castle.player.Consts;
 import co.castle.player.GameSessionInfo;
 import co.castle.player.Player;
@@ -74,19 +71,7 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 
 	public void commandSelected( int commandCode )
 	{
-		if ( commandCode == CommandListener.QUIT )
-		{
-			finishGame( );
-		}
-		else if ( commandCode == CommandListener.SAVE )
-		{
-			if ( canSave( ) )
-			{
-				freezeUniqueRegister( );
-				GameFiles.saveGame( this, player );
-				exitGame( );
-			}
-		}
+
 	}
 
 	public void exitGame( )
@@ -101,10 +86,6 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 		endGame = true;
 	}
 
-	public void freezeUniqueRegister( )
-	{
-	}
-
 	public Player getPlayer( )
 	{
 		return player;
@@ -115,77 +96,9 @@ public class Game implements CommandListener, PlayerEventListener, java.io.Seria
 		informEvent( code, null );
 	}
 
-	/*
-	 * private void endGame(){ Display.thus.showEndgame(player); }
-	 */
-
 	public void informEvent( int code, Object param )
 	{
-		Debug.enterMethod( this, "informEvent", code + "," + param );
-		switch ( code )
-		{
-		case Player.DEATH:
-			ui.refresh( );
-			ui.showSystemMessage( Util.randomElementOf( DEATHMESSAGES )
-					+ " [Press Space to continue]" );
-			finishGame( );
-			break;
-		case Player.DROWNED:
-			ui.refresh( );
-			ui.showSystemMessage(
-					"You choke with the water and drown!  [Press Space to continue]" );
-			finishGame( );
-			break;
-		case Player.EVT_SMASHED:
-			ui.refresh( );
-			ui.showSystemMessage( "Your body collapses!  [Press Space to continue]" );
-			finishGame( );
-			break;
-		/*
-		 * case Player.EVT_NEXT_LEVEL: loadNextLevel(); break; case
-		 * Player.EVT_BACK_LEVEL: loadBackLevel(); break;
-		 */
-		case Player.EVT_GOTO_LEVEL:
-			loadLevel( (String) param );
-			break;
-		case Player.EVT_MERCHANT:
-			ui.launchMerchant( (Merchant) param );
-			break;
-		case Player.EVT_CHAT:
-			ui.chat( (NPC) param );
-			break;
-		case Player.EVT_INN:
-			if ( ui.promptChat( (NPC) param ) )
-			{
-				if ( player.getGold( ) >= 200 )
-				{
-					forwardTime( );
-					forwardTime( );
-					VMonster monsters = player.getLevel( ).getMonsters( );
-					for ( int i = 0; i < monsters.size( ); i++ )
-					{
-						if ( monsters.elementAt( i ) instanceof Merchant )
-						{
-							( (Merchant) monsters.elementAt( i ) )
-									.refreshMerchandise( player );
-						}
-					}
-					player.setGold( player.getGold( ) - 200 );
-				}
-				else
-				{
-					ui.showMessage( "You don't have enough gold." );
-				}
-			}
-			break;
-		case Player.EVT_LEVELUP:
-			ui.levelUp( );
-			break;
-		case Player.EVT_FORWARDTIME:
-			forwardTime( );
-			break;
-		}
-		Debug.exitMethod( );
+
 	}
 
 	public void setLevel( Level level )
