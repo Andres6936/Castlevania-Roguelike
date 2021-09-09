@@ -1,25 +1,16 @@
 package co.castle.game;
 
-import java.io.*;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Enumeration;
-import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.Vector;
-
 import co.castle.item.ItemDefinition;
-import co.castle.player.Equipment;
-import co.castle.player.GameSessionInfo;
-import co.castle.player.HiScore;
-import co.castle.player.MonsterDeath;
-import co.castle.player.Player;
-import co.castle.player.Skill;
+import co.castle.player.*;
 import co.castle.system.FileLoader;
 import co.castle.ui.UserInterface;
 import sz.util.Debug;
 import sz.util.FileUtil;
 import sz.util.SerializableChecker;
+
+import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class GameFiles
 {
@@ -51,13 +42,13 @@ public class GameFiles
 			}
 			return ret;
 		}
-		catch ( IOException ioe )
-		{
-			Game.crash( "Invalid or corrupt graveyard", ioe );
+		catch ( IOException ioe ) {
+			System.err.println("Invalid or corrupt graveyard");
+			ioe.printStackTrace();
 		}
-		catch ( NumberFormatException nfe )
-		{
-			Game.crash( "Corrupt graveyard", nfe );
+		catch ( NumberFormatException nfe ) {
+			System.err.println("Corrupt graveyard");
+			nfe.printStackTrace();
 		}
 		return null;
 	}
@@ -72,7 +63,7 @@ public class GameFiles
 				String line = lectorArchivo.readLine();
 				String[] regs = line.split(";");
 				if (regs == null) {
-					Game.crash("Invalid or corrupt hiscore table");
+					System.err.println("Invalid or corrupt hiscore table");
 				}
 				HiScore x = new HiScore();
 				x.setName(regs[0]);
