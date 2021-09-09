@@ -1,12 +1,5 @@
 package co.castle.ui.graphicsUI;
 
-import java.awt.Cursor;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-import java.io.Serializable;
-import java.util.Properties;
-
 import co.castle.action.Action;
 import co.castle.actor.Actor;
 import co.castle.actor.Message;
@@ -24,14 +17,20 @@ import sz.csi.KeyCode;
 import sz.util.Debug;
 import sz.util.Position;
 
+import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.io.Serializable;
+import java.util.Properties;
+
 public class GFXUISelector extends UISelector
-		implements ActionSelector, MouseListener, MouseMotionListener, Serializable
-{
+		implements ActionSelector, MouseListener, MouseMotionListener, Serializable {
 	private int mouseDirection = -1;
 	private Position mousePosition;
 
 	// Get instance of ApplicationFrame
-	private final ApplicationGraphics appFrame = ApplicationGraphics.getInstance();
+	private final ApplicationGraphics appFrame;
 
 	private final Position tempRel = new Position(0, 0);
 
@@ -49,8 +48,9 @@ public class GFXUISelector extends UISelector
 
 	int y2 = (int) Math.round((600.0 / 9.0) * 5.0);
 
-	public GFXUISelector(UserActions gameActions, UserInterface ui, Properties keyBindings) {
+	public GFXUISelector(UserActions gameActions, UserInterface ui, Properties keyBindings, ApplicationGraphics renderer) {
 		super(gameActions, ui, keyBindings);
+		appFrame = renderer;
 		// NOTE: Asset can container the property, clear this function
 
 		// Get the valor of property and compare

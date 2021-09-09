@@ -50,11 +50,6 @@ public final class ApplicationGraphics extends JFrame {
 
 	private final Panel panelGame;
 
-	/**
-	 * Class type Singleton, reference to only object
-	 */
-	private static ApplicationGraphics instance;
-
 	private Font font;
 
 	// Construct
@@ -123,13 +118,6 @@ public final class ApplicationGraphics extends JFrame {
 
 	public boolean isMouseEnable() {
 		return mouseEnable;
-	}
-
-	/**
-	 * @return Instance of ApplicationFrame
-	 */
-	public static ApplicationGraphics getInstance() {
-		return instance == null ? instance = new ApplicationGraphics() : instance;
 	}
 
 	// Method Synchronized

@@ -88,7 +88,7 @@ public class GraphicsDisplay extends Display {
 		renderer.addComponentToPanel(gfxChatBox);
 	}
 
-	public static JTextArea createTempArea( int xpos, int ypos, int w, int h ) {
+	public static JTextArea createTempArea(int xpos, int ypos, int w, int h, Font font) {
 		JTextArea ret = new JTextArea();
 		ret.setOpaque(false);
 		ret.setForeground(Color.WHITE);
@@ -98,7 +98,7 @@ public class GraphicsDisplay extends Display {
 		ret.setBounds(xpos, ypos, w, h);
 		ret.setLineWrap(true);
 		ret.setWrapStyleWord(true);
-		ret.setFont(renderer.getFont());
+		ret.setFont(font);
 		return ret;
 	}
 
@@ -150,7 +150,7 @@ public class GraphicsDisplay extends Display {
 		renderer.printAtPixel(426, 95, "Epilogue", Color.RED);
 		String heshe = (player.getSex() == Player.MALE ? "he" : "she");
 		// String hisher = (player.getSex() == Player.MALE ? "his" : "her");
-		JTextArea t1 = createTempArea(20, 125, 700, 400);
+		JTextArea t1 = createTempArea(20, 125, 700, 400, renderer.getFont());
 		t1.setForeground(Color.WHITE);
 		t1.setText(player.getName()
 				+ " made many sacrifices, but now the long fight is over. Dracula is dead "
@@ -236,7 +236,7 @@ public class GraphicsDisplay extends Display {
 		// si.drawImage(311,64, IMG_GBAT);
 		renderer.setFontToPanel(assets.FONT_TEXT);
 		renderer.setColor(Color.GRAY);
-		JTextArea t1 = createTempArea(150, 170, 510, 300);
+		JTextArea t1 = createTempArea(150, 170, 510, 300, renderer.getFont());
 		t1.setForeground(Color.LIGHT_GRAY);
 		t1.setText(
 				"In the year of 1691, a dark castle emerges from the cursed soils of the plains of Transylvannia. "
@@ -304,7 +304,7 @@ public class GraphicsDisplay extends Display {
 		renderer.drawImage(assets.IMAGE_LEVEL_UP);
 		renderer.print(6, 3, who.getDescription(), assets.COLOR_BOLD);
 		renderer.drawImage(15, 40, app.getImage());
-		JTextArea t1 = createTempArea(20, 125, 700, 400);
+		JTextArea t1 = createTempArea(20, 125, 700, 400, renderer.getFont());
 		t1.setForeground(Color.WHITE);
 		t1.setText(who.getLongDescription());
 		renderer.addComponentToPanel(t1);
@@ -345,7 +345,7 @@ public class GraphicsDisplay extends Display {
 
 		renderer.setFontToPanel(assets.FONT_TITLE);
 		renderer.print(2, 3, "The chronicles of " + player.getName(), assets.COLOR_BOLD);
-		JTextArea t1 = createTempArea(20, 125, 700, 120);
+		JTextArea t1 = createTempArea(20, 125, 700, 120, renderer.getFont());
 		t1.setForeground(Color.WHITE);
 		t1.setText("  ...And so it was that " + player.getDescription() + ", "
 				+ gsi.getDeathString() + " on the "

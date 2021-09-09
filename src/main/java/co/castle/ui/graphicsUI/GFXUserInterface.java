@@ -1578,7 +1578,7 @@ public class GFXUserInterface extends UserInterface implements Runnable
 		si.saveBuffer( 1 );
 		// si.saveBuffer();
 
-		JTextArea itemDescription = GraphicsDisplay.createTempArea( 509, 201, 202, 122 );
+		JTextArea itemDescription = GraphicsDisplay.createTempArea(509, 201, 202, 122, si.getFont());
 		itemDescription.setVisible( true );
 		si.addComponentToPanel( itemDescription );
 		// si.cls();

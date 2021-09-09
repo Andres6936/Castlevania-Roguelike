@@ -4,6 +4,7 @@ import co.castle.conf.KeyBindings;
 import co.castle.conf.UserActions;
 import co.castle.conf.UserCommands;
 import co.castle.game.PlayerGenerator;
+import co.castle.main.ApplicationGraphics;
 import co.castle.ui.Display;
 import co.castle.ui.UISelector;
 import co.castle.ui.UserInterface;
@@ -38,9 +39,11 @@ public class SceneManager {
 
     private final UISelector selector;
 
+    private final static ApplicationGraphics renderer = new ApplicationGraphics();
+
     public SceneManager() {
-        PlayerGenerator.thus = new GFXPlayerGenerator(IScene.renderer);
-        Display.thus = new GraphicsDisplay(IScene.renderer);
+        PlayerGenerator.thus = new GFXPlayerGenerator(renderer);
+        Display.thus = new GraphicsDisplay(renderer);
 
 
         UserInterface userInterface = UserInterface.getUI();
@@ -48,11 +51,11 @@ public class SceneManager {
         Display.setKeyBindings(keyBindings);
         var userActions = new UserActions(keyBindings);
         var userCommands = new UserCommands(keyBindings);
-        selector = new GFXUISelector(userActions, userInterface, keyBindings);
+        selector = new GFXUISelector(userActions, userInterface, keyBindings, renderer);
 
-        ((GFXUserInterface) userInterface).init(IScene.renderer, userCommands, userActions);
+        ((GFXUserInterface) userInterface).init(renderer, userCommands, userActions);
 
-        menuScene = new MenuScene();
+        menuScene = new MenuScene(renderer);
         // The first scene is the Menu.
         current = menuScene;
     }
@@ -87,7 +90,7 @@ public class SceneManager {
             current = trainingScene;
         } else if (nextScene == TypeScene.NEW_GAME) {
             // Lazy Evaluation
-            if (newGameScene == null) newGameScene = new NewGameScene(selector);
+            if (newGameScene == null) newGameScene = new NewGameScene(selector, renderer);
             current = newGameScene;
         } else if (nextScene == TypeScene.LOAD_GAME) {
             // Lazy Evaluation
@@ -95,7 +98,7 @@ public class SceneManager {
             current = loadGameScene;
         } else if (nextScene == TypeScene.HIGH_SCORE) {
             // Lazy Evaluation
-            if (highScoreScene == null) highScoreScene = new HighScoreScene();
+            if (highScoreScene == null) highScoreScene = new HighScoreScene(renderer);
             current = highScoreScene;
         }
     }

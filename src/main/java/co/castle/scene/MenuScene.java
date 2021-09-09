@@ -15,7 +15,10 @@ public class MenuScene implements IScene {
     private int middlePoint = 0;
     private int pickerXCoordinate = 0;
 
-    public MenuScene() {
+    private final ApplicationGraphics renderer;
+
+    public MenuScene(ApplicationGraphics applicationGraphics) {
+        renderer = applicationGraphics;
         middlePoint = Asset.SCREEN_WIDTH / 2;
         pickerXCoordinate = (Asset.SCREEN_WIDTH / 2) - (ApplicationGraphics.assets.IMAGE_PICKER.getWidth() / 2);
 

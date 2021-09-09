@@ -1,5 +1,6 @@
 package co.castle.scene;
 
+import co.castle.main.ApplicationGraphics;
 import co.castle.ui.UISelector;
 import sz.csi.KeyCode;
 import sz.fov.FOV;
@@ -9,7 +10,7 @@ import java.awt.*;
 
 public class NewGameScene extends GenericScene implements IScene {
 
-    public NewGameScene(UISelector selector) {
+    public NewGameScene(UISelector selector, ApplicationGraphics renderer) {
         super(selector, null);
 
         renderer.drawImage(renderer.assets.IMAGE_PROLOGUE);
@@ -18,7 +19,7 @@ public class NewGameScene extends GenericScene implements IScene {
         // si.drawImage(311,64, IMG_GBAT);
         renderer.setFontToPanel(renderer.assets.FONT_TEXT);
         renderer.setColor(Color.GRAY);
-        JTextArea t1 = createTempArea(150, 170, 510, 300);
+        JTextArea t1 = createTempArea(150, 170, 510, 300, renderer.getFont());
         t1.setForeground(Color.LIGHT_GRAY);
         t1.setText(
                 "In the year of 1691, a dark castle emerges from the cursed soils of the plains of Transylvannia. "
@@ -51,7 +52,7 @@ public class NewGameScene extends GenericScene implements IScene {
         checkTimeSwitch();
     }
 
-    private static JTextArea createTempArea(int xpos, int ypos, int w, int h) {
+    private static JTextArea createTempArea(int xpos, int ypos, int w, int h, Font font) {
         JTextArea ret = new JTextArea();
         ret.setOpaque(false);
         ret.setForeground(Color.WHITE);
@@ -61,7 +62,7 @@ public class NewGameScene extends GenericScene implements IScene {
         ret.setBounds(xpos, ypos, w, h);
         ret.setLineWrap(true);
         ret.setWrapStyleWord(true);
-        ret.setFont(renderer.getFont());
+        ret.setFont(font);
         return ret;
     }
 

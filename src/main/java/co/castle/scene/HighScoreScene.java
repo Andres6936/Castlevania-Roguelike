@@ -1,13 +1,14 @@
 package co.castle.scene;
 
 import co.castle.game.GameFiles;
+import co.castle.main.ApplicationGraphics;
 import co.castle.player.HiScore;
 import sz.csi.KeyCode;
 
 import java.awt.*;
 
 public class HighScoreScene implements IScene {
-    public HighScoreScene() {
+    public HighScoreScene(ApplicationGraphics renderer) {
         HiScore[] scores = GameFiles.loadScores("hiscore.tbl");
 
         int leftMargin;
