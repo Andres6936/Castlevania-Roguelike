@@ -10,7 +10,7 @@ import co.castle.ui.AppearanceFactory;
 import co.castle.ui.UserInterface;
 import co.castle.ui.effects.EffectFactory;
 import co.castle.ui.graphicsUI.GFXUserInterface;
-import co.castle.ui.graphicsUI.Panel;
+import co.castle.ui.graphicsUI.Sketch;
 import co.castle.ui.graphicsUI.effects.GFXEffectFactory;
 import sz.csi.KeyCode;
 import sz.util.ImageUtils;
@@ -48,7 +48,7 @@ public final class ApplicationGraphics extends JFrame {
 
 	private final Keyboard keyboard;
 
-	private final Panel panelGame;
+	private final Sketch sketchGame;
 
 	private Font font;
 
@@ -84,9 +84,9 @@ public final class ApplicationGraphics extends JFrame {
 		setUndecorated(true);
 		setVisible(true);
 
-		panelGame = new Panel(assets);
+		sketchGame = new Sketch(assets);
 
-		getContentPane().add(panelGame);
+		getContentPane().add(sketchGame);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBackground(Color.BLACK);
 
@@ -95,7 +95,7 @@ public final class ApplicationGraphics extends JFrame {
 		addKeyListener(keyboard);
 		setFocusable(true);
 
-		panelGame.init();
+		sketchGame.init();
 
 		System.out.println("Initializing Swing GFX System Interface");
 		System.out.println("Initializing Graphics Appearances");
@@ -134,24 +134,23 @@ public final class ApplicationGraphics extends JFrame {
 	// Method
 
 	public void addComponentToPanel(Component c) {
-		panelGame.add(c);
-		panelGame.validate();
+		sketchGame.add(c);
+		sketchGame.validate();
 	}
 
 	public void cls()
 	{
-		panelGame.cls( );
+		sketchGame.cls();
 	}
 
-	public void drawImage( Image image )
-	{
-		panelGame.drawImage( image );
-		panelGame.repaint( );
+	public void drawImage( Image image ) {
+		sketchGame.drawImage(image);
+		sketchGame.repaint();
 	}
 
 	public void drawImage( int scrX, int scrY, Image img )
 	{
-		panelGame.drawImage( scrX, scrY, img );
+		sketchGame.drawImage(scrX, scrY, img);
 	}
 
 	public void drawImage( int scrX, int scrY, String filename )
@@ -170,7 +169,7 @@ public final class ApplicationGraphics extends JFrame {
             assert im != null;
 			images.put( filename, im );
 		}
-		panelGame.drawImage( scrX, scrY, im );
+		sketchGame.drawImage(scrX, scrY, im);
 	}
 
 	@Deprecated
@@ -179,19 +178,16 @@ public final class ApplicationGraphics extends JFrame {
 		Image im = images.get( filename );
 		if ( im == null )
 		{
-			try
-			{
-				im = ImageUtils.createImage( filename );
-			}
-			catch ( Exception e )
-			{
+			try {
+				im = ImageUtils.createImage(filename);
+			} catch (Exception e) {
 				System.err.println("Exception trying to create image " + filename);
 			}
-            assert im != null;
-			images.put( filename, im );
+			assert im != null;
+			images.put(filename, im);
 		}
-		panelGame.drawImage( im );
-		panelGame.repaint( );
+		sketchGame.drawImage(im);
+		sketchGame.repaint();
 	}
 
 	/**
@@ -199,10 +195,9 @@ public final class ApplicationGraphics extends JFrame {
 	 * 
 	 * @param image Image to draw
 	 */
-	public void drawImage( BufferedImage image )
-	{
-		panelGame.drawImage( image );
-		panelGame.repaint( );
+	public void drawImage( BufferedImage image ) {
+		sketchGame.drawImage(image);
+		sketchGame.repaint();
 	}
 
 	public void drawImageCC( int consoleX, int consoleY, Image img )
@@ -217,7 +212,7 @@ public final class ApplicationGraphics extends JFrame {
 
 	public void flash( Color c )
 	{
-		panelGame.flash( c );
+		sketchGame.flash(c);
 	}
 
 	/*
@@ -226,7 +221,7 @@ public final class ApplicationGraphics extends JFrame {
 
 	public Graphics2D getGraphics2D( )
 	{
-		return panelGame.getCurrentGraphics( );
+		return sketchGame.getCurrentGraphics();
 	}
 
 	public String input( int xpos, int ypos, Color textColor, int maxLength )
@@ -281,22 +276,22 @@ public final class ApplicationGraphics extends JFrame {
 
 	public void print( int x, int y, String text, Color color )
 	{
-		panelGame.print( x * 10, y * 24, text, color );
+		sketchGame.print(x * 10, y * 24, text, color);
 	}
 
 	public void printAtPixel( int x, int y, String text )
 	{
-		panelGame.print( x, y, text );
+		sketchGame.print(x, y, text);
 	}
 
 	public void printAtPixel( int x, int y, String text, Color color )
 	{
-		panelGame.print( x, y, text, color );
+		sketchGame.print(x, y, text, color);
 	}
 
 	public void printAtPixelCentered( int x, int y, String text, Color color )
 	{
-		panelGame.print( x, y, text, color, true );
+		sketchGame.print(x, y, text, color, true);
 	}
 
 	public void recoverFocus( )
@@ -307,38 +302,37 @@ public final class ApplicationGraphics extends JFrame {
 	public void refresh( )
 	{
 		// invTextArea.setVisible(false);
-		panelGame.repaint( );
+		sketchGame.repaint();
 	}
 
-	public void remove( Component c )
-	{
-		panelGame.remove( c );
-		panelGame.validate( );
+	public void remove( Component c ) {
+		sketchGame.remove(c);
+		sketchGame.validate();
 	}
 
 	public void restore( )
 	{
-		panelGame.restore( );
+		sketchGame.restore();
 	}
 
 	public void restore( int buffer )
 	{
-		panelGame.restore( buffer );
+		sketchGame.restore(buffer);
 	}
 
 	public void saveBuffer( )
 	{
-		panelGame.saveBuffer( );
+		sketchGame.saveBuffer();
 	}
 
 	public void saveBuffer( int buffer )
 	{
-		panelGame.saveBuffer( buffer );
+		sketchGame.saveBuffer(buffer);
 	}
 
 	public void setColor( Color color )
 	{
-		panelGame.setColor( color );
+		sketchGame.setColor(color);
 		// invTextArea.setForeground(color);
 	}
 
@@ -349,7 +343,7 @@ public final class ApplicationGraphics extends JFrame {
 
 	public void setFontToPanel( Font font )
 	{
-		panelGame.setFontFace( font );
+		sketchGame.setFontFace(font);
 	}
 
 	public void setIcon( Image icon )

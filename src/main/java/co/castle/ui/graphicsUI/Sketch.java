@@ -1,26 +1,18 @@
 package co.castle.ui.graphicsUI;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
-
-import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
-
 import co.castle.conf.gfx.data.Asset;
 
-public class Panel extends JPanel
-{
+import javax.swing.*;
+import javax.swing.border.LineBorder;
+import java.awt.*;
+
+public class Sketch extends JPanel {
 
 	private Graphics backGraphics;
-	private Graphics[ ] backGraphicsBuffers;
+	private Graphics[] backGraphicsBuffers;
 	private Image backImage;
 
-	private Image[ ] backImageBuffers;
+	private Image[] backImageBuffers;
 	private Graphics bufferGraphics;
 
 	private Image bufferImage;
@@ -28,11 +20,10 @@ public class Panel extends JPanel
 	protected Asset configuration;
 	private static final long serialVersionUID = -7392757206841150146L;
 
-	public Panel( Asset configuration )
-	{
+	public Sketch(Asset configuration) {
 		this.configuration = configuration;
-		setLayout( null );
-		setBorder( new LineBorder( Color.GRAY ) );
+		setLayout(null);
+		setBorder(new LineBorder(Color.GRAY));
 	}
 
 	public Component add( Component comp )
