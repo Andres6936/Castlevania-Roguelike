@@ -37,7 +37,7 @@ public class Feature implements Cloneable, java.io.Serializable {
 					int faint, int light) {
 		ID = pID;
 		appearance = pApp;
-		appearanceID = pApp.getID();
+		appearanceID = pApp.getSerial();
 		// How many blows til it gives the prize (max)
 		description = pDescription;
 		currentResistance = resistance;
@@ -197,7 +197,7 @@ public class Feature implements Cloneable, java.io.Serializable {
 
 	public boolean isVisible( )
 	{
-		return !getAppearance( ).getID( ).equals( "VOID" );
+		return !getAppearance().getSerial().equals("VOID");
 	}
 
 	public void setDestroyable( boolean value )

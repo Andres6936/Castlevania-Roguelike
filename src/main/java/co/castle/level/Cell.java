@@ -24,7 +24,7 @@ public class Cell implements Cloneable, java.io.Serializable {
 				Appearance pApp) {
 		ID = pID;
 		appearance = pApp;
-		appearanceID = pApp.getID( );
+		appearanceID = pApp.getSerial();
 		description = pDescription;
 		shortDescription = pShortDescription;
 		Debug.doAssert( pApp != null, "No se especifico apariencia pa la celda" );
@@ -116,7 +116,7 @@ public class Cell implements Cloneable, java.io.Serializable {
 
 	public void setAppearance( Appearance what )
 	{
-		appearanceID = what.getID( );
+		appearanceID = what.getSerial();
 		appearance = what;
 	}
 

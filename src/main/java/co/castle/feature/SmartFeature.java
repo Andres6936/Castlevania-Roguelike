@@ -19,7 +19,7 @@ public class SmartFeature extends Actor implements Cloneable {
 		ID = pID;
 		description = pDescription;
 		appearance = pAppearance;
-		appearanceID = pAppearance.getID();
+		appearanceID = pAppearance.getSerial();
 	}
 
 	public Object clone()
@@ -79,7 +79,7 @@ public class SmartFeature extends Actor implements Cloneable {
 
 	public boolean isVisible( )
 	{
-		return !getAppearance( ).getID( ).equals( "VOID" );
+		return !getAppearance().getSerial().equals("VOID");
 	}
 
 	public void setAppearance( Appearance value )

@@ -1,8 +1,8 @@
 package co.castle.ui;
 
-import java.util.Hashtable;
-
 import sz.util.Debug;
+
+import java.util.Hashtable;
 
 public class AppearanceFactory {
 	private final Hashtable<String, Appearance> definitions;
@@ -18,7 +18,7 @@ public class AppearanceFactory {
 
 	public void addDefinition( Appearance definition )
 	{
-		definitions.put( definition.getID( ), definition );
+		definitions.put(definition.getSerial(), definition);
 	}
 
 	public Appearance getAppearance( String id ) {

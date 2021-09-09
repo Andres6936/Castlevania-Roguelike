@@ -1,11 +1,5 @@
 package co.castle.item;
 
-import java.awt.Image;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.Hashtable;
-
 import co.castle.player.Consts;
 import co.castle.player.Player;
 import co.castle.ui.Appearance;
@@ -13,6 +7,12 @@ import co.castle.ui.consoleUI.CharAppearance;
 import co.castle.ui.graphicsUI.GFXAppearance;
 import sz.csi.textcomponents.MenuItem;
 import sz.gadgets.GFXMenuItem;
+
+import java.awt.*;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.Hashtable;
 
 public class Item implements Serializable, MenuItem, GFXMenuItem {
 	private final String defID;
@@ -306,7 +306,7 @@ public class Item implements Serializable, MenuItem, GFXMenuItem {
 
 	public boolean isVisible( )
 	{
-		return !getDefinition( ).getAppearance( ).getID( ).equals( "VOID" );
+		return !getDefinition().getAppearance().getSerial().equals("VOID");
 	}
 
 	public void reduceCounters( Player p ) {

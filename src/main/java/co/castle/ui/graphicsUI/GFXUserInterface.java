@@ -1985,18 +1985,16 @@ public class GFXUserInterface extends UserInterface implements Runnable
 				if ( vcells[ x ][ y ] == null
 						|| vcells[ x ][ y ].getID( ).equals( "AIR" ) )
 				{
-					if ( rcells[ x ][ y ] != null && !rcells[ x ][ y ].getAppearance( )
-							.getID( ).equals( "NOTHING" ) )
-					{
-						GFXAppearance app = (GFXAppearance) rcells[ x ][ y ]
-								.getAppearance( );
-						try
-						{
-							if ( level.isDay( ) )
-								si.drawImage( ( PC_POS.x - xrange + x ) * STANDARD_WIDTH,
-										( PC_POS.y - yrange + y ) * STANDARD_WIDTH - 17
-												- app.getSuperHeight( ),
-										app.getDarkImage( ) );
+					if (rcells[x][y] != null && !rcells[x][y].getAppearance()
+							.getSerial().equals("NOTHING")) {
+						GFXAppearance app = (GFXAppearance) rcells[x][y]
+								.getAppearance();
+						try {
+							if (level.isDay())
+								si.drawImage((PC_POS.x - xrange + x) * STANDARD_WIDTH,
+										(PC_POS.y - yrange + y) * STANDARD_WIDTH - 17
+												- app.getSuperHeight(),
+										app.getDarkImage());
 							else
 								si.drawImage( ( PC_POS.x - xrange + x ) * STANDARD_WIDTH,
 										( PC_POS.y - yrange + y ) * STANDARD_WIDTH - 17
