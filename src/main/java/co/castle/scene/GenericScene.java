@@ -14,6 +14,7 @@ import co.castle.player.Consts;
 import co.castle.player.GameSessionInfo;
 import co.castle.player.Player;
 import co.castle.player.PlayerEventListener;
+import co.castle.ui.CommandListener;
 import co.castle.ui.Display;
 import co.castle.ui.UISelector;
 import co.castle.ui.UserInterface;
@@ -32,6 +33,13 @@ public class GenericScene {
     protected int timeSwitch;
     protected long turns;
     protected boolean isDay = true;
+
+    /**
+     * True if the user executes an action that as a consequence of a conscious
+     * action ends the game, e.g. pressing a button to end the game or a key
+     * combination such as CTRL + Q.
+     */
+    protected boolean processQuit = false;
     protected Level currentLevel;
     protected Dispatcher dispatcher;
 
@@ -55,8 +63,11 @@ public class GenericScene {
         selector.setPlayer(player);
         userInterface.setPlayer(player);
         userInterface.setGameOver(false);
-        userInterface.addCommandListener(pCommand -> {
-
+        userInterface.addCommandListener(commandCommand -> {
+            if (commandCommand == CommandListener.QUIT) {
+                // The user want to exit app.
+                processQuit = true;
+            }
         });
     }
 
