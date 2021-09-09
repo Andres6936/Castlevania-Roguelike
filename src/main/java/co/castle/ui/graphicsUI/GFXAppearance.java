@@ -1,8 +1,8 @@
 package co.castle.ui.graphicsUI;
 
-import java.awt.Image;
-
 import co.castle.ui.Appearance;
+
+import java.awt.*;
 
 public class GFXAppearance extends Appearance {
 	private Image darkImage;
@@ -12,9 +12,9 @@ public class GFXAppearance extends Appearance {
 	private final int superWidth;
 	private final int superHeight;
 
-	public GFXAppearance(String ID, Image pimg, Image darkImage, Image niteImage,
+	public GFXAppearance(String serial, Image pimg, Image darkImage, Image niteImage,
 						 Image darkniteImage, int superWidth, int superHeight) {
-		super(ID);
+		super(serial);
 		img = pimg;
 		this.darkImage = darkImage;
 		this.niteImage = niteImage;
@@ -23,9 +23,8 @@ public class GFXAppearance extends Appearance {
 		this.superWidth = superWidth;
 	}
 
-	public GFXAppearance( String ID, Image pimg, int superWidth, int superHeight )
-	{
-		super( ID );
+	public GFXAppearance(String serial, Image pimg, int superWidth, int superHeight) {
+		super(serial);
 		img = pimg;
 		this.superHeight = superHeight;
 		this.superWidth = superWidth;
