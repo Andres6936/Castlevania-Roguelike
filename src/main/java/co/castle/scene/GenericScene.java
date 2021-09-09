@@ -2,14 +2,18 @@ package co.castle.scene;
 
 import co.castle.actor.Actor;
 import co.castle.game.CRLException;
+import co.castle.game.GameFiles;
 import co.castle.game.MusicManager;
 import co.castle.game.PlayerGenerator;
 import co.castle.item.Item;
+import co.castle.item.Merchant;
 import co.castle.level.Dispatcher;
 import co.castle.level.Level;
 import co.castle.level.RepositoryLevelMetadata;
 import co.castle.levelgen.LevelMaster;
+import co.castle.monster.VMonster;
 import co.castle.npc.Hostage;
+import co.castle.npc.NPC;
 import co.castle.player.Consts;
 import co.castle.player.GameSessionInfo;
 import co.castle.player.Player;
@@ -29,6 +33,11 @@ public class GenericScene {
     protected final UserInterface userInterface;
     protected final Hashtable<String, Level> storedLevels = new Hashtable<>();
     protected final RepositoryLevelMetadata levelMetadata = new RepositoryLevelMetadata();
+    private final String[] DEATHMESSAGES = new String[]
+            {"You are dead... and Dracula is still alive", "All hopes are lost.",
+                    "It's the end.",
+                    "Let us enjoy this evening for pleasure, the night is still young...",
+                    "Game Over", "Better luck next time, Son of a Belmont"};
 
     protected int timeSwitch;
     protected long turns;
@@ -52,12 +61,63 @@ public class GenericScene {
         player.setPlayerEventListener(new PlayerEventListener() {
             @Override
             public void informEvent(int code) {
-
+                informEvent(code, null);
             }
 
             @Override
             public void informEvent(int code, Object param) {
-
+                switch (code) {
+                    case Player.DEATH:
+                        userInterface.refresh();
+                        userInterface.showSystemMessage(Util.randomElementOf(DEATHMESSAGES)
+                                + " [Press Space to continue]");
+                        finishGame();
+                        break;
+                    case Player.DROWNED:
+                        userInterface.refresh();
+                        userInterface.showSystemMessage(
+                                "You choke with the water and drown!  [Press Space to continue]");
+                        finishGame();
+                        break;
+                    case Player.EVT_SMASHED:
+                        userInterface.refresh();
+                        userInterface.showSystemMessage("Your body collapses!  [Press Space to continue]");
+                        finishGame();
+                        break;
+                    case Player.EVT_GOTO_LEVEL:
+                        loadLevel((String) param);
+                        break;
+                    case Player.EVT_MERCHANT:
+                        userInterface.launchMerchant((Merchant) param);
+                        break;
+                    case Player.EVT_CHAT:
+                        userInterface.chat((NPC) param);
+                        break;
+                    case Player.EVT_INN:
+                        if (userInterface.promptChat((NPC) param)) {
+                            if (player.getGold() >= 200) {
+                                forwardTime();
+                                forwardTime();
+                                VMonster monsters = player.getLevel().getMonsters();
+                                for (int i = 0; i < monsters.size(); i++) {
+                                    if (monsters.elementAt(i) instanceof Merchant) {
+                                        ((Merchant) monsters.elementAt(i))
+                                                .refreshMerchandise(player);
+                                    }
+                                }
+                                player.setGold(player.getGold() - 200);
+                            } else {
+                                userInterface.showMessage("You don't have enough gold.");
+                            }
+                        }
+                        break;
+                    case Player.EVT_LEVELUP:
+                        userInterface.levelUp();
+                        break;
+                    case Player.EVT_FORWARDTIME:
+                        forwardTime();
+                        break;
+                }
             }
         });
         selector.setPlayer(player);
@@ -69,6 +129,39 @@ public class GenericScene {
                 processQuit = true;
             }
         });
+    }
+
+    protected void forwardTime() {
+        timeSwitch = 0;
+        checkTimeSwitch();
+    }
+
+    protected void finishGame() {
+        if (!player.isDoNotRecordScore()) {
+//			GameFiles.updateGraveyard( Main.getMonsterRecord( ),
+//					player.getGameSessionInfo( ) );
+            GameFiles.saveHiScore(player,
+                    player.getFlag("ARENA_FIGHTER") ? "arena.tbl" : "hiscore.tbl");
+            resumeScreen();
+            Display.thus.showHiscores(GameFiles.loadScores(
+                    player.getFlag("ARENA_FIGHTER") ? "arena.tbl" : "hiscore.tbl"));
+        }
+        GameFiles.permadeath(player);
+        exitGame();
+    }
+
+    protected void resumeScreen() {
+        MusicManager.playKey("GAME_OVER");
+        UserInterface.getUI().showMessageHistory();
+        if (Display.thus.showResumeScreen(player)) {
+            GameFiles.saveMemorialFile(player);
+        }
+    }
+
+    protected void exitGame() {
+        currentLevel.disableTriggers();
+        userInterface.setGameOver(true);
+        processQuit = true;
     }
 
     protected void checkTimeSwitch() {
