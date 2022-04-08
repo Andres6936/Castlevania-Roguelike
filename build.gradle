@@ -1,0 +1,48 @@
+// The Gradle start scripts are licensed under the Apache 2.0 Software License.
+
+plugins {
+    // The Java plugin adds Java compilation along with testing and bundling
+    // capabilities to a project.
+    id 'java'
+    // The Application plugin facilitates creating an executable JVM
+    // application.
+    id 'application'
+}
+
+group 'co.castle'
+version '2022.04'
+
+repositories {
+    mavenCentral()
+}
+
+application {
+    // Configure the application main class.
+    mainClassName = 'co.castle.Main'
+}
+
+
+dependencies {
+    implementation files('lib/hamcrest-all-1.3.jar')
+    implementation files('lib/jcurses-x.jar')
+    implementation files('lib/jl1.0.jar')
+    implementation files('lib/junit-4.10.jar')
+    implementation files('lib/MinML.jar')
+    implementation files('lib/mockito-all-1.9.5-rc1.jar')
+    implementation files('lib/yguard.jar')
+}
+
+// Executes a Java application in a child process.
+// ...
+// Type: JavaExec -> Starts a JVM with the given classpath and
+// application class (with the method main).
+// ...
+// Overwrite the task run.
+task run(type: JavaExec, overwrite: true) {
+
+    // Configure the application classpath.
+    classpath = sourceSets.main.runtimeClasspath
+
+    // Configure the application main class.
+    main = 'co.castle.Main'
+}
